@@ -2,8 +2,8 @@ class App extends Base {
 
   mount() {
     this.navBarLinks = [
-      { label: 'Welcome', route: '/' },
-      { label: 'About us', route: '/about-us' }
+      { label: 'Köpa bostad', route: '/' },
+      { label: 'Om oss', route: '/about-us' }
     ];
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.footer = new Footer();
