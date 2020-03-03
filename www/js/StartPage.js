@@ -5,8 +5,9 @@ class StartPage extends Base {
       <div class="row" route="/" page-title="Start">
         <div class="col-12">
           <h1>Start sida</h1>
-          <p>This is the start page.</p>
-          <p>Added new text for test! <b>/Rikard</b></p>
+          <p>Här är startsidan</p>
+          <p>Bostads/objekt karusell här</p>
+          <p>Brödtext</p>
         </div>
       </div>
     `;
