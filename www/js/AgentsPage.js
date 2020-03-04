@@ -1,7 +1,6 @@
 class AgentsPage extends Base {
 
   async mount() {
-    this.foundAgents = [];
     await sql(/*sql*/`USE DhyrRumson.db`);
     this.foundAgents = await sql(/*sql*/`
     SELECT firsteName, lastName, email FROM user, userTyp WHERE user.id = userTyp.userId AND isAgent = "true"
