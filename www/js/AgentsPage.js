@@ -16,13 +16,9 @@ class AgentsPage extends Base {
             <img src="images/${this.foundAgents[0].imageUrl}" alt="Agent face">
             </div>
             <div class="col-sm">
-              ${this.foundAgents[0].firsteName}
-            </div>
-            <div class="col-sm">
-              ${this.foundAgents[0].lastName}
-            </div>
-            <div class="col-sm">
-            ${this.foundAgents[0].email}
+              ${this.foundAgents[0].firsteName}<br>
+              ${this.foundAgents[0].lastName}<br>
+              ${this.foundAgents[0].email}
             </div>
           </div>
         </div>
