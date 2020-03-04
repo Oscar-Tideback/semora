@@ -12,10 +12,10 @@ class AgentsPage extends Base {
       <div class="row" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
         <div class="container">
           <div class="row">
-            <div class="col-sm">
+            <div class="col-sm-3">
             <img src="images/${this.foundAgents[0].imageUrl}" alt="Agent face">
             </div>
-            <div class="col-sm">
+            <div class="col-sm-6">
               ${this.foundAgents[0].firsteName}<br>
               ${this.foundAgents[0].lastName}<br>
               ${this.foundAgents[0].email}
