@@ -1,9 +1,6 @@
 *.css
 .DS_Store
 
-# Ignorera databaser. Vi laddar upp dessa manuellt istället via github.com
-www/databases
-
 # Rikards lokala slaskmapp
 www/rikard
 
