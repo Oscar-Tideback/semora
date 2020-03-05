@@ -10,5 +10,4 @@ class AboutUsPage extends Base {
       </div>
     `;
   }
-
 }
