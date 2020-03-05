@@ -1,8 +1,9 @@
 *.css
 .DS_Store
 
-# Rikards lokala slaskmapp
+# Rikards lokala slaskmappar/filer
 www/rikard
+www/databases/DhyrRumson_Rikards.db
 
 # Logs
 logs
