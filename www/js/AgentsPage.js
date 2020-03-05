@@ -3,7 +3,7 @@ class AgentsPage extends Base {
   async mount() {
     await sql(/*sql*/`USE DhyrRumson.db`);
     this.foundAgents = await sql(/*sql*/`
-    SELECT firsteName, lastName, email, imageUrl FROM user, userTyp WHERE user.id = userTyp.userId AND isAgent = "true"
+    SELECT firstName, lastName, email, imageUrl FROM user, userType WHERE user.id = userType.userId AND isAgent = "true"
     `);
   }
 
@@ -16,7 +16,7 @@ class AgentsPage extends Base {
             <img src="images/${this.foundAgents[0].imageUrl}" alt="Agent face">
             </div>
             <div class="col-sm-6">
-              ${this.foundAgents[0].firsteName}<br>
+              ${this.foundAgents[0].firstName}<br>
               ${this.foundAgents[0].lastName}<br>
               ${this.foundAgents[0].email}
             </div>
