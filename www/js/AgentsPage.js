@@ -4,9 +4,9 @@ class AgentsPage extends Base {
     this.agents = [];
     this.foundAgents = await sql(/*sql*/`
       SELECT firstName, lastName, email, imageUrl 
-      FROM user, userType 
-      WHERE user.id = userType.userId AND isAgent = "true"
-    `); 
+      FROM user
+      WHERE isAgent = "true"
+    `);
   }
   render() {
     return /*html*/`

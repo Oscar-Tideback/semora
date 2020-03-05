@@ -7,23 +7,29 @@ body {
   background-color: rgb(173, 173, 173);
 }
 
-.main-holder{
+.main-holder {
   background-color: #fff;
 }
 
-.hero{
-  background-color: #fff;
+.hero {
+  // Predefined height on hero
+  height: 150px;
+}
+
+.search-in-hero-holder {
+  position: relative;
 }
 
 // Some styling for the searchfield and button in navbar
 .search-in-hero {
-  //position: absolute;
+  width: 40%;
   top: 8px;
+  right: 0px;
   color: rgb(0,0,0);
   position: absolute;
-  right: 0px;
   // Adjust accordingly depending on hero images pixel height
-  top: -100px;
+  top: -110px;
+
   // No hamburger menu on big screens so place further right
   @media (min-width: 992px) {
     // Adjust to other color (unused for now /Rikard)
@@ -31,12 +37,14 @@ body {
       color: rgb(0,0,0);
     }
   }
+
   // Move searchform below navbar when hamburger menu
   @media (max-width: 992px) {
-     position: relative;
-     top: 10px;
-     left: 15px;
-     margin-right: 25px;
+    position: relative;
+    width: 100%;
+    top: 10px;
+    left: 15px;
+    //margin-right: 25px;
   }
   span {
     font-size:40%;

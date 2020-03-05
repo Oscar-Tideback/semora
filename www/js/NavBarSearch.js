@@ -2,7 +2,7 @@ class NavBarSearch extends Base {
 
   render() {
     return /*html*/`
-      <div style="position: relative">
+      <div class="search-in-hero-holder pr-4">
         <form class="navbar-form search-in-hero" action="/" id="navBarSearch">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Sök här...">
@@ -13,8 +13,8 @@ class NavBarSearch extends Base {
             </div>
           </div>
         </form>
-      </div>
-        `
+      </div>  
+      `
   }
 
 }
