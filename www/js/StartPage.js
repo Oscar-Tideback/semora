@@ -1,5 +1,13 @@
 class StartPage extends Base {
 
+  mount() {
+    sql(/*sql*/`USE DhyrRumson.db`);
+  }
+
+  //async fetchCarouselData() {
+  //  await sql(/*sql*/`SELECT name FROM cities WHERE `);
+  //}
+
   render() {
     return /*html*/`
       <div class="row" route="/" page-title="Start">
@@ -14,6 +22,7 @@ class StartPage extends Base {
               <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner">
+
               <div class="carousel-item active">
                 <img src="images/img01.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
@@ -21,6 +30,7 @@ class StartPage extends Base {
                   <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
                 </div>
               </div>
+
               <div class="carousel-item">
                 <img src="images/img02.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
@@ -28,6 +38,7 @@ class StartPage extends Base {
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
               </div>
+
               <div class="carousel-item">
                 <img src="images/img03.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
@@ -35,6 +46,7 @@ class StartPage extends Base {
                   <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
                 </div>
               </div>
+
             </div>
             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
