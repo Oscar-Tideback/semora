@@ -3,23 +3,38 @@
   cursor: pointer;
 }
 
+body {
+  background-color: rgb(173, 173, 173);
+}
+
+.main-holder{
+  background-color: #fff;
+}
+
+.hero{
+  background-color: #fff;
+}
+
 // Some styling for the searchfield and button in navbar
-.search-in-menu {
-  position: absolute;
+.search-in-hero {
+  //position: absolute;
   top: 8px;
-  right: 70px;
-  color: #fff;
+  color: rgb(0,0,0);
+  position: absolute;
+  right: 0px;
+  // Adjust accordingly depending on hero images pixel height
+  top: -100px;
   // No hamburger menu on big screens so place further right
   @media (min-width: 992px) {
-    right: 15px;
-    // Adjust to white color
+    // Adjust to other color (unused for now /Rikard)
     .icofont-search.navbar-search-icon {
-      color: rgb(255,255,255);
+      color: rgb(0,0,0);
     }
   }
   // Move searchform below navbar when hamburger menu
   @media (max-width: 992px) {
      position: relative;
+     top: 10px;
      left: 15px;
      margin-right: 25px;
   }
@@ -27,4 +42,3 @@
     font-size:40%;
   }
 }
-
