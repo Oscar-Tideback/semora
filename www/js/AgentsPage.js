@@ -1,7 +1,7 @@
 class AgentsPage extends Base {
 
   async mount() {
-    this.agents = [];
+    //this.agents = [];
     this.foundAgents = await sql(/*sql*/`
       SELECT firstName, lastName, email, imageUrl 
       FROM user
@@ -13,11 +13,9 @@ class AgentsPage extends Base {
       <div class="row" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
         <div class="container">
           <div class="row">           
-            <img src="images/${this.foundAgents[0].imageUrl}" alt="Agent face">    
-            <div class="col-sm-3">
-              ${this.foundAgents[0].firstName}<br>
-              ${this.foundAgents[0].lastName}<br>
-              ${this.foundAgents.map(user => /*html*/`<br>  ${user.firstName}` + ' ' + `${user.lastName}`)}<br><br>
+            <!--<img src="images/${this.foundAgents[3].imageUrl}" alt="Agent face">-->   
+              <div class="col-sm-9">
+               ${this.foundAgents.map(user => /*html*/`<div class="col-sm-3"><img src="images/${user.imageUrl}" alt="Agent face"></div>` + '' + /*html*/`<div class="col-sm-6">${user.lastName}</div>`)}             
             </div>
           </div>
         </div>
