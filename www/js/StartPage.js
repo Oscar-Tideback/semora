@@ -15,7 +15,7 @@ class StartPage extends Base {
             </ol>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="images/img01.jpg" class="d-block w-100" alt="...">
+                <img src="images/1/img01.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>First slide label</h5>
                   <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
