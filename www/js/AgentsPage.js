@@ -6,7 +6,7 @@ class AgentsPage extends Base {
       SELECT firstName, lastName, email, imageUrl 
       FROM user, userType 
       WHERE user.id = userType.userId AND isAgent = "true"
-    `); 
+    `);
   }
   render() {
     return /*html*/`
