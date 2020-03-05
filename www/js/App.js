@@ -11,6 +11,7 @@ class App extends Base {
     ];
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.navBarSearch = new NavBarSearch();
+    this.heroSection = new HeroSection();
     this.footer = new Footer();
     this.startPage = new StartPage();
     this.buyerPage = new BuyerPage();
@@ -23,12 +24,14 @@ class App extends Base {
 
   render() {
     return /*html*/`
-      <div base-title="Minimal: ">
+      <div class="container main-holder pl-0 pr-0" base-title="Minimal: ">
         <header>
+          ${this.heroSection}
           ${this.navBar}
+          <!-- Keep navBarSearch after navBar -->
           ${this.navBarSearch}
         </header>
-        <main class="container my-4">
+        <main class="my-4">
           ${this.startPage}
           ${this.buyerPage} 
           ${this.sellerPage}
