@@ -1,6 +1,6 @@
 class App extends Base {
 
- async mount() {
+  async mount() {
     await sql(/*sql*/`USE DhyrRumson.db`);
     this.navBarLinks = [
       { label: 'Köpa bostad', route: '/buy-property' },
