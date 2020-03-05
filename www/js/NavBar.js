@@ -14,7 +14,7 @@ class NavBar extends Base {
                 <a class="nav-link" href="${link.route}">
                   ${link.label}
                 </a>
-              </li>
+              </li>              
           ` : /*html*/`
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="${link.route}"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

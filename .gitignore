@@ -1,6 +1,9 @@
 *.css
 .DS_Store
 
+# Rikards lokala slaskmapp
+www/rikard
+
 # Logs
 logs
 *.log
