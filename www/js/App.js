@@ -7,6 +7,7 @@ class App extends Base {
       { label: 'Sälja bostad', route: '/sell-property' },
       { label: 'Här finns vi', route: '/our-regions' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
+      { label: 'Bostad info', route: '/real-estate-info' },
       { label: 'Om oss', route: '/about-us' }
     ];
     this.navBar = new NavBar({ links: this.navBarLinks });
@@ -17,6 +18,7 @@ class App extends Base {
     this.buyerPage = new BuyerPage();
     this.sellerPage = new SellerPage();
     this.agentsPage = new AgentsPage();
+    this.objectsPage = new ObjectsPage();
     this.mapsPage = new MapsPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
@@ -36,6 +38,7 @@ class App extends Base {
           ${this.buyerPage} 
           ${this.sellerPage}
           ${this.agentsPage}
+          ${this.objectsPage}
           ${this.mapsPage}
           ${this.aboutUsPage}
           ${this.missingPage}
