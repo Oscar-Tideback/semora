@@ -1,12 +1,24 @@
 class StartPage extends Base {
 
-  mount() {
-    sql(/*sql*/`USE DhyrRumson.db`);
-  }
+  async mount() {
+    await sql(/*sql*/`USE DhyrRumson.db`);
 
-  //async fetchCarouselData() {
-  //  await sql(/*sql*/`SELECT name FROM cities WHERE `);
-  //}
+    // Använder mig av vyer snarare
+    // this.areaInfo = await sql(/*sql*/`SELECT * FROM v_carouselData`);
+
+    /* Vy innehåll i v_carouselData
+    SELECT Id, imgURL, streetName, streetNumber, rooms, area, price, areaName
+    FROM realEstateInfo, realEstateImages, realEstateAddress, areaInfo
+    WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId
+    AND realEstateInfo.Id = realEstateAddress.realEstateId
+    AND realEstateInfo.areaInfoId = areaInfo.id
+    ORDER BY RANDOM() LIMIT 5
+    */
+
+    // Samma som vyn ovan direkt i query
+    this.areaInfo = await sql(/*sql*/`SELECT Id, imgURL, streetName, streetNumber, rooms, area, price, areaName FROM realEstateInfo, realEstateImages, realEstateAddress, areaInfo WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId AND realEstateInfo.Id = realEstateAddress.realEstateId AND realEstateInfo.areaInfoId = areaInfo.id ORDER BY RANDOM() LIMIT 5`);
+
+  }
 
   render() {
     return /*html*/`
@@ -14,6 +26,11 @@ class StartPage extends Base {
         <div class="col-12">
           <h1>Start sida</h1>
           <p>Här är startsidan</p>
+
+          <!-- Output test -->
+          ${this.areaInfo.map(obj => /*html*/`
+            ${obj.imgURL} 
+          `)}
 
           <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
