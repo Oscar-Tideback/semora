@@ -3,6 +3,8 @@ class StartPage extends Base {
   async mount() {
     await sql(/*sql*/`USE DhyrRumson.db`);
 
+    this.areaInfo = [];
+
     // Använder mig av vyer snarare
     // this.areaInfo = await sql(/*sql*/`SELECT * FROM v_carouselData`);
 
@@ -16,7 +18,7 @@ class StartPage extends Base {
     */
 
     // Samma som vyn ovan direkt i query
-    this.areaInfo = await sql(/*sql*/`SELECT Id, imgURL, streetName, streetNumber, rooms, area, price, areaName FROM realEstateInfo, realEstateImages, realEstateAddress, areaInfo WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId AND realEstateInfo.Id = realEstateAddress.realEstateId AND realEstateInfo.areaInfoId = areaInfo.id ORDER BY RANDOM() LIMIT 5`);
+    //this.areaInfo = await sql(/*sql*/`SELECT Id, imgURL, streetName, streetNumber, rooms, area, price, areaName FROM realEstateInfo, realEstateImages, realEstateAddress, areaInfo WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId AND realEstateInfo.Id = realEstateAddress.realEstateId AND realEstateInfo.areaInfoId = areaInfo.id ORDER BY RANDOM() LIMIT 5`);
 
   }
 
