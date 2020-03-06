@@ -11,7 +11,7 @@ class AgentsPage extends Base {
   render() {
     return /*html*/`
       <div class="row" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">   
-        <div>   
+        <div class="col-12">   
           <!-- <img src="images/${this.foundAgents[3].imageUrl}" alt="Agent face">     ` + '' + /*html*/`     -->   
           <div class="row">
             <div class="col-12">Våra mäklare.</div>
