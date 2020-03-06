@@ -1,66 +1,52 @@
 class StartPage extends Base {
 
   async mount() {
-    await sql(/*sql*/`USE DhyrRumson_Rikards.db`);
+    await sql(/*sql*/`USE DhyrRumson.db`);
 
-    this.areaInfo = [];
-
-    this.areaInfo = await sql(/*sql*/`
-      SELECT realEstateInfo.Id, realEstateImages.imgUrl, realEstateAddress.streetName, realEstateAddress.streetNumber, realEstateInfo.rooms, realEstateInfo.area, realEstateInfo.price, areaInfo.areaName 
-      FROM realEstateInfo, realEstateImages, realEstateAddress, areaInfo 
-      WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId 
+    // Using GROUP instead of DISTINCT to avoid duplicate RANDOM results since multiple images per object in DB
+    // LIMIT sets amount of objects in carousel 
+    // Don't forget! to use realEstateImages.category later on instead of matching by realEstateImages.imgUrl /Rikard
+    this.carouselData = await sql(/*sql*/`
+      SELECT realEstateInfo.Id, realEstateImages.imgUrl, realEstateAddress.streetName, realEstateAddress.streetNumber, realEstateInfo.tenure, realEstateInfo.floor, realEstateInfo.rooms, realEstateInfo.area, realEstateInfo.price, areaInfo.areaName 
+      FROM realEstateInfo, realEstateImages, realEstateAddress, areaInfo
+      WHERE realEstateInfo.areaInfoId = areaInfo.id 
+      AND realEstateInfo.Id = realEstateImages.realEstateInfoId 
       AND realEstateInfo.Id = realEstateAddress.realEstateId 
-      AND realEstateInfo.areaInfoId = areaInfo.id 
-      ORDER BY RANDOM() LIMIT 5
+      AND realEstateImages.imgUrl LIKE '%img01%'
+      GROUP BY realEstateInfo.Id
+      ORDER BY RANDOM() LIMIT 10
     `);
 
   }
 
   render() {
     return /*html*/`
-      <div class="row" route="/" page-title="Start">
+      <div class="row" route="/" page-title="Startsida">
         <div class="col-12">
-          <h1>Start sida</h1>
-          <p>Här är startsidan</p>
+          <div class="carousel-title-holder">
+            <div class="carousel-title-container">
+              <h1 class="carousel-title-text">Populära objekt just nu</h1>
+            </div>
+          </div>
 
-          <!-- Output test -->
-          ${this.areaInfo.map(obj => /*html*/`
-            ${obj.imgUrl} 
-          `)}
-
-          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
             <ol class="carousel-indicators">
-              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+              ${this.carouselData.map((obj, index) => /*html*/`
+                <li data-target="#carouselExampleCaptions" data-slide-to="${index}" class="${index > 0 ? '' : 'active'}"></li>
+              `)}
             </ol>
             <div class="carousel-inner">
-
-              <div class="carousel-item active">
-                <img src="images/1/img01.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>First slide label</h5>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              ${this.carouselData.map((obj, index) => /*html*/`
+                <div class="carousel-item ${index > 0 ? '' : 'active'}">
+                  <img src="images/${obj.imgUrl}.jpg" class="d-block w-100" alt="...">
+                  <div class="carousel-caption d-none d-md-block">
+                    <h3 class="carousel-title-caption">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ', <span class="carouselAdj">' + obj.floor + ' tr'}</span></h3>
+                    <p>${obj.rooms} rum, ${obj.area} m², ${obj.price} kr</p>
+                  </div>
                 </div>
-              </div>
-
-              <div class="carousel-item">
-                <img src="images/img02.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Second slide label</h5>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </div>
-
-              <div class="carousel-item">
-                <img src="images/img03.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Third slide label</h5>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
-              </div>
-
+              `)}
             </div>
+
             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
@@ -71,12 +57,15 @@ class StartPage extends Base {
             </a>
           </div>
           
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.
-          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+
         </div>
       </div>
     `;

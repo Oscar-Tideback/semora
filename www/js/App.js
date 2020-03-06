@@ -1,7 +1,6 @@
 class App extends Base {
 
   async mount() {
-    await sql(/*sql*/`USE DhyrRumson.db`);
     this.navBarLinks = [
       { label: 'Köpa bostad', route: '/buy-property' },
       { label: 'Sälja bostad', route: '/sell-property' },
@@ -24,14 +23,14 @@ class App extends Base {
 
   render() {
     return /*html*/`
-      <div class="container main-holder pl-0 pr-0" base-title="Minimal: ">
+      <div class="container main-holder pl-0 pr-0" base-title="Dhyr & Rumson: ">
         <header>
           ${this.heroSection}
           ${this.navBar}
           <!-- Keep navBarSearch after navBar -->
           ${this.navBarSearch}
         </header>
-        <main class="my-4">
+        <main>
           ${this.startPage}
           ${this.buyerPage} 
           ${this.sellerPage}

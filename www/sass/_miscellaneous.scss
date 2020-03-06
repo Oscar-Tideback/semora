@@ -7,15 +7,23 @@ body {
   background-color: rgb(173, 173, 173);
 }
 
+// Bootstrap container
 .main-holder {
-  background-color: #fff;
+  background-color: #fff;   // Page BG color
+}
+
+// Bootstrap container to full width when toggled hamburger menu
+@media (max-width: 992px) {
+  .main-holder {
+    max-width: 100%;
+  }
 }
 
 .hero {
-  // Predefined height on hero
-  height: 150px;
+  height: 150px;    // Predefined height on hero
 }
 
+  // Floating elements holder
 .search-in-hero-holder {
   position: relative;
 }
@@ -27,26 +35,46 @@ body {
   right: 0px;
   color: rgb(0,0,0);
   position: absolute;
-  // Adjust accordingly depending on hero images pixel height
-  top: -110px;
+  top: -110px;   // Adjust this accordingly depending on hero images pixel height
 
-  // No hamburger menu on big screens so place further right
+  // No hamburger normal menu 
   @media (min-width: 992px) {
-    // Adjust to other color (unused for now /Rikard)
     .icofont-search.navbar-search-icon {
-      color: rgb(0,0,0);
+      color: rgb(0,0,0);    // Adjust to other color (unused at this moment)
     }
   }
 
-  // Move searchform below navbar when hamburger menu
+  // Move searchform below navbar when toggled hamburger menu
   @media (max-width: 992px) {
     position: relative;
     width: 100%;
     top: 10px;
     left: 15px;
-    //margin-right: 25px;
+    margin-bottom: 20px;
   }
+
   span {
     font-size:40%;
   }
+}
+
+// Some carousel styling
+.carousel-title-holder { // Floating elements holder
+    position: relative; 
+    width: 50%
+}
+.carousel-title-container {
+  position: absolute; 
+  width: 500px; 
+  right: -250px; 
+  top: 20px; 
+  color: #FFFFFF; 
+  text-align: center;
+  z-index: 9999; 
+}
+.carousel-title-text {
+  font-weight: 600;
+}
+.carouselAdj {
+  font-size: smaller;
 }
