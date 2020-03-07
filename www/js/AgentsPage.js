@@ -23,6 +23,7 @@ class AgentsPage extends Base {
           <div class="row">
               
               
+
               ${this.foundAgents.map(user => /*html*/`<div class="col-2"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></div><div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}son</p><p>${user.email}</p></div>`)} 
 
             </div>    
