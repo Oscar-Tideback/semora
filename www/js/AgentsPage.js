@@ -10,7 +10,7 @@ class AgentsPage extends Base {
   }
 
 
-  
+
   render() {
     return /*html*/`
       <div class="row" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">   
@@ -19,15 +19,23 @@ class AgentsPage extends Base {
           <div class="row">
             <div class="col-12"><p>Våra mäklare.</p></div>
           </div>
+            ${this.foundAgents.map(user => /*html*/`
+            <div class="row">
+              <div class="col-2"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></div>
+              <div class="col-10"><p>${user.lastName}son?</p></div>
+              
+              ${this.foundAgents.filter(user => user.userId % 2 !== 0).map(user => /*html*/`<div class="col-6"><p>${user.firstName}</p></div>`)} 
+              
+            </div>    
+            `)}
 
-          ${this.foundAgents.map(user => /*html*/`
-          <div class="row">
-            <div class="col-2"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></div>
-            <div class="col-10"><p>${user.lastName}son?</p></div>
-          </div>    
-          `)}
-        </div>             
+           
+        
+               
       </div>
+      </div> 
+
+      
     `;
   }
   doSomeThing() {
