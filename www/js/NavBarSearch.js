@@ -42,7 +42,7 @@ class NavBarSearch extends Base {
     // Autocomplete region
     this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`SELECT regionName FROM region WHERE region.regionName LIKE $text`, { text: e.target.value + '%' });
 
-    // Devs in progress: Autocomplete region with object count per region. Freetext search in description etc. but only add results to count per region 
+    // Dev in progress: Autocomplete region with object count per region. Freetext search in description etc. but only add results to count per region 
     //this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`
     //  SELECT * FROM (SELECT regionName FROM region UNION SELECT description FROM realEstateInfo) WHERE regionName LIKE $text`,
     //  { text: '%' + e.target.value + '%' });
