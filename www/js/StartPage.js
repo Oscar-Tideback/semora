@@ -5,7 +5,7 @@ class StartPage extends Base {
 
     // Using GROUP instead of DISTINCT to avoid duplicate RANDOM results since multiple images per object in DB
     // LIMIT sets amount of objects in carousel 
-    // Don't forget! to use realEstateImages.category later on instead of matching by realEstateImages.imgUrl /Rikard
+    // Don't forget! to select where realEstateImages.category later on instead of matching by realEstateImages.imgUrl /Rikard
     this.carouselData = await sql(/*sql*/`
       SELECT realEstateInfo.Id, realEstateImages.imgUrl, realEstateAddress.streetName, realEstateAddress.streetNumber, realEstateInfo.tenure, realEstateInfo.floor, realEstateInfo.rooms, realEstateInfo.area, realEstateInfo.price, areaInfo.areaName 
       FROM realEstateInfo, realEstateImages, realEstateAddress, areaInfo
