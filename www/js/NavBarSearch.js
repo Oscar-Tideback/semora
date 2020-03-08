@@ -29,7 +29,7 @@ class NavBarSearch extends Base {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
 
     if (e.key === 'Enter' && this.selected >= 0) {
-      this.chosen = this.foundKeywords[this.selected].text;
+      this.chosen = this.foundKeywords[this.selected].regionName;
       this.foundKeywords = [];
       this.selected = -1;
 
