@@ -2,7 +2,7 @@ class BuyerPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row" route="/buy-property" page-title="Köpa bostad">
+      <div class="row m-0" route="/buy-property" page-title="Köpa bostad">
         <div class="col-12">
           <h1>Köpa bostad</h1>
           <p>Sökfält</p>

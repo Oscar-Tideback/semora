@@ -13,7 +13,7 @@ class ObjectsPage extends Base {
     }
     render() {
         return /*html*/`
-            <div class= "row" route="/real-estate-info" page-title="Bostad info">
+            <div class= "row m-0" route="/real-estate-info" page-title="Bostad info">
                 <div class= "container">
                     <div class= "row">
                         <div class="col-sm-9"> Objekt Information.
