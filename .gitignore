@@ -4,6 +4,7 @@
 # Rikards lokala slaskmappar/filer
 www/rikard
 www/databases/DhyrRumson_Rikards.db
+example-autocomplete
 
 # Logs
 logs
