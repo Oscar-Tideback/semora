@@ -26,8 +26,7 @@ class AgentPage extends Base {
               <div class="row">
                 <div class="col-8"><h5>Lär känna våra våra mäklare.</h5>
                 <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
-                <p>Till Dhyr & Rumson har vi därför handplockat endast dom som heter son i efternamn och de skickligaste och mest erfarna mäklarna i Stockholm.
-                Vi har gjort det av en enda anledning – så att rätt person kan företräda dig i din kanske största affär.</p>
+                
                 </div>
               </div>
               <div class="row">
