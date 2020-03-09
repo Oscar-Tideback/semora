@@ -1,5 +1,5 @@
 class AgentPage extends Base {
-  agent = 20;
+  agent = this.targetBrokerId;
 
   async mount(agent) {
     this.foundAgents = await sql(/*sql*/`
@@ -10,11 +10,7 @@ class AgentPage extends Base {
 
 
   }
-  doSomeThing(agent) {
-    this.showAgent = agent;
-    //this.foundAgents.map(user => /*html*/`<div class="col-2"><p>${user.firstName}` + ' ' + `${user.lastName}son</p><p>${user.email}</p><p>${user.phone}</p></div>`);
-    //this.render();
-  }
+
 
   render() {
     return /*html*/`
@@ -26,7 +22,7 @@ class AgentPage extends Base {
               <div class="row">
                 <div class="col-8"><h5>Lär känna våra våra mäklare.</h5>
                 <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
-                
+                Ett testinnehåll... ${this.targetBrokerId} 
                 </div>
               </div>
               <div class="row">
