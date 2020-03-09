@@ -2,7 +2,7 @@ class AgentsPage extends Base {
 
   async mount() {
     this.foundAgents = await sql(/*sql*/`
-      SELECT Id, firstName, lastName, email, imageUrl 
+      SELECT Id, firstName, lastName, email, imageUrl, phone 
       FROM user
       WHERE isAgent = "true"
     `);
@@ -26,7 +26,7 @@ class AgentsPage extends Base {
               <div class="row">
                 ${this.foundAgents.map(user => /*html*/`
                 <div class="col-2"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></div>
-                <div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}son</p><p>${user.email}</p></div>`)} </div>              
+                <div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}son</p><p>${user.email}</p><p>${user.phone}</p></div>`)} </div>              
               </div>
             </div>
           </div>

@@ -4,7 +4,7 @@ class AboutUsPage extends Base {
     return /*html*/`
       <div class="row m-0" route="/about-us" page-title="Om oss">
         <div class="col-12">
-          <h1>Vilka är vi och FALLE</h1>
+          <h1>Vilka är vi</h1>
           <p>Lite text</p>
         </div>
       </div>

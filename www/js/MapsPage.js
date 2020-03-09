@@ -20,6 +20,3 @@ class MapsPage extends Base {
 
 
 }
-/*
-
-*/
