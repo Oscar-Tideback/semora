@@ -10,7 +10,8 @@ class App extends Base {
       { label: 'Här finns vi', route: '/our-regions' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       { label: 'Bostad info', route: '/real-estate-info' },
-      { label: 'Om oss', route: '/about-us' }
+      { label: 'Om oss', route: '/about-us' },
+      { label: 'En mäklare', route: '/real-estate-agent' }
     ];
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.navBarSearch = new NavBarSearch();
@@ -24,6 +25,7 @@ class App extends Base {
     this.mapsPage = new MapsPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
+    this.agentPage = new AgentPage();
 
   }
 
@@ -45,6 +47,7 @@ class App extends Base {
           ${this.mapsPage}
           ${this.aboutUsPage}
           ${this.missingPage}
+          ${this.agentPage}
 
         </main>
         ${this.footer}
