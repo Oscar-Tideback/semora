@@ -1,9 +1,8 @@
 class NavBarSearch extends Base {
 
-  async mount() {
+  mount() {
     this.foundKeywords = [];
     this.selected = -1;
-    await sql(/*sql*/`USE DhyrRumson.db`);
   }
 
   // Start of modified Thomas example-autocomplete
