@@ -29,13 +29,12 @@ class AgentsPage extends Base {
               </div>
               <div class="row">
                 ${this.foundAgents.map(user => /*html*/`
-                <div class="col-2"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></div>
-                <div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}son</p><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
+                <div class="col-2"><a href="/real-estate-agent" click="targetBroker" brokerid="${user.id}"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></div>
+                <div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}son</p></a><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
               </div>
               <div class="row">
-                <div class="col-12"><input value="Klick" type="button" onClick="this.doSomeThing()">
                 <P>
-                  <a href="/real-estate-agent" click="targetBroker" brokerid="20">Kontakta oss så får du veta mer. Kolla med mäklare nr 20</a>
+         
                 </p>
                 </div>
               </div>

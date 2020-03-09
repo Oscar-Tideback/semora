@@ -1,11 +1,11 @@
 class AgentPage extends Base {
-  agent = this.targetBrokerId;
+
 
   async mount(agent) {
     this.foundAgents = await sql(/*sql*/`
       SELECT id, firstName, lastName, email, imageUrl, phone 
       FROM user
-      WHERE id = ${this.agent}
+      WHERE id = ${this.targetBrokerId}
     `);
 
 
