@@ -2,7 +2,7 @@ class StartPage extends Base {
 
   async mount() {
 
-    this.cardCount = 0;
+    this.cardCount;
 
     // Using GROUP instead of DISTINCT to avoid duplicate RANDOM results since multiple images per object in DB
     // LIMIT sets amount of objects in carousel 
@@ -45,13 +45,15 @@ class StartPage extends Base {
   }
 
   render() {
+    this.cardCount = -1;
+
     return /*html*/`
       <div class="row m-0" route="/" page-title="Startsida">
         <div class="col-12 p-0">
 
           <div class="carousel-title-holder">
             <div class="carousel-title-container">
-              <h1 class="carousel-title-text">Populära objekt just nu</h1>
+              <h1 class="carousel-title-text">Populära bostäder just nu</h1>
             </div>
           </div>
 
@@ -87,59 +89,42 @@ class StartPage extends Base {
           <div class="container my-4">
 
             <div class="row pb-4">
+              <div class="col">
+                <h1>Våra tjänster hjälper dig att köpa tryggt</h1>
+                Att köpa bostad är förknippat med en hel del känslor. Förväntan och entusiasm, men också tvivel och nervositet. 
+                Ibland känns det som att man skulle behöva vara både ekonom, jurist och byggnadsingenjör för att kunna fatta de viktiga besluten.
+                För att göra allt lite enklare för dig som ska byta bostad, har vi en rad tjänster och verktyg som hjälper dig både att hitta
+                drömbostaden och slå till när det väl blir dags. Till exempel kan vi hjälpa dig att hålla koll på nya bostäder som kommer ut på
+                marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
+                med i budgivningen.
+                <p>Kontakta oss så får du veta mer</p>
+              </div>
+            </div>
+
+
+            <div class="row pb-4">
               <div class="col-12 text-center">
                 <h1>Andra bostäder till salu</h1>
               </div>
             </div>
 
-            <div class="row pb-4">
-              <div class="col text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </div>
-            </div>
+            <div class="row">
+              ${this.carouselData.map(obj => /*html*/`
 
-            <div class="row pb-4">
-              <div class="col text-center">Ett objekt</div>
-              <div class="col text-center">Ett objekt</div>
-              <div class="col text-center">Ett objekt</div>
-            </div>
-            <div class="row pb-4">
-              <div class="col text-center">Ett objekt</div>
-              <div class="col text-center">Ett objekt</div>
-              <div class="col text-center">Ett objekt</div>
-            </div>
-            <div class="row pb-4">
-              <div class="col text-center">Ett objekt</div>
-              <div class="col text-center">Ett objekt</div>
-              <div class="col text-center">Ett objekt</div>
-            </div>
-
-            ${this.carouselData.map(obj => /*html*/`
-            
-            ${this.cardCount < 3 ? /*html*/`<div class="row pb-4">` : ''}
-
-              <div class="col text-center">
-                <div class="card" style="width: 18rem;">
-                  <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <div class="col d-flex justify-content-center">
+                  <div class="card my-4" style="width: 18rem;">
+                    <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-            ${this.cardCount < 3 ? /*html*/`</div>` : this.cardCount = 0}
-
-            `)}
-
+              `)}
+            </div>
 
 
           </div>
-
 
         </div>
       </div>
