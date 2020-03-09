@@ -25,6 +25,8 @@ class App extends Base {
     this.mapsPage = new MapsPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
+
+    this.testPage = new TestPage();
     this.agentPage = new AgentPage();
 
   }
@@ -47,6 +49,7 @@ class App extends Base {
           ${this.mapsPage}
           ${this.aboutUsPage}
           ${this.missingPage}
+          ${this.testPage}
           ${this.agentPage}
 
         </main>
