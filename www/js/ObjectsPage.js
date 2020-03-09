@@ -4,9 +4,15 @@ class ObjectsPage extends Base {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/`
     
-    SELECT * FROM realEstateInfo, realEstateImages 
-    where 
-    realEstateInfo.Id =  realEstateImages.realEstateInfoId
+    SELECT realEstateInfo.area, realEstateInfo.rooms,
+    realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
+    realEstateInfo.tenure, realEstateInfo.price,
+    realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
+    FROM realEstateInfo, realEstateImages
+    WHERE realEstateInfo.Id = 2
+    AND realEstateImages.realEstateInfoId = 2
+    AND realEstateImages.imgUrl LIKE '%img01%'
+
     `);
         //Objekt information från databasen om respektive objekt.
         //Html nedan för layout och design
@@ -18,7 +24,7 @@ class ObjectsPage extends Base {
                     <div class= "row">
                         <div class="col-sm-9"> Objekt Information.
                         ${this.foundObjects.map(realEstateInfo => /*html*/`
-                            <div class="col-3"><img src="images/${realEstateInfo.imgUrl}"  class="img-fluid img-thumbnail" alt="Agent face">
+                            <div class="col-3"><img src="images/${realEstateInfo.imgUrl}.jpg"  class="img-fluid img-thumbnail" alt="Agent face">
                             <div class="col-3">${realEstateInfo.area}</div>
                             <div class="col-3">${realEstateInfo.rooms}</div>
                             <div class="col-3">${realEstateInfo.buildYear}</div>
@@ -33,8 +39,5 @@ class ObjectsPage extends Base {
                 </div>
             </div>
         `;
-    }
-    doSomeThing() {
-
     }
 }
