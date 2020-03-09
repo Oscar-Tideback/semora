@@ -33,12 +33,12 @@ class BuyerPage extends Base {
       return;
     }
     this.selected = 0;
-    this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`SELECT * FROM realEstateInfo
-    realEstate inner JOIN userXregion userReg on
+    this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`SELECT regionName,price, tenure, area FROM realEstateInfo
+    realEstate inner JOIN userXregion userReg ON
     realEstate.userId  = userReg.userId
     inner JOIN region r on
-    r.id = userReg.regionId AND r.regionName = 'Malmö'
-    WHERE region.regionName LIKE $text`, { text: e.target.value + '%' });
+    r.id = userReg.regionId 
+    AND r.regionName = $text`, { text: e.target.value + '%' });
     this.render();
   }
   render() {
