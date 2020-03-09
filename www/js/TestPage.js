@@ -4,7 +4,7 @@ class TestPage extends Base {
     return /*html*/`
       <div class="row m-0" route="/testpage" page-title="En testsida">
         <div class="col d-flex">
-          Ett testinnehåll... 
+          Ett testinnehåll... ${this.targetBrokerId} 
         </div>
       </div>
     `;

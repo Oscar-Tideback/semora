@@ -2,8 +2,6 @@ class StartPage extends Base {
 
   async mount() {
 
-    this.cardCount;
-
     // Using GROUP instead of DISTINCT to avoid duplicate RANDOM results since multiple images per object in DB
     // LIMIT sets amount of objects in carousel 
     // Don't forget! to select where realEstateImages.category later on instead of matching by realEstateImages.imgUrl /Rikard
@@ -38,15 +36,15 @@ class StartPage extends Base {
     `);
 
     //this.cardsData = await sql(/*sql*/`
-
     //`);
-
 
   }
 
-  render() {
-    this.cardCount = -1;
+  targetBroker(e) {
+    app.testPage.targetBrokerId = e.target.attributes.brokerid.value;
+  }
 
+  render() {
     return /*html*/`
       <div class="row m-0" route="/" page-title="Startsida">
         <div class="col-12 p-0">
@@ -97,7 +95,9 @@ class StartPage extends Base {
                 drömbostaden och slå till när det väl blir dags. Till exempel kan vi hjälpa dig att hålla koll på nya bostäder som kommer ut på
                 marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
                 med i budgivningen.
-                <a href="/testpage">Kontakta oss så får du veta mer</a>
+                <P>
+                  <a href="/testpage" click="targetBroker" brokerid="20">Kontakta oss så får du veta mer. Kolla med mäklare nr 20</a>
+                </p>
               </div>
             </div>
 
