@@ -21,8 +21,8 @@ class StartPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row" route="/" page-title="Startsida">
-        <div class="col-12">
+      <div class="row m-0" route="/" page-title="Startsida">
+        <div class="col-12 p-0">
           <div class="carousel-title-holder">
             <div class="carousel-title-container">
               <h1 class="carousel-title-text">Populära objekt just nu</h1>
@@ -57,14 +57,43 @@ class StartPage extends Base {
             </a>
           </div>
           
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          </p>
+          <div class="container my-4">
+
+            <div class="row pb-4">
+              <div class="col-12 text-center">
+                <h1>Andra bostäder till salu</h1>
+              </div>
+            </div>
+            <div class="row pb-4">
+              <div class="col-12 text-center">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </div>
+            </div>
+
+            <div class="row pb-4">
+              <div class="col-4 text-center">Ett objekt</div>
+              <div class="col-4 text-center">Ett objekt</div>
+              <div class="col-4 text-center">Ett objekt</div>
+            </div>
+            <div class="row pb-4">
+              <div class="col-4 text-center">Ett objekt</div>
+              <div class="col-4 text-center">Ett objekt</div>
+              <div class="col-4 text-center">Ett objekt</div>
+            </div>
+            <div class="row pb-4">
+              <div class="col-4 text-center">Ett objekt</div>
+              <div class="col-4 text-center">Ett objekt</div>
+              <div class="col-4 text-center">Ett objekt</div>
+            </div>
+ 
+
+          </div>
+
 
         </div>
       </div>

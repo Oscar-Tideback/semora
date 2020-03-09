@@ -2,7 +2,7 @@ class AboutUsPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row" route="/about-us" page-title="Om oss">
+      <div class="row m-0" route="/about-us" page-title="Om oss">
         <div class="col-12">
           <h1>Vilka är vi och FALLE</h1>
           <p>Lite text</p>
