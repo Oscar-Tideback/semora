@@ -11,8 +11,9 @@ class MapsPage extends Base {
             <iframe src="https://maps.google.com/maps?q=Stig Lindbergs Gata 17, Gustavsberg, Sverige&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
               style="border:0" allowfullscreen></iframe>
             </div>
-
+              
             <!--Google Maps-->
+
           </div>
       </div>
     `;

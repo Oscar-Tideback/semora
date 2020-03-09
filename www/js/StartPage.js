@@ -97,10 +97,9 @@ class StartPage extends Base {
                 drömbostaden och slå till när det väl blir dags. Till exempel kan vi hjälpa dig att hålla koll på nya bostäder som kommer ut på
                 marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
                 med i budgivningen.
-                <p>Kontakta oss så får du veta mer</p>
+                <a href="/testpage">Kontakta oss så får du veta mer</a>
               </div>
             </div>
-
 
             <div class="row pb-4">
               <div class="col-12 text-center">
@@ -110,7 +109,6 @@ class StartPage extends Base {
 
             <div class="row">
               ${this.carouselData.map(obj => /*html*/`
-
                 <div class="col d-flex justify-content-center">
                   <div class="card my-4" style="width: 18rem;">
                     <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="...">
@@ -122,7 +120,6 @@ class StartPage extends Base {
 
               `)}
             </div>
-
 
           </div>
 
