@@ -9,7 +9,7 @@ class App extends Base {
       { label: 'Sälja bostad', route: '/sell-property' },
       { label: 'Här finns vi', route: '/our-regions' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
-      { label: 'Bostad info', route: '/real-estate-info' },
+      //{ label: 'Bostad info', route: '/real-estate-info' },
       { label: 'Om oss', route: '/about-us' },
 
     ];
@@ -28,6 +28,7 @@ class App extends Base {
 
     this.testPage = new TestPage({ brokerId: '' });
     this.agentPage = new AgentPage({ targetBrokerId: '' });
+    this.objectsPage = new ObjectsPage({ targetBostadId: '' });
 
   }
 

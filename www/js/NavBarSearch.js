@@ -1,6 +1,6 @@
 class NavBarSearch extends Base {
 
-  mount() {
+  async mount() {
     this.foundKeywords = [];
     this.selected = -1;
   }
@@ -31,11 +31,9 @@ class NavBarSearch extends Base {
       this.chosen = this.foundKeywords[this.selected].regionName;
       this.foundKeywords = [];
       this.selected = -1;
-
       this.render();
       return;
     }
-
     this.selected = 0;
 
     // Autocomplete region
