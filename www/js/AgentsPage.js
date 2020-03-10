@@ -1,6 +1,7 @@
 class AgentsPage extends Base {
 
   async mount() {
+    this.test = ['1', '20', '21'];
     this.foundAgents = await sql(/*sql*/`
       SELECT id, firstName, lastName, email, imageUrl, phone 
       FROM user
@@ -29,15 +30,20 @@ class AgentsPage extends Base {
               </div>
               <div class="row">
                 ${this.foundAgents.map(user => /*html*/`
-                <div class="col-2"><a href="/real-estate-agent" click="targetBroker" brokerid="${user.id}"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></div>
-                <div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}son</p></a><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
-              </div>
-              <div class="row">
-                <P>
-         
-                </p>
+                <div class="col-2"><a href="/real-estate-agent" click="targetBroker" brokerid="${user.id}"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></a></div>
+                <div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}</p></a><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
                 </div>
+                <div class="row">
+                <div class="col-12">
+                  <p><a href="/real-estate-agent" click="targetBroker" brokerid="${this.test[0]}">test</a></p>
+                  <p><a href="/real-estate-agent" click="targetBroker" brokerid="${this.test[1]}">test</a></p>
+                  <p><a href="/real-estate-agent" click="targetBroker" brokerid="${this.test[2]}">test</a></p>
+                </div>
+                </div>
+                
+
               </div>
+              
             </div>
           </div>
         </div>

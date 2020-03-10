@@ -1,15 +1,18 @@
 class AgentPage extends Base {
 
-
-  async mount(agent) {
+  async makeSql() {
+    app.agentPage.targetBrokerId = this.targetBrokerId;
     this.foundAgents = await sql(/*sql*/`
-      SELECT id, firstName, lastName, email, imageUrl, phone 
-      FROM user
-      WHERE id = ${this.targetBrokerId}
-    `);
-
-
+    SELECT id, firstName, lastName, email, imageUrl, phone 
+    FROM user
+    WHERE id = ${app.agentPage.targetBrokerId}
+  `);
   }
+
+  async mount() {
+    return this.makeSql();
+  }
+
 
 
   render() {
@@ -26,9 +29,10 @@ class AgentPage extends Base {
                 </div>
               </div>
               <div class="row">
+                ${this.makeSql()}
                 ${this.foundAgents.map(user => /*html*/`
                 <div class="col-2"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></div>
-                <div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}son</p><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
+                <div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}</p><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
               </div>
               </div>
             </div>
