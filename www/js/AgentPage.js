@@ -6,7 +6,8 @@ class AgentPage extends Base {
     SELECT id, firstName, lastName, email, imageUrl, phone 
     FROM user
     WHERE id = ${app.agentPage.targetBrokerId}
-  `);
+    `);
+    this.render();
   }
 
   async mount() {
