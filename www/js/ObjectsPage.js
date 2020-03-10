@@ -1,6 +1,6 @@
 class ObjectsPage extends Base {
 
-    async mount() {
+    async makeSql() {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/`
     
@@ -9,14 +9,18 @@ class ObjectsPage extends Base {
     realEstateInfo.tenure, realEstateInfo.price,
     realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
     FROM realEstateInfo, realEstateImages
-    WHERE realEstateInfo.Id = 2
-    AND realEstateImages.realEstateInfoId = 2
+    WHERE realEstateInfo.Id = ${app.objectsPage.targetBostadId}
+    AND realEstateImages.realEstateInfoId = ${app.objectsPage.targetBostadId}
     AND realEstateImages.imgUrl LIKE '%img01%'
 
     `);
         //Objekt information från databasen om respektive objekt.
         //Html nedan för layout och design
     }
+    async mount() {
+        return this.makeSql();
+    }
+
     render() {
         return /*html*/`
             <div class= "row m-0" route="/real-estate-info" page-title="Bostad info">
@@ -24,7 +28,7 @@ class ObjectsPage extends Base {
                     <div class= "row">
                         <div class="col-sm-9"> Objekt Information.
                         ${this.foundObjects.map(realEstateInfo => /*html*/`
-                            <div class="col-3"><img src="images/${realEstateInfo.imgUrl}.jpg"  class="img-fluid img-thumbnail" alt="Agent face">
+                            <div class="col-3"><img src="images/${realEstateInfo.imgUrl}.jpg"  class="img-fluid img-thumbnail" alt="bostad picture">
                             <div class="col-3">${realEstateInfo.area}</div>
                             <div class="col-3">${realEstateInfo.rooms}</div>
                             <div class="col-3">${realEstateInfo.buildYear}</div>
