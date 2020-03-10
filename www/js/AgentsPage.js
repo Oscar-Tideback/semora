@@ -10,8 +10,10 @@ class AgentsPage extends Base {
 
 
   }
-  targetBroker(e) {
-    app.agentPage.targetBrokerId = e.target.attributes.brokerid.value;
+  refreshBroker(e) {
+    app.agentPage.targetBrokerId = e.target.attributes.targetbrokerid.value;
+    app.agentPage.makeSql(e.target.attributes.targetbrokerid.value);
+    app.agentPage.render();
   }
 
   render() {
@@ -30,14 +32,18 @@ class AgentsPage extends Base {
               </div>
               <div class="row">
                 ${this.foundAgents.map(user => /*html*/`
-                <div class="col-2"><a href="/real-estate-agent" click="targetBroker" brokerid="${user.id}"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></a></div>
+                <div class="col-2"><a href="/real-estate-agent" click="targetBroker" targetbrokerid="${user.id}"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></a></div>
                 <div class="col-4"><p>${user.firstName}` + ' ' + `${user.lastName}</p></a><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
                 </div>
                 <div class="row">
                 <div class="col-12">
-                  <p><a href="/real-estate-agent" click="targetBroker" brokerid="${this.test[0]}">test</a></p>
-                  <p><a href="/real-estate-agent" click="targetBroker" brokerid="${this.test[1]}">test</a></p>
-                  <p><a href="/real-estate-agent" click="targetBroker" brokerid="${this.test[2]}">test</a></p>
+                  <p brokerid="${this.test[0]}"><a href="/real-estate-agent" click="refreshBroker" targetbrokerid="${this.test[0]}">test</a></p>
+                  <p brokerid="${this.test[1]}"><a href="/real-estate-agent" click="refreshBroker" targetbrokerid="${this.test[1]}">test</a></p>
+                  <p brokerid="${this.test[2]}"><a href="/real-estate-agent" click="refreshBroker" targetbrokerid="${this.test[2]}">test</a></p>
+                  </p>
+                <h4><a href="/real-estate-agent" click="refreshBroker" targetbrokerid="6">Kontakta oss så får du veta mer. Kolla med mäklare nr 20</a></h4>
+                <h4><a href="/real-estate-agent" click="refreshBroker" targetbrokerid="23">Kontakta oss så får du veta mer. Kolla med mäklare nr 21</a></h4>
+                <h4><a href="/real-estate-agent" click="refreshBroker" targetbrokerid="24">Kontakta oss så får du veta mer. Kolla med mäklare nr 22</a></h4>
                 </div>
                 </div>
                 
