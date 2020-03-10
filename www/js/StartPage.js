@@ -88,7 +88,7 @@ class StartPage extends Base {
           
           <div class="container my-4">
 
-            <div class="row pb-4">
+            <div class="row p-4">
               <div class="col">
                 <h2>Våra tjänster hjälper dig att köpa tryggt</h2>
                 <p>
@@ -124,6 +124,7 @@ class StartPage extends Base {
                             ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
                             ${obj.areaName}, ${obj.regionName}<br>
                             ${obj.rooms} rum, ${obj.area} m²<br>
+                            <!-- obj.price.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3') -->
                             ${obj.price} kr
                           </a>
                         </p>
