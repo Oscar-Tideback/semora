@@ -31,7 +31,7 @@ class AgentsPage extends Base {
               </div>
               <div class="row">
                 ${this.foundAgents.map(user => /*html*/`
-                <div class="col-2"><a href="/real-estate-agent" click="targetBroker" targetbrokerid="${user.id}"><img src="images/${user.imageUrl}"  targetbrokerid="${user.id}"  class="img-fluid img-thumbnail" alt="Agent face"></a></div>
+                <div class="col-2"><a href="/real-estate-agent" click="refreshBroker" targetbrokerid="${user.id}"><img src="images/${user.imageUrl}"  targetbrokerid="${user.id}"  class="img-fluid img-thumbnail" alt="Agent face"></a></div>
                 <div class="col-4"><p  targetbrokerid="${user.id}">${user.firstName}` + ' ' + `${user.lastName}</p></a><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
                 </div>
                 <div class="row">
