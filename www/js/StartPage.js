@@ -113,7 +113,7 @@ class StartPage extends Base {
 
             <div class="row">
               ${this.carouselData.map(obj => /*html*/`
-                <div class="col d-flex justify-content-center">
+                <div class="col d-flex">
                     <div class="card my-4" style="width: 18rem;">
                       <a href="/testpage" click="refreshBroker">
                         <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="..." brokerid="${obj.Id}">

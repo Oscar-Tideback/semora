@@ -38,7 +38,7 @@ class BuyerPage extends Base {
     realEstate.userId  = userReg.userId
     inner JOIN region r on
     r.id = userReg.regionId 
-    AND r.regionName = $text`, { text: e.target.value + '%' });
+    AND r.regionName LIKE $text`, { text: e.target.value + '%' });
     this.render();
   }
   render() {
