@@ -22,15 +22,14 @@ class AgentPage extends Base {
           
             <div class="col-12">    
               <div class="row">
-                <div class="col-12"><h5>Lär känna våra våra mäklare.</h5>
-                <p>Kunskap och erfarenhet är tillgångar i alla yrken. Ett testinnehåll... ${this.targetBrokerId} </p>
+                <div class="col-8"><h5>Lär känna våra våra mäklare.</h5>
+                <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
                 
                 </div>
               </div>
-              <div class="row">
-                
+              <div class="row">               
                 ${this.foundAgents.map(user => /*html*/`
-                <div class="col-3"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail" alt="Agent face"></div>
+                <div class="col-3"><img src="images/${user.imageUrl}"  class="img-fluid img-thumbnail rounded float-left" alt="Agent face"></div>
                 <div class="col-3"><p>${user.firstName}` + ' ' + `${user.lastName}</p><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
               </div>
               </div>
