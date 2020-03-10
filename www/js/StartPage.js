@@ -85,6 +85,10 @@ class StartPage extends Base {
           </div>
           
           <div class="container my-4">
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe38945a770c9dacc127d173138c099f7f891890
             <div class="row p-4">
               <div class="col">
                 <h2>Våra tjänster hjälper dig att köpa tryggt</h2>
