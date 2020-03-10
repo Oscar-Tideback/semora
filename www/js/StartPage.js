@@ -43,6 +43,8 @@ class StartPage extends Base {
   targetBroker(e) {
     // targetBroker() can perhaps be made async together wit setBrokerId() to run SQL directly in setBrokerId() 
     app.testPage.setBrokerId(e.target.attributes.brokerid.value);
+
+    //console.log(e.target);
   }
 
   render() {
@@ -112,19 +114,21 @@ class StartPage extends Base {
             <div class="row">
               ${this.carouselData.map(obj => /*html*/`
                 <div class="col d-flex justify-content-center">
-                  <a href="#">
                     <div class="card my-4" style="width: 18rem;">
-                      <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="...">
+                      <a href="/testpage" click="targetBroker">
+                        <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="..." brokerid="${obj.Id}">
+                      </a>
                       <div class="card-body">
                         <p class="card-text">
-                          ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
-                          ${obj.areaName}, ${obj.regionName}<br>
-                          ${obj.rooms} rum, ${obj.area} m²<br>
-                          ${obj.price} kr
+                          <a href="/testpage" click="targetBroker" brokerid="${obj.Id}">
+                            ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
+                            ${obj.areaName}, ${obj.regionName}<br>
+                            ${obj.rooms} rum, ${obj.area} m²<br>
+                            ${obj.price} kr
+                          </a>
                         </p>
                       </div>
                     </div>
-                  </a>
                 </div>
 
               `)}
