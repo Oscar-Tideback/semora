@@ -26,7 +26,7 @@ class App extends Base {
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
 
-    this.testPage = new TestPage();
+    this.testPage = new TestPage({ brokerId: '' });
     this.agentPage = new AgentPage({ targetBrokerId: '' });
 
   }

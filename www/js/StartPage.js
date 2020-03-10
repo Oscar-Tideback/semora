@@ -41,7 +41,8 @@ class StartPage extends Base {
   }
 
   targetBroker(e) {
-    app.testPage.targetBrokerId = e.target.attributes.brokerid.value;
+    // targetBroker() can perhaps be made async together wit setBrokerId() to run SQL directly in setBrokerId() 
+    app.testPage.setBrokerId(e.target.attributes.brokerid.value);
   }
 
   render() {
@@ -97,6 +98,8 @@ class StartPage extends Base {
                   med i budgivningen.
                 </p>
                 <h4><a href="/testpage" click="targetBroker" brokerid="20">Kontakta oss så får du veta mer. Kolla med mäklare nr 20</a></h4>
+                <h4><a href="/testpage" click="targetBroker" brokerid="21">Kontakta oss så får du veta mer. Kolla med mäklare nr 21</a></h4>
+                <h4><a href="/testpage" click="targetBroker" brokerid="22">Kontakta oss så får du veta mer. Kolla med mäklare nr 22</a></h4>
               </div>
             </div>
 
