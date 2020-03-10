@@ -40,9 +40,9 @@ class StartPage extends Base {
 
   }
 
-  targetBroker(e) {
-    // targetBroker() can perhaps be made async together wit setBrokerId() to run SQL directly in setBrokerId() 
-    app.testPage.setBrokerId(e.target.attributes.brokerid.value);
+  refreshBroker(e) {
+    app.testPage.brokerId = e.target.attributes.brokerid.value;
+    app.testPage.render();
 
     //console.log(e.target);
   }
@@ -99,9 +99,9 @@ class StartPage extends Base {
                   marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
                   med i budgivningen.
                 </p>
-                <h4><a href="/testpage" click="targetBroker" brokerid="20">Kontakta oss så får du veta mer. Kolla med mäklare nr 20</a></h4>
-                <h4><a href="/testpage" click="targetBroker" brokerid="21">Kontakta oss så får du veta mer. Kolla med mäklare nr 21</a></h4>
-                <h4><a href="/testpage" click="targetBroker" brokerid="22">Kontakta oss så får du veta mer. Kolla med mäklare nr 22</a></h4>
+                <h4><a href="/testpage" click="refreshBroker" brokerid="20">Kontakta oss så får du veta mer. Kolla med mäklare nr 20</a></h4>
+                <h4><a href="/testpage" click="refreshBroker" brokerid="21">Kontakta oss så får du veta mer. Kolla med mäklare nr 21</a></h4>
+                <h4><a href="/testpage" click="refreshBroker" brokerid="22">Kontakta oss så får du veta mer. Kolla med mäklare nr 22</a></h4>
               </div>
             </div>
 
@@ -115,12 +115,12 @@ class StartPage extends Base {
               ${this.carouselData.map(obj => /*html*/`
                 <div class="col d-flex justify-content-center">
                     <div class="card my-4" style="width: 18rem;">
-                      <a href="/testpage" click="targetBroker">
+                      <a href="/testpage" click="refreshBroker">
                         <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="..." brokerid="${obj.Id}">
                       </a>
                       <div class="card-body">
                         <p class="card-text">
-                          <a href="/testpage" click="targetBroker" brokerid="${obj.Id}">
+                          <a href="/testpage" click="refreshBroker" brokerid="${obj.Id}">
                             ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
                             ${obj.areaName}, ${obj.regionName}<br>
                             ${obj.rooms} rum, ${obj.area} m²<br>
