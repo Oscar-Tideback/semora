@@ -11,7 +11,7 @@ class App extends Base {
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       { label: 'Bostad info', route: '/real-estate-info' },
       { label: 'Om oss', route: '/about-us' },
-      { label: 'En mäklare', route: '/real-estate-agent' }
+
     ];
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.navBarSearch = new NavBarSearch();
