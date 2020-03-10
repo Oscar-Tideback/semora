@@ -1,2 +1,11 @@
 // Primary color (navbar, footer etc)
 $primary: rgb(46, 52, 65);
+
+// Lets set a base size... liksom eller nåt!
+$base-font: 1em;
+
+$font-family-sans-serif: Cormorant;
+$font-family-base: Cormorant;
+
+// Attention! This is the main font-size multiplier
+$font-size-multiplier: 1.1;

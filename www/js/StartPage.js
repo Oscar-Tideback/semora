@@ -73,7 +73,6 @@ class StartPage extends Base {
                 </div>
               `)}
             </div>
-
             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
@@ -88,16 +87,16 @@ class StartPage extends Base {
 
             <div class="row pb-4">
               <div class="col">
-                <h1>Våra tjänster hjälper dig att köpa tryggt</h1>
-                Att köpa bostad är förknippat med en hel del känslor. Förväntan och entusiasm, men också tvivel och nervositet. 
-                Ibland känns det som att man skulle behöva vara både ekonom, jurist och byggnadsingenjör för att kunna fatta de viktiga besluten.
-                För att göra allt lite enklare för dig som ska byta bostad, har vi en rad tjänster och verktyg som hjälper dig både att hitta
-                drömbostaden och slå till när det väl blir dags. Till exempel kan vi hjälpa dig att hålla koll på nya bostäder som kommer ut på
-                marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
-                med i budgivningen.
-                <P>
-                  <a href="/testpage" click="targetBroker" brokerid="20">Kontakta oss så får du veta mer. Kolla med mäklare nr 20</a>
+                <h2>Våra tjänster hjälper dig att köpa tryggt</h2>
+                <p>
+                  Att köpa bostad är förknippat med en hel del känslor. Förväntan och entusiasm, men också tvivel och nervositet. 
+                  Ibland känns det som att man skulle behöva vara både ekonom, jurist och byggnadsingenjör för att kunna fatta de viktiga besluten.
+                  För att göra allt lite enklare för dig som ska byta bostad, har vi en rad tjänster och verktyg som hjälper dig både att hitta
+                  drömbostaden och slå till när det väl blir dags. Till exempel kan vi hjälpa dig att hålla koll på nya bostäder som kommer ut på
+                  marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
+                  med i budgivningen.
                 </p>
+                <h4><a href="/testpage" click="targetBroker" brokerid="20">Kontakta oss så får du veta mer. Kolla med mäklare nr 20</a></h4>
               </div>
             </div>
 
@@ -110,12 +109,19 @@ class StartPage extends Base {
             <div class="row">
               ${this.carouselData.map(obj => /*html*/`
                 <div class="col d-flex justify-content-center">
-                  <div class="card my-4" style="width: 18rem;">
-                    <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="#">
+                    <div class="card my-4" style="width: 18rem;">
+                      <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <p class="card-text">
+                          ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
+                          ${obj.areaName}, ${obj.regionName}<br>
+                          ${obj.rooms} rum, ${obj.area} m²<br>
+                          ${obj.price} kr
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                 </div>
 
               `)}

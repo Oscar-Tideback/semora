@@ -3,7 +3,7 @@ class NavBar extends Base {
   render() {
     return /*html*/`
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">Dhyr & Rumson</a>
+        <!-- Replaced by clickable HERO <a class="navbar-brand" href="/">Dhyr & Rumson</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -11,7 +11,7 @@ class NavBar extends Base {
           <ul class="navbar-nav">
             ${this.links.map(link => !link.dropdown ? /*html*/`
               <li class="nav-item">
-                <a class="nav-link" href="${link.route}">
+                <a class="nav-link navbar-custom" href="${link.route}">
                   ${link.label}
                 </a>
               </li>              

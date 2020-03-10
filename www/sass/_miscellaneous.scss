@@ -5,6 +5,16 @@
 
 body {
   background-color: rgb(173, 173, 173);
+   // See _variable-overrides.scss for $font-size_scale
+  font-size: 100% * $font-size_multiplier; 
+}
+
+// See _variable-overrides.scss for $base-font
+html {
+    font-size: $base-font * 1.2;
+}
+h1 {
+    font-size: $base-font * 2;
 }
 
 // Bootstrap container
@@ -35,7 +45,7 @@ body {
   right: 0px;
   color: rgb(0,0,0);
   position: absolute;
-  top: -110px;   // Adjust this accordingly depending on hero images pixel height
+  top: -135px;   // Adjust this accordingly depending on hero images pixel height
 
   // No hamburger normal menu 
   @media (min-width: 992px) {
@@ -56,6 +66,11 @@ body {
   span {
     font-size:40%;
   }
+}
+
+.navbar-custom {
+  // I felt this needs to be static size for small screen toggle and accessability (browser zoom compatability)
+  font-size: 25px
 }
 
 // Some carousel styling
@@ -91,4 +106,4 @@ body {
   height:100%;
   width:100%;
   position:absolute;
-  }
+}
