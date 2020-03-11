@@ -27,7 +27,7 @@ class App extends Base {
     this.missingPage = new MissingPage();
 
     this.testPage = new TestPage({ brokerId: '' });
-    this.agentPage = new AgentPage({ targetBrokerId: '' });
+    this.agentPage = new AgentPage({ targetBrokerId: '24' });
     this.objectsPage = new ObjectsPage({ targetBostadId: '2' });
 
   }

@@ -10,7 +10,7 @@ class MapsPage extends Base {
 <section class="section pb-5">
 
 <!--Section heading-->
-<h2 class="section-heading h1 pt-4">Kontakta eller besök oss.</h2>
+<h2 class="section-heading h1 pt-4 col-12 text-center">Kontakta eller besök oss.</h2>
 <!--Section description-->
 <p class="section-description pb-4"></p>
 
@@ -25,7 +25,7 @@ class MapsPage extends Base {
       <div class="card-body">
         <!--Header-->
         <div class="form-header blue accent-1">
-          <h3><i class="fas fa-envelope"></i> Kontakta oss:</h3>
+          <h3><i class="fas fa-envelope "></i> Kontakta oss:</h3>
         </div>
 
         <p>Vi skriver sällan, men med bara det bästa innehållet?</p>
