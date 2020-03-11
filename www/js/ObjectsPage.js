@@ -33,7 +33,7 @@ class ObjectsPage extends Base {
                         
 
                         
-                            <div class="col-2"><img src="images/${realEstateInfo.imgUrl}.jpg"  class="img-fluid img-thumbnail" alt="bostad picture">
+                            <div class="col-5"><img src="images/${realEstateInfo.imgUrl}.jpg"  class="img-fluid img-thumbnail" alt="bostad picture">
                             <div class="col-2">${realEstateInfo.area}</div>
                             <div class="col-2">${realEstateInfo.rooms}</div>
                             <div class="col-2">${realEstateInfo.buildYear}</div>
@@ -46,8 +46,8 @@ class ObjectsPage extends Base {
                 </div>
             </div>
         </div>
-        
-    
+        </div>
+    </div>
         `;
     }
 }
