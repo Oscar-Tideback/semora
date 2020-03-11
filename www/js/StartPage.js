@@ -32,7 +32,7 @@ class StartPage extends Base {
       AND realEstateInfo.Id = realEstateAddress.realEstateId 
       AND realEstateImages.imgUrl LIKE '%img01%'
       GROUP BY realEstateInfo.Id
-      ORDER BY RANDOM() LIMIT 5
+      ORDER BY RANDOM() LIMIT 10
     `);
 
     //this.cardsData = await sql(/*sql*/`
