@@ -6,6 +6,7 @@ class App extends Base {
 
     this.navBarLinks = [
       { label: 'Köpa bostad', route: '/buy-property' },
+      { label: 'En bostad', route: '/real-estate-info' },
       { label: 'Sälja bostad', route: '/our-regions' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       //{ label: 'Bostad info', route: '/real-estate-info' },
@@ -27,7 +28,7 @@ class App extends Base {
 
     this.testPage = new TestPage({ brokerId: '' });
     this.agentPage = new AgentPage({ targetBrokerId: '' });
-    this.objectsPage = new ObjectsPage({ targetBostadId: '' });
+    this.objectsPage = new ObjectsPage({ targetBostadId: '2' });
 
   }
 

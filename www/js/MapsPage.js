@@ -4,7 +4,7 @@ class MapsPage extends Base {
     return /*html*/`
       <div class="row m-0" route="/our-regions" page-title="Regioner och Områden">
         <div class="col-12">
-          <h5></h5>
+
           
             <!--Section: Contact v.1-->
 <section class="section pb-5">
@@ -28,32 +28,32 @@ class MapsPage extends Base {
           <h3><i class="fas fa-envelope"></i> Kontakta oss:</h3>
         </div>
 
-        <p>We'll write rarely, but with only the best content.</p>
+        <p>Vi skriver sällan, men med bara det bästa innehållet?</p>
         <br>
 
         <!--Body-->
         <div class="md-form">
           <i class="fas fa-user prefix grey-text"></i>
           <input type="text" id="form-name" class="form-control">
-          <label for="form-name">Your name</label>
+          <label for="form-name">Namn</label>
         </div>
 
         <div class="md-form">
           <i class="fas fa-envelope prefix grey-text"></i>
           <input type="text" id="form-email" class="form-control">
-          <label for="form-email">Your email</label>
+          <label for="form-email">E-Mail</label>
         </div>
 
         <div class="md-form">
           <i class="fas fa-tag prefix grey-text"></i>
           <input type="text" id="form-Subject" class="form-control">
-          <label for="form-Subject">Subject</label>
+          <label for="form-Subject">Skriv nått...............annat</label>
         </div>
 
         <div class="md-form">
           <i class="fas fa-pencil-alt prefix grey-text"></i>
           <textarea id="form-text" class="form-control md-textarea" rows="3"></textarea>
-          <label for="form-text">Icon Prefix</label>
+          <label for="form-text"></label>
         </div>
 
         <div class="text-center mt-4">
