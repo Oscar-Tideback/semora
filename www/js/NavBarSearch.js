@@ -54,7 +54,7 @@ class NavBarSearch extends Base {
   render() {
 
     return /*html*/`
-      <div class="search-in-hero-holder pr-4">
+      <div class="search-in-hero-relative-holder pr-4">
         <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch">
           <div class="input-group">
             <input type="text" class="form-control" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">

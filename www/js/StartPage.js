@@ -32,7 +32,7 @@ class StartPage extends Base {
       AND realEstateInfo.Id = realEstateAddress.realEstateId 
       AND realEstateImages.imgUrl LIKE '%img01%'
       GROUP BY realEstateInfo.Id
-      ORDER BY RANDOM() LIMIT 10
+      ORDER BY RANDOM() LIMIT 5
     `);
 
     //this.cardsData = await sql(/*sql*/`
@@ -40,7 +40,7 @@ class StartPage extends Base {
 
   }
 
-  refreshBroker(e) {
+  refreshTargetPage(e) {
     app.testPage.brokerId = e.target.attributes.brokerid.value;
     app.testPage.render();
 
@@ -51,12 +51,12 @@ class StartPage extends Base {
     return /*html*/`
       <div class="row m-0" route="/" page-title="Startsida">
         <div class="col-12 p-0">
-          <div class="carousel-title-holder">
+          <div class="carousel-relative-holder">
             <div class="carousel-title-container">
               <h1 class="carousel-title-text">Populära bostäder just nu</h1>
             </div>
           </div>
-          <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
+          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               ${this.carouselData.map((obj, index) => /*html*/`
                 <li data-target="#carouselExampleCaptions" data-slide-to="${index}" class="${index > 0 ? '' : 'active'}"></li>
@@ -64,7 +64,7 @@ class StartPage extends Base {
             </ol>
             <div class="carousel-inner">
               ${this.carouselData.map((obj, index) => /*html*/`
-                <div class="carousel-item ${index > 0 ? '' : 'active'}">
+                <div class="carousel-item ${index > 0 ? '' : 'active'}" data-interval="5000">
                   <img src="images/${obj.imgUrl}.jpg" class="d-block w-100" alt="...">
                   <div class="carousel-caption d-none d-md-block">
                     <h3 class="carousel-title-caption">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ', <span class="carouselAdj">' + obj.floor + ' tr'}</span></h3>
@@ -83,12 +83,13 @@ class StartPage extends Base {
               <span class="sr-only">Next</span>
             </a>
           </div>
+          <div class="carousel-relative-holder"><div class="carousel-ornament-bottom">123</div></div>
           
           <div class="container my-4">
 
             <div class="row p-4">
               <div class="col">
-                <h2>Våra tjänster hjälper dig att köpa tryggt</h2>
+                <h2 class="pb-4">Våra tjänster hjälper dig att köpa tryggt</h2>
                 <p>
                   Att köpa bostad är förknippat med en hel del känslor. Förväntan och entusiasm, men också tvivel och nervositet. 
                   Ibland känns det som att man skulle behöva vara både ekonom, jurist och byggnadsingenjör för att kunna fatta de viktiga besluten.
@@ -97,12 +98,10 @@ class StartPage extends Base {
                   marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
                   med i budgivningen.
                 </p>
-                <h4><a href="/testpage" click="refreshBroker" brokerid="20">Kontakta oss så får du veta mer. Kolla med mäklare nr 20</a></h4>
-                <h4><a href="/testpage" click="refreshBroker" brokerid="21">Kontakta oss så får du veta mer. Kolla med mäklare nr 21</a></h4>
-                <h4><a href="/testpage" click="refreshBroker" brokerid="22">Kontakta oss så får du veta mer. Kolla med mäklare nr 22</a></h4>
+                <h4><a href="/real-estate-agents">Kontakta någon av våra mäklare så får du veta mer</a></h4>
               </div>
             </div>
-            <div class="row pb-4">
+            <div class="row py-4">
               <div class="col-12 text-center">
                 <h1>Andra bostäder till salu</h1>
               </div>

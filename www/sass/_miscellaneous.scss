@@ -6,7 +6,7 @@
 body {
   background-color: rgb(173, 173, 173);
    // See _variable-overrides.scss for $font-size_scale
-  font-size: 100% * $font-size_multiplier; 
+  font-size: 100% * $font-main-multiplier; 
 }
 
 // See _variable-overrides.scss for $base-font
@@ -34,7 +34,7 @@ h1 {
 }
 
   // Floating elements holder
-.search-in-hero-holder {
+.search-in-hero-relative-holder {
   position: relative;
 }
 
@@ -74,7 +74,7 @@ h1 {
 }
 
 // Some carousel styling
-.carousel-title-holder { // Floating elements holder
+.carousel-relative-holder { // Floating elements holder
     position: relative; 
     width: 50%
 }
@@ -88,12 +88,26 @@ h1 {
   text-align: center;
   z-index: 9999; 
 }
+.carousel-ornament-bottom {
+  position: absolute; 
+  width: 991px; 
+  height: 277px;
+  right: -495px; 
+  top: -277px; 
+  background-image: url(/images/Semora_Orn_Bottom.png);
+    z-index: 1; 
+}
+.carousel-caption {
+  color: #000000;
+}
 .carousel-title-text {
   font-weight: 600;
 }
 .carouselAdj {
   font-size: smaller;
 }
+
+// Google map
 .map-container-6{
   overflow:hidden;
   padding-bottom:56.25%;
