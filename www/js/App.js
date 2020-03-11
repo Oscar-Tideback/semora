@@ -2,7 +2,7 @@ class App extends Base {
 
   async mount() {
 
-    await sql(/*sql*/`USE DhyrRumson.db`);
+    await sql(/*sql*/`USE DhyrRumson_Rikards2.db`);
 
     this.navBarLinks = [
       { label: 'Köpa bostad', route: '/buy-property' },
@@ -25,9 +25,9 @@ class App extends Base {
     this.mapsPage = new MapsPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
-
-    this.testPage = new TestPage({ brokerId: '' });
+    this.testPage = new TestPage({ realEstateId: '' });
     this.agentPage = new AgentPage({ targetBrokerId: '' });
+
     this.objectsPage = new ObjectsPage({ targetBostadId: '2' });
 
   }

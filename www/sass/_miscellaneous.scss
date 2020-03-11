@@ -13,8 +13,9 @@ body {
 html {
     font-size: $base-font * 1.2;
 }
-h1 {
-    font-size: $base-font * 2;
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
 }
 
 // Bootstrap container
@@ -43,14 +44,14 @@ h1 {
   width: 40%;
   top: 8px;
   right: 0px;
-  color: rgb(0,0,0);
+  color: #000;
   position: absolute;
   top: -135px;   // Adjust this accordingly depending on hero images pixel height
 
   // No hamburger normal menu 
   @media (min-width: 992px) {
     .icofont-search.navbar-search-icon {
-      color: rgb(0,0,0);    // Adjust to other color (unused at this moment)
+      color:#000;    // Adjust to other color (unused at this moment)
     }
   }
 
@@ -78,34 +79,66 @@ h1 {
     position: relative; 
     width: 50%
 }
+
 // Ugly fix. Bootstrap might have premade solution. Check later on /Rikard
 .carousel-title-container {
   position: absolute; 
   width: 600px; 
   right: -300px; 
   top: 20px; 
-  color: #FFFFFF; 
+  color: #FFF; 
   text-align: center;
   z-index: 9999; 
 }
+
 .carousel-ornament-bottom {
   position: absolute; 
-  width: 991px; 
-  height: 277px;
-  right: -495px; 
-  top: -277px; 
+  width: 1055px; 
+  height: 228px;
+  right: -527px; 
+  bottom: 0px; 
   background-image: url(/images/Semora_Orn_Bottom.png);
-    z-index: 1; 
+  z-index: 1;
 }
-.carousel-caption {
+
+.carousel-caption {   // Override default bootstrap
   color: #000000;
+  bottom: -25px;
 }
-.carousel-title-text {
-  font-weight: 600;
+
+.carousel-inner {   // Override default bootstrap
+  overflow: hidden;
 }
+
+.carousel-indicators {   // Override default bootstrap
+  bottom: -60px;
+}
+
 .carouselAdj {
   font-size: smaller;
 }
+
+.carousel-indicators li {   // Override default bootstrap
+background-color: #000;
+}
+
+@media (min-width: 576px) and (max-width: 992px) {
+  .estate-card {
+    width: 50rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .estate-card {
+    width: 18rem;
+  }
+}
+@media (max-width: 576px) {
+  .estate-card {
+    width: 60rem;
+  }
+}
+
 
 // Google map
 .map-container-6{
