@@ -51,13 +51,11 @@ class StartPage extends Base {
     return /*html*/`
       <div class="row m-0" route="/" page-title="Startsida">
         <div class="col-12 p-0">
-
           <div class="carousel-title-holder">
             <div class="carousel-title-container">
               <h1 class="carousel-title-text">Populära bostäder just nu</h1>
             </div>
           </div>
-
           <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-ride="carousel">
             <ol class="carousel-indicators">
               ${this.carouselData.map((obj, index) => /*html*/`
@@ -87,7 +85,10 @@ class StartPage extends Base {
           </div>
           
           <div class="container my-4">
+<<<<<<< HEAD
+=======
 
+>>>>>>> fe38945a770c9dacc127d173138c099f7f891890
             <div class="row p-4">
               <div class="col">
                 <h2>Våra tjänster hjälper dig att köpa tryggt</h2>
@@ -104,13 +105,11 @@ class StartPage extends Base {
                 <h4><a href="/testpage" click="refreshBroker" brokerid="22">Kontakta oss så får du veta mer. Kolla med mäklare nr 22</a></h4>
               </div>
             </div>
-
             <div class="row pb-4">
               <div class="col-12 text-center">
                 <h1>Andra bostäder till salu</h1>
               </div>
             </div>
-
             <div class="row">
               ${this.carouselData.map(obj => /*html*/`
                 <div class="col d-flex justify-content-center">
@@ -131,12 +130,9 @@ class StartPage extends Base {
                       </div>
                     </div>
                 </div>
-
               `)}
             </div>
-
           </div>
-
         </div>
       </div>
     `;

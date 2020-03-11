@@ -6,8 +6,8 @@ class App extends Base {
 
     this.navBarLinks = [
       { label: 'Köpa bostad', route: '/buy-property' },
-      { label: 'Sälja bostad', route: '/sell-property' },
-      { label: 'Här finns vi', route: '/our-regions' },
+
+      { label: 'Sälja bostad', route: '/our-regions' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       //{ label: 'Bostad info', route: '/real-estate-info' },
       { label: 'Om oss', route: '/about-us' },
