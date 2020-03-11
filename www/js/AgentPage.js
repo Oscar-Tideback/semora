@@ -1,7 +1,7 @@
 class AgentPage extends Base {
 
   async makeSql() {
-    //app.agentPage.targetBrokerId = this.targetBrokerId;
+    //De bubblar upp/fram?
     this.foundAgents = await sql(/*sql*/`
     SELECT id, firstName, lastName, email, imageUrl, phone 
     FROM user

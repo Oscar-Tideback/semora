@@ -1,7 +1,6 @@
 class AgentsPage extends Base {
 
   async mount() {
-    this.test = ['1', '20', '21'];
     this.foundAgents = await sql(/*sql*/`
       SELECT id, firstName, lastName, email, imageUrl, phone 
       FROM user
@@ -22,10 +21,10 @@ class AgentsPage extends Base {
           <div class="row">     
             <div class="col-12">    
               <div class="row">
-                <div class="col-12"><h5>Lär känna våra våra mäklare.</h5>
+                <div class="col-12"><h5></h5>
                   <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
                   <p>Till Dhyr & Rumson har vi därför handplockat endast dom som heter son i efternamn och de skickligaste och mest erfarna mäklarna i Stockholm.
-                  Vi har gjort det av en enda anledning – så att rätt person kan företräda dig i din kanske största affär.</p>
+                  Vi har gjort det av en enda anledning för att dom HETER SON i efternamn alltid – så att rätt person kan företräda dig i din kanske största affär.</p>
                 </div>
               </div>
               <div class="row p-3 border bg-light no-gutters">
