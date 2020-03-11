@@ -31,7 +31,7 @@ class AgentsPage extends Base {
                 ${this.foundAgents.map(user => /*html*/`
                   <div class="card col-sm-2" style="max-width: 540px;" >
                     <a href="/real-estate-agent" click="refreshBroker" targetbrokerid="${user.id}">
-                    <img src="images/${user.imageUrl}" targetbrokerid="${user.id}" style="max-width: 250px;" class="img-fluid card-img p-2 justify-content-center" alt="Agent face ${user.lastName}"></a>
+                    <img src="images/${user.imageUrl}" targetbrokerid="${user.id}" style="max-width: 250px;" class="img-fluid card-img p-2" alt="Agent face ${user.lastName}"></a>
                   </div>
                   <div class="card-body col-sm-4 p-3">
                     <a href="/real-estate-agent" click="refreshBroker" targetbrokerid="${user.id}">
