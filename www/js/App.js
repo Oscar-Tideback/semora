@@ -25,9 +25,9 @@ class App extends Base {
     this.mapsPage = new MapsPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
-    this.testPage = new TestPage({ realEstateId: '' });
-    this.agentPage = new AgentPage({ targetBrokerId: '' });
 
+    this.testPage = new TestPage({ realEstateId: '' });
+    this.agentPage = new AgentPage({ targetBrokerId: '24' });
     this.objectsPage = new ObjectsPage({ targetBostadId: '2' });
 
   }
