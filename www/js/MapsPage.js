@@ -2,7 +2,7 @@ class MapsPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row m-0" route="/our-regions" page-title="Regioner och Områden">
+      <div class="row p-4 m-0" route="/our-regions" page-title="Regioner och Områden">
         <div class="col-12">
 
           
@@ -12,7 +12,7 @@ class MapsPage extends Base {
 <!--Section heading-->
 <h2 class="section-heading h1 pt-4">Kontakta eller besök oss.</h2>
 <!--Section description-->
-<p class="section-description pb-4">.</p>
+<p class="section-description pb-4"></p>
 
 <div class="row">
 
@@ -82,15 +82,15 @@ class MapsPage extends Base {
     <div class="row text-center">
       <div class="col-md-4">
         <a class="btn-floating blue accent-1"><i class="fas fa-map-marker-alt"></i></a>
-        <a>Stig Lindbergs Gata 17</a>
+        <a>Stig Lindbergsg 17</a>
         <p>Gustavsberg</p>
         <p>Värmdö</p>
       </div>
 
       <div class="col-md-4">
         <a class="btn-floating blue accent-1"><i class="fas fa-phone"></i></a>
-        <p>+ 01 234 567 89</p>
-        <p>Mon - Fri, 8:00-22:00</p>
+        <p>08-234 567 89</p>
+        <p>Mon-Fri, 8:00-22:00</p>
       </div>
 
       <div class="col-md-4">

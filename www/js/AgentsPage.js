@@ -18,15 +18,11 @@ class AgentsPage extends Base {
     return /*html*/`
       <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">  
         <div class="container my-4"> 
-          <div class="row">     
-            <div class="col-12">    
-              <div class="row">
+              <div class="row p-4">
                 <div class="col-12"><h5></h5>
                   <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
                   <p>Till Dhyr & Rumson har vi därför handplockat endast dom som heter son i efternamn och de skickligaste och mest erfarna mäklarna i Stockholm.
                   Vi har gjort det av en enda anledning för att dom HETER SON i efternamn alltid – så att rätt person kan företräda dig i din kanske största affär.</p>
-                </div>
-              </div>
               <div class="row p-3 border bg-light no-gutters">
                 ${this.foundAgents.map(user => /*html*/`
                   <div class="card col-sm-2" style="max-width: 540px;" >
