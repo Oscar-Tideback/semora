@@ -82,7 +82,7 @@ class BuyerPage extends Base {
     this.render();
   }
   refreshBostad(e) {
-    app.objectsPage.targetBostadId = e.target.attributes.targetBostadId.value;
+    app.objectsPage.targetBostadId = e.target.attributes.targetbostadid.value;
     app.objectsPage.makeSql();
   }
 
@@ -107,12 +107,12 @@ class BuyerPage extends Base {
                 ${this.foundBostads.map(realEstateInfo => /*html*/`
                 <div class="col d-flex justify-content-center">
                 <div class="card my-4 estate-card">
-                  <a href="/real-estate-info" click="refreshBostad" targetBostadId="${realEstateInfo.Id}"><img
-                      src="images/${realEstateInfo.imgUrl}" targetBostadId="${realEstateInfo.id}" class="img-fluid img-thumbnail"
+                  <a href="/real-estate-info" click="refreshBostad" targetbostadid="${realEstateInfo.Id}"><img
+                      src="images/${realEstateInfo.imgUrl}" targetbostadid="${realEstateInfo.id}" class="img-fluid img-thumbnail"
                       alt="Bostad picture"></a>
                   <div class="card-body">
                   <p class="card-text">
-                  <div targetBostadId="${realEstateInfo.Id}">
+                  <div targetbostadid="${realEstateInfo.Id}">
                      ${realEstateInfo.streetName} ${realEstateInfo.streetNumber.toUpperCase()}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
                     ${realEstateInfo.rooms} rum<br>
                     Pris: ${realEstateInfo.price} kr<br>
