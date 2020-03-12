@@ -15,9 +15,10 @@ class ObjectsPage extends Base {
 
     `);
         //Objekt information från databasen om respektive objekt.
-        //Html nedan för layout och design
+        //Html nedan för layout och design targetBostadId
     }
     async mount() {
+        //this.targetBostadId = app.objectsPage.targetBostadId;
         return this.makeSql();
     }
 
@@ -60,6 +61,15 @@ class ObjectsPage extends Base {
                         <img class="d-block w-100" src="images/${this.targetBostadId}/img04.jpg"><br>
                         <img class="d-block w-100" src="images/${this.targetBostadId}/img05.jpg"><br>
                         <img class="d-block w-100" src="images/${this.targetBostadId}/img06.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img07.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img08.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img09.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img10.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img11.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img12.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img13.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img14.jpg"><br>
+
             </div>
         </div>
     </div>

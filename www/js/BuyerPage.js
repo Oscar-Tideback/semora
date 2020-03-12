@@ -25,7 +25,7 @@ class BuyerPage extends Base {
       realEstateInfo.buildYear, realEstateInfo.maintenanceCost,
       realEstateInfo.tenure, realEstateInfo.price,
       realEstateImages.realEstateInfoId, realEstateImages.imgUrl,
-      region.regionName
+      region.regionName, realEstateInfo.id
       FROM  realEstateInfo, realEstateImages, region, userXRegion
       WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId
       AND userXRegion.regionId = region.id 
@@ -81,8 +81,9 @@ class BuyerPage extends Base {
     this.render();
   }
   refreshBostad(e) {
-    app.objectsPage.targetBostadId = e.target.attributes.targetBostadId.value;
+    app.objectsPage.targetBostadId = e.target.attributes.targetbostadid.value;
     app.objectsPage.makeSql();
+
   }
 
 
@@ -97,18 +98,18 @@ class BuyerPage extends Base {
             <div class="col-12">    
               <div class="row">
                 
-                <div class="col-8"><h5>Resultat av all bostad i hela Sverige.</h5>
+                <div class="col-8"><h5>Resultat av alla bostäder vi har till försäljning i hela Sverige.</h5>
                 
                 <p>Skriv lite text.....</p>
                 </div>
               </div>
               <div class="row">
                 ${this.foundBostads.map(realEstateInfo => /*html*/`
-               <div class="col-2"><a href="/real-estate-info" click="refreshBostad" targetBostadId="${realEstateInfo.Id}"><img
-                      src="images/${realEstateInfo.imgUrl}" targetBostadId="${realEstateInfo.id}" class="img-fluid img-thumbnail"
+               <div class="col-2"><a href="/real-estate-info" click="refreshBostad" targetbostadid="${realEstateInfo.Id}"><img
+                      src="images/${realEstateInfo.imgUrl}" targetbostadid="${realEstateInfo.id}" class="img-fluid img-thumbnail"
                       alt="Bostad picture"></a></div>
                 <div class="col-4">
-                  <div targetBostadId="${realEstateInfo.Id}">
+                  <div>
                     <p>Rooms: ${realEstateInfo.rooms}</p>
                     <p>Tenure: ${realEstateInfo.tenure}</p>
                     <p>Price: ${realEstateInfo.price}</p>
