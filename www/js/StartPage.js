@@ -2,41 +2,22 @@ class StartPage extends Base {
 
   async mount() {
 
+    this.carouselEnd = this.listingStart = 4;
+
     // Using GROUP instead of DISTINCT to avoid duplicate RANDOM results since multiple images per object in DB
     // LIMIT sets amount of objects in carousel 
     // Don't forget! to select where realEstateImages.category later on instead of matching by realEstateImages.imgUrl /Rikard
-    this.carouselData = await sql(/*sql*/`
-      SELECT 
-          realEstateInfo.Id, 
-          realEstateInfo.userId,
-          realEstateAddress.streetName, 
-          realEstateAddress.streetNumber, 
-          realEstateInfo.tenure, 
-          realEstateInfo.floor, 
-          realEstateInfo.rooms, 
-          realEstateInfo.area, 
-          realEstateInfo.price, 
-          areaInfo.areaName, 
-          user.regionName,
-          realEstateImages.imgUrl 
-      FROM 
-          realEstateInfo, 
-          realEstateImages, 
-          realEstateAddress, 
-          areaInfo, 
-          region
-          user
-      WHERE realEstateInfo.areaInfoId = areaInfo.id 
-      AND realEstateInfo.userId = user.id
-      AND realEstateInfo.Id = realEstateImages.realEstateInfoId 
-      AND realEstateInfo.Id = realEstateAddress.realEstateId 
-      AND realEstateImages.imgUrl LIKE '%img01%'
-      GROUP BY realEstateInfo.Id
-      ORDER BY RANDOM() LIMIT 10
+    this.realEstateData = await sql(/*sql*/`
+      SELECT * FROM 
+              realEstateInfo, 
+              userXregion ON realEstateInfo.userId = userXregion.userId, 
+              region ON region.id = userXregion.regionId,
+              realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id,
+              realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+              areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+      WHERE imgUrl LIKE '%img01%'
+      ORDER BY RANDOM() LIMIT 11
     `);
-
-    //this.cardsData = await sql(/*sql*/`
-    //`);
 
   }
 
@@ -51,29 +32,36 @@ class StartPage extends Base {
     return /*html*/`
       <div class="row m-0" route="/" page-title="Startsida">
         <div class="col-12 p-0">
-          <div class="carousel-relative-holder">
-            <div class="carousel-title-container">
-              <h1 class="carousel-title-text">Populära bostäder just nu</h1>
-            </div>
-          </div>
+
           <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
-              ${this.carouselData.map((obj, index) => /*html*/`
-                <li data-target="#carouselExampleCaptions" data-slide-to="${index}" class="${index > 0 ? '' : 'active'}"></li>
-              `)}
+              ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
+                  <li data-target="#carouselExampleCaptions" data-slide-to="${index}" class="${index > 0 ? '' : 'active'}"></li>
+                  ` : ''))}
             </ol>
             <div class="carousel-inner">
-              ${this.carouselData.map((obj, index) => /*html*/`
+
+              <div class="carousel-relative-wrapper">
+                <div class="carousel-title-container"><h2 class="carousel-title-text">Budgivning pågår</h2></div>
+              </div>
+
+              ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
                 <div class="carousel-item ${index > 0 ? '' : 'active'}" data-interval="5000">
-                  <img src="images/${obj.imgUrl}.jpg" class="d-block w-100" alt="...">
-                  <div class="carousel-caption d-none d-md-block">
+                  <img src="images/${obj.imgUrl}" class="d-block w-100" alt="...">
+
+                  <div class="carousel-relative-wrapper">
+                    <div class="carousel-ornament-bottom"></div>
+                  </div>
+
+                  <div class="carousel-caption d-none d-sm-block">
                     <h3 class="carousel-title-caption">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ', <span class="carouselAdj">' + obj.floor + ' tr'}</span></h3>
-                    <p>${obj.areaName}, ${obj.regionName}</p>
-                    <p>${obj.rooms} rum, ${obj.area} m², ${obj.price} kr</p>
+                    ${obj.areaName}, ${obj.regionName}<br>
+                    ${obj.rooms} rum, ${obj.area} m², ${obj.price} kr
                   </div>
                 </div>
-              `)}
+              ` : ''))}
             </div>
+
             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="sr-only">Previous</span>
@@ -83,8 +71,7 @@ class StartPage extends Base {
               <span class="sr-only">Next</span>
             </a>
           </div>
-          <div class="carousel-relative-holder"><div class="carousel-ornament-bottom">123</div></div>
-          
+
           <div class="container my-4">
 
             <div class="row p-4">
@@ -98,7 +85,7 @@ class StartPage extends Base {
                   marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
                   med i budgivningen.
                 </p>
-                <h4><a href="/real-estate-agents">Kontakta någon av våra mäklare så får du veta mer</a></h4>
+                <h5><a href="/real-estate-agents">Kontakta någon av våra mäklare så får du veta mer</a></h5>
               </div>
             </div>
             <div class="row py-4">
@@ -107,15 +94,16 @@ class StartPage extends Base {
               </div>
             </div>
             <div class="row">
-              ${this.carouselData.map(obj => /*html*/`
+
+              ${this.realEstateData.map((obj, index) => (index >= this.listingStart ? /*html*/`
                 <div class="col d-flex justify-content-center">
-                    <div class="card my-4" style="width: 18rem;">
+                    <div class="card my-4 estate-card">
                       <a href="/testpage" click="refreshBroker">
-                        <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="..." brokerid="${obj.Id}">
+                        <img src="images/${obj.imgUrl}" class="card-img-top" alt="..." realEstateId="${obj.Id}">
                       </a>
                       <div class="card-body">
                         <p class="card-text">
-                          <a href="/testpage" click="refreshBroker" brokerid="${obj.Id}">
+                          <a href="/testpage" click="refreshBroker" realEstateId="${obj.Id}">
                             ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
                             ${obj.areaName}, ${obj.regionName}<br>
                             ${obj.rooms} rum, ${obj.area} m²<br>
@@ -126,7 +114,8 @@ class StartPage extends Base {
                       </div>
                     </div>
                 </div>
-              `)}
+              ` : ''))}
+
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ class App extends Base {
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
 
-    this.testPage = new TestPage({ brokerId: '' });
+    this.testPage = new TestPage({ realEstateId: '' });
     this.agentPage = new AgentPage({ targetBrokerId: '24' });
     this.objectsPage = new ObjectsPage({ targetBostadId: '2' });
 
@@ -34,7 +34,7 @@ class App extends Base {
 
   render() {
     return /*html*/`
-      <div class="container main-holder pl-0 pr-0" base-title="Dhyr & Rumson: ">
+      <div class="container main-wrapper pl-0 pr-0" base-title="Dhyr & Rumson: ">
         <header>
           ${this.heroSection}
           ${this.navBar}

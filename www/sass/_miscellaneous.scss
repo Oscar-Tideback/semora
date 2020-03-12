@@ -13,18 +13,19 @@ body {
 html {
     font-size: $base-font * 1.2;
 }
-h1 {
-    font-size: $base-font * 2;
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
 }
 
 // Bootstrap container
-.main-holder {
+.main-wrapper {
   background-color: #fff;   // Page BG color
 }
 
 // Bootstrap container to full width when toggled hamburger menu
 @media (max-width: 992px) {
-  .main-holder {
+  .main-wrapper {
     max-width: 100%;
   }
 }
@@ -33,24 +34,24 @@ h1 {
   height: 150px;    // Predefined height on hero
 }
 
-  // Floating elements holder
-.search-in-hero-relative-holder {
+// Floating elements holder/wrapper
+.search-in-hero-relative-wrapper {
   position: relative;
 }
 
-// Some styling for the searchfield and button in navbar
+// Some styling and media toggle for the searchfield and button in navbar
 .search-in-hero {
   width: 40%;
   top: 8px;
   right: 0px;
-  color: rgb(0,0,0);
+  color: #000;
   position: absolute;
   top: -135px;   // Adjust this accordingly depending on hero images pixel height
 
   // No hamburger normal menu 
   @media (min-width: 992px) {
     .icofont-search.navbar-search-icon {
-      color: rgb(0,0,0);    // Adjust to other color (unused at this moment)
+      color:#000;    // Adjust to other color (unused at this moment)
     }
   }
 
@@ -70,41 +71,77 @@ h1 {
 
 .navbar-custom {
   // I felt this needs to be static size for small screen toggle and accessability (browser zoom compatability)
-  font-size: 25px
+  font-size: 25px;
+  font-weight: 600;
 }
 
 // Some carousel styling
-.carousel-relative-holder { // Floating elements holder
+.carousel-relative-wrapper { // Floating elements wrapper/holder
     position: relative; 
-    width: 50%
+    width: 50%;
+    height:100%
 }
-// Ugly fix. Bootstrap might have premade solution. Check later on /Rikard
+
+// Wrapper. Ugly fix for centering. Bootstrap might have premade solution. Check all wrappers later on /Rikard
 .carousel-title-container {
   position: absolute; 
-  width: 600px; 
-  right: -300px; 
-  top: 20px; 
-  color: #FFFFFF; 
-  text-align: center;
-  z-index: 9999; 
+  width: 858px; 
+  right: -429px; 
+  height: 200px;
+  background-image: url(/images/Semora_Orn_Top.png);
+  z-index: 9991;
+  text-align: center; 
 }
+
+.carousel-title-text {
+  margin-top: 10px;
+}
+
 .carousel-ornament-bottom {
   position: absolute; 
-  width: 991px; 
-  height: 277px;
-  right: -495px; 
-  top: -277px; 
+  width: 1055px; 
+  height: 228px;
+  right: -527px; 
+  bottom: 0px; 
   background-image: url(/images/Semora_Orn_Bottom.png);
-    z-index: 1; 
 }
-.carousel-caption {
+
+.carousel-caption {   // Override default bootstrap
   color: #000000;
+  bottom: -25px;
 }
-.carousel-title-text {
-  font-weight: 600;
+
+.carousel-inner {   // Override default bootstrap
+  overflow: hidden;
 }
+
+.carousel-indicators {   // Override default bootstrap
+  bottom: -60px;
+}
+
 .carouselAdj {
   font-size: smaller;
+}
+
+.carousel-indicators li {   // Override default bootstrap
+background-color: #000;
+}
+
+//@media (min-width: 576px) and (max-width: 992px) {
+  .estate-card {
+    width: 50rem;
+  }
+//}
+
+@media (min-width: 992px) {
+  .estate-card {
+    width: 18rem;
+  }
+}
+@media (max-width: 576px) {
+  .estate-card {
+    width: 60rem;
+  }
 }
 
 // Google map
