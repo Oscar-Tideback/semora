@@ -19,13 +19,13 @@ h1, h2, h3, h4, h5 {
 }
 
 // Bootstrap container
-.main-holder {
+.main-wrapper {
   background-color: #fff;   // Page BG color
 }
 
 // Bootstrap container to full width when toggled hamburger menu
 @media (max-width: 992px) {
-  .main-holder {
+  .main-wrapper {
     max-width: 100%;
   }
 }
@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5 {
 }
 
 // Floating elements holder/wrapper
-.search-in-hero-relative-holder {
+.search-in-hero-relative-wrapper {
   position: relative;
 }
 
@@ -76,9 +76,10 @@ h1, h2, h3, h4, h5 {
 }
 
 // Some carousel styling
-.carousel-relative-holder { // Floating elements wrapper/holder
+.carousel-relative-wrapper { // Floating elements wrapper/holder
     position: relative; 
     width: 50%;
+    height:100%
 }
 
 // Wrapper. Ugly fix for centering. Bootstrap might have premade solution. Check all wrappers later on /Rikard

@@ -34,7 +34,7 @@ class App extends Base {
 
   render() {
     return /*html*/`
-      <div class="container main-holder pl-0 pr-0" base-title="Dhyr & Rumson: ">
+      <div class="container main-wrapper pl-0 pr-0" base-title="Dhyr & Rumson: ">
         <header>
           ${this.heroSection}
           ${this.navBar}

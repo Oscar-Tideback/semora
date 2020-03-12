@@ -32,11 +32,7 @@ class StartPage extends Base {
     return /*html*/`
       <div class="row m-0" route="/" page-title="Startsida">
         <div class="col-12 p-0">
-          <div class="carousel-relative-holder">
-            <div class="carousel-title-container">
-              <h2 class="carousel-title-text">Budgivning pågår</h2>
-            </div>
-          </div>
+
           <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
@@ -44,11 +40,18 @@ class StartPage extends Base {
                   ` : ''))}
             </ol>
             <div class="carousel-inner">
+
+              <div class="carousel-relative-wrapper">
+                <div class="carousel-title-container"><h2 class="carousel-title-text">Budgivning pågår</h2></div>
+              </div>
+
               ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
                 <div class="carousel-item ${index > 0 ? '' : 'active'}" data-interval="5000">
                   <img src="images/${obj.imgUrl}" class="d-block w-100" alt="...">
 
-                  <div class="carousel-relative-holder"><div class="carousel-ornament-bottom"></div></div>
+                  <div class="carousel-relative-wrapper">
+                    <div class="carousel-ornament-bottom"></div>
+                  </div>
 
                   <div class="carousel-caption d-none d-sm-block">
                     <h3 class="carousel-title-caption">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ', <span class="carouselAdj">' + obj.floor + ' tr'}</span></h3>
