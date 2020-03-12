@@ -4,7 +4,7 @@ class ObjectsPage extends Base {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/`
     
-    SELECT realEstateInfo.area, realEstateInfo.rooms,
+    SELECT realEstateInfo.area, realEstateInfo.rooms, realEstateInfo.description,
     realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
     realEstateInfo.tenure, realEstateInfo.price,
     realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
@@ -30,15 +30,14 @@ class ObjectsPage extends Base {
                         <div class="col-sm-9">
                         ${this.foundObjects.map(realEstateInfo => /*html*/`
                         <div class="col d-flex justify-content-left">
-                        <div class="card my-4" style="width: 18rem;">
-
-                            <a href="/TESTSIDA" click="test">
+                        <div class="card my-5" style="width: 50rem;">
+                        <a href="/TESTSIDA" click="test">
                             <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="..." realEstateId="${realEstateInfo.Id}">
                             </a>
                             </a>
                       <div class="card-body">
                         <p class="card-text">
-                          <a href="/testpage" click="refreshBroker" realEstateId="${realEstateInfo.Id}">
+                          <a href="/testpage" click="   " realEstateId="${realEstateInfo.Id}">
                             ${realEstateInfo.streetName} ${realEstateInfo.streetNumber}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
                             ${realEstateInfo.areaName}, ${realEstateInfo.regionName}<br>
                             ${realEstateInfo.rooms} rum, ${realEstateInfo.area} m²<br>
@@ -46,17 +45,14 @@ class ObjectsPage extends Base {
                             ${realEstateInfo.price} kr
                           </a>
                             <div class="card body">
-                            <div class="col-2">${realEstateInfo.area}</div>
-                            <div class="col-2">${realEstateInfo.rooms}</div>
-                            <div class="col-2">${realEstateInfo.buildYear}</div>
-                            <div class="col-2">${realEstateInfo.maintenanceCost}</div>
-                            <div class="col-2">${realEstateInfo.tenure}</div>   
-                            <div class="col-2">${realEstateInfo.price}</div>                     
-                            <!--<div class="col-1">${realEstateInfo.description}</div>-->
+                            ${realEstateInfo.area}</div>
+                            ${realEstateInfo.rooms}</div>
+                            ${realEstateInfo.buildYear}</div>
+                            ${realEstateInfo.maintenanceCost}</div>
+                            ${realEstateInfo.tenure}</div>   
+                            ${realEstateInfo.price}</div>                     
+                            ${realEstateInfo.description}</div>-->
                         `)}
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
