@@ -9,7 +9,7 @@ class ObjectsPage extends Base {
     async makeSql() {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/` 
-            SELECT realEstateInfo.Id, realEstateInfo.area,
+        SELECT realEstateInfo.Id, realEstateInfo.area,
             realEstateInfo.rooms, realEstateInfo.description,
             realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
             realEstateInfo.tenure, realEstateInfo.price,
@@ -42,9 +42,8 @@ class ObjectsPage extends Base {
                                         <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="${realEstateInfo.Id}" realEstateId="${realEstateInfo.Id}">
                                         <div class="card-body">
                                             <div class="card-text">
-                                            <strong>
-                                                Adress: ${realEstateInfo.streetName}
-                                                ${realEstateInfo.streetNumber}<br>
+                                            <h1><strong>${realEstateInfo.streetName}
+                                                ${realEstateInfo.streetNumber}<br></h2>
                                                 ${realEstateInfo.floor}
                                                 ${realEstateInfo.areaName}
                                                 ${realEstateInfo.regionName}
