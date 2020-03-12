@@ -3,13 +3,15 @@ class BuyerPage extends Base {
   async mount() {
 
     this.foundBostads = await sql(/*sql*/`
-      SELECT realEstateInfo.area, realEstateInfo.rooms,
+    SELECT realEstateInfo.area, realEstateInfo.rooms,
     realEstateInfo.buildYear, realEstateInfo.maintenanceCost,
     realEstateInfo.tenure, realEstateInfo.price,
     realEstateImages.realEstateInfoId, realEstateImages.imgUrl
     FROM realEstateInfo, realEstateImages
     WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId
     AND realEstateImages.imgUrl LIKE '%img01%'
+    
+   
     `);
 
   }
@@ -32,6 +34,7 @@ class BuyerPage extends Base {
                 </div>
               </div>
               <div class="row">
+                
                 ${this.foundBostads.map(realEstateInfo => /*html*/`
                 <div class="col-2"><a href="/real-estate-info" click="refreshBostad" targetBostadId="${realEstateInfo.Id}"><img src="images/${realEstateInfo.imgUrl}.jpg"  targetBostadId="${realEstateInfo.id}"  class="img-fluid img-thumbnail" alt="Bostad picture"></a></div>
                 <div class="col-4"><p  targetBostadId="${realEstateInfo.Id}">${realEstateInfo.rooms}` + ' ' + `${realEstateInfo.tenure}</p></a><p>${realEstateInfo.price}</p><p>${realEstateInfo.area}</p></div>`)}</div>              
