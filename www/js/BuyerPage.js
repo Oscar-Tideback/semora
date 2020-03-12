@@ -100,7 +100,7 @@ class BuyerPage extends Base {
                 
                 <div class="col-8"><h5>Resultat av all bostad i hela Sverige.</h5>
                 
-                <p>Skriv lite text.....</p>
+                
                 </div>
               </div>
               <div class="row">
@@ -115,8 +115,8 @@ class BuyerPage extends Base {
                   <div targetBostadId="${realEstateInfo.Id}">
                      ${realEstateInfo.streetName} ${realEstateInfo.streetNumber.toUpperCase()}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
                     ${realEstateInfo.rooms} rum<br>
-                    Price: ${realEstateInfo.price} kr<br>
-                    Area: ${realEstateInfo.area} m²<br>
+                    Pris: ${realEstateInfo.price} kr<br>
+                    Område: ${realEstateInfo.area} m²<br>
                     Region: ${realEstateInfo.regionName}
                     </p>
                     </div>
