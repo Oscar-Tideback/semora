@@ -13,10 +13,11 @@ class ObjectsPage extends Base {
     realEstateInfo.tenure, realEstateInfo.price,
     realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
     FROM realEstateInfo, realEstateImages
-    WHERE realEstateInfo.Id = ${app.objectsPage.targetBostadId}
-    AND realEstateImages.realEstateInfoId = ${app.objectsPage.targetBostadId}
+    WHERE realEstateInfo.Id = $target
+    AND realEstateImages.realEstateInfoId = $target
     AND realEstateImages.imgUrl LIKE '%img01%'
-    `);
+    `, { target: this.targetBostadsId });
+
         //Objekt information från databasen om respektive objekt.    
         this.render();
     }
