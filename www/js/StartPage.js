@@ -96,7 +96,7 @@ class StartPage extends Base {
                 <div class="col d-flex justify-content-center">
                     <div class="card my-4 estate-card">
                       <a href="/testpage" click="refreshBroker">
-                        <img src="images/${obj.imgUrl}.jpg" class="card-img-top" alt="..." realEstateId="${obj.Id}">
+                        <img src="images/${obj.imgUrl}" class="card-img-top" alt="..." realEstateId="${obj.Id}">
                       </a>
                       <div class="card-body">
                         <p class="card-text">
