@@ -37,7 +37,7 @@ class ObjectsPage extends Base {
                         <div class="card-text">
                             ${realEstateInfo.streetName} 
                             ${realEstateInfo.streetNumber}
-                            ${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
+                            ${realEstateInfo.floor}<br>
                             ${realEstateInfo.areaName},<br>
                             ${realEstateInfo.regionName}<br>
                             ${realEstateInfo.rooms} rum,<br>
