@@ -31,14 +31,27 @@ class ObjectsPage extends Base {
                         ${this.foundObjects.map(realEstateInfo => /*html*/`
                         <div class="col d-flex justify-content-left">
                         <div class="card my-4" style="width: 18rem;">
-                            
-                        <div class="col-10"><img src="images/${realEstateInfo.imgUrl}"  class="img-fluid img-thumbnail" alt="bostad picture">
-                            
+
+                            <a href="/TESTSIDA" click="test">
+                            <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="..." realEstateId="${realEstateInfo.Id}">
+                            </a>
+                            </a>
+                      <div class="card-body">
+                        <p class="card-text">
+                          <a href="/testpage" click="refreshBroker" realEstateId="${realEstateInfo.Id}">
+                            ${realEstateInfo.streetName} ${realEstateInfo.streetNumber}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
+                            ${realEstateInfo.areaName}, ${realEstateInfo.regionName}<br>
+                            ${realEstateInfo.rooms} rum, ${realEstateInfo.area} m²<br>
+                            <!-- obj.price.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3') -->
+                            ${realEstateInfo.price} kr
+                          </a>
+                            <div class="card body">
                             <div class="col-2">${realEstateInfo.area}</div>
                             <div class="col-2">${realEstateInfo.rooms}</div>
                             <div class="col-2">${realEstateInfo.buildYear}</div>
                             <div class="col-2">${realEstateInfo.maintenanceCost}</div>
-                            <div class="col-2">${realEstateInfo.tenure}</div>                        
+                            <div class="col-2">${realEstateInfo.tenure}</div>   
+                            <div class="col-2">${realEstateInfo.price}</div>                     
                             <!--<div class="col-1">${realEstateInfo.description}</div>-->
                         `)}
                         </div>
@@ -46,9 +59,9 @@ class ObjectsPage extends Base {
                 </div>
             </div>
         </div>
-        </div>
     </div>
-  </div>
+</div>
+</div>
 </div>
 
         `;
