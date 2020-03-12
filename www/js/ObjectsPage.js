@@ -8,7 +8,7 @@ class ObjectsPage extends Base {
     async makeSql() {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/` 
-            SELECT realEstateInfo.area, realEstateInfo.rooms, realEstateInfo.description,
+            SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, realEstateInfo.description,
             realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
             realEstateInfo.tenure, realEstateInfo.price,
             realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
