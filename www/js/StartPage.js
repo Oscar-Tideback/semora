@@ -2,22 +2,25 @@ class StartPage extends Base {
 
   async mount() {
 
-    this.carouselEnd = this.listingStart = 4;
+    // Listing (below carousel) starts where the carousel ends in realEstateData (SQL result)
+    this.carouselEnd = this.listingStart = 5;
+    this.showThisMany = 14;
 
     // Using GROUP instead of DISTINCT to avoid duplicate RANDOM results since multiple images per object in DB
     // LIMIT sets amount of objects in carousel 
     // Don't forget! to select where realEstateImages.category later on instead of matching by realEstateImages.imgUrl /Rikard
     this.realEstateData = await sql(/*sql*/`
       SELECT * FROM 
-              realEstateInfo, 
-              userXregion ON realEstateInfo.userId = userXregion.userId, 
-              region ON region.id = userXregion.regionId,
-              realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id,
-              realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
-              areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+        realEstateInfo, 
+        userXregion ON realEstateInfo.userId = userXregion.userId, 
+        region ON region.id = userXregion.regionId,
+        realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id,
+        realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+        areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
       WHERE imgUrl LIKE '%img01%'
-      ORDER BY RANDOM() LIMIT 11
-    `);
+      ORDER BY RANDOM() LIMIT $showThisMany
+    `, { showThisMany: this.showThisMany });
+
 
   }
 
@@ -30,7 +33,7 @@ class StartPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row m-0" route="/" page-title="Startsida">
+      <div class="row m-0 pt-4" route="/" page-title="Startsida">
         <div class="col-12 p-0">
 
           <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">

@@ -30,8 +30,19 @@ h1, h2, h3, h4, h5 {
   }
 }
 
-.hero {
-  height: 150px;    // Predefined height on hero
+// Floating elements holder/wrapper
+.hero-title-wrapper {
+  border-bottom-color: black;
+border-bottom: 2px;
+}
+
+.hero-title {
+  position: absolute;
+  font-family: Great Vibes; 
+  font-weight: 500;
+  font-size: 80px;   // Setting stativ size
+  top: 20px;
+  margin-left: 40px;
 }
 
 // Floating elements holder/wrapper
@@ -44,9 +55,9 @@ h1, h2, h3, h4, h5 {
   width: 40%;
   top: 8px;
   right: 0px;
-  color: #000;
+  color: rgb(255, 255, 255);
   position: absolute;
-  top: -135px;   // Adjust this accordingly depending on hero images pixel height
+  top: -150px;   // Adjust this accordingly depending on hero images pixel height
 
   // No hamburger normal menu 
   @media (min-width: 992px) {
@@ -75,11 +86,15 @@ h1, h2, h3, h4, h5 {
   font-weight: 600;
 }
 
+.navbar-menutext {
+  font-family: Great Vibes; 
+}
+
 // Some carousel styling
 .carousel-relative-wrapper { // Floating elements wrapper/holder
-    position: relative; 
-    width: 50%;
-    height:100%
+  position: relative; 
+  width: 50%;
+  height:100%
 }
 
 // Wrapper. Ugly fix for centering. Bootstrap might have premade solution. Check all wrappers later on /Rikard
