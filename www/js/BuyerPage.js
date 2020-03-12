@@ -108,7 +108,7 @@ class BuyerPage extends Base {
                       ${realEstateInfo.streetName} ${realEstateInfo.streetNumber.toUpperCase()}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
                       ${realEstateInfo.rooms} rum<br>
                       Pris: ${realEstateInfo.price} kr<br>
-                      Område: ${realEstateInfo.area} m²<br>
+                      Område: ${realEstateInfo.area}<br>
                       Region: ${realEstateInfo.regionName}
                     </div>
                   </p>
