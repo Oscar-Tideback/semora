@@ -31,6 +31,7 @@ class ObjectsPage extends Base {
                         ${this.foundObjects.map(realEstateInfo => /*html*/`
                         <div class="col d-flex justify-content-center">
                         <div class="card my-8">
+                        
                             <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="..." realEstateId="${realEstateInfo.Id}">
                       <div class="card-body">
                         <div class="card-text">
@@ -48,8 +49,17 @@ class ObjectsPage extends Base {
                             ${realEstateInfo.maintenanceCost}<br>
                             ${realEstateInfo.tenure}<br>
                             ${realEstateInfo.price}    <br>              
-                            ${realEstateInfo.description}</div>
+                            ${realEstateInfo.description}
+                            </div>
+                            
+                            
+                            
                         `)}
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img02.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img03.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img04.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img05.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img06.jpg"><br>
             </div>
         </div>
     </div>
