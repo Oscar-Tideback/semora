@@ -4,7 +4,7 @@ class ObjectsPage extends Base {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/`
     
-    SELECT realEstateInfo.area, realEstateInfo.rooms,
+    SELECT realEstateInfo.area, realEstateInfo.rooms, realEstateInfo.description,
     realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
     realEstateInfo.tenure, realEstateInfo.price,
     realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
@@ -27,28 +27,44 @@ class ObjectsPage extends Base {
                 <div class= "container my-3">
                     <div class= "row p-5">
                     <h1> Objekt Information </h1>
-                        <div class="col-sm-9">
+                        <div class="col-sm-12">
                         ${this.foundObjects.map(realEstateInfo => /*html*/`
-                        <div class="col d-flex justify-content-left">
-                        <div class="card my-4" style="width: 18rem;">
+                        <div class="col d-flex justify-content-center">
+                        <div class="card my-8">
+                        
+                            <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="..." realEstateId="${realEstateInfo.Id}">
+                      <div class="card-body">
+                        <div class="card-text">
+                            ${realEstateInfo.streetName} 
+                            ${realEstateInfo.streetNumber}
+                            ${realEstateInfo.floor}<br>
+                            ${realEstateInfo.areaName},<br>
+                            ${realEstateInfo.regionName}<br>
+                            ${realEstateInfo.rooms} rum,<br>
+                            ${realEstateInfo.area} m²<br>
+                            ${realEstateInfo.price} kr<br>
+                            ${realEstateInfo.area}<br>
+                            ${realEstateInfo.rooms}<br>
+                            ${realEstateInfo.buildYear}<br>
+                            ${realEstateInfo.maintenanceCost}<br>
+                            ${realEstateInfo.tenure}<br>
+                            ${realEstateInfo.price}    <br>              
+                            ${realEstateInfo.description}
+                            </div>
                             
-                        <div class="col-10"><img src="images/${realEstateInfo.imgUrl}"  class="img-fluid img-thumbnail" alt="bostad picture">
                             
-                            <div class="col-2">${realEstateInfo.area}</div>
-                            <div class="col-2">${realEstateInfo.rooms}</div>
-                            <div class="col-2">${realEstateInfo.buildYear}</div>
-                            <div class="col-2">${realEstateInfo.maintenanceCost}</div>
-                            <div class="col-2">${realEstateInfo.tenure}</div>                        
-                            <!--<div class="col-1">${realEstateInfo.description}</div>-->
+                            
                         `)}
-                        </div>
-                    </div>
-                </div>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img02.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img03.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img04.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img05.jpg"><br>
+                        <img class="d-block w-100" src="images/${this.targetBostadId}/img06.jpg"><br>
             </div>
         </div>
-        </div>
     </div>
-  </div>
+</div>
+</div>
 </div>
 
         `;
