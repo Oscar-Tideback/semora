@@ -2,10 +2,20 @@ class Footer extends Base {
 
   render() {
     return /*html*/`
-      <footer class="bg-primary p-4">
+      <footer class="footer p-4">
         <div class="row">
           <div class="col text-center text-light">
-            <img src="/images/Footerbadge.jpg">
+            <p>Kontakta oss</p>
+            <p>Rådgivning</p>
+            <p>Följ oss på: Twitter Facebook Instagram Linkedin etc</p>
+          </div>
+          <div class="col text-center text-light">
+            <img src="/images/Footer_badge.png">
+          </div>
+          <div class="col text-center text-light">
+            <p>Integritetspolicy</p>
+            <p>Sekretess</p>
+            <p>Användning av cookies</p>
           </div>
         </div>
       </footer>
