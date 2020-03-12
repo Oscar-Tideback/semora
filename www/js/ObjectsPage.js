@@ -1,25 +1,30 @@
 class ObjectsPage extends Base {
 
     async mount() {
-        //this.targetBostadId = app.objectsPage.targetBostadId;
-        return await this.makeSql();
+
+        this.foundObjects = [];
+        this.makeSql();
     }
 
     async makeSql() {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/` 
-            SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, realEstateInfo.description,
+        SELECT realEstateInfo.Id, realEstateInfo.area,
+            realEstateInfo.rooms, realEstateInfo.description,
             realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
             realEstateInfo.tenure, realEstateInfo.price,
+            realEstateAddress.streetName, realEstateAddress.streetNumber,
             realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
-            FROM realEstateInfo, realEstateImages
+            FROM realEstateInfo, realEstateImages, realEstateAddress
             WHERE realEstateInfo.Id = $target
             AND realEstateImages.realEstateInfoId = $target
+            AND realEstateAddress.realEstateId = $target 
             AND realEstateImages.imgUrl LIKE '%img01%'
         `, { target: this.targetBostadId });
 
-        //Objekt information från databasen om respektive objekt.    
-        //this.render();
+        this.render();
+
+        //console.log(this.foundObjects);
 
     }
 
@@ -29,29 +34,26 @@ class ObjectsPage extends Base {
             <div class= "row m-0" route="/real-estate-info" page-title="Bostad info">
                 <div class= "container my-3">
                     <div class= "row p-5">
-                        <h1> Objekt Information </h1>
-                            <div class="col-sm-12">
+                        <h1>Försäljnings objekt.</h1>
+                            <div class="col-sm-13">
                                 ${this.foundObjects.map(realEstateInfo => /*html*/`
                                 <div class="col d-flex justify-content-center">
                                     <div class="card my-8">
                                         <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="${realEstateInfo.Id}" realEstateId="${realEstateInfo.Id}">
                                         <div class="card-body">
                                             <div class="card-text">
-                                                ${realEstateInfo.streetName} 
-                                                ${realEstateInfo.streetNumber}
-                                                ${realEstateInfo.floor}<br>
-                                                ${realEstateInfo.areaName},<br>
-                                                ${realEstateInfo.regionName}<br>
-                                                ${realEstateInfo.rooms} rum,<br>
-                                                ${realEstateInfo.area} m²<br>
-                                                ${realEstateInfo.price} kr<br>
-                                                ${realEstateInfo.area}<br>
-                                                ${realEstateInfo.rooms}<br>
-                                                ${realEstateInfo.buildYear}<br>
-                                                ${realEstateInfo.maintenanceCost}<br>
-                                                ${realEstateInfo.tenure}<br>
-                                                ${realEstateInfo.price}    <br>              
-                                                ${realEstateInfo.description}
+                                            <h1><strong>${realEstateInfo.streetName}
+                                                ${realEstateInfo.streetNumber}<br></h2>
+                                                ${realEstateInfo.floor}
+                                                ${realEstateInfo.areaName}
+                                                ${realEstateInfo.regionName}
+                                                Antal rum: ${realEstateInfo.rooms}<br>
+                                                Boarea: ${realEstateInfo.area} m²<br>
+                                                Pris: ${realEstateInfo.price} kr<br>
+                                                Byggår: ${realEstateInfo.buildYear}<br>
+                                                Driftkostnad: ${realEstateInfo.maintenanceCost} /år<br>
+                                                Bostadstyp: ${realEstateInfo.tenure}<br></strong><br>
+                                                ${realEstateInfo.description} <div><br>
                                             </div>   
                                             `)}
                                             <img class="d-block w-100" src="images/${this.targetBostadId}/img02.jpg"><br>

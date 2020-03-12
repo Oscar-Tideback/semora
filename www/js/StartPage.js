@@ -21,15 +21,14 @@ class StartPage extends Base {
       ORDER BY RANDOM() LIMIT $showThisMany
     `, { showThisMany: this.showThisMany });
 
-
+    //console.log(this.realEstateData);
   }
 
-  refreshTargetPage(e) {
-    app.testPage.brokerId = e.target.attributes.brokerid.value;
-    app.testPage.render();
-
-    //console.log(e.target);
+  refreshBostad(e) {
+    app.objectsPage.targetBostadId = e.target.attributes.targetbostadid.value;
+    app.objectsPage.makeSql();
   }
+
 
   render() {
     return /*html*/`
@@ -101,12 +100,12 @@ class StartPage extends Base {
               ${this.realEstateData.map((obj, index) => (index >= this.listingStart ? /*html*/`
                 <div class="col d-flex justify-content-center">
                     <div class="card my-4 estate-card">
-                      <a href="/testpage" click="refreshBroker">
-                        <img src="images/${obj.imgUrl}" class="card-img-top" alt="..." realEstateId="${obj.Id}">
+                      <a href="/real-estate-info" click="refreshBostad">
+                        <img src="images/${obj.imgUrl}" class="card-img-top" alt="..." targetbostadid="${obj.id}">
                       </a>
                       <div class="card-body">
                         <p class="card-text">
-                          <a href="/testpage" click="refreshBroker" realEstateId="${obj.Id}">
+                          <a href="/real-estate-info" click="refreshBostad" targetbostadid="${obj.id}">
                             ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
                             ${obj.areaName}, ${obj.regionName}<br>
                             ${obj.rooms} rum, ${obj.area} m²<br>
