@@ -16,12 +16,8 @@ class StartPage extends Base {
               realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
               areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
       WHERE imgUrl LIKE '%img01%'
-      ORDER BY RANDOM() LIMIT 10
+      ORDER BY RANDOM() LIMIT 11
     `);
-
-
-    //this.cardsData = await sql(/*sql*/`
-    //`);
 
   }
 
@@ -38,7 +34,7 @@ class StartPage extends Base {
         <div class="col-12 p-0">
           <div class="carousel-relative-holder">
             <div class="carousel-title-container">
-              <h1 class="carousel-title-text">Populära bostäder just nu</h1>
+              <h2 class="carousel-title-text">Budgivning pågår</h2>
             </div>
           </div>
           <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -95,6 +91,7 @@ class StartPage extends Base {
               </div>
             </div>
             <div class="row">
+
               ${this.realEstateData.map((obj, index) => (index >= this.listingStart ? /*html*/`
                 <div class="col d-flex justify-content-center">
                     <div class="card my-4 estate-card">
@@ -103,7 +100,7 @@ class StartPage extends Base {
                       </a>
                       <div class="card-body">
                         <p class="card-text">
-                          <a href="/testpage" click="refreshBroker" brokerid="${obj.Id}">
+                          <a href="/testpage" click="refreshBroker" realEstateId="${obj.Id}">
                             ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
                             ${obj.areaName}, ${obj.regionName}<br>
                             ${obj.rooms} rum, ${obj.area} m²<br>
@@ -115,6 +112,7 @@ class StartPage extends Base {
                     </div>
                 </div>
               ` : ''))}
+
             </div>
           </div>
         </div>
