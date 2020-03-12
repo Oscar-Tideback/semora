@@ -27,31 +27,28 @@ class ObjectsPage extends Base {
                 <div class= "container my-3">
                     <div class= "row p-5">
                     <h1> Objekt Information </h1>
-                        <div class="col-sm-9">
+                        <div class="col-sm-12">
                         ${this.foundObjects.map(realEstateInfo => /*html*/`
-                        <div class="col d-flex justify-content-left">
-                        <div class="card my-5" style="width: 50rem;">
-                        <a href="/TESTSIDA" click="test">
+                        <div class="col d-flex justify-content-center">
+                        <div class="card my-8">
                             <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="..." realEstateId="${realEstateInfo.Id}">
-                            </a>
-                            </a>
                       <div class="card-body">
-                        <p class="card-text">
-                          <a href="/testpage" click="   " realEstateId="${realEstateInfo.Id}">
-                            ${realEstateInfo.streetName} ${realEstateInfo.streetNumber}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
-                            ${realEstateInfo.areaName}, ${realEstateInfo.regionName}<br>
-                            ${realEstateInfo.rooms} rum, ${realEstateInfo.area} m²<br>
-                            <!-- obj.price.replace(/(\d{3})(\d{3})(\d{3})/, '$1 $2 $3') -->
-                            ${realEstateInfo.price} kr
-                          </a>
-                            <div class="card body">
-                            ${realEstateInfo.area}</div>
-                            ${realEstateInfo.rooms}</div>
-                            ${realEstateInfo.buildYear}</div>
-                            ${realEstateInfo.maintenanceCost}</div>
-                            ${realEstateInfo.tenure}</div>   
-                            ${realEstateInfo.price}</div>                     
-                            ${realEstateInfo.description}</div>-->
+                        <div class="card-text">
+                            ${realEstateInfo.streetName} 
+                            ${realEstateInfo.streetNumber}
+                            ${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
+                            ${realEstateInfo.areaName},<br>
+                            ${realEstateInfo.regionName}<br>
+                            ${realEstateInfo.rooms} rum,<br>
+                            ${realEstateInfo.area} m²<br>
+                            ${realEstateInfo.price} kr<br>
+                            ${realEstateInfo.area}<br>
+                            ${realEstateInfo.rooms}<br>
+                            ${realEstateInfo.buildYear}<br>
+                            ${realEstateInfo.maintenanceCost}<br>
+                            ${realEstateInfo.tenure}<br>
+                            ${realEstateInfo.price}    <br>              
+                            ${realEstateInfo.description}</div>
                         `)}
             </div>
         </div>
