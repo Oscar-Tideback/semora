@@ -9,13 +9,16 @@ class ObjectsPage extends Base {
     async makeSql() {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/` 
-            SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, realEstateInfo.description,
+        SELECT realEstateInfo.Id, realEstateInfo.area,
+            realEstateInfo.rooms, realEstateInfo.description,
             realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
             realEstateInfo.tenure, realEstateInfo.price,
+            realEstateAddress.streetName, realEstateAddress.streetNumber,
             realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
-            FROM realEstateInfo, realEstateImages
+            FROM realEstateInfo, realEstateImages, realEstateAddress
             WHERE realEstateInfo.Id = $target
             AND realEstateImages.realEstateInfoId = $target
+            AND realEstateAddress.realEstateId = $target 
             AND realEstateImages.imgUrl LIKE '%img01%'
         `, { target: this.targetBostadId });
 
@@ -39,8 +42,8 @@ class ObjectsPage extends Base {
                                         <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="${realEstateInfo.Id}" realEstateId="${realEstateInfo.Id}">
                                         <div class="card-body">
                                             <div class="card-text">
-                                            <strong>${realEstateInfo.streetName}
-                                                ${realEstateInfo.streetNumber}
+                                            <h1><strong>${realEstateInfo.streetName}
+                                                ${realEstateInfo.streetNumber}<br></h2>
                                                 ${realEstateInfo.floor}
                                                 ${realEstateInfo.areaName}
                                                 ${realEstateInfo.regionName}
