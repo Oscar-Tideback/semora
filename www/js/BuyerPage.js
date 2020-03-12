@@ -107,19 +107,19 @@ class BuyerPage extends Base {
                 ${this.foundBostads.map(realEstateInfo => /*html*/`
                 <div class="col d-flex justify-content-center">
                 <div class="card my-4 estate-card">
-               <a href="/real-estate-info" click="refreshBostad" targetBostadId="${realEstateInfo.Id}"><img
+                  <a href="/real-estate-info" click="refreshBostad" targetBostadId="${realEstateInfo.Id}"><img
                       src="images/${realEstateInfo.imgUrl}" targetBostadId="${realEstateInfo.id}" class="img-fluid img-thumbnail"
-                      alt="Bostad picture"></a></div>
+                      alt="Bostad picture"></a>
                   <div class="card-body">
                   <p class="card-text">
                   <div targetBostadId="${realEstateInfo.Id}">
-                    <p> ${realEstateInfo.streetName} ${realEstateInfo.streetNumber}</p>
-                    <p>Rooms: ${realEstateInfo.rooms}</p>
-                    <p>Tenure: ${realEstateInfo.tenure}</p>
-                    <p>Price: ${realEstateInfo.price}</p>
-                    <p>Area: ${realEstateInfo.area}</p>
-                    <p>Region: ${realEstateInfo.regionName}</p>
+                     ${realEstateInfo.streetName} ${realEstateInfo.streetNumber.toUpperCase()}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
+                    ${realEstateInfo.rooms} rum<br>
+                    Price: ${realEstateInfo.price} kr<br>
+                    Area: ${realEstateInfo.area} m²<br>
+                    Region: ${realEstateInfo.regionName}
                     </p>
+                    </div>
                   </div>
                 </div>
                 </div>
