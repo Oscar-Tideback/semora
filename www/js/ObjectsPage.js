@@ -8,18 +8,19 @@ class ObjectsPage extends Base {
     async makeSql() {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/` 
-    SELECT realEstateInfo.area, realEstateInfo.rooms, realEstateInfo.description,
-    realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
-    realEstateInfo.tenure, realEstateInfo.price,
-    realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
-    FROM realEstateInfo, realEstateImages
-    WHERE realEstateInfo.Id = $target
-    AND realEstateImages.realEstateInfoId = $target
-    AND realEstateImages.imgUrl LIKE '%img01%'
-    `, { target: this.targetBostadsId });
+            SELECT realEstateInfo.area, realEstateInfo.rooms, realEstateInfo.description,
+            realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
+            realEstateInfo.tenure, realEstateInfo.price,
+            realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
+            FROM realEstateInfo, realEstateImages
+            WHERE realEstateInfo.Id = $target
+            AND realEstateImages.realEstateInfoId = $target
+            AND realEstateImages.imgUrl LIKE '%img01%'
+        `, { target: this.targetBostadsId });
 
         //Objekt information från databasen om respektive objekt.    
         this.render();
+
     }
 
     //Html nedan för layout och design targetBostadId
