@@ -9,13 +9,16 @@ class ObjectsPage extends Base {
     async makeSql() {
         //Hämta objekt från databasen 
         this.foundObjects = await sql(/*sql*/` 
-            SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, realEstateInfo.description,
+            SELECT realEstateInfo.Id, realEstateInfo.area,
+            realEstateInfo.rooms, realEstateInfo.description,
             realEstateInfo.buildYear, realEstateInfo.maintenanceCost, 
             realEstateInfo.tenure, realEstateInfo.price,
+            realEstateAddress.streetName, realEstateAddress.streetNumber,
             realEstateImages.realEstateInfoId, realEstateImages.imgUrl 
-            FROM realEstateInfo, realEstateImages
+            FROM realEstateInfo, realEstateImages, realEstateAddress
             WHERE realEstateInfo.Id = $target
             AND realEstateImages.realEstateInfoId = $target
+            AND realEstateAddress.realEstateId = $target 
             AND realEstateImages.imgUrl LIKE '%img01%'
         `, { target: this.targetBostadId });
 
@@ -31,7 +34,7 @@ class ObjectsPage extends Base {
             <div class= "row m-0" route="/real-estate-info" page-title="Bostad info">
                 <div class= "container my-3">
                     <div class= "row p-5">
-                        <h1> Objekt Information </h1>
+                        <h1>Försäljnings objekt.</h1>
                             <div class="col-sm-13">
                                 ${this.foundObjects.map(realEstateInfo => /*html*/`
                                 <div class="col d-flex justify-content-center">
@@ -39,8 +42,9 @@ class ObjectsPage extends Base {
                                         <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="${realEstateInfo.Id}" realEstateId="${realEstateInfo.Id}">
                                         <div class="card-body">
                                             <div class="card-text">
-                                            <strong>${realEstateInfo.streetName}
-                                                ${realEstateInfo.streetNumber}
+                                            <strong>
+                                                Adress: ${realEstateInfo.streetName}
+                                                ${realEstateInfo.streetNumber}<br>
                                                 ${realEstateInfo.floor}
                                                 ${realEstateInfo.areaName}
                                                 ${realEstateInfo.regionName}
