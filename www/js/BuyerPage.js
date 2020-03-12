@@ -25,9 +25,10 @@ class BuyerPage extends Base {
       realEstateInfo.buildYear, realEstateInfo.maintenanceCost,
       realEstateInfo.tenure, realEstateInfo.price,
       realEstateImages.realEstateInfoId, realEstateImages.imgUrl,
-      region.regionName
-      FROM  realEstateInfo, realEstateImages, region, userXRegion
+      region.regionName, realEstateAddress.streetName, realEstateAddress.streetNumber
+      FROM  realEstateInfo, realEstateImages, region, userXRegion, realEstateAddress
       WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId
+      AND realEstateAddress.realEstateId = realEstateInfo.Id
       AND userXRegion.regionId = region.id 
       AND userXregion.userId = realEstateInfo.userId
       AND realEstateImages.imgUrl LIKE '%img01%'
@@ -104,17 +105,23 @@ class BuyerPage extends Base {
               </div>
               <div class="row">
                 ${this.foundBostads.map(realEstateInfo => /*html*/`
-               <div class="col-2"><a href="/real-estate-info" click="refreshBostad" targetBostadId="${realEstateInfo.Id}"><img
+                <div class="col d-flex justify-content-center">
+                <div class="card my-4 estate-card">
+               <a href="/real-estate-info" click="refreshBostad" targetBostadId="${realEstateInfo.Id}"><img
                       src="images/${realEstateInfo.imgUrl}" targetBostadId="${realEstateInfo.id}" class="img-fluid img-thumbnail"
                       alt="Bostad picture"></a></div>
-                <div class="col-4">
+                  <div class="card-body">
+                  <p class="card-text">
                   <div targetBostadId="${realEstateInfo.Id}">
+                    <p> ${realEstateInfo.streetName} ${realEstateInfo.streetNumber}</p>
                     <p>Rooms: ${realEstateInfo.rooms}</p>
                     <p>Tenure: ${realEstateInfo.tenure}</p>
                     <p>Price: ${realEstateInfo.price}</p>
                     <p>Area: ${realEstateInfo.area}</p>
                     <p>Region: ${realEstateInfo.regionName}</p>
+                    </p>
                   </div>
+                </div>
                 </div>
                   `)}</div>              
                 </div>
