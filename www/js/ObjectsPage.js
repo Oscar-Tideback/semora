@@ -17,7 +17,8 @@ class ObjectsPage extends Base {
     AND realEstateImages.realEstateInfoId = ${app.objectsPage.targetBostadId}
     AND realEstateImages.imgUrl LIKE '%img01%'
     `);
-        //Objekt information från databasen om respektive objekt.     
+        //Objekt information från databasen om respektive objekt.    
+        this.render();
     }
 
     //Html nedan för layout och design targetBostadId
