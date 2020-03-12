@@ -32,8 +32,8 @@ class ObjectsPage extends Base {
                         <div class="col d-flex justify-content-left">
                         <div class="card my-4" style="width: 18rem;">
                             
-                            <div class="col-10"><img src="images/${realEstateInfo.imgUrl}"  class="img-fluid img-thumbnail" alt="bostad picture">
-                           
+                        <div class="col-10"><img src="images/${realEstateInfo.imgUrl}"  class="img-fluid img-thumbnail" alt="bostad picture">
+                            
                             <div class="col-2">${realEstateInfo.area}</div>
                             <div class="col-2">${realEstateInfo.rooms}</div>
                             <div class="col-2">${realEstateInfo.buildYear}</div>
