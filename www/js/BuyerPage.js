@@ -21,7 +21,7 @@ class BuyerPage extends Base {
     this.userChoices.region = region || '';
 
     this.foundBostads = await sql(/*sql*/`
-      SELECT realEstateInfo.area, realEstateInfo.rooms,
+      SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, 
       realEstateInfo.buildYear, realEstateInfo.maintenanceCost,
       realEstateInfo.tenure, realEstateInfo.price,
       realEstateImages.realEstateInfoId, realEstateImages.imgUrl,

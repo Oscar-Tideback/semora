@@ -2,7 +2,7 @@ class ObjectsPage extends Base {
 
     async mount() {
         //this.targetBostadId = app.objectsPage.targetBostadId;
-        return this.makeSql();
+        return await this.makeSql();
     }
 
     async makeSql() {
@@ -16,10 +16,10 @@ class ObjectsPage extends Base {
             WHERE realEstateInfo.Id = $target
             AND realEstateImages.realEstateInfoId = $target
             AND realEstateImages.imgUrl LIKE '%img01%'
-        `, { target: this.targetBostadsId });
+        `, { target: this.targetBostadId });
 
         //Objekt information från databasen om respektive objekt.    
-        this.render();
+        //this.render();
 
     }
 

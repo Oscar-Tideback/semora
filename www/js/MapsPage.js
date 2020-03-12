@@ -90,13 +90,13 @@ class MapsPage extends Base {
       <div class="col-md-4">
         <a class="btn-floating blue accent-1"><i class="fas fa-phone"></i></a>
         <p>08-234 567 89</p>
-        <p>Mon-Fri, 8:00-22:00</p>
+        <p>Mon-Fri 8:00-22:00</p>
       </div>
 
       <div class="col-md-4">
         <a class="btn-floating blue accent-1"><i class="fas fa-envelope"></i></a>
-        <p>Dhyr@gmail.com</p>
-        <p>Rumson@gmail.com</p>
+        <p>dhyr@gmail.com</p>
+        <p>rumson@gmail.com</p>
       </div>
     </div>
 
