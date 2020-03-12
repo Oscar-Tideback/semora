@@ -30,28 +30,25 @@ class ObjectsPage extends Base {
                 <div class= "container my-3">
                     <div class= "row p-5">
                         <h1> Objekt Information </h1>
-                            <div class="col-sm-12">
+                            <div class="col-sm-13">
                                 ${this.foundObjects.map(realEstateInfo => /*html*/`
                                 <div class="col d-flex justify-content-center">
                                     <div class="card my-8">
                                         <img src="images/${realEstateInfo.imgUrl}" class="card-img-top" alt="${realEstateInfo.Id}" realEstateId="${realEstateInfo.Id}">
                                         <div class="card-body">
                                             <div class="card-text">
-                                                ${realEstateInfo.streetName} 
+                                            <strong>${realEstateInfo.streetName}
                                                 ${realEstateInfo.streetNumber}
-                                                ${realEstateInfo.floor}<br>
-                                                ${realEstateInfo.areaName},<br>
-                                                ${realEstateInfo.regionName}<br>
-                                                ${realEstateInfo.rooms} rum,<br>
-                                                ${realEstateInfo.area} m²<br>
-                                                ${realEstateInfo.price} kr<br>
-                                                ${realEstateInfo.area}<br>
-                                                ${realEstateInfo.rooms}<br>
-                                                ${realEstateInfo.buildYear}<br>
-                                                ${realEstateInfo.maintenanceCost}<br>
-                                                ${realEstateInfo.tenure}<br>
-                                                ${realEstateInfo.price}    <br>              
-                                                ${realEstateInfo.description}
+                                                ${realEstateInfo.floor}
+                                                ${realEstateInfo.areaName}
+                                                ${realEstateInfo.regionName}
+                                                Antal rum: ${realEstateInfo.rooms}<br>
+                                                Boarea: ${realEstateInfo.area} m²<br>
+                                                Pris: ${realEstateInfo.price} kr<br>
+                                                Byggår: ${realEstateInfo.buildYear}<br>
+                                                Driftkostnad: ${realEstateInfo.maintenanceCost} /år<br>
+                                                Bostadstyp: ${realEstateInfo.tenure}<br></strong><br>
+                                                ${realEstateInfo.description} <div><br>
                                             </div>   
                                             `)}
                                             <img class="d-block w-100" src="images/${this.targetBostadId}/img02.jpg"><br>
