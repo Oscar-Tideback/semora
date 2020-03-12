@@ -10,7 +10,7 @@ class NavBarSearch extends Base {
     this.foundKeywords = [];
     this.selected = -1;
     this.chosen = e.target.innerText;
-
+    this.search();
     this.render();
   }
   selectWithUpDownArrows(e) {
@@ -28,7 +28,8 @@ class NavBarSearch extends Base {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
 
     if (e.key === 'Enter' && this.selected >= 0) {
-      this.chosen = this.foundKeywords[this.selected].regionName;
+      this.chosen = (this.foundKeywords[this.selected] || {}).regionName;
+      this.search();
       this.foundKeywords = [];
       this.selected = -1;
       this.render();
@@ -50,14 +51,24 @@ class NavBarSearch extends Base {
   }
   // End of modified Thomas example-autocomplete
 
+  preventPageReload(e) {
+    // Do not perform a hard reload of the page when someone submits the form
+    e && e.preventDefault();
+  }
+
+  search() {
+    document.querySelector('.nav-bar-search-input').value = this.chosen || '';
+    app.goto('/buy-property');
+    app.buyerPage.search(this.chosen);
+  }
 
   render() {
 
     return /*html*/`
       <div class="search-in-hero-relative-wrapper pr-4">
-        <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch">
+        <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch" submit="preventPageReload">
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
+            <input type="text" class="form-control nav-bar-search-input" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
             ${this.foundKeywords.length < 1 ? '' : /*html*/`
               <div class="dropdown-menu show position-absolute">
                   ${this.foundKeywords.map((keywords, index) => /*html*/`
