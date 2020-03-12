@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5 {
   height: 150px;    // Predefined height on hero
 }
 
-// Floating elements holder
+// Floating elements holder/wrapper
 .search-in-hero-relative-holder {
   position: relative;
 }
@@ -87,9 +87,13 @@ h1, h2, h3, h4, h5 {
   width: 858px; 
   right: -429px; 
   height: 200px;
-  text-align: center;
   background-image: url(/images/Semora_Orn_Top.png);
-  z-index: 1; 
+  z-index: 9991;
+  text-align: center; 
+}
+
+.carousel-title-text {
+  margin-top: 10px;
 }
 
 .carousel-ornament-bottom {
