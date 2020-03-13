@@ -18,7 +18,7 @@ class App extends Base {
     this.heroSection = new HeroSection();
     this.footer = new Footer();
     this.startPage = new StartPage();
-    this.buyerPage = new BuyerPage();
+    this.buyerPage = new BuyerPage({ region: '', maxKvm: '', minKvm: '' });
     this.sellerPage = new SellerPage();
     this.agentsPage = new AgentsPage();
     //this.objectsPage = new ObjectsPage();

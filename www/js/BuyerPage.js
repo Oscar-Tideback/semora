@@ -5,20 +5,21 @@ class BuyerPage extends Base {
     this.foundKeywords = [];
     this.selected = -1;
 
-    this.userChoices = {
-      // should contain min max price, min max kvm, region etc
-      region: '',
-      // minKvm: 0,
-      // maxKvm: 150
-    }
+    // this.userChoices = {
+    // should contain min max price, min max kvm, region etc
+    //    region: '',
+    // minKvm: 0, maxKvm: 150
+    // }
 
     await this.search();
   }
 
-  async search(region) {
+  async search() {
     // If called from NavBarSearch we will get a region
     // otherwise set region to empty strings
-    this.userChoices.region = region || '';
+
+    // Test
+    //this.maxKvm = 111;
 
     this.foundBostads = await sql(/*sql*/`
       SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, 
@@ -32,10 +33,11 @@ class BuyerPage extends Base {
       AND userXRegion.regionId = region.id 
       AND userXregion.userId = realEstateInfo.userId
       AND realEstateImages.imgUrl LIKE '%img01%'
-      AND (region.regionName = $region OR $region = "")
+      AND (region.regionName = $region OR $region = '')
       
-    `, this.userChoices);
+    `, { $region: this.region });
     // AND region.area > $minKvm
+
     this.render();
   }
 
