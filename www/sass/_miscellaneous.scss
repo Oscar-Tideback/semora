@@ -44,9 +44,9 @@ border-bottom: 2px;
   position: absolute;
   font-family: Great Vibes; 
   font-weight: 500;
-  font-size: 80px;   // Setting stativ size
+  font-size: 60px;   // Setting stativ size
   top: 20px;
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 // Floating elements holder/wrapper
@@ -160,6 +160,9 @@ background-color: #000;
 @media (max-width: 576px) {
   .estate-card {
     width: 60rem;
+  }
+  .carousel-ornament-bottom {
+  visibility: hidden;
   }
 }
 
