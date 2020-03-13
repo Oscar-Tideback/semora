@@ -19,7 +19,7 @@ class App extends Base {
     this.footer = new Footer();
     this.startPage = new StartPage();
     this.buyerPage = new BuyerPage({ region: '', maxKvm: '', minKvm: '' });
-    this.sellerPage = new SellerPage();
+    this.contactPage = new ContactPage();
     this.agentsPage = new AgentsPage();
     //this.objectsPage = new ObjectsPage();
     this.mapsPage = new MapsPage();
@@ -44,7 +44,7 @@ class App extends Base {
         <main>
           ${this.startPage}
           ${this.buyerPage} 
-          ${this.sellerPage}
+          ${this.contactPage}
           ${this.agentsPage}
           ${this.objectsPage}
           ${this.mapsPage}

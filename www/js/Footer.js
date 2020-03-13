@@ -5,7 +5,7 @@ class Footer extends Base {
       <footer class="footer p-4">
         <div class="row">
           <div class="col text-center text-light">
-            <p>Kontakta oss</p>
+            <p><a href="/about-us">Kontakta oss</a></p>
             <p>Rådgivning</p>
             <p>Följ oss på: Twitter Facebook Instagram Linkedin etc</p>
           </div>

@@ -32,7 +32,7 @@ class AgentsPage extends Base {
                   <div class="card-body col-sm-4 p-3">
                     <a href="/real-estate-agent" click="refreshBroker" targetbrokerid="${user.id}">
                     ${user.firstName}` + ' ' + /*html*/`
-                    ${user.lastName}son</a><p>                  
+                    ${user.lastName}</a><p>                  
                     ${user.email}<br>
                     ${user.phone}</p>
                   </div >
