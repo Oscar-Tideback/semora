@@ -57,7 +57,7 @@ class MapsPage extends Base {
         </div>
 
         <div class="text-center mt-4">
-          <button class="btn btn-light-blue">Submit</button>
+          <button class="btn border btn-light-blue">Submit</button>
         </div>
 
       </div>
