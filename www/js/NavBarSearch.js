@@ -56,11 +56,18 @@ class NavBarSearch extends Base {
     e && e.preventDefault();
   }
 
+  //search() {
+  //  document.querySelector('.nav-bar-search-input').value = this.chosen || '';
+  //  app.goto('/buy-property');
+  //  app.buyerPage.search(this.chosen);
+  //}
+
   search() {
-    document.querySelector('.nav-bar-search-input').value = this.chosen || '';
+    app.buyerPage.region = this.chosen;
+    app.buyerPage.search();
     app.goto('/buy-property');
-    app.buyerPage.search(this.chosen);
   }
+
 
   render() {
 
