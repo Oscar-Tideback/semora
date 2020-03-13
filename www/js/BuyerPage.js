@@ -24,7 +24,7 @@ class BuyerPage extends Base {
     this.foundBostads = await sql(/*sql*/`
       SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, 
       realEstateInfo.buildYear, realEstateInfo.maintenanceCost,
-      realEstateInfo.tenure, realEstateInfo.price,
+      realEstateInfo.tenure, realEstateInfo.price, realEstateInfo.floor,
       realEstateImages.realEstateInfoId, realEstateImages.imgUrl,
       region.regionName, realEstateAddress.streetName, realEstateAddress.streetNumber
       FROM  realEstateInfo, realEstateImages, region, userXRegion, realEstateAddress
@@ -74,13 +74,6 @@ class BuyerPage extends Base {
     // Autocomplete region
     this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`SELECT regionName FROM region WHERE region.regionName LIKE $text`, { text: e.target.value + '%' });
 
-    // Dev in progress: Autocomplete region with object count per region. Freetext search in description etc. but only add results to count per region 
-    //this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`
-    //  SELECT * FROM (SELECT regionName FROM region UNION SELECT description FROM realEstateInfo) WHERE regionName LIKE $text`,
-    //  { text: '%' + e.target.value + '%' });
-
-    // console.log(this.foundKeywords);
-
     this.render();
   }
   refreshBostad(e) {
@@ -100,13 +93,12 @@ class BuyerPage extends Base {
             <div class="col-12">    
               <div class="row">
                 
-                <div class="col-8"><h5>Resultat av all bostad i hela Sverige.</h5>
-                
-                
-                </div>
-              </div>
-              <div class="row">
-                ${this.foundBostads.map(realEstateInfo => /*html*/`
+                <div class="col-8">
+                <h1>Bostäder till salu just nu... </h1>                
+                </div >
+              </div >
+  <div class="row">
+    ${this.foundBostads.map(realEstateInfo => /*html*/`
                 <div class="col d-flex justify-content-center">
                 <div class="card my-4 estate-card">
                   <a href="/real-estate-info" click="refreshBostad" targetbostadid="${realEstateInfo.Id}"><img
@@ -115,12 +107,10 @@ class BuyerPage extends Base {
                   <div class="card-body">
                   <p class="card-text">
                     <div>
-                      ${realEstateInfo.streetName} 
-                      ${realEstateInfo.streetNumber.toUpperCase()}
-                      ${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
+                      ${realEstateInfo.streetName} ${realEstateInfo.streetNumber.toUpperCase()}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
                       ${realEstateInfo.rooms} rum<br>
                       Pris: ${realEstateInfo.price} kr<br>
-                      Område: ${realEstateInfo.area} m²<br>
+                      Område: ${realEstateInfo.area}<br>
                       Region: ${realEstateInfo.regionName}
                     </div>
                   </p>
@@ -128,14 +118,14 @@ class BuyerPage extends Base {
                 </div>
                 </div>
                   `)}
-                </div>              
-                </div>
-              </div>
+  </div>              
+                </div >
+              </div >
               
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
+            </div >
+          </div >
+        </div >
+      </div >
+  `;
   }
 }
