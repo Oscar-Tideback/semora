@@ -49,7 +49,7 @@ class StartPage extends Base {
 
               ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
                 <div class="carousel-item ${index > 0 ? '' : 'active'}" data-interval="5000">
-                  <img src="images/${obj.imgUrl}" class="d-block w-100" alt="...">
+                  <a href="/real-estate-info" click="refreshBostad" targetbostadid="${obj.id}"><img src="images/${obj.imgUrl}" class="d-block w-100" alt="..." targetbostadid="${obj.id}"></a>
 
                   <div class="carousel-relative-wrapper">
                     <div class="carousel-ornament-bottom"></div>
