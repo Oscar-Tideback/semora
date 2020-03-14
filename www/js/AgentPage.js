@@ -18,7 +18,7 @@ class AgentPage extends Base {
   }
 
   async makeSql() {
-    //De bubblar upp/fram?
+
     this.foundAgents = await sql(/*sql*/`
     SELECT user.firstName,  user.lastName,
     user.phone, user.email, user.description, user.imageUrl,
