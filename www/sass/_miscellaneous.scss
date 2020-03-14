@@ -3,6 +3,10 @@
   cursor: pointer;
 }
 
+[type='radio'] {
+  display: none; 
+}
+
 body {
   background-color: rgb(173, 173, 173);
    // See _variable-overrides.scss for $font-size_scale
