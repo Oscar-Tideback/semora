@@ -21,7 +21,6 @@ class App extends Base {
     this.buyerPage = new BuyerPage({ region: '', maxKvm: '', minKvm: '' });
     this.contactPage = new ContactPage();
     this.agentsPage = new AgentsPage();
-    //this.objectsPage = new ObjectsPage();
     this.mapsPage = new MapsPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();

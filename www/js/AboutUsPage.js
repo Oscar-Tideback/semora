@@ -5,7 +5,12 @@ class AboutUsPage extends Base {
       <div class="row m-0 p-4" route="/about-us" page-title="Om oss">
         <div class="col-12">
           <h1>Vilka är vi</h1>
-          <p>Det är som det ofta är med företag av alla de slag. Vissa satsar på volym – andra på kvalitet. <br>På Dhyr & Rumson försöker vi inte bli störst utan i stället satsar vi på att vara bäst. Vi tror att det lönar sig i längden, för oss och för våra kunder.</p>
+          <p>VÅRA MÄKLARE
+          Lär känna våra mäklare
+          Kunskap och erfarenhet är tillgångar i alla yrken.
+          Till Dhyr & Rumson har vi därför handplockat endast de skickligaste och mest erfarna mäklarna i Stockholm.<br>
+          Vi har gjort det av en enda anledning – så att rätt person kan företräda dig i din kanske största affär.<br>
+          </p>
         </div>
       </div>
     `;

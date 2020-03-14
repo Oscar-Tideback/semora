@@ -34,7 +34,7 @@ class ObjectsPage extends Base {
             <div class= "row m-0" route="/real-estate-info" page-title="Bostad info">
                 <div class= "container my-3">
                     <div class= "row p-5">
-                        <h1>Försäljnings objekt.</h1>
+                        <h1>Försäljningsobjekt.</h1>
                             <div class="col-sm-13">
                                 ${this.foundObjects.map(realEstateInfo => /*html*/`
                                 <div class="col d-flex justify-content-center">
