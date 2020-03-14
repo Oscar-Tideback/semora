@@ -11,6 +11,7 @@ class App extends Base {
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       { label: 'Bostad info', route: '/real-estate-info' },
       { label: 'Om oss', route: '/about-us' },
+      { label: '', route: '/integrity' }// This is so wrong, fix it asap
 
     ];
     this.navBar = new NavBar({ links: this.navBarLinks });
@@ -24,7 +25,7 @@ class App extends Base {
     this.mapsPage = new MapsPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
-
+    this.integrityPage = new IntegrityPage();
     this.testPage = new TestPage({ realEstateId: '' });
     this.agentPage = new AgentPage({ targetBrokerId: '1' });
     this.objectsPage = new ObjectsPage({ targetBostadId: '1' });
@@ -51,7 +52,7 @@ class App extends Base {
           ${this.missingPage}
           ${this.testPage}
           ${this.agentPage}
-
+          ${this.integrityPage}
         </main>
         ${this.footer}
       </div>

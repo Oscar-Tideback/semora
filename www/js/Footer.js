@@ -13,7 +13,7 @@ class Footer extends Base {
             <img src="/images/Footer_badge.png">
           </div>
           <div class="col text-center text-light">
-            <p>Integritetspolicy</p>
+            <p><a href="/integrity">Integritetspolicy</a></p>
             <p>Sekretess</p>
             <p>Användning av cookies</p>
           </div>
