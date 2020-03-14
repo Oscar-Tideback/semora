@@ -25,7 +25,7 @@ class TestPage extends Base {
                 <input type="text" class="form-control rounded mr-4" placeholder="Skriv område, adress eller beskrivning..." id="keywordsInput" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
               </div>
               <div class="col-auto">
-                <button class="btn btn-primary" type="submit">Submit form</button>
+                <button class="btn btn-primary" type="submit">Sök</button>
               </div>              
             </div>
 
