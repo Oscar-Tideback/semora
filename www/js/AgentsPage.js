@@ -1,10 +1,16 @@
 class AgentsPage extends Base {
 
   async mount() {
+
+    // This sql question is not right at all.
     this.foundAgents = await sql(/*sql*/`
-      SELECT id, firstName, lastName, email, imageUrl, phone 
-      FROM user
-      WHERE isAgent = "true"
+    SELECT user.id, user.firstName,  user.lastName,
+    user.phone, user.email, user.imageUrl, region.regionName
+    FROM user, userXregion, userType 
+    ON user.id = userXregion.userId, region
+    ON userType.userId = region.id 
+    WHERE user.isAgent = 'true'
+
     `);
 
 
@@ -35,6 +41,7 @@ class AgentsPage extends Base {
                     ${user.lastName}</a><p>                  
                     ${user.email}<br>
                     ${user.phone}</p>
+                    ${user.regionName}<br>
                   </div >
                 `)}
                 </div>              

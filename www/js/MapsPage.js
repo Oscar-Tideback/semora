@@ -63,8 +63,6 @@ class MapsPage extends Base {
                         <h3><i class="fas fa-envelope "></i> Kontakta oss:</h3>
                       </div>
 
-                      <p>Vi skriver sällan, men med bara det bästa innehållet?</p>
-                      <br>
 
                       <!--Body-->
                       <form submit="collectFormData">
