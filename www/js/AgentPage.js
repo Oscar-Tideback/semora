@@ -3,9 +3,14 @@ class AgentPage extends Base {
   async makeSql() {
     //De bubblar upp/fram?
     this.foundAgents = await sql(/*sql*/`
-    SELECT id, firstName, lastName, email, imageUrl, phone 
-    FROM user
-    WHERE id = ${app.agentPage.targetBrokerId}
+    SELECT user.firstName,  user.lastName,
+    user.phone, user.email, user.description, user.imageUrl,
+    GROUP_CONCAT(region.regionName,', ') region_names
+    FROM user, userXregion 
+    ON user.id = userXregion.userId, 
+    region ON region.id = userXregion.regionId
+    WHERE user.isAgent = 'true'
+    AND user.id = ${app.agentPage.targetBrokerId}
   `);
     this.render();
   }
@@ -27,7 +32,12 @@ class AgentPage extends Base {
               <div class="row">               
                 ${this.foundAgents.map(user => /*html*/`
                 <div class="col-2"><img src="images/${user.imageUrl}" style="max-width: 130px;" class="img-fluid img-thumbnail rounded float-left" alt="Agent face"></div>
-                <div class="col-6"><p>${user.firstName}` + ' ' + `${user.lastName}</p><p>${user.email}</p><p>${user.phone}</p></div>`)}</div>              
+                <div class="col-6"><p>
+                ${user.firstName}` + ' ' + `${user.lastName}</p><p>
+                ${user.email}</p><p>
+                ${user.phone}</p>
+                ${user.region_names}</p>
+                </div>`)}</div>              
               </div>
               </div>
             </div>
