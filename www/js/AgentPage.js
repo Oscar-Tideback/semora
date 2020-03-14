@@ -10,8 +10,8 @@ class AgentPage extends Base {
     //send data sql;
     e.preventDefault();
     await sql(/*sql*/`
-      INSERT INTO potentialCustomer (name, email, phone, subject) 
-      VALUES($name, $email, $phone, $subject);
+      INSERT INTO potentialCustomer (name, email, phone, subject, agentContact) 
+      VALUES($name, $email, $phone, $subject, ${app.agentPage.targetBrokerId});
     `, data);
     this.sentForm = 'true';
     this.render();
