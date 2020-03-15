@@ -29,7 +29,7 @@ class App extends Base {
     this.missingPage = new MissingPage();
     this.integrityPage = new IntegrityPage();
     this.testPage = new TestPage({ realEstateId: '' });
-    this.agentPage = new AgentPage({ targetBrokerId: '1' });
+    this.agentPage = new AgentPage({ targetBrokerId: '21' });
     this.objectsPage = new ObjectsPage({ targetBostadId: '1' });
 
   }
