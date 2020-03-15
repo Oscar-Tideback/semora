@@ -4,7 +4,7 @@ class TestPage extends Base {
     this.checkboxes = document.getElementsByName('tenaryOption');
 
 
-    console.log(e.target.);
+    console.log(e.target);
 
     //e.target.attributes.reset.value ? console.log("reset was pressed") : '';
 
