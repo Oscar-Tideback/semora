@@ -25,7 +25,7 @@ class BuyerPageSearch extends Base {
 
   render() {
     return /*html*/`
-      < div class= "row m-0" route = "/buy-property" page - title="Testsida" >
+      <div class= "row m-0" route = "/buy-property" page - title="Testsida">
     <div class="col p-4">
 
       <div class="row p-2">
