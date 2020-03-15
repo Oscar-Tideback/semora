@@ -1,8 +1,9 @@
 // Cursor pointer on all elements with the click attribute
-[click]{ 
+[click] { 
   cursor: pointer;
 }
 
+// Nope. Don't want default checkboxes thank you very much!
 [type='checkbox'] {
   display: none; 
 }
@@ -65,12 +66,14 @@ border-bottom: 2px;
   right: 0px;
   color: rgb(255, 255, 255);
   position: absolute;
-  top: -150px;   // Adjust this accordingly depending on hero images pixel height
+  // Adjust this accordingly depending on hero images pixel height
+  top: -150px;
 
-  // No hamburger normal menu 
+  // Toggled no-hamburger menu 
   @media (min-width: 992px) {
     .icofont-search.navbar-search-icon {
-      color:#000;    // Adjust to other color (unused at this moment)
+      // Adjust to other color (unused at this moment)
+      color:#000;
     }
   }
 
@@ -86,6 +89,7 @@ border-bottom: 2px;
   span {
     font-size:40%;
   }
+
 }
 
 .navbar-custom {
@@ -98,8 +102,8 @@ border-bottom: 2px;
   font-family: Great Vibes; 
 }
 
-// Some carousel styling
-.carousel-relative-wrapper { // Floating elements wrapper/holder
+// Floating elements wrapper/holder
+.carousel-relative-wrapper {
   position: relative; 
   width: 50%;
   height:100%
@@ -129,16 +133,19 @@ border-bottom: 2px;
   background-image: url(/images/Semora_Orn_Bottom.png);
 }
 
-.carousel-caption {   // Override default bootstrap
+ // Override default bootstrap
+.carousel-caption {
   color: #000000;
   bottom: -25px;
 }
 
-.carousel-inner {   // Override default bootstrap
+// Override default bootstrap
+.carousel-inner {
   overflow: hidden;
 }
 
-.carousel-indicators {   // Override default bootstrap
+// Override default bootstrap
+.carousel-indicators {
   bottom: -60px;
 }
 
@@ -146,14 +153,15 @@ border-bottom: 2px;
   font-size: smaller;
 }
 
-.carousel-indicators li {   // Override default bootstrap
+// Override default bootstrap
+.carousel-indicators li {
 background-color: #000;
 }
 
 //@media (min-width: 576px) and (max-width: 992px) {
-  .estate-card {
-    width: 50rem;
-  }
+//  .estate-card {
+//    width: 50rem;
+//  }
 //}
 
 @media (min-width: 992px) {

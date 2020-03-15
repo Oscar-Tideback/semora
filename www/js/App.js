@@ -11,13 +11,12 @@ class App extends Base {
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       { label: 'Bostad info', route: '/real-estate-info' },
       { label: 'Om oss', route: '/about-us' },
-      { label: 'Rikards testsida', route: '/testpage' },
-
-      { label: '', route: '/integrity' }// This is so wrong, fix it asap
-
+      { label: '', route: '/integrity' } // This is so wrong, fix it asap
     ];
+
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.navBarSearch = new NavBarSearch();
+    this.buyerPageSearch = new BuyerPageSearch();
     this.heroSection = new HeroSection();
     this.footer = new Footer();
     this.startPage = new StartPage();
@@ -28,7 +27,6 @@ class App extends Base {
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
     this.integrityPage = new IntegrityPage();
-    this.testPage = new TestPage({ realEstateId: '' });
     this.agentPage = new AgentPage({ targetBrokerId: '21' });
     this.objectsPage = new ObjectsPage({ targetBostadId: '1' });
 
@@ -45,6 +43,7 @@ class App extends Base {
         </header>
         <main>
           ${this.startPage}
+          ${this.buyerPageSearch}
           ${this.buyerPage} 
           ${this.contactPage}
           ${this.agentsPage}
