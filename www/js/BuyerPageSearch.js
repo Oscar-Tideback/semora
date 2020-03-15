@@ -1,7 +1,7 @@
 class BuyerPageSearch extends Base {
 
   async mount() {
-    //this.regionSelect = await sql(/*sql*/`SELECT * FROM region`);
+    this.regionSelect = await sql(/*sql*/`SELECT * FROM region`);
   }
 
   // Tenary checkboxes behaviour. Sets true/false and active
