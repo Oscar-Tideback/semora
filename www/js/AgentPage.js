@@ -10,15 +10,15 @@ class AgentPage extends Base {
     //send data sql;
     e.preventDefault();
     await sql(/*sql*/`
-      INSERT INTO potentialCustomer (name, email, phone, subject) 
-      VALUES($name, $email, $phone, $subject);
+      INSERT INTO potentialCustomer (name, email, phone, subject, agentContact) 
+      VALUES($name, $email, $phone, $subject, ${app.agentPage.targetBrokerId});
     `, data);
     this.sentForm = 'true';
     this.render();
   }
 
   async makeSql() {
-    //De bubblar upp/fram?
+
     this.foundAgents = await sql(/*sql*/`
     SELECT user.firstName,  user.lastName,
     user.phone, user.email, user.description, user.imageUrl,
