@@ -5,7 +5,7 @@ class NavBarSearch extends Base {
     this.selected = -1;
   }
 
-  // Start of modified Thomas example-autocomplete
+  // Start of modified Thomas example-autocomplete --------------------------------
   clickKeyword(e) {
     this.foundKeywords = [];
     this.selected = -1;
@@ -49,13 +49,15 @@ class NavBarSearch extends Base {
 
     this.render();
   }
-  // End of modified Thomas example-autocomplete
+  // End of modified Thomas example-autocomplete --------------------------------
 
+  // Addition by Thomas
   preventPageReload(e) {
     // Do not perform a hard reload of the page when someone submits the form
     e && e.preventDefault();
   }
 
+  // Addition by Thomas. Unused but keep here anyway as referece
   //search() {
   //  document.querySelector('.nav-bar-search-input').value = this.chosen || '';
   //  app.goto('/buy-property');
@@ -72,7 +74,7 @@ class NavBarSearch extends Base {
   render() {
 
     return /*html*/`
-      <div class="search-in-hero-relative-wrapper pr-4">
+      <div class="search-in-hero-relative-wrapper pr-4" not-route="/testpage">
         <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch" submit="preventPageReload">
           <div class="input-group">
             <input type="text" class="form-control nav-bar-search-input rounded" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
@@ -84,9 +86,7 @@ class NavBarSearch extends Base {
               </div>
             `}
             <div class="input-group-btn">
-              <button class="btn btn-default pull-right" type="submit">
-                <i class="icofont-search icofont-lg navbar-search-icon"></i>
-              </button>
+              <button class="btn btn-default pull-right" type="submit"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
             </div>
           </div>
         </form>
