@@ -27,6 +27,12 @@ h1, h2, h3, h4, h5 {
   font-weight: 600;
 }
 
+@media (max-width: 992px) {
+  .start-page-title {
+    padding-top: 60px;
+  }
+}
+
 // Bootstrap container
 .main-wrapper {
   background-color: #fff;   // Page BG color
@@ -80,16 +86,21 @@ border-bottom: 2px;
   // Move searchform below navbar when toggled hamburger menu
   @media (max-width: 992px) {
     position: relative;
-    width: 100%;
+    width: 75%;
     top: 10px;
     left: 15px;
-    margin-bottom: 20px;
+    margin: 60px auto 0px auto;
   }
 
   span {
     font-size:40%;
   }
 
+}
+
+// Override default bootstrap
+.navbar-toggler {
+  border: 0px;
 }
 
 .navbar-custom {
@@ -116,12 +127,13 @@ border-bottom: 2px;
   right: -429px; 
   height: 200px;
   background-image: url(/images/Semora_Orn_Top.png);
+  background-repeat: no-repeat;
   z-index: 9991;
   text-align: center; 
 }
 
 .carousel-title-text {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .carousel-ornament-bottom {
@@ -131,12 +143,22 @@ border-bottom: 2px;
   right: -527px; 
   bottom: 0px; 
   background-image: url(/images/Semora_Orn_Bottom.png);
+  background-repeat: no-repeat;
+
+  @media (max-width: 768px) {
+    visibility: hidden;
+  }
 }
 
  // Override default bootstrap
 .carousel-caption {
   color: #000000;
   bottom: -25px;
+
+  @media (max-width: 768px) {
+    visibility: hidden;
+  }
+
 }
 
 // Override default bootstrap
@@ -158,23 +180,15 @@ border-bottom: 2px;
 background-color: #000;
 }
 
-//@media (min-width: 576px) and (max-width: 992px) {
+@media (max-width: 992px) {
   .estate-card {
-    width: 50rem;
+    width: 60rem;
   }
-//}
+}
 
 @media (min-width: 992px) {
   .estate-card {
     width: 18rem;
-  }
-}
-@media (max-width: 576px) {
-  .estate-card {
-    width: 60rem;
-  }
-  .carousel-ornament-bottom {
-  visibility: hidden;
   }
 }
 

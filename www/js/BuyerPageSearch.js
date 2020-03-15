@@ -1,7 +1,31 @@
 class BuyerPageSearch extends Base {
 
   async mount() {
-    this.regionSelect = await sql(/*sql*/`SELECT * FROM region`);
+    this.regionSelection = await sql(/*sql*/`SELECT * FROM region`);
+  }
+
+  search() {
+    // Formdata reference here: developer.mozilla.org/en-US/docs/Web/API/FormData
+    this.searchForm = document.getElementById('searchForm');
+    this.formData = new FormData(this.searchForm);
+
+    // Testing
+    //console.log(this.formData.get('inputField'));
+    //console.log(this.formData.get('regionselect'));
+    //console.log(this.formData.get('tenaryOption2') ? 'true' : 'false');
+    //console.log(this.formData.get('tenaryOption4') ? 'true' : 'false');
+    //console.log(this.formData.get('minrooms'));
+
+    // Display keys (iterator)
+    //for (let key of this.formData.keys()) {
+    //  console.log(key);
+    //}
+
+    // Display the values
+    for (let value of this.formData.values()) {
+      console.log(value);
+    }
+
   }
 
   // Tenary checkboxes behaviour. Sets true/false and active
@@ -9,7 +33,7 @@ class BuyerPageSearch extends Base {
     this.checkboxes = document.getElementsByName('tenaryOption');
     this.uncheckbox = document.getElementById('option1');
 
-    if (e.target.attributes.name.value === 'uncheck') {
+    if (e.target.attributes.name.value === 'checkall') {
       for (let box of this.checkboxes) {
         box.checked = false;
         box.parentElement.classList.remove('active');
@@ -20,6 +44,12 @@ class BuyerPageSearch extends Base {
       this.uncheckbox.parentElement.classList.remove('active');
     }
 
+  }
+
+  // Addition by Thomas
+  preventPageReload(e) {
+    // Do not perform a hard reload of the page when someone submits the form
+    e && e.preventDefault();
   }
 
 
@@ -34,8 +64,8 @@ class BuyerPageSearch extends Base {
             </div>
           </div>
 
-            <form id="regionf">
-            <div class="form-group">
+            <form id="searchForm"  submit="preventPageReload">
+            <div class="form-group p-4">
 
               <div class="row">
                 <div class="col">
@@ -45,19 +75,16 @@ class BuyerPageSearch extends Base {
 
               <div class="row pb-2">
                 <div class="col-md mt-4">
-                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller beskrivning..." id="keywordsInput" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
+                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="inputField" id="keywordsInput" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
                   </div>
                   <div class="col-auto mt-4">
                     <select class="form-control form-control-lg" id="region_select" name="regionselect">
                       <option value="0">Alla regioner</option>
-                      <option value="1">Region 1</option>
-                      <option value="2">Region 2</option>
-                      <option value="3">Region 3</option>
-                      <option value="4">Osv...</option>
+                      ${this.regionSelection.map(region => '<option value="' + region.id + '">' + region.regionName + '</option>')}
                     </select>
                   </div>
                   <div class="col-auto mt-4">
-                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" type="submit">Sök</button>
+                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" type="submit" click="search">Sök</button>
                   </div>
                 </div>
 
@@ -68,31 +95,31 @@ class BuyerPageSearch extends Base {
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="uncheck"><input type="checkbox" name="tenaryOption" id="option1">Alla typer</label>
+                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="checkall"><input type="checkbox" name="tenaryOption1" id="option1" checked>Alla typer</label>
                         </div>
                           <div class="col px-1 mx-0">
-                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option2">Villor</label>
+                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption2" id="option2">Villor</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option3">Radhus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption3" id="option3">Radhus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option4">Lägenheter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption4" id="option4">Lägenheter</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option5">Fritidshus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption5" id="option5">Fritidshus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option6">Gårdar</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption6" id="option6">Gårdar</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option7">Tomter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption7" id="option7">Tomter</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option8">Övriga</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption8" id="option8">Övriga</label>
                         </div>
                       </div>
 

@@ -33,7 +33,7 @@ class StartPage extends Base {
   render() {
     return /*html*/`
       <div class="row m-0 pt-4" route="/" page-title="Startsida">
-        <div class="col-12 p-0">
+        <div class="col-12 pl-0 pr-0 pb-0 mt-4">
 
           <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -44,7 +44,7 @@ class StartPage extends Base {
             <div class="carousel-inner">
 
               <div class="carousel-relative-wrapper">
-                <div class="carousel-title-container"><h2 class="carousel-title-text">Budgivning pågår</h2></div>
+                <div class="carousel-title-container"><h2 class="carousel-title-text">Pågående budgivning</h2></div>
               </div>
 
               ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
