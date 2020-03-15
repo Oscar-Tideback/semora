@@ -43,7 +43,6 @@ class App extends Base {
         </header>
         <main>
           ${this.startPage}
-          ${this.buyerPageSearch}
           ${this.buyerPage} 
           ${this.contactPage}
           ${this.agentsPage}
