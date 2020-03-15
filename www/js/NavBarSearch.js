@@ -38,7 +38,7 @@ class NavBarSearch extends Base {
     this.selected = 0;
 
     // Autocomplete region
-    //this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`SELECT regionName FROM region WHERE region.regionName LIKE $text`, { text: e.target.value + '%' });
+    this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`SELECT regionName FROM region WHERE region.regionName LIKE $text`, { text: e.target.value + '%' });
 
     // Dev in progress: Autocomplete region with object count per region. Freetext search in description etc. but only add results to count per region 
     //this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`

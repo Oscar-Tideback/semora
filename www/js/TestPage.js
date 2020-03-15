@@ -39,7 +39,7 @@ class TestPage extends Base {
               </div>
             </div>
 
-            <div class="row">
+            <div class="row pb-2">
               <div class="col-md mt-4">
                 <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller beskrivning..." id="keywordsInput" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
               </div>
@@ -59,7 +59,7 @@ class TestPage extends Base {
 
             <hr>
 
-            <div class="row-auto m-2">
+            <div class="row-auto pt-2">
               <div class="btn-group-toggle" data-toggle="buttons">
 
                 <div class="row">
