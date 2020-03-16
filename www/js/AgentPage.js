@@ -27,7 +27,8 @@ class AgentPage extends Base {
     ON user.id = userXregion.userId, 
     region ON region.id = userXregion.regionId
     WHERE user.isAgent = 'true'
-    AND user.id = 1 --${app.agentPage.targetBrokerId}
+    AND user.id = '${app.agentPage.targetBrokerId}'
+    
     GROUP BY user.id
   `);
     this.render();

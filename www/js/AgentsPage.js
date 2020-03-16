@@ -4,7 +4,7 @@ class AgentsPage extends Base {
 
     // This sql question is not right at all.
     this.foundAgents = await sql(/*sql*/`
-    SELECT user.firstName,  user.lastName,
+    SELECT user.firstName,  user.lastName, user.id,
     user.phone, user.email, user.description, user.imageUrl,
     GROUP_CONCAT(region.regionName,', ') region_names
     FROM userXregion 
