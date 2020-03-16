@@ -14,22 +14,15 @@ class StartPage extends Base {
         realEstateInfo, 
         userXregion ON realEstateInfo.userId = userXregion.userId, 
         region ON region.id = userXregion.regionId,
-        realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id,
         realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
-        areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+        areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
+        realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
       WHERE imgUrl LIKE '%img01%'
       ORDER BY RANDOM() LIMIT $showThisMany
     `, { showThisMany: this.showThisMany });
 
     //console.log(this.realEstateData);
   }
-
-  refreshBostad(e) {
-    //app.objectsPage.targetBostadId = e.target.attributes.targetbostadid.value;
-    //app.objectsPage.makeSql();
-    //app.goto('/real-estate-info/' + e.target.attributes.targetbostadid.value);
-  }
-
 
   render() {
     return /*html*/`

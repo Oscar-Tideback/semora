@@ -29,6 +29,7 @@ class App extends Base {
     this.agentPage = new AgentPage({ targetBrokerId: '21' });
     this.objectPage = new ObjectPage();
 
+    // SQL query must result in 20 object with unique id. No duplicates!
     this.allObjectPages = await sql(ObjectPage, /*sql*/`
       SELECT * FROM realEstateInfo, realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id, areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
     `);

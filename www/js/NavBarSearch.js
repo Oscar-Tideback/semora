@@ -10,7 +10,7 @@ class NavBarSearch extends Base {
     this.foundKeywords = [];
     this.selected = -1;
     this.chosen = e.target.innerText;
-    this.search();
+    this.doSearch();
     this.render();
   }
   selectWithUpDownArrows(e) {
@@ -63,7 +63,8 @@ class NavBarSearch extends Base {
   //  app.buyerPage.search(this.chosen);
   //}
 
-  search() {
+  // Not implemented yet
+  doSearch() {
     //app.buyerPage.region = this.chosen;
     //app.buyerPage.search();
     //app.goto('/buy-property');
