@@ -16,8 +16,8 @@ class ObjectPage extends Base {
                                     <div class="card-body">
                                         <div class="card-text">
                                             <strong>
-                                            <h1>${this.streetName} ${this.streetNumber}, ${this.floor} tr</h1><br>
-                                            ${this.areaName}<br>
+                                            <h1>${this.streetName} ${this.streetNumber}, ${this.floor} tr</h1>
+                                            ${this.areaName}, ${this.regionName}<br>
                                             Antal rum: ${this.rooms}<br>
                                             Boarea: ${this.area} m²<br>
                                             Pris: ${this.price} kr<br>
