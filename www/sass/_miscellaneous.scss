@@ -35,7 +35,8 @@ h1, h2, h3, h4, h5 {
 
 // Bootstrap container
 .main-wrapper {
-  background-color: #fff;   // Page BG color
+  // Page main BG color
+  background-color: #fff;
 }
 
 // Bootstrap container to full width when toggled hamburger menu
@@ -55,7 +56,7 @@ border-bottom: 2px;
   position: absolute;
   font-family: Great Vibes; 
   font-weight: 500;
-  font-size: 60px;   // Setting stativ size
+  font-size: 60px;   // Setting static size
   top: 20px;
   margin-left: 20px;
 }
@@ -65,7 +66,7 @@ border-bottom: 2px;
   position: relative;
 }
 
-// Some styling and media toggle for the searchfield and button in navbar
+// Styling and media toggle for the navbar searchfield and button in navbar
 .search-in-hero {
   width: 40%;
   top: 8px;
@@ -75,14 +76,6 @@ border-bottom: 2px;
   // Adjust this accordingly depending on hero images pixel height
   top: -150px;
 
-  // Toggled no-hamburger menu 
-  @media (min-width: 992px) {
-    .icofont-search.navbar-search-icon {
-      // Adjust to other color (unused at this moment)
-      color:#000;
-    }
-  }
-
   // Move searchform below navbar when toggled hamburger menu
   @media (max-width: 992px) {
     position: relative;
@@ -91,7 +84,15 @@ border-bottom: 2px;
     left: 15px;
     margin: 60px auto 0px auto;
   }
+  // Inherit/nested. Toggled no-hamburger menu 
+  @media (min-width: 992px) {
+    .icofont-search.navbar-search-icon {
+      // Adjust to other color (unused at this moment)
+      color:#000;
+    }
+  }
 
+  // Inherit/nested
   span {
     font-size:40%;
   }
@@ -120,7 +121,7 @@ border-bottom: 2px;
   height:100%
 }
 
-// Wrapper. Ugly fix for centering. Bootstrap might have premade solution. Check all wrappers later on /Rikard
+// Wrapper. Ugly fix for centering. Bootstrap might have premade solution. Check all wrappers later on...
 .carousel-title-container {
   position: absolute; 
   width: 858px; 

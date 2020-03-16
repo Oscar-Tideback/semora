@@ -20,8 +20,8 @@ class BuyerPage extends Base {
                 ${this.searchResult.map(obj => /*html*/`
                   <div class="col d-flex justify-content-center">
                     <div class="card my-4 estate-card">
-                      <a href="/real-estate-info/${obj.Id}" click="refreshBostad" objectid="${obj.Id}">
-                      <img src="images/${obj.imgUrl}" targetbostadid="${obj.Id}" class="img-fluid img-thumbnail" alt="Bostad picture"></a>
+                      <a href="/real-estate-info/${obj.Id}" objectid="${obj.Id}">
+                      <img src="images/${obj.imgUrl}" targetbostadid="${obj.Id}" class="card-img-top" alt="Bostad picture"></a>
                       <div class="card-body">
                         <p class="card-text">
                           <div>

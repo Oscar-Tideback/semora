@@ -27,7 +27,7 @@ class StartPage extends Base {
   refreshBostad(e) {
     //app.objectsPage.targetBostadId = e.target.attributes.targetbostadid.value;
     //app.objectsPage.makeSql();
-    app.goto('/real-estate-info/' + e.target.attributes.targetbostadid.value);
+    //app.goto('/real-estate-info/' + e.target.attributes.targetbostadid.value);
   }
 
 
@@ -50,7 +50,7 @@ class StartPage extends Base {
 
               ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
                 <div class="carousel-item ${index > 0 ? '' : 'active'}" data-interval="5000">
-                  <a href="/real-estate-info" click="refreshBostad" targetbostadid="${obj.id}"><img src="images/${obj.imgUrl}" class="d-block w-100" alt="..." targetbostadid="${obj.id}"></a>
+                  <a href="/real-estate-info/${obj.id}" targetbostadid="${obj.id}"><img src="images/${obj.imgUrl}" class="d-block w-100" alt="..." targetbostadid="${obj.id}"></a>
 
                   <div class="carousel-relative-wrapper">
                     <div class="carousel-ornament-bottom"></div>
@@ -102,7 +102,8 @@ class StartPage extends Base {
               ${this.realEstateData.map((obj, index) => (index >= this.listingStart ? /*html*/`
                 <div class="col d-flex justify-content-center">
                     <div class="card my-4 estate-card">
-                      <a href="/real-estate-info" click="refreshBostad">
+                      <!-- Current SQL query join gives realEstateInfo.id instead of realEstateInfo.Id -->
+                      <a href="/real-estate-info/${obj.id}">
                         <img src="images/${obj.imgUrl}" class="card-img-top" alt="..." targetbostadid="${obj.id}">
                       </a>
                       <div class="card-body">
