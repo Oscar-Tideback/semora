@@ -1,11 +1,5 @@
 class BuyerPage extends Base {
 
-  refreshObjectPage(e) {
-    app.objectsPage.targetObjectdId = e.target.attributes.objectid.value;
-    app.objectsPage.makeSql();
-  }
-
-
   render() {
     console.log("RENDERING", this.searchResult)
     return /*html*/`

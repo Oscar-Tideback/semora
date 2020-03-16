@@ -64,9 +64,9 @@ class NavBarSearch extends Base {
   //}
 
   search() {
-    app.buyerPage.region = this.chosen;
-    app.buyerPage.search();
-    app.goto('/buy-property');
+    //app.buyerPage.region = this.chosen;
+    //app.buyerPage.search();
+    //app.goto('/buy-property');
   }
 
 
