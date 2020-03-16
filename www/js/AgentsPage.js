@@ -4,13 +4,14 @@ class AgentsPage extends Base {
 
     // This sql question is not right at all.
     this.foundAgents = await sql(/*sql*/`
-    SELECT user.id, user.firstName,  user.lastName,
-    user.phone, user.email, user.imageUrl, region.regionName
-    FROM user, userXregion, userType 
-    ON user.id = userXregion.userId, region
-    ON userType.userId = region.id 
+    SELECT user.firstName,  user.lastName,
+    user.phone, user.email, user.description, user.imageUrl,
+    GROUP_CONCAT(region.regionName,', ') region_names
+    FROM userXregion 
+    INNER JOIN user ON user.id = userXregion.userId, 
+    region ON region.id = userXregion.regionId
     WHERE user.isAgent = 'true'
-
+    GROUP BY user.id
     `);
 
 
@@ -41,7 +42,7 @@ class AgentsPage extends Base {
                     ${user.lastName}</a><p>                  
                     ${user.email}<br>
                     ${user.phone}</p>
-                    ${user.regionName}<br>
+                    ${user.region_names}<br>
                   </div >
                 `)}
                 </div>              
