@@ -36,8 +36,7 @@ class App extends Base {
         userXregion ON realEstateInfo.userId = userXregion.userId, 
         region ON region.id = userXregion.regionId,
         realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
-        areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
-        realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
+        areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
     `);
 
   }
