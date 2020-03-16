@@ -17,8 +17,11 @@ class AgentPage extends Base {
     this.render();
   }
 
-  async makeSql() {
+  regExPhone(number) {
+    return number.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  }
 
+  async makeSql() {
     this.foundAgents = await sql(/*sql*/`
     SELECT user.firstName,  user.lastName,
     user.phone, user.email, user.description, user.imageUrl,
@@ -54,7 +57,7 @@ class AgentPage extends Base {
                       <div class="col-3"><p>
                         ${user.firstName}` + ' ' + `${user.lastName}</p><p>
                         ${user.email}</p><p>
-                        ${user.phone}</p>
+                        ${user.phone.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}</p>
                         ${user.region_names}</p>
                         </div>
                     `)}
