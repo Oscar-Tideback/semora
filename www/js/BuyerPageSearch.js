@@ -1,31 +1,75 @@
 class BuyerPageSearch extends Base {
 
   async mount() {
+    this.foundObjects = [];
+
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region`);
+
+    // this.userChoices = {
+    // should contain min max price, min max kvm, region etc
+    //    region: '',
+    // minKvm: 0, maxKvm: 150
+    // }
+
+    await this.doSearch();
   }
 
+
+
   // On submit (click) from search form
-  search() {
+  async fetchForm() {
+
+    // Test
+    //this.maxKvm = 111;
+
     // Formdata reference here: developer.mozilla.org/en-US/docs/Web/API/FormData
     this.searchForm = document.getElementById('searchForm');
     this.formData = new FormData(this.searchForm);
 
-    // Testing
+    // Testing retrieving form data
     //console.log(this.formData.get('inputField'));
     //console.log(this.formData.get('regionselect'));
     //console.log(this.formData.get('tenaryOption2') ? 'true' : 'false');
     //console.log(this.formData.get('tenaryOption4') ? 'true' : 'false');
     //console.log(this.formData.get('minrooms'));
 
-    // Display keys (iterator)
+    // Display keys (iterator) of form elements
     //for (let key of this.formData.keys()) {
     //  console.log(key);
     //}
 
-    // Display the values
+    // Display the value of form element keys
     for (let value of this.formData.values()) {
       console.log(value);
     }
+  }
+
+  async doSearch() {
+    // If called from NavBarSearch we will get a region
+    // otherwise set region to empty strings
+
+    // Test
+    //this.maxKvm = 111;
+
+    this.foundObjects = await sql(/*sql*/`
+      SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, 
+      realEstateInfo.buildYear, realEstateInfo.maintenanceCost,
+      realEstateInfo.tenure, realEstateInfo.price, realEstateInfo.floor,
+      realEstateImages.realEstateInfoId, realEstateImages.imgUrl,
+      region.regionName, realEstateAddress.streetName, realEstateAddress.streetNumber
+      FROM  realEstateInfo, realEstateImages, region, userXRegion, realEstateAddress
+      WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId
+      AND realEstateAddress.realEstateId = realEstateInfo.Id
+      AND userXRegion.regionId = region.id 
+      AND userXregion.userId = realEstateInfo.userId
+      AND realEstateImages.imgUrl LIKE '%img01%'
+      AND (region.regionName = $region OR $region = '')
+      
+    `, { $region: this.region });
+    // AND region.area > $minKvm
+
+    // Refresh result page (BuyerPage)
+    app.buyerPage.render();
 
   }
 
@@ -85,7 +129,7 @@ class BuyerPageSearch extends Base {
                     </select>
                   </div>
                   <div class="col-auto mt-4">
-                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" type="submit" click="search">Sök</button>
+                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" type="submit" click="fetchForm">Sök</button>
                   </div>
                 </div>
 
