@@ -69,7 +69,7 @@ class MapsPage extends Base {
                       <div class="md-form">
                         <i class="fas fa-user prefix grey-text"></i>
                         <label>Namn:</label>
-                        <input name="name" type="name" class="form-control">         
+                        <input name="name" type="text" class="form-control">         
                       </div>
                       <div class="md-form">
                         <i class="fas fa-envelope prefix grey-text"></i>
@@ -79,12 +79,12 @@ class MapsPage extends Base {
                       <div class="md-form">
                       <i class="fas fa-envelope prefix grey-text"></i>
                       <label>Telefon:</label>
-                      <input name="phone" type="phone" class="form-control">
+                      <input name="phone" type="number" class="form-control">
                     </div>
                       <div class="md-form">
                         <i class="fas fa-tag prefix grey-text"></i>
                         <label>Ditt ärende:</label>
-                        <textarea name="subject" type="subject" class="form-control md-textarea" rows="3"></textarea>
+                        <textarea name="subject" type="text" class="form-control md-textarea" rows="3"></textarea>
                       </div>
                       <div class="text-center mt-4">
                         <button type="submit"  class="btn border btn-light-blue" value="Send">Skicka</button>
