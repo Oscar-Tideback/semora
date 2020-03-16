@@ -23,19 +23,19 @@ class BuyerPage extends Base {
               </div>
               
                 <div class="row">
-                ${this.searchResult.map(realEstateInfo => /*html*/`
+                ${this.searchResult.map(obj => /*html*/`
                   <div class="col d-flex justify-content-center">
                     <div class="card my-4 estate-card">
-                      <a href="/real-estate-info" click="refreshBostad" objectid="${realEstateInfo.Id}">
-                      <img src="images/${realEstateInfo.imgUrl}" targetbostadid="${realEstateInfo.Id}" class="img-fluid img-thumbnail" alt="Bostad picture"></a>
+                      <a href="/real-estate-info/${obj.Id}" click="refreshBostad" objectid="${obj.Id}">
+                      <img src="images/${obj.imgUrl}" targetbostadid="${obj.Id}" class="img-fluid img-thumbnail" alt="Bostad picture"></a>
                       <div class="card-body">
                         <p class="card-text">
                           <div>
-                            ${realEstateInfo.streetName} ${realEstateInfo.streetNumber.toUpperCase()}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
-                            ${realEstateInfo.rooms} rum<br>
-                            Pris: ${realEstateInfo.price} kr<br>
-                            Område: ${realEstateInfo.area}<br>
-                            Region: ${realEstateInfo.regionName}
+                            ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
+                            ${obj.rooms} rum<br>
+                            Pris: ${obj.price} kr<br>
+                            Område: ${obj.area}<br>
+                            Region: ${obj.regionName}
                           </div>
                         </p>
                       </div>

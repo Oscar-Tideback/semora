@@ -27,7 +27,11 @@ class App extends Base {
     this.missingPage = new MissingPage();
     this.integrityPage = new IntegrityPage();
     this.agentPage = new AgentPage({ targetBrokerId: '21' });
-    this.objectsPage = new ObjectsPage({ targetObjectId: '1' });
+    this.objectPage = new ObjectPage();
+
+    this.allObjectPages = await sql(ObjectPage, /*sql*/`
+      SELECT * FROM realEstateInfo, realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id, areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+    `);
 
   }
 
@@ -46,7 +50,7 @@ class App extends Base {
           ${this.buyerPage} 
           ${this.contactPage}
           ${this.agentsPage}
-          ${this.objectsPage}
+          ${this.allObjectPages}
           ${this.mapsPage}
           ${this.aboutUsPage}
           ${this.missingPage}

@@ -25,8 +25,9 @@ class StartPage extends Base {
   }
 
   refreshBostad(e) {
-    app.objectsPage.targetBostadId = e.target.attributes.targetbostadid.value;
-    app.objectsPage.makeSql();
+    //app.objectsPage.targetBostadId = e.target.attributes.targetbostadid.value;
+    //app.objectsPage.makeSql();
+    app.goto('/real-estate-info/' + e.target.attributes.targetbostadid.value);
   }
 
 
@@ -80,6 +81,7 @@ class StartPage extends Base {
               <div class="col">
                 <h2 class="pb-4">Våra tjänster hjälper dig att köpa tryggt</h2>
                 <p>
+                  <a href="/real-estate-info/10">testlänk</a>
                   Att köpa bostad är förknippat med en hel del känslor. Förväntan och entusiasm, men också tvivel och nervositet. 
                   Ibland känns det som att man skulle behöva vara både ekonom, jurist och byggnadsingenjör för att kunna fatta de viktiga besluten.
                   För att göra allt lite enklare för dig som ska byta bostad, har vi en rad tjänster och verktyg som hjälper dig både att hitta

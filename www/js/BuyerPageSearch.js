@@ -1,6 +1,7 @@
 class BuyerPageSearch extends Base {
 
   async mount() {
+    // Populate region-dropdown
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region`);
 
     // this.userChoices = {
@@ -14,7 +15,7 @@ class BuyerPageSearch extends Base {
 
 
 
-  // On submit (click) from search form
+  // On submit (click) from search form. fetchForm() cannot be async at this moment
   fetchForm() {
 
     // Test
@@ -89,6 +90,7 @@ class BuyerPageSearch extends Base {
 
   }
 
+
   // Addition by Thomas
   preventPageReload(e) {
     // Do not perform a hard reload of the page when someone submits the form
@@ -138,31 +140,31 @@ class BuyerPageSearch extends Base {
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="tenaryOption1" id="option1" checked>Alla typer</label>
+                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="tenaryOption" id="option1" checked>Alla typer</label>
                         </div>
                           <div class="col px-1 mx-0">
-                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption2" id="option2">Villor</label>
+                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option2">Villor</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption3" id="option3">Radhus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option3">Radhus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption4" id="option4">Lägenheter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option4">Lägenheter</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption5" id="option5">Fritidshus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option5">Fritidshus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption6" id="option6">Gårdar</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option6">Gårdar</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption7" id="option7">Tomter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option7">Tomter</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption8" id="option8">Övriga</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option8">Övriga</label>
                         </div>
                       </div>
 
