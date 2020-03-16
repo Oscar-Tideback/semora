@@ -94,38 +94,41 @@ class BuyerPage extends Base {
               <div class="row">
                 
                 <div class="col-8">
-                <h1>Bostäder till salu just nu... </h1>                
-                </div >
-              </div >
-  <div class="row">
-    ${this.foundBostads.map(realEstateInfo => /*html*/`
-                <div class="col d-flex justify-content-center">
-                <div class="card my-4 estate-card">
-                  <a href="/real-estate-info" click="refreshBostad" targetbostadid="${realEstateInfo.Id}"><img
-                      src="images/${realEstateInfo.imgUrl}" targetbostadid="${realEstateInfo.Id}" class="img-fluid img-thumbnail"
-                      alt="Bostad picture"></a>
-                  <div class="card-body">
-                  <p class="card-text">
-                    <div>
-                      ${realEstateInfo.streetName} ${realEstateInfo.streetNumber.toUpperCase()}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
-                      ${realEstateInfo.rooms} rum<br>
-                      Pris: ${realEstateInfo.price} kr<br>
-                      Område: ${realEstateInfo.area}<br>
-                      Region: ${realEstateInfo.regionName}
-                    </div>
-                  </p>
+                  <h1>Bostäder till salu just nu... </h1>                
+                </div>
+
+              </div>
+              
+                <div class="row">
+                ${this.foundBostads.map(realEstateInfo => /*html*/`
+                  <div class="col d-flex justify-content-center">
+                    <div class="card my-4 estate-card">
+                      <a href="/real-estate-info" click="refreshBostad" targetbostadid="${realEstateInfo.Id}">
+                      <img src="images/${realEstateInfo.imgUrl}" targetbostadid="${realEstateInfo.Id}" class="img-fluid img-thumbnail" alt="Bostad picture"></a>
+                      <div class="card-body">
+                        <p class="card-text">
+                          <div>
+                            ${realEstateInfo.streetName} ${realEstateInfo.streetNumber.toUpperCase()}${realEstateInfo.floor === null ? '' : ' (' + realEstateInfo.floor + ' tr)'}<br>
+                            ${realEstateInfo.rooms} rum<br>
+                            Pris: ${realEstateInfo.price} kr<br>
+                            Område: ${realEstateInfo.area}<br>
+                            Region: ${realEstateInfo.regionName}
+                          </div>
+                        </p>
+                      </div>
                   </div>
                 </div>
-                </div>
-                  `)}
-  </div>              
-                </div >
-              </div >
+                `)}
+                </div>   
+
+              </div>
+            </div>
               
-            </div >
-          </div >
-        </div >
-      </div >
+            </div>
+
+          </div>
+        </div>
+      </div>
   `;
   }
 }
