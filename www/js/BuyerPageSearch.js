@@ -1,8 +1,6 @@
 class BuyerPageSearch extends Base {
 
   async mount() {
-    this.foundObjects = [];
-
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region`);
 
     // this.userChoices = {
@@ -17,7 +15,7 @@ class BuyerPageSearch extends Base {
 
 
   // On submit (click) from search form
-  async fetchForm() {
+  fetchForm() {
 
     // Test
     //this.maxKvm = 111;
@@ -51,7 +49,7 @@ class BuyerPageSearch extends Base {
     // Test
     //this.maxKvm = 111;
 
-    this.foundObjects = await sql(/*sql*/`
+    app.buyerPage.searchResult = await sql(/*sql*/`
       SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, 
       realEstateInfo.buildYear, realEstateInfo.maintenanceCost,
       realEstateInfo.tenure, realEstateInfo.price, realEstateInfo.floor,

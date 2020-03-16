@@ -1,18 +1,13 @@
 class BuyerPage extends Base {
 
-  async mount() {
-    this.foundObjects = [];
-  }
-
-
   refreshObjectPage(e) {
-    app.objectsPage.targetBostadId = e.target.attributes.targetbostadid.value;
+    app.objectsPage.targetObjectdId = e.target.attributes.objectid.value;
     app.objectsPage.makeSql();
   }
 
 
   render() {
-    console.log("RENDERING", app.buyerPage.foundObjects)
+    console.log("RENDERING", this.searchResult)
     return /*html*/`
       <div class="row m-0" route="/buy-property" page-title="Dhyr & Rumson - Våra Bostad">  
         <div class="container my-4"> 
@@ -28,10 +23,10 @@ class BuyerPage extends Base {
               </div>
               
                 <div class="row">
-                ${app.buyerPage.foundObjects.map(realEstateInfo => /*html*/`
+                ${this.searchResult.map(realEstateInfo => /*html*/`
                   <div class="col d-flex justify-content-center">
                     <div class="card my-4 estate-card">
-                      <a href="/real-estate-info" click="refreshBostad" targetbostadid="${realEstateInfo.Id}">
+                      <a href="/real-estate-info" click="refreshBostad" objectid="${realEstateInfo.Id}">
                       <img src="images/${realEstateInfo.imgUrl}" targetbostadid="${realEstateInfo.Id}" class="img-fluid img-thumbnail" alt="Bostad picture"></a>
                       <div class="card-body">
                         <p class="card-text">

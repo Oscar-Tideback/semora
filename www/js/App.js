@@ -15,11 +15,11 @@ class App extends Base {
 
     this.navBar = new NavBar({ links: this.navBarLinks });
     this.navBarSearch = new NavBarSearch();
-    this.buyerPageSearch = new BuyerPageSearch();
     this.heroSection = new HeroSection();
     this.footer = new Footer();
     this.startPage = new StartPage();
-    this.buyerPage = new BuyerPage({ region: '', maxKvm: '', minKvm: '' });
+    this.buyerPage = new BuyerPage({ searchResult: [] });
+    this.buyerPageSearch = new BuyerPageSearch({ region: '', maxKvm: '', minKvm: '' });
     this.contactPage = new ContactPage();
     this.agentsPage = new AgentsPage();
     this.mapsPage = new MapsPage();
@@ -27,7 +27,7 @@ class App extends Base {
     this.missingPage = new MissingPage();
     this.integrityPage = new IntegrityPage();
     this.agentPage = new AgentPage({ targetBrokerId: '21' });
-    this.objectsPage = new ObjectsPage({ targetBostadId: '1' });
+    this.objectsPage = new ObjectsPage({ targetObjectId: '1' });
 
   }
 

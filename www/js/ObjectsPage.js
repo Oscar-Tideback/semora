@@ -20,7 +20,7 @@ class ObjectsPage extends Base {
             AND realEstateImages.realEstateInfoId = $target
             AND realEstateAddress.realEstateId = $target 
             AND realEstateImages.imgUrl LIKE '%img01%'
-        `, { target: this.targetBostadId });
+        `, { target: this.targetObjectId });
 
         this.render();
 
@@ -28,7 +28,7 @@ class ObjectsPage extends Base {
 
     }
 
-    //Html nedan för layout och design targetBostadId
+    //Html nedan för layout och design targetObjectId
     render() {
         return /*html*/`
             <div class= "row m-0" route="/real-estate-info" page-title="Bostad info">
@@ -56,19 +56,19 @@ class ObjectsPage extends Base {
                                                 ${realEstateInfo.description} <div><br>
                                             </div>   
                                             `)}
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img02.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img03.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img04.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img05.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img06.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img07.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img08.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img09.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img10.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img11.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img12.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img13.jpg"><br>
-                                            <img class="d-block w-100" src="images/${this.targetBostadId}/img14.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img02.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img03.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img04.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img05.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img06.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img07.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img08.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img09.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img10.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img11.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img12.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img13.jpg"><br>
+                                            <img class="d-block w-100" src="images/${this.targetObjectId}/img14.jpg"><br>
                                         </div>
                                     </div>
                                 </div>
