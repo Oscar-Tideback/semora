@@ -17,9 +17,6 @@ class AgentPage extends Base {
     this.render();
   }
 
-  regExPhone(number) {
-    return number.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  }
 
   async makeSql() {
     this.foundAgents = await sql(/*sql*/`
