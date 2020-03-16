@@ -105,7 +105,7 @@ class StartPage extends Base {
                             ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
                             ${obj.areaName}, ${obj.regionName}<br>
                             ${obj.rooms} rum, ${obj.area} m²<br>
-                            ${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')} kr
+                            ${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr
                           </a>
                         </p>
                       </div>
