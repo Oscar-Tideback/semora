@@ -52,7 +52,7 @@ class StartPage extends Base {
                   <div class="carousel-caption d-none d-sm-block">
                     <h3 class="carousel-title-caption">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ', <span class="carouselAdj">' + obj.floor + ' tr'}</span></h3>
                     ${obj.areaName}, ${obj.regionName}<br>
-                    ${obj.rooms} rum, ${obj.area} m², ${obj.price} kr
+                    ${obj.rooms} rum, ${obj.area} m², ${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr
                   </div>
                 </div>
               ` : ''))}
