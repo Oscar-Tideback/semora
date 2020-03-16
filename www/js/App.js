@@ -9,7 +9,7 @@ class App extends Base {
       //{ label: 'En bostad', route: '/real-estate-info' },
       { label: 'Sälja bostad', route: '/our-regions' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
-      { label: 'Bostad info', route: '/real-estate-info' },
+      { label: 'Bostad info', route: '/real-estate-info/8' },
       { label: 'Om oss', route: '/about-us' },
     ];
 
