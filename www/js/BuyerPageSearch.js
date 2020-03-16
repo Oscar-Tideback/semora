@@ -4,6 +4,7 @@ class BuyerPageSearch extends Base {
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region`);
   }
 
+  // On submit (click) from search form
   search() {
     // Formdata reference here: developer.mozilla.org/en-US/docs/Web/API/FormData
     this.searchForm = document.getElementById('searchForm');
@@ -28,12 +29,12 @@ class BuyerPageSearch extends Base {
 
   }
 
-  // Tenary checkboxes behaviour. Sets true/false and active
+  // Real estate renary checkboxes behaviour. Sets true/false and active
   checkBoxes(e) {
     this.checkboxes = document.getElementsByName('tenaryOption');
     this.uncheckbox = document.getElementById('option1');
 
-    if (e.target.attributes.name.value === 'checkall') {
+    if (e.target.attributes.name.value === 'showall') {
       for (let box of this.checkboxes) {
         box.checked = false;
         box.parentElement.classList.remove('active');
@@ -95,7 +96,7 @@ class BuyerPageSearch extends Base {
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="checkall"><input type="checkbox" name="tenaryOption1" id="option1" checked>Alla typer</label>
+                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="tenaryOption1" id="option1" checked>Alla typer</label>
                         </div>
                           <div class="col px-1 mx-0">
                             <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption2" id="option2">Villor</label>
