@@ -29,7 +29,7 @@ class App extends Base {
     this.agentPage = new AgentPage({ targetBrokerId: '21' });
     this.objectPage = new ObjectPage();
 
-    // SQL query must result in 20 objects with unique id. No duplicates!
+    // SQL query must result in 20 objects with unique id for unique routes. No duplicates!
     this.allObjectPages = await sql(ObjectPage, /*sql*/`
      SELECT * FROM 
         realEstateInfo, 

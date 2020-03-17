@@ -4,73 +4,43 @@ class BuyerPageSearch extends Base {
     // Populate region-dropdown
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region`);
 
-    // this.userChoices = {
-    // should contain min max price, min max kvm, region etc
-    //    region: '',
-    // minKvm: 0, maxKvm: 150
-    // }
-
-    await this.doSearch();
+    //await this.doSearch();
   }
 
 
+  async doSearch(e) {
 
-  // On submit (click) from search form. fetchForm() cannot be async at this moment
-  fetchForm() {
+    let data = {};
 
-    // Test
-    //this.maxKvm = 111;
-
-    // Formdata reference here: developer.mozilla.org/en-US/docs/Web/API/FormData
-    this.searchForm = document.getElementById('searchForm');
-    this.formData = new FormData(this.searchForm);
-
-    // Testing retrieving form data
-    //console.log(this.formData.get('inputField'));
-    //console.log(this.formData.get('regionselect'));
-    //console.log(this.formData.get('tenaryOption2') ? 'true' : 'false');
-    //console.log(this.formData.get('tenaryOption4') ? 'true' : 'false');
-    //console.log(this.formData.get('minrooms'));
-
-    // Display keys (iterator) of form elements
-    //for (let key of this.formData.keys()) {
-    //  console.log(key);
-    //}
-
-    // Display the value of form element keys
-    for (let value of this.formData.values()) {
-      console.log(value);
+    // Loop through the form and collect the input
+    for (let element of [...e.target.closest('form').elements]) {
+      if (!element.name) { continue; }
+      data[element.name] = element.value;
     }
-  }
 
-  async doSearch() {
-    // If called from NavBarSearch we will get a region
-    // otherwise set region to empty strings
+    //e.preventDefault();
 
-    // Test
-    //this.maxKvm = 111;
+    console.log(data.maxprice);
 
-    app.buyerPage.searchResult = await sql(/*sql*/`
-      SELECT realEstateInfo.Id, realEstateInfo.area, realEstateInfo.rooms, 
-      realEstateInfo.buildYear, realEstateInfo.maintenanceCost,
-      realEstateInfo.tenure, realEstateInfo.price, realEstateInfo.floor,
-      realEstateImages.realEstateInfoId, realEstateImages.imgUrl,
-      region.regionName, realEstateAddress.streetName, realEstateAddress.streetNumber
-      FROM  realEstateInfo, realEstateImages, region, userXRegion, realEstateAddress
-      WHERE realEstateInfo.Id = realEstateImages.realEstateInfoId
-      AND realEstateAddress.realEstateId = realEstateInfo.Id
-      AND userXRegion.regionId = region.id 
-      AND userXregion.userId = realEstateInfo.userId
-      AND realEstateImages.imgUrl LIKE '%img01%'
-      AND (region.regionName = $region OR $region = '')
-      
-    `, { $region: this.region });
+    this.sqlQuery = `
+    SELECT * FROM 
+      realEstateInfo,
+      userXregion ON realEstateInfo.userId = userXregion.userId,
+      region ON region.id = userXregion.regionId,
+      realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+      areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
+      realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
+      WHERE imgUrl LIKE '%img01%'
+      AND CAST(realEstateInfo.price AS int) < '` + data.maxprice + `' GROUP BY realEstateInfo.Id`;
+
+    app.buyerPage.searchResult = await sql(/*sql*/this.sqlQuery);
     // AND region.area > $minKvm
 
     // Refresh result page (BuyerPage)
     app.buyerPage.render();
 
   }
+
 
   // Real estate renary checkboxes behaviour. Sets true/false and active
   checkBoxes(e) {
@@ -129,7 +99,7 @@ class BuyerPageSearch extends Base {
                     </select>
                   </div>
                   <div class="col-auto mt-4">
-                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" type="submit" click="fetchForm">Sök</button>
+                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" type="submit" click="doSearch">Sök</button>
                   </div>
                 </div>
 
@@ -225,9 +195,9 @@ class BuyerPageSearch extends Base {
                         <option value="0">Inget</option>
                         <option value="100000">100 000 kr</option>
                         <option value="200000">200 000 kr</option>
-                        <option value="400000">300 000 kr</option>
-                        <option value="500000">400 000 kr</option>
-                        <option value="600000">500 000 kr</option>
+                        <option value="300000">300 000 kr</option>
+                        <option value="400000">400 000 kr</option>
+                        <option value="500000">500 000 kr</option>
                         <option value="700000">750 000 kr</option>
                         <option value="1000000">1 000 000 kr</option>
                         <option value="1250000">1 250 000 kr</option>
