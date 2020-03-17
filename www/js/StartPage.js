@@ -43,7 +43,7 @@ class StartPage extends Base {
 
               ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
                 <div class="carousel-item ${index > 0 ? '' : 'active'}" data-interval="5000">
-                  <a href="/real-estate-info/${obj.id}" targetbostadid="${obj.id}"><img src="images/${obj.imgUrl}" class="d-block w-100" alt="..." targetbostadid="${obj.id}"></a>
+                  <a href="/real-estate-info/${obj.id}"><img src="images/${obj.imgUrl}" class="d-block w-100" alt="..."></a>
 
                   <div class="carousel-relative-wrapper">
                     <div class="carousel-ornament-bottom"></div>
@@ -97,17 +97,15 @@ class StartPage extends Base {
                     <div class="card my-4 estate-card">
                       <!-- Current SQL query join gives realEstateInfo.id instead of realEstateInfo.Id -->
                       <a href="/real-estate-info/${obj.id}">
-                        <img src="images/${obj.imgUrl}" class="card-img-top" alt="..." targetbostadid="${obj.id}">
-                      </a>
-                      <div class="card-body">
-                        <p class="card-text">
-                          <a href="/real-estate-info" click="refreshBostad" targetbostadid="${obj.id}">
-                            ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
-                            ${obj.areaName}, ${obj.regionName}<br>
-                            ${obj.rooms} rum, ${obj.area} m²<br>
-                            ${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr
-                          </a>
-                        </p>
+                        <img src="images/${obj.imgUrl}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <p class="card-text">
+                              ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
+                              ${obj.areaName}, ${obj.regionName}<br>
+                              ${obj.rooms} rum, ${obj.area} m²<br>
+                              ${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr
+                          </p>
+                        </a>
                       </div>
                     </div>
                 </div>
