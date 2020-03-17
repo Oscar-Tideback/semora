@@ -1,7 +1,7 @@
 class ObjectPage extends Base {
 
     render() {
-        console.log(this);
+        console.log(this);  // Check what properties object actually (got) has when rendering
         return /*html*/`
             <div class= "row m-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
           
