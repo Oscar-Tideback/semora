@@ -11,7 +11,7 @@ class AgentPage extends Base {
     e.preventDefault();
     await sql(/*sql*/`
       INSERT INTO potentialCustomer (name, email, phone, subject, agentContact) 
-      VALUES($name, $email, $phone, $subject, ${this.Id});
+      VALUES($name, $email, $phone, $subject, ${this.id});
     `, data);
     //this.sentForm = 'true';
     //this.render();
@@ -21,7 +21,7 @@ class AgentPage extends Base {
   render() {
     console.log(this);
     return /*html*/`
-      <div class="row m-0 p-4" route="/real-estate-agent/${this.Id}" page-title="Dhyr & Rumson - Våra mäklare">  
+      <div class="row m-0 p-4" route="/real-estate-agent/${this.id}" page-title="Dhyr & Rumson - Våra mäklare">  
         <div class="container my-4"> 
           <div class="row">
               <div class="col-12"><h5>Lär känna våra våra mäklare.</h5>
@@ -31,7 +31,7 @@ class AgentPage extends Base {
                 <div class="row">               
                     
                       <div class="col-3">
-                        <img src="images/${this.imageUrl}" style="max-width: 240px;" class="img-fluid img-thumbnail rounded float-left" alt="Agent face"></div>
+                        <img src="../images/${this.imageUrl}" style="max-width: 240px;" class="img-fluid img-thumbnail rounded float-left" alt="Agent face"></div>
                       <div class="col-3"><p>
                         ${this.firstName}</p><p>
                         ${this.lastName}</p><p>
