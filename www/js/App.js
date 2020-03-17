@@ -31,12 +31,13 @@ class App extends Base {
 
     // SQL query must result in 20 objects with unique id. No duplicates!
     this.allObjectPages = await sql(ObjectPage, /*sql*/`
-      SELECT * FROM 
+     SELECT * FROM 
         realEstateInfo, 
         userXregion ON realEstateInfo.userId = userXregion.userId, 
         region ON region.id = userXregion.regionId,
         realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
         areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+        GROUP BY realEstateInfo.Id
     `);
 
   }
