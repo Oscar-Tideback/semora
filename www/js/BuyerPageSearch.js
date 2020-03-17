@@ -3,8 +3,6 @@ class BuyerPageSearch extends Base {
   async mount() {
     // Populate region-dropdown
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region`);
-
-    //await this.doSearch();
   }
 
 
@@ -18,9 +16,7 @@ class BuyerPageSearch extends Base {
       data[element.name] = element.value;
     }
 
-    //e.preventDefault();
-
-    console.log(data.maxprice);
+    console.log(data);
 
     this.sqlQuery = `
     SELECT * FROM 
@@ -31,12 +27,11 @@ class BuyerPageSearch extends Base {
       areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
       realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
       WHERE imgUrl LIKE '%img01%'
-      AND CAST(realEstateInfo.price AS int) < '` + data.maxprice + `' GROUP BY realEstateInfo.Id`;
-
-    app.buyerPage.searchResult = await sql(/*sql*/this.sqlQuery);
-    // AND region.area > $minKvm
+      AND CAST(realEstateInfo.price AS int) < '` + data.maxprice + `' 
+      GROUP BY realEstateInfo.Id`;
 
     // Refresh result page (BuyerPage)
+    app.buyerPage.searchResult = await sql(/*sql*/this.sqlQuery);
     app.buyerPage.render();
 
   }
