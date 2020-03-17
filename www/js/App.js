@@ -11,6 +11,7 @@ class App extends Base {
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       { label: 'Bostad info', route: '/real-estate-info/8' },
       { label: 'Om oss', route: '/about-us' },
+      { label: 'MEcklare', route: '/real-estate-agent/21' }
     ];
 
     this.navBar = new NavBar({ links: this.navBarLinks });
@@ -21,12 +22,12 @@ class App extends Base {
     this.buyerPage = new BuyerPage({ searchResult: [] });
     this.buyerPageSearch = new BuyerPageSearch({ region: '', maxKvm: '', minKvm: '' });
     this.contactPage = new ContactPage();
-    this.agentsPage = new AgentsPage();
     this.mapsPage = new MapsPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
     this.integrityPage = new IntegrityPage();
-    this.agentPage = new AgentPage({ targetBrokerId: '21' });
+    this.agentsPage = new AgentsPage();
+    //this.agentPage = new AgentPage();
     this.objectPage = new ObjectPage();
 
     // SQL query must result in 20 objects with unique id for unique routes. No duplicates!
@@ -38,6 +39,18 @@ class App extends Base {
         realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
         areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
         GROUP BY realEstateInfo.Id
+    `);
+
+    // SQL query returns brokers that have an object to sell
+    this.allAgentsPage = await sql(AgentPage, /*sql*/`
+      SELECT user.id, user.firstName,  user.lastName, 
+        user.phone, user.email, user.description, user.imageUrl,
+        GROUP_CONCAT(region.regionName,', ') region_names
+        FROM userXregion 
+        INNER JOIN user ON user.id = userXregion.userId, 
+        region ON region.id = userXregion.regionId
+        WHERE user.isAgent = 'true'
+        GROUP BY user.id
     `);
 
   }
@@ -56,13 +69,16 @@ class App extends Base {
           ${this.buyerPageSearch}
           ${this.buyerPage} 
           ${this.contactPage}
+     
           ${this.agentsPage}
+          ${this.allAgentsPage}
+
           ${this.allObjectPages}
           ${this.mapsPage}
           ${this.aboutUsPage}
           ${this.missingPage}
           ${this.testPage}
-          ${this.agentPage}
+
           ${this.integrityPage}
         </main>
         ${this.footer}
