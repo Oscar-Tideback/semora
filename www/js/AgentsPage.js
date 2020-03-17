@@ -15,10 +15,6 @@ class AgentsPage extends Base {
 
 
   }
-  refreshBroker(e) {
-    //app.agentPage.targetBrokerId = e.target.attributes.targetbrokerid.value;
-    //app.agentPage.makeSql();
-  }
 
   render() {
     return /*html*/`
