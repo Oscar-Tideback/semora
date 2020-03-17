@@ -11,36 +11,17 @@ class AgentPage extends Base {
     e.preventDefault();
     await sql(/*sql*/`
       INSERT INTO potentialCustomer (name, email, phone, subject, agentContact) 
-      VALUES($name, $email, $phone, $subject, ${app.agentPage.targetBrokerId});
+      VALUES($name, $email, $phone, $subject, ${this.Id});
     `, data);
-    this.sentForm = 'true';
-    this.render();
+    //this.sentForm = 'true';
+    //this.render();
   }
 
-
-  async makeSql() {
-    this.foundAgents = await sql(/*sql*/`
-    SELECT user.firstName,  user.lastName,
-    user.phone, user.email, user.description, user.imageUrl,
-    GROUP_CONCAT(region.regionName,', ') region_names
-    FROM user, userXregion 
-    ON user.id = userXregion.userId, 
-    region ON region.id = userXregion.regionId
-    WHERE user.isAgent = 'true'
-    AND user.id = '${app.agentPage.targetBrokerId}'
-  
-    GROUP BY user.id
-  `);
-    this.render();
-  }
-
-  async mount() {
-    return this.makeSql();
-  }
 
   render() {
+    console.log(this);
     return /*html*/`
-      <div class="row m-0 p-4" route="/real-estate-agent" page-title="Dhyr & Rumson - Våra mäklare">  
+      <div class="row m-0 p-4" route="/real-estate-agent/${this.Id}" page-title="Dhyr & Rumson - Våra mäklare">  
         <div class="container my-4"> 
           <div class="row">
               <div class="col-12"><h5>Lär känna våra våra mäklare.</h5>
@@ -48,16 +29,17 @@ class AgentPage extends Base {
               </div>
             </div>
                 <div class="row">               
-                    ${this.foundAgents.map(user => /*html*/`
+                    
                       <div class="col-3">
-                        <img src="images/${user.imageUrl}" style="max-width: 240px;" class="img-fluid img-thumbnail rounded float-left" alt="Agent face"></div>
+                        <img src="images/${this.imageUrl}" style="max-width: 240px;" class="img-fluid img-thumbnail rounded float-left" alt="Agent face"></div>
                       <div class="col-3"><p>
-                        ${user.firstName}` + ' ' + `${user.lastName}</p><p>
-                        ${user.email}</p><p>
-                        ${user.phone.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}</p>
-                        ${user.region_names}</p>
+                        ${this.firstName}</p><p>
+                        ${this.lastName}</p><p>
+                        ${this.email}</p><p>
+                        ${this.phone.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')}</p>
+                        ${this.region_names}
                         </div>
-                    `)}
+                    
                       <!--Form-->
                       <form submit="collectFormData" class="col-6">
                       <div class="md-form">
