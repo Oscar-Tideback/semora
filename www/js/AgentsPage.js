@@ -2,7 +2,6 @@ class AgentsPage extends Base {
 
   async mount() {
 
-    // This sql question is not right at all.
     this.foundAgents = await sql(/*sql*/`
     SELECT user.firstName,  user.lastName, user.id,
     user.phone, user.email, user.description, user.imageUrl,
@@ -17,8 +16,8 @@ class AgentsPage extends Base {
 
   }
   refreshBroker(e) {
-    app.agentPage.targetBrokerId = e.target.attributes.targetbrokerid.value;
-    app.agentPage.makeSql();
+    //app.agentPage.targetBrokerId = e.target.attributes.targetbrokerid.value;
+    //app.agentPage.makeSql();
   }
 
   render() {
@@ -33,11 +32,11 @@ class AgentsPage extends Base {
               <div class="row p-3 border bg-light no-gutters">
                 ${this.foundAgents.map(user => /*html*/`
                   <div class="card col-sm-2" style="max-width: 540px;" >
-                    <a href="/real-estate-agent" click="refreshBroker" targetbrokerid="${user.id}">
+                    <a href="/real-estate-agent/${user.id}">
                     <img src="images/${user.imageUrl}" targetbrokerid="${user.id}" style="max-width: 250px;" class="img-fluid card-img p-2" alt="Agent face ${user.lastName}"></a>
                   </div>
                   <div class="card-body col-sm-4 p-3">
-                    <a href="/real-estate-agent" click="refreshBroker" targetbrokerid="${user.id}">
+                    <a href="/real-estate-agent/${user.id}">
                     ${user.firstName}` + ' ' + /*html*/`
                     ${user.lastName}</a><p>                  
                     ${user.email}<br>
