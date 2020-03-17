@@ -11,7 +11,7 @@ class AgentPage extends Base {
     e.preventDefault();
     await sql(/*sql*/`
       INSERT INTO potentialCustomer (name, email, phone, subject, agentContact) 
-      VALUES($name, $email, $phone, $subject, ${this.Id});
+      VALUES($name, $email, $phone, $subject, ${this.id});
     `, data);
     //this.sentForm = 'true';
     //this.render();
