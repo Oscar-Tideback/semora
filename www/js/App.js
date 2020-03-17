@@ -10,8 +10,7 @@ class App extends Base {
       { label: 'Sälja bostad', route: '/our-regions' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       { label: 'Bostad info', route: '/real-estate-info/8' },
-      { label: 'Om oss', route: '/about-us' },
-      { label: 'MEcklare', route: '/real-estate-agent/21' }
+      { label: 'Om oss', route: '/about-us' }
     ];
 
     this.navBar = new NavBar({ links: this.navBarLinks });
@@ -27,7 +26,6 @@ class App extends Base {
     this.missingPage = new MissingPage();
     this.integrityPage = new IntegrityPage();
     this.agentsPage = new AgentsPage();
-    //this.agentPage = new AgentPage();
     this.objectPage = new ObjectPage();
 
     // SQL query must result in 20 objects with unique id for unique routes. No duplicates!
@@ -68,11 +66,9 @@ class App extends Base {
           ${this.startPage}
           ${this.buyerPageSearch}
           ${this.buyerPage} 
-          ${this.contactPage}
-     
+          ${this.contactPage}    
           ${this.agentsPage}
           ${this.allAgentsPage}
-
           ${this.allObjectPages}
           ${this.mapsPage}
           ${this.aboutUsPage}
