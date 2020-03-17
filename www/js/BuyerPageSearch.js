@@ -41,7 +41,7 @@ class BuyerPageSearch extends Base {
   }
 
 
-  // Real estate renary checkboxes behaviour. Sets true/false and active
+  // Real estate tenary checkboxes behaviour. Sets true/false and active
   checkBoxes(e) {
     this.checkboxes = document.getElementsByName('tenaryOption');
     this.uncheckbox = document.getElementById('option1');
