@@ -28,7 +28,7 @@ class BuyerPage extends Base {
                             ${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}<br>
                             ${obj.rooms} rum<br>
                             Pris: ${obj.price} kr<br>
-                            Område: ${obj.area}<br>
+                            Area: ${obj.area} kvm<br>
                             Region: ${obj.regionName}
                           </div>
                         </p>
