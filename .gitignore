@@ -4,6 +4,7 @@
 # Rikards lokala slaskmappar/filer
 www/rikard
 www/databases/DhyrRumson_Rikards.db
+www/databases/DhyrRumson_Rikards2.db
 example-autocomplete
 
 # Logs
@@ -111,3 +112,4 @@ dist
 # TernJS port file
 .tern-port
 www/js/OtTemp
+
