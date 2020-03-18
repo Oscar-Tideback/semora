@@ -53,7 +53,7 @@ class AgentPage extends Base {
                 <div class="md-form">
                   <i class="fas fa-envelope prefix grey-text"></i>
                   <label>Telefon:</label>
-                  <input name="phone" type="text" class="form-control">
+                  <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control">
                 </div>
                 <div class="md-form">
                   <i class="fas fa-tag prefix grey-text"></i>
