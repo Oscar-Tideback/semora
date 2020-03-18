@@ -1,24 +1,25 @@
 class NavBarSearch extends Base {
 
   async mount() {
-    this.foundKeywords = [];
+    this.searchHits = [];
     this.selected = -1;
+    this.keyword = '';
   }
 
   // Start of modified Thomas example-autocomplete --------------------------------
   clickKeyword(e) {
-    this.foundKeywords = [];
+    this.searchHits = [];
     this.selected = -1;
     this.chosen = e.target.innerText;
-    this.doSearch();
+    //this.doSearch();
     this.render();
   }
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
       e.preventDefault();
       this.selected += (e.key === 'ArrowDown') - (e.key === 'ArrowUp');
-      if (this.selected < 0) { this.selected = this.foundKeywords.length - 1; }
-      if (this.selected >= this.foundKeywords.length) { this.selected = 0; }
+      if (this.selected < 0) { this.selected = this.searchHits.length - 1; }
+      if (this.selected >= this.searchHits.length) { this.selected = 0; }
 
       this.render();
       return;
@@ -28,23 +29,35 @@ class NavBarSearch extends Base {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
 
     if (e.key === 'Enter' && this.selected >= 0) {
-      this.chosen = (this.foundKeywords[this.selected] || {}).regionName;
-      this.search();
-      this.foundKeywords = [];
+      this.chosen = (this.searchHits[this.selected] || {}).regionName;
+      //this.search();
+      this.searchHits = [];
       this.selected = -1;
       this.render();
       return;
     }
     this.selected = 0;
+    this.searchHits = e.target.value.length < 1 ? [] : await sql(/*sql*/`
+      SELECT regionName, COUNT(regionName) AS totalHits FROM
+          (
+          SELECT * FROM 
+              realEstateInfo, 
+              userXregion ON realEstateInfo.userId = userXregion.userId, 
+              region ON region.id = userXregion.regionId,
+              realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+              areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+          WHERE realEstateInfo.description LIKE $text
+          OR realEstateInfo.tenure LIKE $text
+          OR realEstateAddress.streetName LIKE $text
+          OR region.regionName LIKE $text
+          OR areaInfo.description LIKE $text
+          GROUP BY realEstateInfo.Id
+          )
+      GROUP BY regionName`
+      , { text: '%' + e.target.value + '%' });
 
-    this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`SELECT regionName FROM region WHERE region.regionName LIKE $text`, { text: e.target.value + '%' });
-
-    // Dev in progress: Autocomplete region with object count per region. Freetext search in description etc. but only add results to count per region 
-    //this.foundKeywords = e.target.value.length < 1 ? [] : await sql(/*sql*/`
-    //  SELECT * FROM (SELECT regionName FROM region UNION SELECT description FROM realEstateInfo) WHERE regionName LIKE $text`,
-    //  { text: '%' + e.target.value + '%' });
-
-    // console.log(this.foundKeywords);
+    this.currentKeyword = e.target.value;
+    // console.log(this.searchHits);
 
     this.render();
   }
@@ -57,11 +70,11 @@ class NavBarSearch extends Base {
   }
 
   // Addition by Thomas. Unused but keep here anyway as referece
-  //search() {
-  //  document.querySelector('.nav-bar-search-input').value = this.chosen || '';
-  //  app.goto('/buy-property');
-  //  app.buyerPage.search(this.chosen);
-  //}
+  search() {
+    //  document.querySelector('.nav-bar-search-input').value = this.chosen || '';
+    //  app.goto('/buy-property');
+    //  app.buyerPage.search(this.chosen);
+  }
 
   // Not implemented yet
   doSearch() {
@@ -77,11 +90,12 @@ class NavBarSearch extends Base {
         <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch" submit="preventPageReload">
           <div class="input-group">
             <input type="text" class="form-control nav-bar-search-input rounded" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
-            ${this.foundKeywords.length < 1 ? '' : /*html*/`
+            ${this.searchHits.length < 1 ? '' : /*html*/`
               <div class="dropdown-menu show position-absolute">
-                  ${this.foundKeywords.map((keywords, index) => /*html*/`
-                    <button click="clickKeyword" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button">${keywords.regionName}</button>
-                  `)}
+                <div class="search-in-hero-item dropdown-item"><b>Antal träffar på ${'"' + this.currentKeyword + '"'} per region</b></div>
+                ${this.searchHits.map((hits, index) => /*html*/`
+                  <button click="clickKeyword" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button">${hits.regionName} (${hits.totalHits} träff${hits.totalHits > 1 ? 'ar' : ''})</button>
+                `)}
               </div>
             `}
             <div class="input-group-btn">

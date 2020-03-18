@@ -99,6 +99,12 @@ border-bottom: 2px;
 
 }
 
+.search-in-hero-item {
+  border-style: solid; 
+  border-bottom-width: 1px;
+  padding-bottom: 10px;
+}
+
 // Override default bootstrap
 .navbar-toggler {
   border: 0px;
@@ -129,7 +135,7 @@ border-bottom: 2px;
   height: 200px;
   background-image: url(/images/Semora_Orn_Top.png);
   background-repeat: no-repeat;
-  z-index: 9991;
+  z-index: 1;
   text-align: center; 
 }
 
