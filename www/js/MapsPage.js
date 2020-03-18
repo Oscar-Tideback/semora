@@ -17,17 +17,19 @@ class MapsPage extends Base {
       INSERT INTO potentialCustomer (name, email, phone, subject) 
       VALUES($name, $email, $phone, $subject);
     `, data);
-    this.sentForm = 'true';
+    //this.sentForm = 'true';
     this.render();
   }
-  thankYou() {
+  thankYou2() {
     // Thank the customer and tell the order id
     return /*html*/`
       <div class="row" page-title="Regioner och Områden" route="/our-regions">
+        <div class="alert alert-success container my-4"  role="alert">
+          <h4 class="alert-heading">Tack för visat intresse!</h4>
+        </div>
         <div class="container my-4">
-          <h1>Tack för visat intresse.</h1>
-          <p>Your order has been placed!</p>
-          <p>Vi återkommer snarast till dig via email </p>
+          <p>Ditt meddelande har skickats!</p>
+          <p>Vi återkommer snarast till dig via telefon eller email.</p>
           <a class="btn btn-primary float-left" href="/">Till startsidan</a>
         </div>
       </div>
@@ -87,7 +89,7 @@ class MapsPage extends Base {
                         <textarea name="subject" type="text" class="form-control md-textarea" rows="3"></textarea>
                       </div>
                       <div class="text-center mt-4">
-                        <button type="submit"  class="btn border btn-light-blue" value="Send">Skicka</button>
+                        <button type="submit"  data-toggle="modal" data-target="#exampleModal" class="btn border btn-primary" value="Send">Skicka</button>
                       </div>
 
                     </div>
@@ -137,12 +139,27 @@ class MapsPage extends Base {
 
               </section>
           <!--Section: Contact v.1-->
+          <!--Thank you modal-->
           </div>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header  alert alert-success"  role="alert">
+                  <h4 class="modal-title" id="exampleModalLabel">Tack för visat intresse!</h4>
+                  <button type="button" class="close"  href="/" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <p>Ditt meddelande har skickats!<br>
+                  Vi återkommer snarast till dig via telefon eller email.</p>
+                </div>
+                <div class="mt-4 modal-footer">
+                  <a href="/" type="button" class="btn btn-primary float-left"  data-dismiss="modal">Till startsidan!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     `;
   }
-
-
 }
-
-//https://maps.google.com/maps?q=Stig Lindbergs Gata 17, Gustavsberg, Sverige&t=&z=13&ie=UTF8&iwloc=&output=embed
