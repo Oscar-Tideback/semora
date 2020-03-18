@@ -29,9 +29,9 @@ class AgentPage extends Base {
             </div>
           </div>
             <div class="row">                                  
-              <div class="col-3">
-                  <img src="../images/${this.imageUrl}" style="max-width: 240px;" class="img-fluid img-thumbnail rounded float-left" alt="Agent face"></div>
-                <div class="col-3"><p>
+              <div class="col-md-3 col-sm-12">
+                  <img src="../images/${this.imageUrl}"  class="img-fluid img-thumbnail rounded float-left" alt="Agent face"></div>
+                <div class="col-md-3 col-sm-12"><p>
                   ${this.firstName}</p><p>
                   ${this.lastName}</p><p>
                   ${this.email}</p><p>
@@ -39,7 +39,7 @@ class AgentPage extends Base {
                   ${this.region_names}
                 </div>              
                 <!--Form-->
-                <form submit="collectFormData" class="col-6">
+                <form submit="collectFormData" class="col-md-6 col-sm-12">
                 <div class="md-form">
                   <i class="fas fa-user prefix grey-text"></i>
                   <label>Namn:</label>
