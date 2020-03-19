@@ -1,6 +1,16 @@
 class App extends Base {
 
+  regExPhoneNumber(phoneNumber) {
+    return phoneNumber.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ");
+  };
+
+  regExSum(sum) {
+    return sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  };
+
   async mount() {
+
+
 
     await sql(/*sql*/`USE DhyrRumson.db`);
 
