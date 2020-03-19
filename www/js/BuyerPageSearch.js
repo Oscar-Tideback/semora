@@ -117,7 +117,7 @@ class BuyerPageSearch extends Base {
                     </select>
                   </div>
                   <div class="col-auto mt-4">
-                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" click="doSearch" type="submit">Sök <!-- Do not make this type submit --></button>
+                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" click="doSearch" type="submit">Sök</button>
                   </div>
                 </div>
 
