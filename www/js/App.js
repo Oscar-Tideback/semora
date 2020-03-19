@@ -4,8 +4,8 @@ class App extends Base {
     return phoneNumber.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ");
   };
 
-  regExSum(sum) {
-    return sum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  regExPrice(price) {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   };
 
   async mount() {
