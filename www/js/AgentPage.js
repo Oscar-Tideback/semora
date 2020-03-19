@@ -36,7 +36,7 @@ class AgentPage extends Base {
             <p class="name-title">${this.firstName}
               ${this.lastName}</p>
               <p class="name-email-phone">E-Mail: ${this.email}</p>
-              <p class="name-email-phone">Tel: ${app.regExPhoneNumber(this.phone)}</p>
+              <p class="name-email-phone">Tel: ${this.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
               <p>Region:<br>${this.region_names}.</p>
             </div>              
             <!--Form-->

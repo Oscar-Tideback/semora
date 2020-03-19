@@ -1,16 +1,8 @@
 class App extends Base {
 
-  regExPhoneNumber(phoneNumber) {
-    return phoneNumber.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ");
-  };
 
-  regExPrice(price) {
-    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-  };
 
   async mount() {
-
-
 
     await sql(/*sql*/`USE DhyrRumson.db`);
 
@@ -61,6 +53,10 @@ class App extends Base {
     this.objectPage = new ObjectPage();
 
   }
+
+
+
+
 
   render() {
     return /*html*/`

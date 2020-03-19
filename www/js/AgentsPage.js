@@ -36,7 +36,7 @@ class AgentsPage extends Base {
                     ${user.firstName}` + ' ' + /*html*/`
                     ${user.lastName}</a><p>                  
                     ${user.email}<br>
-                    ${app.regExPhoneNumber(this.phone)}</p>
+                    ${user.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
                     ${user.region_names}<br>
                   </div >
                 `)}
