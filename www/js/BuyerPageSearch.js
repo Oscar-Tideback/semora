@@ -113,7 +113,7 @@ class BuyerPageSearch extends Base {
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="Alla typer" id="tenaryOption1" checked="true">Alla_typer</label>
+                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="Alla_typer" id="tenaryOption1" checked="true">Alla typer</label>
                         </div>
                           <div class="col px-1 mx-0">
                             <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Villor" id="tenaryOption2" checked="false">Villor</label>
