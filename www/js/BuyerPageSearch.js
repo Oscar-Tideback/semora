@@ -3,23 +3,32 @@ class BuyerPageSearch extends Base {
   async mount() {
     // Populate region-dropdown
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region`);
+
+    this.formInput = new FormData();
   }
 
 
   async doSearch(e) {
+    this.preventPageReload(e);
 
-    e && e.preventDefault();
-    e && e.stopPropagation();
+    this.formInput = document.querySelector('form');
 
-    let data = {};
+    // Checkboxes checked-property is boolean true/false
+    console.log("textinput:" + this.formInput.textinput.value);
+    console.log("regionselect:" + this.formInput.regionselect.value);
 
-    // Loop through the form and collect the input
-    for (let element of [...e.target.closest('form').elements]) {
-      if (!element.name) { continue; }
-      data[element.name] = element.value;
-    }
+    console.log("alla_typer:" + this.formInput.tenaryOption1.checked);
+    console.log("villor:" + this.formInput.tenaryOption2.checked);
+    console.log("radhus:" + this.formInput.tenaryOption3.checked);
+    console.log("lagenheter:" + this.formInput.tenaryOption4.checked);
+    console.log("fritidshus:" + this.formInput.tenaryOption5.checked);
+    console.log("gardar:" + this.formInput.tenaryOption6.checked);
+    console.log("tomter:" + this.formInput.tenaryOption7.checked);
+    console.log("ovriga:" + this.formInput.tenaryOption8.checked);
 
-    console.log(data);
+    console.log("maxprice:" + this.formInput.maxprice.value);
+    console.log("minarea:" + this.formInput.minarea.value);
+    console.log("minrooms:" + this.formInput.minrooms.value);
 
     this.sqlQuery = `
     SELECT * FROM 
@@ -31,9 +40,9 @@ class BuyerPageSearch extends Base {
       realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
       WHERE imgUrl LIKE '%img01%'
 
-      AND CAST(realEstateInfo.price AS int) < '` + data.maxprice + `'    
-      AND CAST(realEstateInfo.rooms AS int) >= '` + data.minrooms + `'
-      AND CAST(realEstateInfo.area AS int) >= '` + data.minarea + `'
+      AND CAST(realEstateInfo.price AS int) < '` + this.formInput.maxprice + `'    
+      AND CAST(realEstateInfo.rooms AS int) >= '` + this.formInput.minrooms + `'
+      AND CAST(realEstateInfo.area AS int) >= '` + this.formInput.minarea + `'
 
       GROUP BY realEstateInfo.Id`;
 
@@ -44,24 +53,30 @@ class BuyerPageSearch extends Base {
   }
 
 
-  // Real estate tenary checkboxes behaviour. Sets true/false and active
+  // Real estate tenary checkboxes behaviour. Sets true/false and active. Ugly code fix later /Rikard
   checkBoxes(e) {
+    this.boxes = document.getElementsByClassName('tenary-checkbox');
 
-    this.checkboxes = document.getElementsByName('td[name^=tenaryOption]');
-    this.uncheckbox = document.getElementById('tenaryOption1');
-
-    if (e.target.attributes.name.value === 'showall') {
-      for (let box of this.checkboxes) {
+    if (e.target.attributes.name.value === 'uncheck') {
+      for (let box of this.boxes) {
+        if (box.name.value === 'tenaryOption1') {
+          this.boxes.tenaryOption1.checked = true;
+          this.boxes.tenaryOption1.parentElement.classList.add('active');
+          continue;
+        }
         box.checked = false;
         box.parentElement.classList.remove('active');
-      };
+      }
     }
     else {
-      this.uncheckbox.checked = false;
-      this.uncheckbox.parentElement.classList.remove('active');
+      this.boxes.tenaryOption1.checked = false;
+      this.boxes.tenaryOption1.parentElement.classList.remove('active');
+      e.target.checked ? e.target.checked = false : e.target.checked = true;
+      e.target.parentElement.classList.toggle('active');
     }
 
   }
+
 
 
   // Addition by Thomas
@@ -69,6 +84,8 @@ class BuyerPageSearch extends Base {
     // Do not perform a hard reload of the page when someone submits the form
     e && e.preventDefault();
   }
+
+
 
 
   render() {
@@ -82,7 +99,7 @@ class BuyerPageSearch extends Base {
             </div>
           </div>
 
-            <form id="searchForm" submit="doSearch">
+            <form id="searchForm">
             <div class="form-group p-4">
 
               <div class="row">
@@ -93,7 +110,7 @@ class BuyerPageSearch extends Base {
 
               <div class="row pb-2">
                 <div class="col-md mt-4">
-                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="inputField" id="keywordsInput" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
+                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" id="keywordsInput" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
                   </div>
                   <div class="col-auto mt-4">
                     <select class="form-control form-control-lg" id="region_select" name="regionselect">
@@ -102,7 +119,7 @@ class BuyerPageSearch extends Base {
                     </select>
                   </div>
                   <div class="col-auto mt-4">
-                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" type="submit">Sök</button>
+                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" click="doSearch">Sök <!-- Do not make this type submit --></button>
                   </div>
                 </div>
 
@@ -113,31 +130,31 @@ class BuyerPageSearch extends Base {
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="Alla_typer" id="tenaryOption1" checked="true">Alla typer</label>
+                          <label class="btn btn-light btn-block active" click="checkBoxes" name="uncheck" style="white-space: nowrap"><input class="tenary-checkbox" type="checkbox" name="tenaryOption1" id="allatyper" checked="true">Alla typer</label>
                         </div>
                           <div class="col px-1 mx-0">
-                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Villor" id="tenaryOption2" checked="false">Villor</label>
+                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption2" id="villor">Villor</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Radhus" id="tenaryOption3" checked="false">Radhus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption3" id="radhus">Radhus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Lagenheter" id="tenaryOption4" checked="false">Lägenheter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption4" id="lagenheter">Lägenheter</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Fritidshus" id="tenaryOption5" checked="false">Fritidshus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption5" id="fritidshus">Fritidshus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Gardar" id="tenaryOption6" checked="false">Gårdar</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption6" id="gardar">Gårdar</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Tomter" id="tenaryOption7" checked="false">Tomter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption7" id="tomter">Tomter</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Ovriga" id="tenaryOption8" checked="false">Övriga</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption8" id="ovriga">Övriga</label>
                         </div>
                       </div>
 

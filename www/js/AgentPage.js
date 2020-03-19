@@ -19,7 +19,7 @@ class AgentPage extends Base {
 
 
   render() {
-    console.log(this);
+    //console.log(this);
     return /*html*/`
     <div class="row m-0 p-4" route="/real-estate-agent/${this.id}" page-title="Dhyr & Rumson - Våra mäklare">  
     <div class="container my-4"> 
