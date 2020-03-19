@@ -6,7 +6,7 @@ class NavBarSearch extends Base {
     this.keyword = '';
   }
 
-  // Start of modified Thomas example-autocomplete --------------------------------
+  // Start of slightly modified Thomas example-autocomplete --------------------------------
   clickKeyword(e) {
     this.searchHits = [];
     this.selected = -1;
@@ -61,7 +61,7 @@ class NavBarSearch extends Base {
 
     this.render();
   }
-  // End of modified Thomas example-autocomplete --------------------------------
+  // End of slightly modified Thomas example-autocomplete --------------------------------
 
   // Addition by Thomas
   preventPageReload(e) {
@@ -94,7 +94,12 @@ class NavBarSearch extends Base {
               <div class="dropdown-menu show position-absolute">
                 <div class="search-in-hero-item dropdown-item"><b>Antal träffar på ${'"' + this.currentKeyword + '"'} per region</b></div>
                 ${this.searchHits.map((hits, index) => /*html*/`
-                  <button click="clickKeyword" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button">${hits.regionName} (${hits.totalHits} träff${hits.totalHits > 1 ? 'ar' : ''})</button>
+                  <button click="clickKeyword" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button">
+                    <div class="row">
+                      <div class="col">${hits.regionName}</div>
+                      <div class="col-auto"><b>${hits.totalHits} träff${hits.totalHits > 1 ? 'ar' : ''}</b></div>
+                    </div>
+                  </button>
                 `)}
               </div>
             `}
