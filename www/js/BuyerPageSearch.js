@@ -30,9 +30,7 @@ class BuyerPageSearch extends Base {
       areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
       realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
       WHERE imgUrl LIKE '%img01%'
-      AND realEstateInfo.tenure IN (
-        CASE WHEN realEstateInfo.tenure = 'Radhus' THEN realEstateInfo.tenure END
-        )
+
       AND CAST(realEstateInfo.price AS int) < '` + data.maxprice + `'    
       AND CAST(realEstateInfo.rooms AS int) >= '` + data.minrooms + `'
       AND CAST(realEstateInfo.area AS int) >= '` + data.minarea + `'
