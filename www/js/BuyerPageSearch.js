@@ -43,8 +43,9 @@ class BuyerPageSearch extends Base {
 
   // Real estate tenary checkboxes behaviour. Sets true/false and active
   checkBoxes(e) {
-    this.checkboxes = document.getElementsByName('tenaryOption');
-    this.uncheckbox = document.getElementById('option1');
+
+    this.checkboxes = document.getElementsByName('td[name^=tenaryOption]');
+    this.uncheckbox = document.getElementById('tenaryOption1');
 
     if (e.target.attributes.name.value === 'showall') {
       for (let box of this.checkboxes) {
@@ -109,31 +110,31 @@ class BuyerPageSearch extends Base {
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="tenaryOption" id="option1" checked>Alla typer</label>
+                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="tenaryOption1" id="tenaryOption1" checked>Alla typer</label>
                         </div>
                           <div class="col px-1 mx-0">
-                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option2">Villor</label>
+                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption2" id="tenaryOption2">Villor</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option3">Radhus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption3" id="tenaryOption3">Radhus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option4">Lägenheter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption4" id="tenaryOption4">Lägenheter</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option5">Fritidshus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption5" id="tenaryOption5">Fritidshus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option6">Gårdar</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption6" id="tenaryOption6">Gårdar</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option7">Tomter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption7" id="tenaryOption7">Tomter</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption" id="option8">Övriga</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="tenaryOption8" id="tenaryOption8">Övriga</label>
                         </div>
                       </div>
 
