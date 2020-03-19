@@ -33,11 +33,11 @@ class AgentsPage extends Base {
                   </div>
                   <div class="card-body col-sm-4 p-3">
                     <a href="/real-estate-agent/${user.id}">
-                    ${user.firstName}` + ' ' + /*html*/`
-                    ${user.lastName}</a><p>                  
-                    ${user.email}<br>
-                    ${user.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
-                    ${user.region_names}<br>
+                    ${user.firstName}
+                    ${user.lastName}</a>                  
+                    <p class="name-email-phone">E-Mail: ${this.email}</p>
+                    <p class="name-email-phone">Tel: ${user.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
+                    <p class="name-region">Region: ${user.region_names}.</p>
                   </div >
                 `)}
                 </div>              
