@@ -8,7 +8,8 @@ class BuyerPageSearch extends Base {
 
   async doSearch(e) {
 
-    //e.stopPropagation();
+    e && e.preventDefault();
+    e && e.stopPropagation();
 
     let data = {};
 
@@ -81,7 +82,7 @@ class BuyerPageSearch extends Base {
             </div>
           </div>
 
-            <form id="searchForm"  submit="preventPageReload">
+            <form id="searchForm" submit="doSearch">
             <div class="form-group p-4">
 
               <div class="row">
@@ -101,7 +102,7 @@ class BuyerPageSearch extends Base {
                     </select>
                   </div>
                   <div class="col-auto mt-4">
-                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" type="submit" click="doSearch">Sök</button>
+                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" type="submit">Sök</button>
                   </div>
                 </div>
 
@@ -112,31 +113,31 @@ class BuyerPageSearch extends Base {
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="Alla typer" id="tenaryOption1" checked>Alla typer</label>
+                          <label class="btn btn-light btn-block active" style="white-space: nowrap" click="checkBoxes" name="showall"><input type="checkbox" name="Alla typer" id="tenaryOption1" checked="true">Alla_typer</label>
                         </div>
                           <div class="col px-1 mx-0">
-                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Villor" id="tenaryOption2">Villor</label>
+                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Villor" id="tenaryOption2" checked="false">Villor</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Radhus" id="tenaryOption3">Radhus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Radhus" id="tenaryOption3" checked="false">Radhus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Lagenheter" id="tenaryOption4">Lägenheter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Lagenheter" id="tenaryOption4" checked="false">Lägenheter</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Fritidshus" id="tenaryOption5">Fritidshus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Fritidshus" id="tenaryOption5" checked="false">Fritidshus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Gardar" id="tenaryOption6">Gårdar</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Gardar" id="tenaryOption6" checked="false">Gårdar</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Tomter" id="tenaryOption7">Tomter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Tomter" id="tenaryOption7" checked="false">Tomter</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Ovriga" id="tenaryOption8">Övriga</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Ovriga" id="tenaryOption8" checked="false">Övriga</label>
                         </div>
                       </div>
 
