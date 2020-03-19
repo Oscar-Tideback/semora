@@ -121,7 +121,7 @@ class BuyerPageSearch extends Base {
                           <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Radhus" id="tenaryOption3">Radhus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Lägenheter" id="tenaryOption4">Lägenheter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Lagenheter" id="tenaryOption4">Lägenheter</label>
                         </div>
                       </div>
 
@@ -130,13 +130,13 @@ class BuyerPageSearch extends Base {
                           <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Fritidshus" id="tenaryOption5">Fritidshus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Gårdar" id="tenaryOption6">Gårdar</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Gardar" id="tenaryOption6">Gårdar</label>
                         </div>
                         <div class="col px-1 mx-0">
                           <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Tomter" id="tenaryOption7">Tomter</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Övriga" id="tenaryOption8">Övriga</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input type="checkbox" name="Ovriga" id="tenaryOption8">Övriga</label>
                         </div>
                       </div>
 
