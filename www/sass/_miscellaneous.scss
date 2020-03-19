@@ -27,6 +27,15 @@ h1, h2, h3, h4, h5 {
   font-weight: 600;
 }
 
+.name-title{
+  font-weight: 900;
+}
+
+.name-email-phone{
+  font-weight: 900;
+  margin:0;
+}
+
 @media (max-width: 992px) {
   .start-page-title {
     padding-top: 60px;

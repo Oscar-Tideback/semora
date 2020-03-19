@@ -37,9 +37,6 @@ class MapsPage extends Base {
   }
 
   render() {
-    if (this.sentForm) {
-      return this.thankYou();
-    }
     return /*html*/`
       <div class="row p-4 m-0" route="/our-regions" page-title="Regioner och Områden">
         <div class="container my-4"> 
