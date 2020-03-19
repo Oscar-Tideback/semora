@@ -53,7 +53,8 @@ class NavBarSearch extends Base {
           OR areaInfo.description LIKE $text
           GROUP BY realEstateInfo.Id
           )
-      GROUP BY regionName`
+      GROUP BY regionName
+      ORDER BY totalHits DESC, regionName ASC`
       , { text: '%' + e.target.value + '%' });
 
     this.currentKeyword = e.target.value;
