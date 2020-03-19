@@ -53,7 +53,8 @@ class NavBarSearch extends Base {
           OR areaInfo.description LIKE $text
           GROUP BY realEstateInfo.Id
           )
-      GROUP BY regionName`
+      GROUP BY regionName
+      ORDER BY totalHits DESC`
       , { text: '%' + e.target.value + '%' });
 
     this.currentKeyword = e.target.value;
@@ -92,7 +93,7 @@ class NavBarSearch extends Base {
             <input type="text" class="form-control nav-bar-search-input rounded" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
             ${this.searchHits.length < 1 ? '' : /*html*/`
               <div class="dropdown-menu show position-absolute">
-                <div class="search-in-hero-item dropdown-item"><b>Antal träffar på ${'"' + this.currentKeyword + '"'} per region</b></div>
+                <div class="search-in-hero-item dropdown-item"><b>Antal 123 träffar på ${'"' + this.currentKeyword + '"'} per region</b></div>
                 ${this.searchHits.map((hits, index) => /*html*/`
                   <button click="clickKeyword" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button">
                     <div class="row">
