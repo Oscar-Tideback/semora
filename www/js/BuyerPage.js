@@ -1,7 +1,7 @@
 class BuyerPage extends Base {
 
   render() {
-    //console.log("RENDERING", this.searchResult)
+    console.log("RENDERING", this.searchResult)
     return /*html*/`
       <div class="row m-0" route="/buy-property" page-title="Dhyr & Rumson - Våra Bostad">  
         <div class="container my-4"> 
@@ -20,8 +20,8 @@ class BuyerPage extends Base {
                 ${this.searchResult.map(obj => /*html*/`
                   <div class="col d-flex justify-content-center">
                     <div class="card my-4 estate-card">
-                      <a href="/real-estate-info/${obj.Id}" objectid="${obj.Id}">
-                      <img src="images/${obj.imgUrl}" targetbostadid="${obj.Id}" class="card-img-top" alt="Bostad picture"></a>
+                      <a href="/real-estate-info/${obj.id}" objectid="${obj.id}">
+                      <img src="images/${obj.imgUrl}" targetbostadid="${obj.id}" class="card-img-top" alt="Bostad picture"></a>
                       <div class="card-body">
                         <p class="card-text">
                           <div>

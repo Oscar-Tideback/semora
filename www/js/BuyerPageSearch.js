@@ -9,8 +9,6 @@ class BuyerPageSearch extends Base {
 
 
   async doSearch(e) {
-    this.preventPageReload(e);
-
     this.formInput = document.querySelector('form');
 
     // Checkboxes checked-property is boolean true/false
@@ -40,9 +38,9 @@ class BuyerPageSearch extends Base {
       realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
       WHERE imgUrl LIKE '%img01%'
 
-      AND CAST(realEstateInfo.price AS int) < '` + this.formInput.maxprice + `'    
-      AND CAST(realEstateInfo.rooms AS int) >= '` + this.formInput.minrooms + `'
-      AND CAST(realEstateInfo.area AS int) >= '` + this.formInput.minarea + `'
+      AND CAST(realEstateInfo.price AS int) < '` + this.formInput.maxprice.value + `'    
+      AND CAST(realEstateInfo.rooms AS int) >= '` + this.formInput.minrooms.value + `'
+      AND CAST(realEstateInfo.area AS int) >= '` + this.formInput.minarea.value + `'
 
       GROUP BY realEstateInfo.Id`;
 
@@ -99,7 +97,7 @@ class BuyerPageSearch extends Base {
             </div>
           </div>
 
-            <form id="searchForm">
+            <form id="searchForm" submit="preventPageReload">
             <div class="form-group p-4">
 
               <div class="row">
@@ -119,7 +117,7 @@ class BuyerPageSearch extends Base {
                     </select>
                   </div>
                   <div class="col-auto mt-4">
-                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" click="doSearch">Sök <!-- Do not make this type submit --></button>
+                    <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" click="doSearch" type="submit">Sök <!-- Do not make this type submit --></button>
                   </div>
                 </div>
 
@@ -212,7 +210,7 @@ class BuyerPageSearch extends Base {
 
                     <div class="col">
                       <select class="form-control" id="max_price" name="maxprice">
-                        <option value="0">Inget</option>
+                        <option value="999999999">Inget</option>
                         <option value="100000">100 000 kr</option>
                         <option value="200000">200 000 kr</option>
                         <option value="300000">300 000 kr</option>
