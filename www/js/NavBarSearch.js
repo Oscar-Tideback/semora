@@ -15,13 +15,11 @@ class NavBarSearch extends Base {
   }
 
 
-  // Start of slightly modified Thomas example-autocomplete --------------------------------
+  // -------------------------- Start of slightly modified Thomas example-autocomplete --------------------------
   clickKeyword(e) {
     this.searchHits = [];
     this.selected = -1;
-    this.chosen = e.target.innerText;
-    //this.doSearch();
-    this.render();
+    this.doSearch(e.target.parentElement.parentElement.value);
   }
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
@@ -38,11 +36,9 @@ class NavBarSearch extends Base {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
 
     if (e.key === 'Enter' && this.selected >= 0) {
-      this.chosen = (this.searchHits[this.selected] || {}).regionName;
-      //this.search();
+      this.doSearch((this.searchHits[this.selected] || {}).regionName);
       this.searchHits = [];
       this.selected = -1;
-      this.render();
       return;
     }
     this.selected = 0;
@@ -70,26 +66,20 @@ class NavBarSearch extends Base {
 
     this.render();
   }
-  // End of slightly modified Thomas example-autocomplete --------------------------------
+  // -------------------------- End of slightly modified Thomas example-autocomplete --------------------------
 
-  // Addition by Thomas
+
+  // Addition by Thomas. Do not perform a hard reload of the page when someone submits the form
   preventPageReload(e) {
-    // Do not perform a hard reload of the page when someone submits the form
     e && e.preventDefault();
   }
 
-  // Addition by Thomas. Unused but keep here anyway as referece
-  search() {
-    //  document.querySelector('.nav-bar-search-input').value = this.chosen || '';
-    //  app.goto('/buy-property');
-    //  app.buyerPage.search(this.chosen);
-  }
 
   // Not implemented yet
-  doSearch() {
-    //app.buyerPage.region = this.chosen;
-    //app.buyerPage.search();
+  doSearch(region) {
+    //app.buyerPageSearch.search();
     //app.goto('/buy-property');
+    alert('Gör en sökning på: ' + region);
   }
 
   render() {
@@ -102,10 +92,10 @@ class NavBarSearch extends Base {
               <div class="dropdown-menu show position-absolute" id="dropdown-menu">
                 <div class="search-in-hero-item dropdown-item"><b>Antal träffar på ${'"' + this.currentKeyword + '"'} per region</b></div>
                 ${this.searchHits.map((hits, index) => /*html*/`
-                  <button click="clickKeyword" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button">
+                  <button click="clickKeyword" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button" value="${hits.regionName}">
                     <div class="row">
-                      <div class="col" name="dropdown-item">${hits.regionName}</div>
-                      <div class="col-auto" name="dropdown-item"><b>${hits.totalHits} träff${hits.totalHits > 1 ? 'ar' : ''}</b></div>
+                      <div class="col">${hits.regionName}</div>
+                      <div class="col-auto"><b>${hits.totalHits} träff${hits.totalHits > 1 ? 'ar' : ''}</b></div>
                     </div>
                   </button>
                 `)}
