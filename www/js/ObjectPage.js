@@ -1,9 +1,43 @@
 class ObjectPage extends Base {
 
+
+  async mount() {
+
+    //pop agents
+    this.regionSelection = await sql(/*sql*/`
+    SELECT * FROM region`);
+
+    this.foundAgents = await sql(/*sql*/`
+    SELECT user.firstName,  user.lastName, user.id,
+    user.phone, user.email, user.description, user.imageUrl,
+    GROUP_CONCAT(region.regionName,', ') region_names
+    FROM userXregion 
+    INNER JOIN user ON user.id = userXregion.userId, 
+    region ON region.id = userXregion.regionId
+    WHERE user.isAgent = 'true'
+    GROUP BY user.id
+    `);
+  }
+  async searchAgents() {
+    this.foundAgents = await sql(/*sql*/`
+    SELECT user.firstName,  user.lastName, user.id,
+    user.phone, user.email, user.description, user.imageUrl,
+    GROUP_CONCAT(region.regionName,', ') region_names
+    FROM userXregion 
+    INNER JOIN user ON user.id = userXregion.userId, 
+    region ON region.id = userXregion.regionId
+    AND region.regionName = ${this.region.regionName}
+    WHERE user.isAgent = 'true'
+    GROUP BY user.id
+    `);
+    this.render();
+  }
+
+
   
 
     render() {
-        console.log(this);  // Check what properties object actually (got) has when rendering
+        console.log(this.foundAgents);  // Check what properties object actually (got) has when rendering
         return /*html*/`
             <div class= "row m-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
           
@@ -35,21 +69,18 @@ class ObjectPage extends Base {
                                             <strong>Pris:</strong> ${this.price} kr<br>
                                             <strong>Byggår:</strong> ${this.buildYear}<br> 
                                             <strong>Driftkostnad:</strong> ${this.maintenanceCost} /år<br>
-                                            <strong>Bostadstyp:</strong> ${this.tenure}
-                                            <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}
+                                            <strong>Bostadstyp:</strong> ${this.tenure}<br>
+                                            <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
+                                             ${this.user}
+
 
                                        
                                             <div class="col d-flex justify-content-left">
-                                        
-                                           
-                                            <img src="/images/${this.imageUrl}" broker="${user.id}"  class="card-img p-5" alt= "Agent Face">
-                                            <div class="card mb-5" style="max-width: 540px;">
-                                            <div class="row p-5">
-                                            <div class="card-title">
-</div>
-                                   
-                                   </div>
-                                        </div>
+                                            <div class="row p-3 border bg-light no-gutters">
+                                            <img src="/images/${this.imageUrl}">
+                                            <p class="card-text name-email-phone"><span class="name-bold"></span>  <strong>${this.firstName} ${this.lastName}</strong></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold"></span>  <strong>${this.}</strong></p>
+                                    </div>
                                     </div>
                                             <br>
                                             <br>
