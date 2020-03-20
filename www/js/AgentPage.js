@@ -33,11 +33,11 @@ class AgentPage extends Base {
               <img src="../images/${this.imageUrl}" class="img-thumbnail rounded float-left" alt="Agent face">
           </div>
             <div class="col-md-3 col-sm-12">
-            <p>${this.firstName}
+            <p class="name-title">${this.firstName}
               ${this.lastName}</p>
-              <p class="name-email-phone">E-Mail: ${this.email}</p>
-              <p class="name-email-phone">Tel: ${this.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
-              <p class="name-region">Region: ${this.region_names}.</p>
+              <p class="name-email-phone"><strong>E-Mail:</strong> ${this.email}</p>
+              <p class="name-email-phone"><strong>Tel:</strong>  ${this.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
+              <p class="name-region"><strong>Region:</strong>  ${this.region_names}.</p>
             </div>              
             <!--Form-->
             <form submit="collectFormData" class="col-md-6 col-sm-12">
