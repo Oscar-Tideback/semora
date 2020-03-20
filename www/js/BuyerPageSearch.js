@@ -59,7 +59,7 @@ class BuyerPageSearch extends Base {
       for (let box of this.boxes) {
         if (box.name.value === 'tenaryOption1') {
           this.boxes.tenaryOption1.checked = true;
-          this.boxes.tenaryOption1.parentElement.classList.add('active');
+          this.boxes.tenaryOption1.parentElement.classList.toggle('active');
           continue;
         }
         box.checked = false;
