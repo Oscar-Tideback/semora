@@ -58,9 +58,9 @@ class AgentsPage extends Base {
                     ${user.lastName}</a>   
                   </div>             
                   
-                    <p class="card-text name-email-phone">E-Mail: ${user.email}</p>
-                    <p class="card-text name-email-phone">Tel: ${user.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
-                    <p class="card-text name-region">Region: ${user.region_names}.</p>
+                    <p class="card-text name-email-phone"><span class="name-bold">E-Mail:</span>  ${user.email}</p>
+                    <p class="card-text name-email-phone"><span class="name-bold">Tel:</span>  ${user.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
+                    <p class="card-text name-region"><span class="name-bold">Region:</span> ${user.region_names}.</p>
                 </div >
                 `)}
                 </div>              
