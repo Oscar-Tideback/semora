@@ -186,6 +186,26 @@ border-bottom: 2px;
 
 }
 
+@media (max-width: 992px) {
+  .broker-name {
+    font-size: $base-font * 1.2;
+  }
+}
+@media (max-width: 992px) {
+  .broker-info {
+    font-size: $base-font * 1.2;
+  }
+}
+
+@media (max-width: 992px) {
+  .name-nopad {
+    margin-top: -40px;
+    font-size: $base-font * 1.4;
+  }
+}
+
+
+
 // Override default bootstrap
 .carousel-inner {
   overflow: hidden;

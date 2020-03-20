@@ -52,15 +52,16 @@ class AgentsPage extends Base {
                     <img src="images/${user.imageUrl}" targetbrokerid="${user.id}" class="card-img p-2" alt="Agent face ${user.lastName}"></a>
                   </div>
                   <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
-                  <div class="card-title">
+                  <div class="card-title name-nopad">
                     <a href="/real-estate-agent/${user.id}">
-                    ${user.firstName}
-                    ${user.lastName}</a>   
+                    <p class="name-nopad">${user.firstName}
+                    ${user.lastName}</p></a>   
                   </div>             
                   
-                    <p class="card-text name-email-phone"><span class="name-bold">E-Mail:</span>  ${user.email}</p>
-                    <p class="card-text name-email-phone"><span class="name-bold">Tel:</span>  ${user.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
-                    <p class="card-text name-region"><span class="name-bold">Region:</span> ${user.region_names}.</p>
+                    <p class="card-text broker-info  name-email-phone"><span class="name-bold">E-Mail:</span>  ${user.email}</p>
+                    <p class="card-text broker-info  name-email-phone"><span class="name-bold">Tel:</span>  ${user.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
+                    <p class="card-text broker-info  name-region"><span class="name-bold">Region:</span> ${user.region_names}.</p>
+                    <hr class="mb-5">
                 </div >
                 `)}
                 </div>              
