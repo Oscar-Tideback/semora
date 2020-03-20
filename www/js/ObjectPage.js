@@ -16,7 +16,10 @@ class ObjectPage extends Base {
                                 <div class="card my-8">
                                 
                                     <img src="/images/${this.Id}/img01.jpg" class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
-                                    
+
+                              
+                                  
+  
                          
 
                             
@@ -24,18 +27,24 @@ class ObjectPage extends Base {
                                         <div class="card-text">
                                         
                                             <h1>${this.streetName} ${this.streetNumber}, ${this.floor} tr</h1>
-                                            <strong>${this.areaName}, ${this.regionName}<br></strong>
+                                            <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
                                             <strong>Pris:</strong> ${this.price} kr<br>
-                                            <strong>Byggår:</strong> ${this.buildYear}<br>
+                                            <strong>Byggår:</strong> ${this.buildYear}<br> 
                                             <strong>Driftkostnad:</strong> ${this.maintenanceCost} /år<br>
                                             <strong>Bostadstyp:</strong> ${this.tenure}
-                                            <br><br>
-                                            ${this.description}<br>
 
-                                            <img src="/images/${this.Id}/img01.jpg" class="card-img-top" alt="${this.agent}" realEstateId="${this.Id}">
+                                            <section class= "listing__broker-info">
+                                            <div class= "col-sm-13">
+
+                                            <img class="d-block w-50 justify content-right" src="/images/${this.Id}/img02.jpg"><br>
+                                        </section>
                                         </div>
+                                            <br>
+                                            <br>
+                                            ${this.description}<br>
+            
                                     </div>
                         
                             
@@ -58,6 +67,7 @@ class ObjectPage extends Base {
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
             `;
     }
