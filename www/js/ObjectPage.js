@@ -5,9 +5,9 @@ class ObjectPage extends Base {
         return /*html*/`
             <div class= "row m-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
           
-         <div class= "container my-3">
-<div class= "container my-4">
-        <img src="/images/${this.user}/img12.jpg">
+        
+
+ 
                     <div class= "row p-5">
                         <h1>Försäljningsobjekt.</h1>
                         <div class="col-sm-13">
@@ -16,23 +16,30 @@ class ObjectPage extends Base {
                                 <div class="card my-8">
                                 
                                     <img src="/images/${this.Id}/img01.jpg" class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
+                                    
+                         
 
+                            
                                     <div class="card-body">
                                         <div class="card-text">
-                                            <strong>
+                                        
                                             <h1>${this.streetName} ${this.streetNumber}, ${this.floor} tr</h1>
-                                            ${this.areaName}, ${this.regionName}<br>
-                                            Antal rum: ${this.rooms}<br>
-                                            Boarea: ${this.area} m²<br>
-                                            Pris: ${this.price} kr<br>
-                                            Byggår: ${this.buildYear}<br>
-                                            Driftkostnad: ${this.maintenanceCost} /år<br>
-                                            Bostadstyp: ${this.tenure}</strong>
+                                            <strong>${this.areaName}, ${this.regionName}<br></strong>
+                                            <strong>Antal rum:</strong> ${this.rooms}<br>
+                                            <strong>Boarea:</strong> ${this.area} m²<br>
+                                            <strong>Pris:</strong> ${this.price} kr<br>
+                                            <strong>Byggår:</strong> ${this.buildYear}<br>
+                                            <strong>Driftkostnad:</strong> ${this.maintenanceCost} /år<br>
+                                            <strong>Bostadstyp:</strong> ${this.tenure}
                                             <br><br>
                                             ${this.description}<br>
+
+                                            <img src="/images/${this.Id}/img01.jpg" class="card-img-top" alt="${this.agent}" realEstateId="${this.Id}">
                                         </div>
                                     </div>
-
+                        
+                            
+                          
                                     <img class="d-block w-100" src="/images/${this.Id}/img02.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img03.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img04.jpg"><br>
@@ -46,7 +53,6 @@ class ObjectPage extends Base {
                                     <img class="d-block w-100" src="/images/${this.Id}/img12.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img13.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img14.jpg"><br>
-
                                 </div>    
                             </div>
                         </div>
