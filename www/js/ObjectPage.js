@@ -35,11 +35,11 @@ class ObjectPage extends Base {
                                             <strong>Driftkostnad:</strong> ${this.maintenanceCost} /år<br>
                                             <strong>Bostadstyp:</strong> ${this.tenure}
 
-                                            <section class= "listing__broker-info">
-                                            <div class= "col-sm-13">
-
-                                            <img class="d-block w-50 justify content-right" src="/images/${this.Id}/img02.jpg"><br>
-                                        </section>
+                                       
+                                            <div class="col d-flex justify-content-center">
+                                            <div class="card mb-1 col-lg-4 p-3" >
+                                            <img src="/images/${this.imageUrl}">
+                                   </div>
                                         </div>
                                             <br>
                                             <br>
