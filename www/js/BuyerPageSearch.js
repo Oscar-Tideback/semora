@@ -112,6 +112,7 @@ class BuyerPageSearch extends Base {
 
 
   render() {
+    // No seaarch result are present do a default search
     app.buyerPage.searchResult.length < 1 ? this.doSearch() : '';
     return /*html*/`
       <div class="row m-0" route="/buy-property" page-title="Testsida">
