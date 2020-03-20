@@ -8,41 +8,66 @@ class BuyerPageSearch extends Base {
   }
 
 
-  async doSearch(e) {
-    this.formInput = document.querySelector('form');
+  async doSearch() {
 
-    // Checkboxes checked-property is boolean true/false
-    console.log("textinput:" + this.formInput.textinput.value);
-    console.log("regionselect:" + this.formInput.regionselect.value);
+    this.sqlQuery = ``;
 
-    console.log("alla_typer:" + this.formInput.tenaryOption1.checked);
-    console.log("villor:" + this.formInput.tenaryOption2.checked);
-    console.log("radhus:" + this.formInput.tenaryOption3.checked);
-    console.log("lagenheter:" + this.formInput.tenaryOption4.checked);
-    console.log("fritidshus:" + this.formInput.tenaryOption5.checked);
-    console.log("gardar:" + this.formInput.tenaryOption6.checked);
-    console.log("tomter:" + this.formInput.tenaryOption7.checked);
-    console.log("ovriga:" + this.formInput.tenaryOption8.checked);
+    // If null the page hasn't been rendered or form hasn't been submitted yet then load a default result
+    if (document.querySelector('form') !== null) {
+      this.formInput = document.querySelector('form');
 
-    console.log("maxprice:" + this.formInput.maxprice.value);
-    console.log("minarea:" + this.formInput.minarea.value);
-    console.log("minrooms:" + this.formInput.minrooms.value);
+      // Checkboxes checked-property is boolean true/false
+      console.log("textinput:" + this.formInput.textinput.value);
+      console.log("regionselect:" + this.formInput.regionselect.value);
 
-    this.sqlQuery = `
-    SELECT * FROM 
-      realEstateInfo,
-      userXregion ON realEstateInfo.userId = userXregion.userId,
-      region ON region.id = userXregion.regionId,
-      realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
-      areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
-      realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
-      WHERE imgUrl LIKE '%img01%'
+      console.log("alla_typer:" + this.formInput.tenaryOption1.checked);
+      console.log("villor:" + this.formInput.tenaryOption2.checked);
+      console.log("radhus:" + this.formInput.tenaryOption3.checked);
+      console.log("lagenheter:" + this.formInput.tenaryOption4.checked);
+      console.log("fritidshus:" + this.formInput.tenaryOption5.checked);
+      console.log("gardar:" + this.formInput.tenaryOption6.checked);
+      console.log("tomter:" + this.formInput.tenaryOption7.checked);
+      console.log("ovriga:" + this.formInput.tenaryOption8.checked);
 
-      AND CAST(realEstateInfo.price AS int) < '` + this.formInput.maxprice.value + `'    
-      AND CAST(realEstateInfo.rooms AS int) >= '` + this.formInput.minrooms.value + `'
-      AND CAST(realEstateInfo.area AS int) >= '` + this.formInput.minarea.value + `'
+      console.log("maxprice:" + this.formInput.maxprice.value);
+      console.log("minarea:" + this.formInput.minarea.value);
+      console.log("minrooms:" + this.formInput.minrooms.value);
 
-      GROUP BY realEstateInfo.Id`;
+      this.sqlQuery = `
+        SELECT * FROM 
+          realEstateInfo,
+          userXregion ON realEstateInfo.userId = userXregion.userId,
+          region ON region.id = userXregion.regionId,
+          realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+          areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
+          realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
+          WHERE imgUrl LIKE '%img01%'
+
+          AND CAST(realEstateInfo.price AS int) < '` + this.formInput.maxprice.value + `'    
+          AND CAST(realEstateInfo.rooms AS int) >= '` + this.formInput.minrooms.value + `'
+          AND CAST(realEstateInfo.area AS int) >= '` + this.formInput.minarea.value + `'
+
+          GROUP BY realEstateInfo.Id`;
+
+    }
+    else {
+      this.sqlQuery = `
+        SELECT * FROM 
+          realEstateInfo,
+          userXregion ON realEstateInfo.userId = userXregion.userId,
+          region ON region.id = userXregion.regionId,
+          realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+          areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
+          realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
+          WHERE imgUrl LIKE '%img01%'
+
+          AND CAST(realEstateInfo.price AS int) < '999999999'    
+          AND CAST(realEstateInfo.rooms AS int) >= '0'
+          AND CAST(realEstateInfo.area AS int) >= '0'
+
+          GROUP BY realEstateInfo.Id`;
+
+    }
 
     // Refresh result page (BuyerPage)
     app.buyerPage.searchResult = await sql(/*sql*/this.sqlQuery);
@@ -87,6 +112,7 @@ class BuyerPageSearch extends Base {
 
 
   render() {
+    app.buyerPage.searchResult.length < 1 ? this.doSearch() : '';
     return /*html*/`
       <div class="row m-0" route="/buy-property" page-title="Testsida">
         <div class="col p-4">
