@@ -1,43 +1,13 @@
 class ObjectPage extends Base {
 
 
-  async mount() {
-
-    //pop agents
-    this.regionSelection = await sql(/*sql*/`
-    SELECT * FROM region`);
-
-    this.foundAgents = await sql(/*sql*/`
-    SELECT user.firstName,  user.lastName, user.id,
-    user.phone, user.email, user.description, user.imageUrl,
-    GROUP_CONCAT(region.regionName,', ') region_names
-    FROM userXregion 
-    INNER JOIN user ON user.id = userXregion.userId, 
-    region ON region.id = userXregion.regionId
-    WHERE user.isAgent = 'true'
-    GROUP BY user.id
-    `);
-  }
-  async searchAgents() {
-    this.foundAgents = await sql(/*sql*/`
-    SELECT user.firstName,  user.lastName, user.id,
-    user.phone, user.email, user.description, user.imageUrl,
-    GROUP_CONCAT(region.regionName,', ') region_names
-    FROM userXregion 
-    INNER JOIN user ON user.id = userXregion.userId, 
-    region ON region.id = userXregion.regionId
-    AND region.regionName = ${this.region.regionName}
-    WHERE user.isAgent = 'true'
-    GROUP BY user.id
-    `);
-    this.render();
-  }
 
 
-  
+
+
 
     render() {
-        console.log(this.foundAgents);  // Check what properties object actually (got) has when rendering
+        //console.log(this.foundAgents);  // Check what properties object actually (got) has when rendering
         return /*html*/`
             <div class= "row m-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
           
@@ -79,7 +49,7 @@ class ObjectPage extends Base {
                                             <div class="row p-3 border bg-light no-gutters">
                                             <img src="/images/${this.imageUrl}">
                                             <p class="card-text name-email-phone"><span class="name-bold"></span>  <strong>${this.firstName} ${this.lastName}</strong></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold"></span>  <strong>${this.}</strong></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold"></span>  <strong></strong></p>
                                     </div>
                                     </div>
                                             <br>
