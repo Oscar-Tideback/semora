@@ -17,13 +17,14 @@ class App extends Base {
 
     // SQL query must result in 20 objects with unique id for unique routes. No duplicates!
     this.allObjectPages = await sql(ObjectPage, /*sql*/`
-     SELECT * FROM 
-        realEstateInfo, 
+    SELECT realEstateInfo.*, user.imageUrl FROM 
+        realEstateInfo,
+        user ON user.id = realEstateInfo.brokerId,
         userXregion ON realEstateInfo.userId = userXregion.userId, 
         region ON region.id = userXregion.regionId,
         realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
         areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
-        GROUP BY realEstateInfo.Id
+      GROUP BY realEstateInfo.Id
     `);
 
     // SQL query returns brokers that have an object to sell
