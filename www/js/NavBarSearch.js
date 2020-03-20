@@ -5,6 +5,7 @@ class NavBarSearch extends Base {
     this.selected = -1;
     this.keyword = '';
 
+    // Clicking anywhere will close dropdown menu
     document.addEventListener("click", function (e) {
       document.querySelector('[id="dropdown-menu"]') ?
         document.querySelector('[id="dropdown-menu"]').setAttribute('style', 'visibility: hidden')
