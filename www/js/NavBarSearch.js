@@ -1,10 +1,18 @@
 class NavBarSearch extends Base {
 
-  async mount() {
+  mount() {
     this.searchHits = [];
     this.selected = -1;
     this.keyword = '';
+
+    document.addEventListener("click", function (e) {
+      document.querySelector('[id="dropdown-menu"]') ?
+        document.querySelector('[id="dropdown-menu"]').setAttribute('style', 'visibility: hidden')
+        : '';
+    })
+
   }
+
 
   // Start of slightly modified Thomas example-autocomplete --------------------------------
   clickKeyword(e) {
@@ -58,7 +66,6 @@ class NavBarSearch extends Base {
       , { text: '%' + e.target.value + '%' });
 
     this.currentKeyword = e.target.value;
-    // console.log(this.searchHits);
 
     this.render();
   }
@@ -84,7 +91,6 @@ class NavBarSearch extends Base {
     //app.goto('/buy-property');
   }
 
-
   render() {
     return /*html*/`
       <div class="search-in-hero-relative-wrapper pr-4" not-route="/buy-property">
@@ -92,18 +98,18 @@ class NavBarSearch extends Base {
           <div class="input-group">
             <input type="text" class="form-control nav-bar-search-input rounded" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
             ${this.searchHits.length < 1 ? '' : /*html*/`
-              <div class="dropdown-menu show position-absolute">
+              <div class="dropdown-menu show position-absolute" id="dropdown-menu">
                 <div class="search-in-hero-item dropdown-item"><b>Antal träffar på ${'"' + this.currentKeyword + '"'} per region</b></div>
                 ${this.searchHits.map((hits, index) => /*html*/`
                   <button click="clickKeyword" class="dropdown-item ${this.selected !== index ? '' : 'bg-primary text-light'}" type="button">
                     <div class="row">
-                      <div class="col">${hits.regionName}</div>
-                      <div class="col-auto"><b>${hits.totalHits} träff${hits.totalHits > 1 ? 'ar' : ''}</b></div>
+                      <div class="col" name="dropdown-item">${hits.regionName}</div>
+                      <div class="col-auto" name="dropdown-item"><b>${hits.totalHits} träff${hits.totalHits > 1 ? 'ar' : ''}</b></div>
                     </div>
                   </button>
                 `)}
               </div>
-            `}
+            `} 
             <div class="input-group-btn">
               <button class="btn btn-default pull-right" type="submit"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
             </div>
@@ -111,7 +117,6 @@ class NavBarSearch extends Base {
         </form>
       </div>  
       `
-
   }
 
 }
