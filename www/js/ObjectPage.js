@@ -1,11 +1,10 @@
 class ObjectPage extends Base {
 
     render() {
-        console.log(this);  // Check what properties object actually (got) has when rendering
+        //console.log(this);  // Check what properties object actually (got) has when rendering
         return /*html*/`
             <div class= "row m-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
-            <img src="/images/${this.imageUrl}">
-
+          
         
 
  
@@ -37,10 +36,10 @@ class ObjectPage extends Base {
                                             <strong>Bostadstyp:</strong> ${this.tenure}
 
                                        
-                                            <div class="card mb-4 col-lg-2" >
-
+                                            <div class="col d-flex justify-content-center">
+                                            <div class="card mb-1 col-lg-4 p-3" >
                                             <img src="/images/${this.imageUrl}">
-                                   
+                                   </div>
                                         </div>
                                             <br>
                                             <br>
