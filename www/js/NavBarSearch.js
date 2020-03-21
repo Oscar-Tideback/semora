@@ -5,7 +5,7 @@ class NavBarSearch extends Base {
     this.selected = -1;
     this.keyword = '';
 
-    // Clicking anywhere will close dropdown menu
+    // Clicking anywhere will hide dropdown menu
     document.addEventListener("click", function (e) {
       document.querySelector('[id="dropdown-menu"]') ?
         document.querySelector('[id="dropdown-menu"]').setAttribute('style', 'visibility: hidden')
@@ -79,7 +79,7 @@ class NavBarSearch extends Base {
   doSearch(region) {
     //app.buyerPageSearch.search();
     //app.goto('/buy-property');
-    alert('Gör en sökning på: ' + region);
+    alert('En sökning på... ' + region);
   }
 
   render() {

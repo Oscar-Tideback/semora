@@ -10,30 +10,23 @@ class BuyerPageSearchRikard extends Base {
 
   async doSearch() {
 
-    this.sqlQuery = ``;
-
     // If null the page hasn't been rendered or form hasn't been submitted yet then load a default result
     if (document.querySelector('[id="buyerSearchForm2"]') !== null) {
       this.formInput = document.querySelector('[id="buyerSearchForm2"]');
 
       // Checkboxes checked-property is boolean true/false
       console.log("textinput:" + this.formInput.textinput.value);
-      console.log("regionselect:" + this.formInput.regionselect.value);
 
-      console.log("alla_typer:" + this.formInput.tenaryOption1.checked);
-      console.log("villor:" + this.formInput.tenaryOption2.checked);
-      console.log("radhus:" + this.formInput.tenaryOption3.checked);
-      console.log("lagenheter:" + this.formInput.tenaryOption4.checked);
-      console.log("fritidshus:" + this.formInput.tenaryOption5.checked);
-      console.log("gardar:" + this.formInput.tenaryOption6.checked);
-      console.log("tomter:" + this.formInput.tenaryOption7.checked);
-      console.log("ovriga:" + this.formInput.tenaryOption8.checked);
+      console.log("alla_typer:" + this.formInput.tenureOption1.checked);
+      console.log("villor:" + this.formInput.tenureOption2.checked);
+      console.log("radhus:" + this.formInput.tenureOption3.checked);
+      console.log("lagenheter:" + this.formInput.tenureOption4.checked);
+      console.log("fritidshus:" + this.formInput.tenureOption5.checked);
+      console.log("gardar:" + this.formInput.tenureOption6.checked);
+      console.log("tomter:" + this.formInput.tenureOption7.checked);
+      console.log("ovriga:" + this.formInput.tenureOption8.checked);
 
-      console.log("maxprice:" + this.formInput.maxprice.value);
-      console.log("minarea:" + this.formInput.minarea.value);
-      console.log("minrooms:" + this.formInput.minrooms.value);
-
-      this.sqlQuery = `
+      app.buyerPageRikard.searchResult = await sql(/*sql*/`
         SELECT * FROM 
           realEstateInfo,
           userXregion ON realEstateInfo.userId = userXregion.userId,
@@ -42,16 +35,34 @@ class BuyerPageSearchRikard extends Base {
           areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
           realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
           WHERE imgUrl LIKE '%img01%'
+<<<<<<< HEAD
 
           AND CAST(realEstateInfo.price AS int) < '` + this.formInput.maxprice.value + `'    
           AND CAST(realEstateInfo.rooms AS int) >= '` + this.formInput.minrooms.value + `'
           AND CAST(realEstateInfo.area AS int) >= '` + this.formInput.minarea.value + `'
 
           GROUP BY realEstateInfo.Id`;
+=======
+          AND CAST(realEstateInfo.price AS int) < $maxprice   
+          AND CAST(realEstateInfo.rooms AS int) >= $minarea
+          AND CAST(realEstateInfo.area AS int) >= $minrooms
+
+          AND CASE
+            WHEN ($regionid < 1) THEN (region.id > 0)
+            ELSE region.id = $regionid
+          END
+          GROUP BY realEstateInfo.Id`,
+        {
+          regionid: this.formInput.regionselect.value,
+          maxprice: this.formInput.maxprice.value,
+          minarea: this.formInput.minarea.value,
+          minrooms: this.formInput.minrooms.value
+        });
+>>>>>>> 14eba7d8ce257266dcc058849380d360b7644bde
 
     }
     else {
-      this.sqlQuery = `
+      app.buyerPageRikard.searchResult = await sql(/*sql*/`
         SELECT * FROM 
           realEstateInfo,
           userXregion ON realEstateInfo.userId = userXregion.userId,
@@ -60,31 +71,31 @@ class BuyerPageSearchRikard extends Base {
           areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
           realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
           WHERE imgUrl LIKE '%img01%'
+<<<<<<< HEAD
 
+=======
+>>>>>>> 14eba7d8ce257266dcc058849380d360b7644bde
           AND CAST(realEstateInfo.price AS int) < '999999999'    
           AND CAST(realEstateInfo.rooms AS int) >= '0'
           AND CAST(realEstateInfo.area AS int) >= '0'
-
-          GROUP BY realEstateInfo.Id`;
-
+          GROUP BY realEstateInfo.Id`);
     }
 
     // Refresh result page (BuyerPage)
-    app.buyerPageRikard.searchResult = await sql(/*sql*/this.sqlQuery);
     app.buyerPageRikard.render();
 
   }
 
 
-  // Real estate tenary checkboxes behaviour. Sets true/false and active. Ugly code fix later /Rikard
+  // Real estate tenure checkboxes behaviour. Sets true/false and active. Ugly code fix later /Rikard
   checkBoxes(e) {
-    this.boxes = document.getElementsByClassName('tenary-checkbox');
+    this.boxes = document.getElementsByClassName('tenure-checkbox');
 
     if (e.target.attributes.name.value === 'uncheck') {
       for (let box of this.boxes) {
-        if (box.name.value === 'tenaryOption1') {
-          this.boxes.tenaryOption1.checked = true;
-          this.boxes.tenaryOption1.parentElement.classList.toggle('active');
+        if (box.name.value === 'tenureOption1') {
+          this.boxes.tenureOption1.checked = true;
+          this.boxes.tenureOption1.parentElement.classList.toggle('active');
           continue;
         }
         box.checked = false;
@@ -92,8 +103,8 @@ class BuyerPageSearchRikard extends Base {
       }
     }
     else {
-      this.boxes.tenaryOption1.checked = false;
-      this.boxes.tenaryOption1.parentElement.classList.remove('active');
+      this.boxes.tenureOption1.checked = false;
+      this.boxes.tenureOption1.parentElement.classList.remove('active');
       e.target.checked ? e.target.checked = false : e.target.checked = true;
       e.target.parentElement.classList.toggle('active');
     }
@@ -156,31 +167,31 @@ class BuyerPageSearchRikard extends Base {
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block active" click="checkBoxes" name="uncheck" style="white-space: nowrap"><input class="tenary-checkbox" type="checkbox" name="tenaryOption1" id="allatyper" checked="true">Alla typer</label>
+                          <label class="btn btn-light btn-block active" click="checkBoxes" name="uncheck" style="white-space: nowrap"><input class="tenure-checkbox" type="checkbox" name="tenureOption1" id="allatyper" checked="true">Alla typer</label>
                         </div>
                           <div class="col px-1 mx-0">
-                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption2" id="villor">Villor</label>
+                            <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption2" id="villor">Villor</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption3" id="radhus">Radhus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption3" id="radhus">Radhus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption4" id="lagenheter">Lägenheter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption4" id="lagenheter">Lägenheter</label>
                         </div>
                       </div>
 
                       <div class="row">
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption5" id="fritidshus">Fritidshus</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption5" id="fritidshus">Fritidshus</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption6" id="gardar">Gårdar</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption6" id="gardar">Gårdar</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption7" id="tomter">Tomter</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption7" id="tomter">Tomter</label>
                         </div>
                         <div class="col px-1 mx-0">
-                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenary-checkbox" type="checkbox" name="tenaryOption8" id="ovriga">Övriga</label>
+                          <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption8" id="ovriga">Övriga</label>
                         </div>
                       </div>
 

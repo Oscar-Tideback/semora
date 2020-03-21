@@ -64,7 +64,7 @@ class App extends Base {
     this.objectPage = new ObjectPage();
 
     this.buyerPageRikard = new BuyerPageRikard({ searchResult: [] });
-    this.buyerPageSearchRikard = new BuyerPageSearchRikard({ region: '', maxKvm: '', minKvm: '' });
+    this.buyerPageSearchRikard = new BuyerPageSearchRikard();
 
   }
 
