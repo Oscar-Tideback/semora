@@ -42,7 +42,14 @@ class BuyerPageSearchRikard extends Base {
           areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
           realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
           WHERE imgUrl LIKE '%img01%'
+          AND realEstateInfo.tenure IN (
+          CASE WHEN realEstateInfo.tenure='Villa'  THEN realEstateInfo.tenure END,
+          CASE WHEN realEstateInfo.tenure='Radhus'  THEN realEstateInfo.tenure END,
+          CASE WHEN realEstateInfo.tenure='Bostadsrätt'  THEN realEstateInfo.tenure END
 
+          )
+
+         
           AND CAST(realEstateInfo.price AS int) < '` + this.formInput.maxprice.value + `'    
           AND CAST(realEstateInfo.rooms AS int) >= '` + this.formInput.minrooms.value + `'
           AND CAST(realEstateInfo.area AS int) >= '` + this.formInput.minarea.value + `'
@@ -61,6 +68,8 @@ class BuyerPageSearchRikard extends Base {
           realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
           WHERE imgUrl LIKE '%img01%'
 
+          
+         
           AND CAST(realEstateInfo.price AS int) < '999999999'    
           AND CAST(realEstateInfo.rooms AS int) >= '0'
           AND CAST(realEstateInfo.area AS int) >= '0'
