@@ -44,7 +44,8 @@ class App extends Base {
       { label: 'Sälja bostad', route: '/our-regions' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       { label: 'Bostad info', route: '/real-estate-info/8' },
-      { label: 'Om oss', route: '/about-us' }
+      { label: 'Om oss', route: '/about-us' },
+      { label: 'Rikards testsida', route: '/testpage' }
     ];
 
     this.navBar = new NavBar({ links: this.navBarLinks });
@@ -62,6 +63,9 @@ class App extends Base {
     this.agentsPage = new AgentsPage();
     this.objectPage = new ObjectPage();
 
+    this.buyerPageRikard = new BuyerPageRikards({ searchResult: [] });
+    this.buyerPageSearchRikard = new BuyerPageSearchRikard({ region: '', maxKvm: '', minKvm: '' });
+
   }
 
 
@@ -78,6 +82,11 @@ class App extends Base {
           ${this.startPage}
           ${this.buyerPageSearch}
           ${this.buyerPage} 
+
+          <!-- For testing -->
+          ${this.buyerPageSearchRikard} 
+          ${this.buyerPageRikard} 
+          
           ${this.contactPage}    
           ${this.agentsPage}
           ${this.allAgentsPage}
@@ -85,7 +94,6 @@ class App extends Base {
           ${this.mapsPage}
           ${this.aboutUsPage}
           ${this.missingPage}
-          ${this.testPage}
           ${this.integrityPage}
         </main>
         ${this.footer}
