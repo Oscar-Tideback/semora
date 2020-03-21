@@ -13,8 +13,8 @@ class BuyerPageSearchRikard extends Base {
     this.sqlQuery = ``;
 
     // If null the page hasn't been rendered or form hasn't been submitted yet then load a default result
-    if (document.querySelector('form') !== null) {
-      this.formInput = document.querySelector('form');
+    if (document.querySelector('[id="buyerSearchForm2"]') !== null) {
+      this.formInput = document.querySelector('[id="buyerSearchForm2"]');
 
       // Checkboxes checked-property is boolean true/false
       console.log("textinput:" + this.formInput.textinput.value);
@@ -70,8 +70,8 @@ class BuyerPageSearchRikard extends Base {
     }
 
     // Refresh result page (BuyerPage)
-    app.buyerPage.searchResult = await sql(/*sql*/this.sqlQuery);
-    app.buyerPage.render();
+    app.buyerPageRikard.searchResult = await sql(/*sql*/this.sqlQuery);
+    app.buyerPageRikard.render();
 
   }
 
@@ -120,11 +120,12 @@ class BuyerPageSearchRikard extends Base {
 
           <div class="row p-2">
             <div class="col text-center">
+              <p>Rikards lekstuga för att testa lite!</p>
               <h1>Sök drömbostaden...</h1>
             </div>
           </div>
 
-            <form id="searchForm" submit="preventPageReload">
+            <form id="buyerSearchForm2" submit="preventPageReload">
             <div class="form-group p-4">
 
               <div class="row">

@@ -13,8 +13,8 @@ class BuyerPageSearch extends Base {
     this.sqlQuery = ``;
 
     // If null the page hasn't been rendered or form hasn't been submitted yet then load a default result
-    if (document.querySelector('form') !== null) {
-      this.formInput = document.querySelector('form');
+    if (document.querySelector('[id="buyerSearchForm"]') !== null) {
+      this.formInput = document.querySelector('[id="buyerSearchForm"]');
 
       // Checkboxes checked-property is boolean true/false
       console.log("textinput:" + this.formInput.textinput.value);
@@ -124,7 +124,7 @@ class BuyerPageSearch extends Base {
             </div>
           </div>
 
-            <form id="searchForm" submit="preventPageReload">
+            <form id="buyerPageSearchForm" submit="preventPageReload">
             <div class="form-group p-4">
 
               <div class="row">
