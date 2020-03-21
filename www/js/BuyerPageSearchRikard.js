@@ -57,14 +57,6 @@ class BuyerPageSearchRikard extends Base {
             OR areaInfo.description LIKE $textinput
             )
         END
-        AND CASE WHEN $opt1 THEN realEstateInfo.tenure LIKE '%' END
-        OR CASE WHEN $opt2 THEN realEstateInfo.tenure = 'Villa' END
-        OR CASE WHEN $opt3 THEN realEstateInfo.tenure = 'Radhus' END
-        OR CASE WHEN $opt4 THEN realEstateInfo.tenure = 'Lägenhet' END
-        OR CASE WHEN $opt5 THEN realEstateInfo.tenure = 'Fritidshus' END
-        OR CASE WHEN $opt6 THEN realEstateInfo.tenure = 'Gård' END
-        OR CASE WHEN $opt7 THEN realEstateInfo.tenure = 'Tomt' END
-        OR CASE WHEN $opt8 THEN realEstateInfo.tenure = 'Övrig' END
         GROUP BY realEstateInfo.Id
         `,
         {
@@ -72,15 +64,8 @@ class BuyerPageSearchRikard extends Base {
           regionid: this.formInput.regionselect.value,
           maxprice: this.formInput.maxprice.value,
           minarea: this.formInput.minarea.value,
-          minrooms: this.formInput.minrooms.value,
-          opt1: this.formInput.tenureOption1.checked,
-          opt2: this.formInput.tenureOption2.checked,
-          opt3: this.formInput.tenureOption3.checked,
-          opt4: this.formInput.tenureOption4.checked,
-          opt5: this.formInput.tenureOption5.checked,
-          opt6: this.formInput.tenureOption6.checked,
-          opt7: this.formInput.tenureOption7.checked,
-          opt8: this.formInput.tenureOption8.checked
+          minrooms: this.formInput.minrooms.value
+
         });
 
     }
