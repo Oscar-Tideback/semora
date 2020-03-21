@@ -35,18 +35,9 @@ class BuyerPageSearchRikard extends Base {
           areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
           realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
           WHERE imgUrl LIKE '%img01%'
-<<<<<<< HEAD
-
-          AND CAST(realEstateInfo.price AS int) < '` + this.formInput.maxprice.value + `'    
-          AND CAST(realEstateInfo.rooms AS int) >= '` + this.formInput.minrooms.value + `'
-          AND CAST(realEstateInfo.area AS int) >= '` + this.formInput.minarea.value + `'
-
-          GROUP BY realEstateInfo.Id`;
-=======
           AND CAST(realEstateInfo.price AS int) < $maxprice   
           AND CAST(realEstateInfo.rooms AS int) >= $minarea
           AND CAST(realEstateInfo.area AS int) >= $minrooms
-
           AND CASE
             WHEN ($regionid < 1) THEN (region.id > 0)
             ELSE region.id = $regionid
@@ -58,7 +49,6 @@ class BuyerPageSearchRikard extends Base {
           minarea: this.formInput.minarea.value,
           minrooms: this.formInput.minrooms.value
         });
->>>>>>> 14eba7d8ce257266dcc058849380d360b7644bde
 
     }
     else {
@@ -71,10 +61,6 @@ class BuyerPageSearchRikard extends Base {
           areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
           realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
           WHERE imgUrl LIKE '%img01%'
-<<<<<<< HEAD
-
-=======
->>>>>>> 14eba7d8ce257266dcc058849380d360b7644bde
           AND CAST(realEstateInfo.price AS int) < '999999999'    
           AND CAST(realEstateInfo.rooms AS int) >= '0'
           AND CAST(realEstateInfo.area AS int) >= '0'
@@ -128,23 +114,19 @@ class BuyerPageSearchRikard extends Base {
     return /*html*/`
       <div class="row m-0" route="/testpage" page-title="Testsida">
         <div class="col p-4">
-
           <div class="row p-2">
             <div class="col text-center">
               <p>Rikards lekstuga för att testa lite!</p>
               <h1>Sök drömbostaden...</h1>
             </div>
           </div>
-
             <form id="buyerSearchForm2" submit="preventPageReload">
             <div class="form-group p-4">
-
               <div class="row">
                 <div class="col">
                   <!-- <label for="keywordsInput">Område</label> -->
                   </div>
               </div>
-
               <div class="row pb-2">
                 <div class="col-md mt-4">
                   <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" id="keywordsInput" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
@@ -159,12 +141,9 @@ class BuyerPageSearchRikard extends Base {
                     <button class="btn btn-light btn-lg" style="background-color: #ffe034; width: 10rem" click="doSearch" type="submit">Sök</button>
                   </div>
                 </div>
-
                 <hr>
-
                   <div class="row-auto pt-2">
                     <div class="btn-group-toggle" data-toggle="buttons">
-
                       <div class="row">
                         <div class="col px-1 mx-0">
                           <label class="btn btn-light btn-block active" click="checkBoxes" name="uncheck" style="white-space: nowrap"><input class="tenure-checkbox" type="checkbox" name="tenureOption1" id="allatyper" checked="true">Alla typer</label>
@@ -179,7 +158,6 @@ class BuyerPageSearchRikard extends Base {
                           <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption4" id="lagenheter">Lägenheter</label>
                         </div>
                       </div>
-
                       <div class="row">
                         <div class="col px-1 mx-0">
                           <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption5" id="fritidshus">Fritidshus</label>
@@ -194,12 +172,9 @@ class BuyerPageSearchRikard extends Base {
                           <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption8" id="ovriga">Övriga</label>
                         </div>
                       </div>
-
                     </div>
                   </div>
-
                   <hr>
-
                   <div class="row">
                     <div class="col">
                       <label for="min_rooms">Minst antal rum</label>
@@ -211,9 +186,7 @@ class BuyerPageSearchRikard extends Base {
                       <label for="max_price">Högst pris</label>
                     </div>
                   </div>
-
                   <div class="row">
-
                     <div class="col">
                       <select class="form-control" id="min_rooms" name="minrooms">
                         <option value="0">Alla</option>
@@ -225,7 +198,6 @@ class BuyerPageSearchRikard extends Base {
                         <option value="10">Minst 10 rum</option>
                       </select>
                     </div>
-
                     <div class="col">
                       <select class="form-control" id="min_area" name="minarea">
                         <option value="0">Alla</option>
@@ -246,7 +218,6 @@ class BuyerPageSearchRikard extends Base {
                         <option value="500">Minst 500 m²</option>
                       </select>
                     </div>
-
                     <div class="col">
                       <select class="form-control" id="max_price" name="maxprice">
                         <option value="999999999">Inget</option>
@@ -282,12 +253,9 @@ class BuyerPageSearchRikard extends Base {
                         <option value="25000000">25 000 000 kr</option>
                       </select>
                     </div>
-
                   </div>
-
             </div>
             </form>
-
         </div>
       </div>
     `;
