@@ -11,7 +11,25 @@ class BuyerPageSearchRikard extends Base {
   async doSearch() {
 
     // If null the page hasn't been rendered or form hasn't been submitted yet then load a default result
-    if (document.querySelector('[id="buyerSearchForm2"]') !== null) {
+    if (document.querySelector('[id="buyerSearchForm2"]') === null) {
+
+      app.buyerPageRikard.searchResult = await sql(/*sql*/`
+        SELECT * FROM 
+          realEstateInfo,
+          userXregion ON realEstateInfo.userId = userXregion.userId,
+          region ON region.id = userXregion.regionId,
+          realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+          areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
+          realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
+          WHERE imgUrl LIKE '%img01%'
+          AND CAST(realEstateInfo.price AS int) < '999999999'    
+          AND CAST(realEstateInfo.rooms AS int) >= '0'
+          AND CAST(realEstateInfo.area AS int) >= '0'
+          GROUP BY realEstateInfo.Id`);
+
+    }
+    else {
+
       this.formInput = document.querySelector('[id="buyerSearchForm2"]');
 
       app.buyerPageRikard.searchResult = await sql(/*sql*/`
@@ -65,21 +83,6 @@ class BuyerPageSearchRikard extends Base {
           opt8: this.formInput.tenureOption8.checked
         });
 
-    }
-    else {
-      app.buyerPageRikard.searchResult = await sql(/*sql*/`
-        SELECT * FROM 
-          realEstateInfo,
-          userXregion ON realEstateInfo.userId = userXregion.userId,
-          region ON region.id = userXregion.regionId,
-          realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
-          areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
-          realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
-          WHERE imgUrl LIKE '%img01%'
-          AND CAST(realEstateInfo.price AS int) < '999999999'    
-          AND CAST(realEstateInfo.rooms AS int) >= '0'
-          AND CAST(realEstateInfo.area AS int) >= '0'
-          GROUP BY realEstateInfo.Id`);
     }
 
     // Refresh result page (BuyerPage)
