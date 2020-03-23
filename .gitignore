@@ -6,6 +6,8 @@ www/rikard
 www/databases/DhyrRumson_Rikards.db
 www/databases/DhyrRumson_Rikards2.db
 example-autocomplete
+www/js/BuyerPageSearchRikard.js
+www/js/BuyerPageRikard.js
 
 # Logs
 logs

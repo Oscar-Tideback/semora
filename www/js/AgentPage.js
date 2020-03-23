@@ -1,5 +1,6 @@
 class AgentPage extends Base {
 
+
   async collectFormData(e) {
     // Loop through the form and collect the input
     let data = {};
@@ -18,6 +19,9 @@ class AgentPage extends Base {
   }
 
 
+
+
+
   render() {
     //console.log(this);
     return /*html*/`
@@ -28,7 +32,10 @@ class AgentPage extends Base {
           <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
         </div>
       </div>
-        <div class="row">                                  
+        <div class="row">
+        
+
+
           <div class="col-auto">
               <img src="../images/${this.imageUrl}" class="img-thumbnail rounded float-left" alt="Agent face">
           </div>
