@@ -14,14 +14,14 @@ class ObjectPage extends Base {
 
  
                     <div class= "row p-5">
-                        <h1>Försäljningsobjekt</h1>
-                        <div class="col-sm-13">
+                    <h1>Försäljningsobjekt</h1>
+                    <div class="col-sm-13">
                         
-                            <div class="col d-flex justify-content-left">
-                                <div class="card my-8">
+                    <div class="col d-flex justify-content-left">
+                    <div class="card my-8">
                                 
-                                    <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
-                                    <div class= "right"></div>
+                    <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
+                    <div class= "right"></div>
                               
                                   
   
@@ -42,45 +42,50 @@ class ObjectPage extends Base {
                                             <strong>Visningstider:</strong> ${this.startDatetime ? this.startDatetime : 'visningstider har gått ut'} - ${this.endDatetime}<br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
-</div>
-</div>
-<br>
-<div class="row p-5">
-                                       <h3><strong>Kontakta mäklaren</strong></h3>
-                                       <div class= "row  p-5 border bg-light no-gutters" >
+                        
+                                             </div>
+                                            </div>
+                                            <br>
+                                            <div class="row p-3">
+                                            <h3><strong>Kontakta mäklaren</strong></h3>
+                                            </div>
+                                            <div class= "row  p-3 border bg-light no-gutters" >
                                         
-                                       <div class= "col-auto">
+                                            <div class= "col-auto">
                                       
                                     
-                                       <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
-                                       </div>
-                                       <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
-                                       <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
-                                       <div class="card-title name-nopad">
+                                            <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
+                                             </div>
+                                            <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
+                                            <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
+                                            <div class="card-title name-nopad">
 
-                                        <div class="col-md-2 col-sm-6">
+                                            <div class="col-md-2 col-sm-6">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6><hr class="mb-5"></p>
-</div>
+                                            </div>
                                             </div>
 
                                             
-</div>
+                                            </div>
                                           
 
-</div>
+                                            </div>
 
-                                    
+                                          
                                             
                                             
                                             <br>
-                                            ${this.description}
-                                    
-            
-                                    </div>
-                        
-                            
+                                         
+                                            </div> 
+            <div class="row p-3">
+                                            ${this.realDescription}
+                                            </div>
+                                            <br>
+                             
+                                
+
                           
                                     <img class="d-block w-100" src="/images/${this.Id}/img02.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img03.jpg"><br>
@@ -101,7 +106,8 @@ class ObjectPage extends Base {
                     </div>
                 </div>
             </div>
-            </div>
+            
+            
             `;
     }
 
