@@ -9,7 +9,7 @@ class ObjectPage extends Base {
 render() {
         //console.log(this.foundAgents);  // Check what properties object actually (got) has when rendering
         return /*html*/`
-            <div class= "row m-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
+            <div class= "row m-0" route="/real-estate-info/1" page-title="Bostad info">
           
         
 
@@ -59,8 +59,8 @@ render() {
                                         <div class="col-md-2 col-sm-6">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></strong></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
-                                            <hr class="mb-5">
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6><hr class="mb-5"></p>
+
                                             </div>
 
                                             
