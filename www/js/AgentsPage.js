@@ -16,18 +16,13 @@ class AgentsPage extends Base {
     WHERE user.isAgent = 'true'
     GROUP BY user.id
     `);
-    this.render();
-  }
-
-  async popAll() {
-
   }
 
 
   async searchAgentRegions(e) {
     let regioID = e.target.value;
-    //console.log(regioID);
-    if (regioID === 0) {
+    console.log(regioID);
+    if (regioID === '0') {
       this.foundAgents = await sql(/*sql*/`
       SELECT user.firstName,  user.lastName, user.id,
       user.phone, user.email, user.description, user.imageUrl,
@@ -43,7 +38,7 @@ class AgentsPage extends Base {
     else {
       // SQL query returns brokers that have an object to sell and is active in a region
       this.foundAgents = await sql(AgentPage, /*sql*/`
-    SELECT user.id, user.firstName,  user.lastName, 
+      SELECT user.id, user.firstName,  user.lastName, 
       user.phone, user.email, user.description, user.imageUrl,
       GROUP_CONCAT(region.regionName,', ') region_names
       FROM userXregion 
