@@ -46,9 +46,10 @@ render() {
 </div>
 </div>
 <br>
-<div class="row p-5">
+<div class="row p-3">
                                        <h3><strong>Kontakta mäklaren</strong></h3>
-                                       <div class= "row  p-5 border bg-light no-gutters" >
+                                       </div>
+                                       <div class= "row  p-3 border bg-light no-gutters" >
                                         
                                        <div class= "col-auto">
                                       
@@ -76,12 +77,13 @@ render() {
                                             
                                             
                                             <br>
-                                            ${this.description}
-                                    
+                                         
+                                    </div> 
             
-                                    </div>
-                        
-                            
+                                    
+                        <br>
+                                    ${this.description}
+
                           
                                     <img class="d-block w-100" src="/images/${this.Id}/img02.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img03.jpg"><br>
@@ -102,7 +104,8 @@ render() {
                     </div>
                 </div>
             </div>
-            </div>
+            
+            
             `;
     }
 
