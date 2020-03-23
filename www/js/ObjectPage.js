@@ -6,7 +6,7 @@ class ObjectPage extends Base {
 
 
 
-    render() {
+render() {
         //console.log(this.foundAgents);  // Check what properties object actually (got) has when rendering
         return /*html*/`
             <div class= "row m-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
@@ -15,10 +15,10 @@ class ObjectPage extends Base {
 
  
                     <div class= "row p-5">
-                        <h1>Försäljningsobjekt.</h1>
+                        <h1>Försäljningsobjekt</h1>
                         <div class="col-sm-13">
                         
-                            <div class="col d-flex justify-content-center">
+                            <div class="col d-flex justify-content-left">
                                 <div class="card my-8">
                                 
                                     <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
@@ -32,7 +32,7 @@ class ObjectPage extends Base {
                                     <div class="card-body">
                                         <div class="card-text">
                                         
-                                            <h1>${this.streetName} ${this.streetNumber}, ${this.floor} tr</h1>
+                                            <h1>${this.streetName} ${this.streetNumber}</h1>
                                             <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
@@ -40,7 +40,7 @@ class ObjectPage extends Base {
                                             <strong>Byggår:</strong> ${this.buildYear}<br> 
                                             <strong>Driftkostnad:</strong> ${this.maintenanceCost} /år<br>
                                             <strong>Bostadstyp:</strong> ${this.tenure}<br>
-                                            <strong>Visning:</strong> ${this.startDatetime} - ${this.endDatetime}<br>
+                                            <strong>Visningstider:</strong> ${this.startDatetime ? this.startDatetime : 'visningstider har gått ut'} - ${this.endDatetime}<br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
 </div>
@@ -56,13 +56,14 @@ class ObjectPage extends Base {
                                        <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                        <div class="card-title name-nopad">
 </div>
-                                        <div class="col-md-3 col-sm-12">
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>${this.firstName} ${this.lastName}<h6></strong></p>
+                                        <div class="col-md-2 col-sm-6">
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></strong></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Region:</strong> ${this.regionName}<h6></p>
                                             <hr class="mb-5">
                                             </div>
+
+                                            
 </div>
                                           
 
