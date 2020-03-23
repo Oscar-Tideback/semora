@@ -44,11 +44,13 @@ class ObjectPage extends Base {
                                              ${this.user}
 
 
-                                       
-                                            <div class="col d-flex justify-content-right">
-                                            <div class="row p-3 border bg-light no-gutters">
-                                            <img src="/images/${this.imageUrl}">
+                                       <div class= "row">
 
+                                       <div class= "col-auto">
+                                       
+                                       <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-left" alt="Agent face">
+                                       </div>
+                                       <div class="col-md-3 col-sm-12">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>${this.firstName} ${this.lastName}<h6></strong></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
