@@ -42,24 +42,37 @@ class ObjectPage extends Base {
                                             <strong>Bostadstyp:</strong> ${this.tenure}<br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
+</div>
+</div>
+                                       <div class= "row  p-3 border bg-light no-gutters" >
 
-
-                                       
-                                            <div class="col d-flex justify-content-right">
-                                            <div class="row p-3 border bg-light no-gutters">
-                                            <img src="/images/${this.imageUrl}">
-
+                                       <div class= "col-auto">
+                                      
+                                     
+                                       <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
+                                       </div>
+                                       <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
+                                       <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
+                                       <div class="card-title name-nopad">
+</div>
+                                        <div class="col-md-3 col-sm-12">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>${this.firstName} ${this.lastName}<h6></strong></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Region:</strong> ${this.regionName}<h6></p>
+                                            <hr class="mb-5">
+                                            </div>
+</div>
+                                          
 
-                                        
-                                    </div>
-                                    </div>
+</div>
+
+                                    
+                                            
+                                            
                                             <br>
-                                            <br>
-                                            ${this.description}<br>
+                                            ${this.description}
+                                    
             
                                     </div>
                         
