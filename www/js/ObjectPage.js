@@ -48,7 +48,7 @@ render() {
 <br>
                                        <h3>Kontakta mäklaren</h3>
                                        <div class= "row  p-3 border bg-light no-gutters" >
-
+                                        
                                        <div class= "col-auto">
                                       
                                     
@@ -57,12 +57,12 @@ render() {
                                        <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                        <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                        <div class="card-title name-nopad">
-</div>
+
                                         <div class="col-md-2 col-sm-6">
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></strong></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6><hr class="mb-5"></p>
-
+</div>
                                             </div>
 
                                             
