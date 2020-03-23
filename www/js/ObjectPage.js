@@ -32,7 +32,7 @@ render() {
                                     <div class="card-body">
                                         <div class="card-text">
                                         
-                                            <h1>${this.streetName} ${this.streetNumber}</h1>
+                                            <h1>${this.streetName} ${this.streetNumber} ${this.floor} tr</h1>
                                             <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
