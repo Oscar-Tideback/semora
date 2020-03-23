@@ -88,7 +88,7 @@ class AgentsPage extends Base {
                     <p class="card-text broker-info  name-email-phone"><span class="name-bold">E-Mail:</span>  ${user.email}</p>
                     <p class="card-text broker-info  name-email-phone"><span class="name-bold">Tel:</span>  ${user.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
                     <p class="card-text broker-info  name-region"><span class="name-bold">Region:</span> ${user.region_names}.</p>
-                    <hr class="mb-5">
+                    <hr class="mb-10">
                 </div >
                 `)}
                 </div>              
