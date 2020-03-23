@@ -21,7 +21,7 @@ class ObjectPage extends Base {
                             <div class="col d-flex justify-content-center">
                                 <div class="card my-8">
                                 
-                                    <img src="/images/${this.Id}/img01.jpg" class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
+                                    <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
                                     <div class= "right"></div>
                               
                                   
@@ -45,11 +45,14 @@ class ObjectPage extends Base {
 
 
                                        
-                                            <div class="col d-flex justify-content-left">
+                                            <div class="col d-flex justify-content-right">
                                             <div class="row p-3 border bg-light no-gutters">
                                             <img src="/images/${this.imageUrl}">
-                                            <p class="card-text name-email-phone"><span class="name-bold"></span>  <strong>${this.firstName} ${this.lastName}</strong></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold"></span>  <strong></strong></p>
+
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span><strong><h6>${this.firstName} ${this.lastName}<h6></strong></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold"></span><br>
+                                            <strong>jhakan@gmail.se</strong></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold">
                                     </div>
                                     </div>
                                             <br>
