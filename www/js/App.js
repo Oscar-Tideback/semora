@@ -23,7 +23,9 @@ class App extends Base {
         userXregion ON realEstateInfo.userId = userXregion.userId, 
         region ON region.id = userXregion.regionId,
         realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
-        areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+        areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,  
+        viewings ON viewings.realEstateId = realEstateInfo.Id
+              
       GROUP BY realEstateInfo.Id
     `);
 
@@ -86,7 +88,7 @@ class App extends Base {
           <!-- For testing -->
           ${this.buyerPageSearchRikard} 
           ${this.buyerPageRikard} 
-          
+  
           ${this.contactPage}    
           ${this.agentsPage}
           ${this.allAgentsPage}
