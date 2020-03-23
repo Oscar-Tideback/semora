@@ -40,7 +40,7 @@ class ObjectPage extends Base {
                                             <strong>Byggår:</strong> ${this.buildYear}<br> 
                                             <strong>Driftkostnad:</strong> ${this.maintenanceCost} /år<br>
                                             <strong>Bostadstyp:</strong> ${this.tenure}<br>
-                                            <strong>Visning:</strong> ${this.startDatetime} - ${this.endDatetime}<br>
+                                            <strong>Visningstider:</strong> ${this.startDatetime ? this.startDatetime : 'visningstider har gått ut'} - ${this.endDatetime}<br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
 </div>
