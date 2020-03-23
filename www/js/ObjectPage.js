@@ -55,12 +55,14 @@ class ObjectPage extends Base {
                                        <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                        <div class="card-title name-nopad">
 </div>
-                                        <div class="col-md-3 col-sm-12">
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>${this.firstName} ${this.lastName}<h6></strong></p>
+                                        <div class="col-md-2 col-sm-6">
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></strong></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
-                                            <hr class="mb-10">
+                                            <hr class="mb-5">
                                             </div>
+
+                                            
 </div>
                                           
 
