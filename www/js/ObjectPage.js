@@ -53,7 +53,7 @@ render() {
                                        <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
                                        </div>
                                        <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
-                                      
+                                       <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                        <div class="card-title name-nopad">
 </div>
                                         <div class="col-md-2 col-sm-6">
