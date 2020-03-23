@@ -46,8 +46,9 @@ render() {
 </div>
 </div>
 <br>
-                                       <h3>Kontakta mäklaren</h3>
-                                       <div class= "row  p-3 border bg-light no-gutters" >
+<div class="row p-5">
+                                       <h3><strong>Kontakta mäklaren</strong></h3>
+                                       <div class= "row  p-5 border bg-light no-gutters" >
                                         
                                        <div class= "col-auto">
                                       
