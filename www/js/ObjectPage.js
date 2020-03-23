@@ -45,11 +45,13 @@ render() {
                                              ${this.user}
 </div>
 </div>
+<br>
+                                       <h3>Kontakta mäklaren</h3>
                                        <div class= "row  p-3 border bg-light no-gutters" >
 
                                        <div class= "col-auto">
                                       
-                                     
+                                    
                                        <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
                                        </div>
                                        <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
