@@ -32,7 +32,7 @@ render() {
                                     <div class="card-body">
                                         <div class="card-text">
                                         
-                                            <h1>${this.streetName} ${this.streetNumber}</h1>
+                                            <h1>${this.streetName} ${this.streetNumber} ${this.floor} tr</h1>
                                             <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
@@ -45,22 +45,25 @@ render() {
                                              ${this.user}
 </div>
 </div>
-                                       <div class= "row  p-3 border bg-light no-gutters" >
-
+<br>
+<div class="row p-5">
+                                       <h3><strong>Kontakta mäklaren</strong></h3>
+                                       <div class= "row  p-5 border bg-light no-gutters" >
+                                        
                                        <div class= "col-auto">
                                       
-                                     
+                                    
                                        <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
                                        </div>
                                        <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                        <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                        <div class="card-title name-nopad">
-</div>
+
                                         <div class="col-md-2 col-sm-6">
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></strong></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
-                                            <hr class="mb-5">
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6><hr class="mb-5"></p>
+</div>
                                             </div>
 
                                             
