@@ -14,8 +14,6 @@ class AgentPage extends Base {
       INSERT INTO potentialCustomer (name, email, phone, subject, agentContact) 
       VALUES($name, $email, $phone, $subject, ${this.id});
     `, data);
-    //this.sentForm = 'true';
-    //this.render();
   }
 
 
@@ -39,14 +37,14 @@ class AgentPage extends Base {
           <div class="col-auto">
               <img src="../images/${this.imageUrl}" class="img-thumbnail rounded float-left" alt="Agent face">
           </div>
-            <div class="col-md-3 col-sm-12">
+            <div class="col-lg-3 col-md-12 col-sm-12">
             <p class="broker-name">${this.firstName} ${this.lastName}</p>
               <p class="broker-name name-email-phone"><span class="name-bold">E-Mail:</span> ${this.email}</p>
               <p class="broker-name name-email-phone"><span class="name-bold">Tel:</span>  ${this.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
               <p class="broker-name name-region"><span class="name-bold">Region:</span> ${this.region_names}.</p>
             </div>              
             <!--Form-->
-            <form submit="collectFormData" class="col-md-6 col-sm-12">
+            <form submit="collectFormData" class="col-lg-6 col-md-12 col-sm-12">
             <div class="md-form">
               <i class="fas fa-user prefix grey-text"></i>
               <label>Namn:</label>
