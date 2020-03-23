@@ -1,7 +1,7 @@
 class BuyerPageRikard extends Base {
 
   render() {
-    console.log("RENDERING", this.searchResult)
+    //console.log("RENDERING", this.searchResult)
     return /*html*/`
       <div class="row m-0" route="/testpage" page-title="Dhyr & Rumson - Våra Bostad">  
         <div class="container my-4"> 
