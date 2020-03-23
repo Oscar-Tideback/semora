@@ -49,9 +49,11 @@ class ObjectPage extends Base {
                                             <div class="row p-3 border bg-light no-gutters">
                                             <img src="/images/${this.imageUrl}">
 
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span><strong><h6>${this.firstName} ${this.lastName}<h6></strong></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span><strong>E-Mail: jhakan@gmail.se<h6></strong></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span><strong>Tel: 070 7666435<h6></strong></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>${this.firstName} ${this.lastName}<h6></strong></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Region:</strong> ${this.regionName}<h6></p>
+
                                         
                                     </div>
                                     </div>
