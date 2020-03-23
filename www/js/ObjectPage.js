@@ -18,7 +18,7 @@ class ObjectPage extends Base {
                         <h1>Försäljningsobjekt.</h1>
                         <div class="col-sm-13">
                         
-                            <div class="col d-flex justify-content-center">
+                            <div class="col d-flex justify-content-left">
                                 <div class="card my-8">
                                 
                                     <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
@@ -32,7 +32,7 @@ class ObjectPage extends Base {
                                     <div class="card-body">
                                         <div class="card-text">
                                         
-                                            <h1>${this.streetName} ${this.streetNumber}, ${this.floor} tr</h1>
+                                            <h1>${this.streetName} ${this.streetNumber}</h1>
                                             <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
@@ -59,8 +59,7 @@ class ObjectPage extends Base {
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>${this.firstName} ${this.lastName}<h6></strong></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Region:</strong> ${this.regionName}<h6></p>
-                                            <hr class="mb-5">
+                                            <hr class="mb-10">
                                             </div>
 </div>
                                           
