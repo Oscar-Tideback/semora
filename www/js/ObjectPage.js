@@ -50,9 +50,9 @@ class ObjectPage extends Base {
                                             <img src="/images/${this.imageUrl}">
 
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span><strong><h6>${this.firstName} ${this.lastName}<h6></strong></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold"></span><br>
-                                            <strong>jhakan@gmail.se</strong></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold">
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span><strong>E-Mail: jhakan@gmail.se<h6></strong></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span><strong>Tel: 070 7666435<h6></strong></p>
+                                        
                                     </div>
                                     </div>
                                             <br>
