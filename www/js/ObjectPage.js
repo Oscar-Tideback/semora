@@ -1,6 +1,14 @@
 class ObjectPage extends Base {
 
+    async mount() {
 
+        //pop viewings
+        this.viewingsSelection = await sql(/*sql*/`
+        SELECT * from viewings
+            WHERE viewings.realEstateId = ${this.Id}   
+    
+    `);
+    }
 
 
 
@@ -39,7 +47,7 @@ class ObjectPage extends Base {
                                             <strong>Byggår:</strong> ${this.buildYear}<br> 
                                             <strong>Driftkostnad:</strong> ${this.maintenanceCost} /år<br>
                                             <strong>Bostadstyp:</strong> ${this.tenure}<br>
-                                            <strong>Visningstider:</strong> ${this.startDatetime ? this.startDatetime : 'visningstider har gått ut'} - ${this.endDatetime}<br>
+                                            <strong>Visningstider:</strong> ${this.viewingsSelection.map(viewings => viewings.startDatetime + ' - ' + viewings.endDatetime)} <br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
                         
