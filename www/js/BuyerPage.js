@@ -1,22 +1,81 @@
 class BuyerPage extends Base {
 
+  mount() {
+    this.formInput = new FormData();
+  }
+
+  doSort() {
+    // If null the form doesn't exist prior to doSort()
+    if (document.querySelector('[id="buyerPageSortBy"]') === null) {
+      return;
+    }
+    else {
+      this.formInput = document.querySelector('[id="buyerPageSortBy"]');
+      switch (this.formInput.sortby.value + this.formInput.ordering.value) {
+        case '00': this.searchResult.sort(this.byPrice); break;
+        case '01': this.searchResult.reverse(this.byPrice); break;
+        case '10': this.searchResult.sort(this.byArea); break;
+        case '11': this.searchResult.reverse(this.byArea); break;
+        case '20': this.searchResult.sort(this.byRooms); break;
+        case '21': this.searchResult.reverse(this.byRooms); break;
+        case '30': this.searchResult.sort(this.byRegion); break;
+        case '31': this.searchResult.reverse(this.byRegion); break;
+      }
+    }
+    this.render();
+  }
+
+  byPrice(a, b) { return a.price - b.price; }
+  byArea(a, b) { return a.area - b.area; }
+  byRooms(a, b) { return a.rooms - b.rooms; }
+  byRegion(a, b) {
+    // Avoid sort by upper/lowercase
+    let regionA = a.regionName.toUpperCase();
+    let regionB = b.regionName.toUpperCase();
+    if (regionA < regionB) return -1;
+    if (regionA > regionB) return 1;
+    return 0; // if equal
+  }
+
+  // Addition by Thomas
+  preventPageReload(e) {
+    // Do not perform a hard reload of the page when someone submits the form
+    e && e.preventDefault();
+  }
+
   render() {
-    //console.log("RENDERING", this.searchResult)
+    //console.log('buyerPage searchResult: ', this.searchResult)
     return /*html*/`
       <div class="row m-0" route="/buy-property" page-title="Dhyr & Rumson - Våra Bostad">  
-        <div class="container my-4"> 
+        <div class="container mb-4"> 
           <div class="row">
           
-            <div class="col-12">    
-              <div class="row">
+            <div class="col-12">
+            
+              <div class="row form-inline">
                 
-                <div class="col-8">
-                  <h1>Bostäder till salu just nu...</h1>                
+                <div class="col-sm-12 col-md mx-lg-4 mx-md-0">     
+                  <h3>(${this.searchResult.length}) Sökresultat ${this.textInput.length > 0 ? 'på "' + this.textInput + '"' : ''}  ${this.regionName === '' ? 'i samtliga regioner' : 'i ' + this.regionName}</h3>                
+                </div>
+
+                <div class="col-lg-auto mx-lg-4 mx-md-0">
+                  <form class="form-group d-flex justify-content-end" id="buyerPageSortBy" submit="preventPageReload">
+                    <select class="form-control btn-block mr-2" id="sortby_select" name="sortby" change="doSort">
+                      <option id="opt0" value="0">pris</option>
+                      <option id="opt1" value="1">boyta</option>
+                      <option id="opt2" value="2">antal rum</option>
+                      <option id="opt3" value="3">region</option>
+                    </select>
+                    <select class="form-control btm-block" id="order_select" name="ordering" change="doSort">
+                      <option id="opt4" value="0">stigande</option>
+                      <option id="opt5" value="1">fallande</option>
+                    </select>
+                  </form>
                 </div>
 
               </div>
               
-                <div class="row">
+            <div class="row">
                 ${this.searchResult.map(obj => /*html*/`
                   <div class="col d-flex justify-content-center">
                     <div class="card my-4 estate-card">
@@ -36,16 +95,16 @@ class BuyerPage extends Base {
                   </div>
                 </div>
                 `)}
-                </div>   
-
-              </div>
-            </div>
-              
-            </div>
+            </div>   
 
           </div>
         </div>
+          
+        </div>
+
       </div>
+    </div>
+  </div>
   `;
   }
 }
