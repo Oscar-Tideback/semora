@@ -31,15 +31,10 @@ class ObjectPage extends Base {
                     <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
                     <div class= "right"></div>
                               
-                                  
-  
-                         
+                    <div class="card-body">
+                    <div class="card-text">
 
-                            
-                                    <div class="card-body">
-                                        <div class="card-text">
-                                        
-                                            <h1>${this.streetName} ${this.streetNumber} ${this.floor} tr</h1>
+                    <h1>${this.streetName} ${this.streetNumber} ${this.floor} tr</h1>
                                             <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
@@ -51,7 +46,7 @@ class ObjectPage extends Base {
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
                         
-                                             </div>
+                                            </div>
                                             </div>
                                             <br>
                                             <div class="row p-3">
@@ -87,13 +82,16 @@ class ObjectPage extends Base {
                                             <br>
                                          
                                             </div> 
-            <div class="row p-3">
+                                            <div class="row p-3">
                                             ${this.realDescription}
-                                            </div>
+                                            <div>
                                             <br>
-                             
-                                
-
+                                            ${this.description}
+                                            </div>
+                                          </div>
+                                         
+                                    </div>
+                                    </div>
                           
                                     <img class="d-block w-100" src="/images/${this.Id}/img02.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img03.jpg"><br>

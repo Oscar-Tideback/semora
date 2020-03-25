@@ -70,6 +70,8 @@ class BuyerPageSearch extends Base {
       this.formInput = document.querySelector('[id="buyerSearchForm"]');
 
       // Defaults
+      // Both SQL-query variables and page checkbox should have been populated by occurance via DB
+      // But don't have time. Hardcoding everything regarding checkboxes for now...
       let opt2 = 'Villa', opt3 = 'Radhus', opt4 = 'Lägenhet', opt5 = 'Fritidshus', opt6 = 'Gård', opt7 = 'Tomt', opt8 = 'Bostadsrätt'
       // If not "Alla typer" selected then override corresponding variables from checkboxes if true
       if (!this.formInput.tenureOption1.checked) {
@@ -198,7 +200,7 @@ class BuyerPageSearch extends Base {
 
               <div class="row pb-2">
                 <div class="col-md mt-4 input-group">
-                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" autocomplete="on" autocorrect="off" ${this.textInput.length > 0 ? ('value="' + this.textInput + '"') : ''}>
+                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keydown="search" autocomplete="on" autocorrect="off" ${this.textInput.length > 0 ? ('value="' + this.textInput + '"') : ''}>
                   <button class="btn btn-default input-group-btn" type="submit" click="search" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
                 </div>
 
@@ -218,31 +220,31 @@ class BuyerPageSearch extends Base {
 
                   <div class="row">
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block" click="checkBoxes" name="uncheck" style="white-space: nowrap"><input class="tenure-checkbox" type="checkbox" name="tenureOption1" id="allatyper" checked>Alla typer</label>
+                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="uncheck"><input class="tenure-checkbox" type="checkbox" name="tenureOption1" id="allatyper" checked>Alla typer</label>
                     </div>
                     <div class="col px-1 mx-0">
-                        <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption2" id="villor">Villor</label>
+                        <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption2" id="villor">Villor</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption3" id="radhus">Radhus</label>
+                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption3" id="radhus">Radhus</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption4" id="lagenheter">Lägenheter</label>
+                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption4" id="lagenheter">Lägenheter</label>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption5" id="fritidshus">Fritidshus</label>
+                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption5" id="fritidshus">Fritidshus</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption6" id="gardar">Gårdar</label>
+                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption6" id="gardar">Gårdar</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption7" id="tomter">Tomter</label>
+                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption7" id="tomter">Tomter</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption8" id="ovriga">Bostadsrätter</label>
+                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption8" id="ovriga">Bostadsrätter</label>
                     </div>
                   </div>
 

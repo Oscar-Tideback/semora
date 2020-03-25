@@ -54,19 +54,21 @@ class BuyerPage extends Base {
             
               <div class="row form-inline">
                 
-                <div class="col-sm-12 col-md mx-lg-4 mx-md-0">     
+                <div class="col-sm-12 col-md mx-lg-4 mx-md-0 pt-4 mt-md-2 mt-lg-0">     
                   <h3>(${this.searchResult.length}) Sökresultat ${this.textInput.length > 0 ? 'på "' + this.textInput + '"' : ''}  ${this.regionName === '' ? 'i samtliga regioner' : 'i ' + this.regionName}</h3>                
                 </div>
 
-                <div class="col-lg-auto mx-lg-4 mx-md-0">
+                <div class="col-lg-auto mr-lg-4 mr-md-0 pt-4 mt-md-2 mt-lg-0">
                   <form class="form-group d-flex justify-content-end" id="buyerPageSortBy" submit="preventPageReload">
+
+                    <div class="text-nowrap mr-2">Sortera på</div>
                     <select class="form-control btn-block mr-2" id="sortby_select" name="sortby" change="doSort">
                       <option id="opt0" value="0">pris</option>
                       <option id="opt1" value="1">boyta</option>
                       <option id="opt2" value="2">antal rum</option>
                       <option id="opt3" value="3">region</option>
                     </select>
-                    <select class="form-control btm-block" id="order_select" name="ordering" change="doSort">
+                    <select class="form-control btn-block mt-0" id="order_select" name="ordering" change="doSort">
                       <option id="opt4" value="0">stigande</option>
                       <option id="opt5" value="1">fallande</option>
                     </select>
