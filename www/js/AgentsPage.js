@@ -16,6 +16,7 @@ class AgentsPage extends Base {
     WHERE user.isAgent = 'true'
     GROUP BY user.id
     `);
+    this.render();
   }
 
 
@@ -51,28 +52,34 @@ class AgentsPage extends Base {
       this.render();
     }
 
+
+
+    $(window).on('popstate', function (event) {
+      location.reload();
+    });
   }
 
 
 
+
   render() {
-    console.log(this.foundAgents);
+    //    console.log(this.foundAgents);
     return /*html*/`
-      <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">  
+      <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
         <div class="container my-4">
-        
-              <div class="row p-4">
-                <div class="col-12"><h5></h5>
-                  <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
-                  <p>Till Dhyr & Rumson har vi därför handplockat endast dom som heter son i efternamn och de skickligaste och mest erfarna mäklarna i Stockholm.
+
+          <div class="row p-4">
+            <div class="col-12"><h5></h5>
+              <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
+              <p>Till Dhyr & Rumson har vi därför handplockat endast dom som heter son i efternamn och de skickligaste och mest erfarna mäklarna i Stockholm.
                   Vi har gjort det av en enda anledning för att dom HETER SON i efternamn alltid – så att rätt person kan företräda dig i din kanske största affär.</p>
-              
-                  <select class="form-control form-control-lg" change="searchAgentRegions" id="region_select" name="regionselect">
-                  <option value="0">Alla regioner</option>
-                  ${this.regionSelection.map(region => '<option value="' + region.id + '">' + region.regionName + '</option>')}
-                  </select>
-              
-                  <div class="row p-3 border bg-light no-gutters">
+
+              <select class="form-control form-control-lg" change="searchAgentRegions" id="region_select" name="regionselect">
+                <option value="0">Alla regioner</option>
+                ${this.regionSelection.map(region => '<option value="' + region.id + '">' + region.regionName + '</option>')}
+              </select>
+
+              <div class="row p-3 border bg-light no-gutters">
                 ${this.foundAgents.map(user => /*html*/`
                   <div class="card mb-3 col-lg-2" >
                     <a href="/real-estate-agent/${user.id}">
@@ -91,12 +98,12 @@ class AgentsPage extends Base {
                     <hr class="mb-5">
                 </div >
                 `)}
-                </div>              
+                </div>
+              </div>
             </div>
-           </div>  
+          </div>
         </div>
-      </div>
-  `;
+        `;
   }
 
 }
