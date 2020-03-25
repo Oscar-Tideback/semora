@@ -17,23 +17,8 @@ class MapsPage extends Base {
       INSERT INTO potentialCustomer (name, email, phone, subject) 
       VALUES($name, $email, $phone, $subject);
     `, data);
-    //this.sentForm = 'true';
-    //this.render();
-  }
-  thankYou2() {
-    // Thank the customer and tell the order id
-    return /*html*/`
-      <div class="row" page-title="Regioner och Områden" route="/our-regions">
-        <div class="alert alert-success container my-4"  role="alert">
-          <h4 class="alert-heading">Tack för visat intresse!</h4>
-        </div>
-        <div class="container my-4">
-          <p>Ditt meddelande har skickats!</p>
-          <p>Vi återkommer snarast till dig via telefon eller email.</p>
-          <a class="btn btn-primary float-left" href="/">Till startsidan</a>
-        </div>
-      </div>
-    `
+
+    $('#thanksModal').modal('toggle');
   }
 
   render() {
@@ -68,7 +53,7 @@ class MapsPage extends Base {
                       <div class="md-form">
                         <i class="fas fa-user prefix grey-text"></i>
                         <label>Namn:</label>
-                        <input name="name" type="text" class="form-control">         
+                        <input name="name" type="text" pattern="[a-ö]{2,100}" title="Skriv ditt för och efternamn" class="form-control">         
                       </div>
                       <div class="md-form">
                         <i class="fas fa-envelope prefix grey-text"></i>
@@ -78,7 +63,7 @@ class MapsPage extends Base {
                       <div class="md-form">
                       <i class="fas fa-envelope prefix grey-text"></i>
                       <label>Telefon:</label>
-                      <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control">
+                      <input type="text" id="phone" name="phone" pattern="[0-9]{7,10}" title="Skriv ditt telefonnummer 7-10 siffror" class="form-control">
                     </div>
                       <div class="md-form">
                         <i class="fas fa-tag prefix grey-text"></i>
@@ -86,7 +71,7 @@ class MapsPage extends Base {
                         <textarea name="subject" type="text" class="form-control md-textarea" rows="3"></textarea>
                       </div>
                       <div class="text-center mt-4">
-                        <button type="submit"  data-toggle="modal" data-target="#exampleModal" class="btn border btn-primary" value="Send">Skicka</button>
+                        <button type="submit"  class="btn border btn-primary" value="Send">Skicka</button>
                       </div>
 
                     </div>
@@ -138,7 +123,7 @@ class MapsPage extends Base {
           <!--Section: Contact v.1-->
           <!--Thank you modal-->
           </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header  alert alert-success"  role="alert">
