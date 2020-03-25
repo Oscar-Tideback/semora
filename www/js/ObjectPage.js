@@ -29,6 +29,7 @@ class ObjectPage extends Base {
                     <div class="card my-8">
                                 
                     <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
+            
                     <div class= "right"></div>
                               
                     <div class="card-body">
@@ -75,9 +76,6 @@ class ObjectPage extends Base {
                                           
 
                                             </div>
-
-                                          
-                                            
                                             
                                             <br>
                                          
