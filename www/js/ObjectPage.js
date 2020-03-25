@@ -46,7 +46,7 @@ class ObjectPage extends Base {
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
                         
-                                             </div>
+                                            </div>
                                             </div>
                                             <br>
                                             <div class="row p-3">
@@ -84,8 +84,12 @@ class ObjectPage extends Base {
                                             </div> 
                                             <div class="row p-3">
                                             ${this.realDescription}
+                                            <div>
+                                            <br>
+                                            ${this.description}
                                             </div>
                                           </div>
+                                         
                                     </div>
                                     </div>
                           
