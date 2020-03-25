@@ -87,8 +87,11 @@ class ObjectPage extends Base {
                                             <div>
                                             <br>
                                             ${this.description}
+                                            <br>
+                                            <br>
+                                            <h5>Välkommen!</h5>
                                             </div>
-                                          </div>
+                                            </div>
                                          
                                     </div>
                                     </div>
