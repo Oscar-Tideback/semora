@@ -70,6 +70,8 @@ class BuyerPageSearch extends Base {
       this.formInput = document.querySelector('[id="buyerSearchForm"]');
 
       // Defaults
+      // Both SQL-query variables and page checkbox should have been populated by occurance via DB
+      // But don't have time. Hardcoding everything regarding checkboxes for now...
       let opt2 = 'Villa', opt3 = 'Radhus', opt4 = 'Lägenhet', opt5 = 'Fritidshus', opt6 = 'Gård', opt7 = 'Tomt', opt8 = 'Bostadsrätt'
       // If not "Alla typer" selected then override corresponding variables from checkboxes if true
       if (!this.formInput.tenureOption1.checked) {
