@@ -4,7 +4,7 @@ class Footer extends Base {
     return /*html*/`
       <footer class="footer p-4">
         <div class="row">
-          <div class="col text-center text-dark">
+          <div class="col-lg-3 col-sm-12 text-center text-dark">
             
             <p>Följ oss på: </p><p>
             <a href="http://www.twitter.com"><img src="../images/icon/twitter.png"></a>
@@ -15,7 +15,7 @@ class Footer extends Base {
           <div class="col text-center text-light">
             <img src="/images/Footer_badge.png">
           </div>
-          <div class="col text-center text-dark">
+          <div class="col-lg-3 col-sm-12 text-center text-dark">
           <p><a href="/our-regions">Kontakta oss</a></p>
             <p><a href="/integrity">Integritetspolicy</a></p>
           </div>
