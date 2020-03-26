@@ -14,8 +14,8 @@ class AgentPage extends Base {
       INSERT INTO potentialCustomer (name, email, phone, subject, agentContact) 
       VALUES($name, $email, $phone, $subject, ${this.id});
     `, data);
-    //this.sentForm = 'true';
-    //this.render();
+
+    $('#thanksModal').modal('toggle');
   }
 
 
@@ -39,14 +39,14 @@ class AgentPage extends Base {
           <div class="col-auto">
               <img src="../images/${this.imageUrl}" class="img-thumbnail rounded float-left" alt="Agent face">
           </div>
-            <div class="col-md-3 col-sm-12">
+            <div class="col-lg-3 col-md-12 col-sm-12">
             <p class="broker-name">${this.firstName} ${this.lastName}</p>
               <p class="broker-name name-email-phone"><span class="name-bold">E-Mail:</span> ${this.email}</p>
               <p class="broker-name name-email-phone"><span class="name-bold">Tel:</span>  ${this.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
               <p class="broker-name name-region"><span class="name-bold">Region:</span> ${this.region_names}.</p>
             </div>              
             <!--Form-->
-            <form submit="collectFormData" class="col-md-6 col-sm-12">
+            <form submit="collectFormData" class="col-lg-6 col-md-12 col-sm-12">
             <div class="md-form">
               <i class="fas fa-user prefix grey-text"></i>
               <label>Namn:</label>
@@ -60,7 +60,7 @@ class AgentPage extends Base {
             <div class="md-form">
               <i class="fas fa-envelope prefix grey-text"></i>
               <label>Telefon:</label>
-              <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" class="form-control">
+              <input type="tel" id="phone" name="phone" pattern="[0-9]{7,10}" class="form-control">
             </div>
             <div class="md-form">
               <i class="fas fa-tag prefix grey-text"></i>
@@ -71,7 +71,23 @@ class AgentPage extends Base {
               <button type="submit"  class="btn border btn-light-blue" value="Send">Skicka</button>
             </div>           
           </div>
-        </div>           
+        </div>    
+        <div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header  alert alert-success"  role="alert">
+                  <h4 class="modal-title" id="exampleModalLabel">Tack för visat intresse!</h4>
+                  <button type="button" class="close"  href="/" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                  <p>Ditt meddelande har skickats!<br>
+                  <p class="broker-name">${this.firstName} ${this.lastName} återkommer snarast till dig via telefon eller email.</p>
+                </div>
+                <div class="mt-4 modal-footer">
+                  <a href="/" type="button" class="btn btn-primary float-left"  data-dismiss="modal">Till startsidan!</a>
+                </div>
+              </div>
+            </div>       
       </div>
     `;
   }

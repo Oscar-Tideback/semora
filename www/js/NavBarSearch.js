@@ -5,8 +5,7 @@ class NavBarSearch extends Base {
     this.selected = -1;
     this.keyword = '';
 
-    // Click anywhere hides dropdown menu. Try add existing base.js click event on <body> instead? Test later...
-
+    // Click anywhere hides dropdown. Try add preexisting click event on <body> instead? Test later...
     document.addEventListener("click", function (e) {
       document.querySelector('[id="dropdown-menu"]') ?
         document.querySelector('[id="dropdown-menu"]').setAttribute('style', 'visibility: hidden')
@@ -25,7 +24,7 @@ class NavBarSearch extends Base {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
       e.preventDefault();
       this.selected += (e.key === 'ArrowDown') - (e.key === 'ArrowUp');
-      // Have inserted an extra non-searchhit <button> on page so length has to be +1
+      // Have inserted an extra non-search generated <button> under <select> so length has to be +1
       if (this.selected < 0) { this.selected = (this.searchHits.length + 1) - 1; }
       if (this.selected >= (this.searchHits.length + 1)) { this.selected = 0; }
       this.render();
@@ -34,9 +33,9 @@ class NavBarSearch extends Base {
   }
   async searchKeyword(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
-
     if (e.key === 'Enter' && this.selected >= 0) {
-      await this.doSearch(e.target.value ? e.target.value : '0');
+      // Ugly adjust for +1 extra <button> under <select>
+      await this.doSearch((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
       this.searchHits = [];
       this.selected = -1;
       return;
@@ -84,7 +83,7 @@ class NavBarSearch extends Base {
     // Problem: Switching back and forth "fast" from navbar search to buyerpage will result in buyerpage form not being set properly upon page landing
     // Either the page function (page object) doesn't really exist yet or SQLite is lagging  
     await app.buyerPageSearch.doSearch();
-    app.buyerPageSearch.render();
+    //app.buyerPageSearch.render();
     app.goto('/buy-property');
 
     return;

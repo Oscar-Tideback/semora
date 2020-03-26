@@ -6,10 +6,34 @@ class BuyerPageSearch extends Base {
 
     this.formInput = new FormData();
 
+
+  }
+
+  // Unfinished.... work in progress
+  setInitialFormValues() {
+    this.formValues = {
+      'Text input': '',
+      'Region': 0,
+      'opt1': true,
+      'opt2': false,
+      'opt3': false,
+      'opt4': false,
+      'opt5': false,
+      'opt6': false,
+      'opt7': false,
+      'opt8': false,
+      'minrooms': 0,
+      'minarea': 0,
+      'maxprice': 0,
+      'sortby': 0,
+      'order': 0
+    }
   }
 
   async search() {
     await this.doSearch();
+
+    // Will be replaced by reading/setting formValues... work in progress
     this.setBoxStyles();
   }
 

@@ -11,6 +11,7 @@
 
 body {
   background-color: rgb(173, 173, 173);
+  background-image: url(/images/BG_pattern1.jpg);
    // See _variable-overrides.scss for $font-size_scale
   font-size: 100% * $font-main-multiplier; 
 }
@@ -21,7 +22,7 @@ html {
 }
 
 .footer {
-  background-color: rgb(145, 145, 145);
+  background-color: rgb(160, 160, 160);
 }
 
 h1, h2, h3, h4, h5 {
@@ -62,12 +63,6 @@ h1, h2, h3, h4, h5 {
   .main-wrapper {
     max-width: 100%;
   }
-}
-
-// Floating elements holder/wrapper
-.hero-title-wrapper {
-  border-bottom-color: black;
-border-bottom: 2px;
 }
 
 .hero-title {
