@@ -28,7 +28,7 @@ class ObjectPage extends Base {
                     <div class="col d-flex justify-content-left">
                     <div class="card my-8">
                                 
-                    <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
+                    <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}" >
             
                     <div class= "right"></div>
                               
@@ -80,7 +80,7 @@ class ObjectPage extends Base {
                                             <br>
                                          
                                             </div> 
-                                            <div class="row p-3">
+                                            <div class="row p-4">
                                             ${this.realDescription}
                                             <div>
                                             <br>
