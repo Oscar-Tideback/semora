@@ -15,6 +15,7 @@ class BuyerPageSearch extends Base {
       isdefault: true,
       textinput: '',
       region: 0,
+      regionSet: false,
       options: [true, false, false, false, false, false, false, false],
       minrooms: 0,
       minarea: 0,
@@ -26,11 +27,12 @@ class BuyerPageSearch extends Base {
   }
 
 
-  async doSearch(e) {
-    // If null the form doesn't exist prior to doSearch() then perform a default search for all real estates
-    if (document.querySelector('[id="buyerSearchForm"]') === null || this.formStoredValues.isdefault) {
+  async doSearch() {
 
-      this.formStoredValues.isdefault = false;
+    // If null the form doesn't exist prior to doSearch() then perform a default search for all real estates
+    if (document.querySelector('[id="buyerSearchForm"]') === null) {
+
+      console.log("form is null and region form stored value is:" + this.formStoredValues.region);
 
       // A default search on "page landing" or when search was performed via NavBarSearch.js
       app.buyerPage.searchResult = await sql(/*sql*/`
@@ -75,13 +77,17 @@ class BuyerPageSearch extends Base {
 
     }
     else {
+
       //Fetch and store form values
       this.formInput = document.querySelector('[id="buyerSearchForm"]');
 
-      this.formStoredValues.isdefault = false;
+      !this.formStoredValues.isdefault ? this.formStoredValues.textinput = this.formInput.textinput.value : '';
 
-      this.formStoredValues.textinput = this.formInput.textinput.value;
+      // !!! Fix this: clicking on tenure after page landning from navbarsearch resets/defaults selected region 
       this.formStoredValues.region = this.formInput.regionselect.value;
+
+      console.log("form exists and region form stored value is:" + this.formStoredValues.region);
+
       this.formStoredValues.options[0] = this.formInput.tenureOption1.checked;
       this.formStoredValues.options[1] = this.formInput.tenureOption2.checked;
       this.formStoredValues.options[2] = this.formInput.tenureOption3.checked;
@@ -155,10 +161,10 @@ class BuyerPageSearch extends Base {
         }
       }
 
-    }
+      // formStoredValues has been used once and cannot be considered default any more
+      this.formStoredValues.isdefault = false;
 
-    // Note: Regarding rerendering... Using keydown event on textinput field will be problematic since it redraws from formStoredValues
-    this.render();
+    }
 
     // Refresh results page (BuyerPage)
     app.buyerPage.doSort();
@@ -187,6 +193,7 @@ class BuyerPageSearch extends Base {
     }
 
     this.doSearch();
+    this.render();
   }
 
   // Addition by Thomas
