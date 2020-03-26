@@ -18,7 +18,8 @@ class NavBarSearch extends Base {
   async clickKeyword(e) {
     this.searchHits = [];
     this.selected = -1;
-    await this.doSearch(e.target.parentElement.parentElement.value); // Maybe try a query on event target instead later. This feels to hardcoded
+    // Maybe try a query on event target instead later and try avoid NaN. This feels to hardcoded
+    this.doSearch(e.target.parentElement.parentElement.value ? e.target.parentElement.parentElement.value : 0);
   }
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
@@ -35,7 +36,7 @@ class NavBarSearch extends Base {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
     if (e.key === 'Enter' && this.selected >= 0) {
       // Ugly adjust for +1 extra <button> under <select>
-      await this.doSearch((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
+      this.doSearch((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
       this.searchHits = [];
       this.selected = -1;
       return;
@@ -76,17 +77,16 @@ class NavBarSearch extends Base {
 
 
   // Set properties for use in BuyerPageSearch, then BuyerPageSearch.doSearch()
-  async doSearch(regionArg) {
-    app.buyerPageSearch.textInput = document.querySelector('[id="navBarTextInput"]').value;
-    app.buyerPageSearch.regionId = regionArg;
+  async doSearch(region) {
+    app.buyerPageSearch.formStoredValues.textinput = document.querySelector('[id="navBarTextInput"]').value.length > 0 ? document.querySelector('[id="navBarTextInput"]').value : '';
+    app.buyerPageSearch.formStoredValues.region = parseInt(region);
 
     // Problem: Switching back and forth "fast" from navbar search to buyerpage will result in buyerpage form not being set properly upon page landing
-    // Either the page function (page object) doesn't really exist yet or SQLite is lagging  
+    // Either the page function (page object) doesn't really exist yet or node.js + SQLite is lagging on my shitty laptop  
+    app.buyerPageSearch.render();
     await app.buyerPageSearch.doSearch();
-    //app.buyerPageSearch.render();
     app.goto('/buy-property');
 
-    return;
   }
 
 
