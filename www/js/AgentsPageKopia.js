@@ -1,4 +1,4 @@
-class AgentsPage extends Base {
+class AgentsPageKopia extends Base {
 
   async mount() {
 

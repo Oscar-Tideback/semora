@@ -76,14 +76,14 @@ class NavBarSearch extends Base {
 
 
   // Set properties for use in BuyerPageSearch, then BuyerPageSearch.doSearch()
-  async doSearch(regionArg) {
-    app.buyerPageSearch.textInput = document.querySelector('[id="navBarTextInput"]').value;
-    app.buyerPageSearch.regionId = regionArg;
+  async doSearch(region) {
+    app.buyerPageSearch.formStoredValues.textinput = document.querySelector('[id="navBarTextInput"]').value.length > 0 ? document.querySelector('[id="navBarTextInput"]').value : '';
+    app.buyerPageSearch.formStoredValues.region = parseInt(region);
+    app.buyerPageSearch.formStoredValues.isdefault = false;
 
     // Problem: Switching back and forth "fast" from navbar search to buyerpage will result in buyerpage form not being set properly upon page landing
     // Either the page function (page object) doesn't really exist yet or SQLite is lagging  
     await app.buyerPageSearch.doSearch();
-    //app.buyerPageSearch.render();
     app.goto('/buy-property');
 
     return;

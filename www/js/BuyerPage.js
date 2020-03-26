@@ -45,6 +45,7 @@ class BuyerPage extends Base {
 
   render() {
     //console.log('buyerPage searchResult: ', this.searchResult)
+    console.log('from stored:' + app.buyerPageSearch.formStoredValues.textinput);
     return /*html*/`
       <div class="row m-0" route="/buy-property" page-title="Dhyr & Rumson - Våra Bostad">  
         <div class="container mb-4"> 
@@ -54,8 +55,8 @@ class BuyerPage extends Base {
             
               <div class="row form-inline">
                 
-                <div class="col-sm-12 col-md mx-lg-4 mx-md-0 pt-4 mt-md-2 mt-lg-0">     
-                  <h3>(${this.searchResult.length}) Sökresultat ${this.textInput.length > 0 ? 'på "' + this.textInput + '"' : ''}  ${this.regionName === '' ? 'i samtliga regioner' : 'i ' + this.regionName}</h3>                
+                <div class="col-sm-12 col-md mx-lg-4 mx-md-0 pt-4 mt-md-2 mt-lg-0">
+                  <h3>(${this.searchResult.length}) Sökresultat ${app.buyerPageSearch.formStoredValues.textinput ? 'på "' + app.buyerPageSearch.formStoredValues.textinput + '"' : ''}  ${this.regionName === '' ? 'i samtliga regioner' : 'i ' + this.regionName}</h3>
                 </div>
 
                 <div class="col-lg-auto mr-lg-4 mr-md-0 pt-4 mt-md-2 mt-lg-0">
@@ -76,7 +77,7 @@ class BuyerPage extends Base {
                 </div>
 
               </div>
-              
+
             <div class="row">
                 ${this.searchResult.map(obj => /*html*/`
                   <div class="col d-flex justify-content-center">

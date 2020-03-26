@@ -21,20 +21,21 @@ class ObjectPage extends Base {
         
 
  
-                    <div class= "row p-5">
-                    <h1>Försäljningsobjekt</h1>
+                    <div class= "row p-3">
+                    <h1><strong>Försäljningsobjekt</strong></h1>
                     <div class="col-sm-13">
                         
                     <div class="col d-flex justify-content-left">
                     <div class="card my-8">
                                 
-                    <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}">
+                    <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}" >
+            
                     <div class= "right"></div>
                               
                     <div class="card-body">
                     <div class="card-text">
 
-                    <h1>${this.streetName} ${this.streetNumber} ${this.floor} tr</h1>
+                    <h2>${this.streetName} ${this.streetNumber} ${this.floor} tr</h2>
                                             <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
@@ -49,7 +50,7 @@ class ObjectPage extends Base {
                                             </div>
                                             </div>
                                             <br>
-                                            <div class="row p-3">
+                                            <div class="row p-4">
                                             <h3><strong>Kontakta mäklaren</strong></h3>
                                             </div>
                                             <div class= "row  p-3 border bg-light no-gutters" >
@@ -75,20 +76,20 @@ class ObjectPage extends Base {
                                           
 
                                             </div>
-
-                                          
-                                            
                                             
                                             <br>
                                          
                                             </div> 
-                                            <div class="row p-3">
+                                            <div class="row p-4">
                                             ${this.realDescription}
                                             <div>
                                             <br>
                                             ${this.description}
+                                            <br>
+                                            <br>
+                                            <h5>Välkommen!</h5>
                                             </div>
-                                          </div>
+                                            </div>
                                          
                                     </div>
                                     </div>
