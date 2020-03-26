@@ -40,7 +40,7 @@ class AgentPage extends Base {
               <img src="../images/${this.imageUrl}" class="img-thumbnail rounded float-left" alt="Agent face">
           </div>
             <div class="col-lg-3 col-md-12 col-sm-12">
-            <p class="broker-name">${this.firstName} ${this.lastName}</p>
+            <p class="name-bold broker-name">${this.firstName} ${this.lastName}</p>
               <p class="broker-name name-email-phone"><span class="name-bold">E-Mail:</span> ${this.email}</p>
               <p class="broker-name name-email-phone"><span class="name-bold">Tel:</span>  ${this.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
               <p class="broker-name name-region"><span class="name-bold">Region:</span> ${this.region_names}.</p>
@@ -81,7 +81,7 @@ class AgentPage extends Base {
                 </div>
                 <div class="modal-body">
                   <p>Ditt meddelande har skickats!<br>
-                  <p class="broker-name">${this.firstName} ${this.lastName} återkommer snarast till dig via telefon eller email.</p>
+                  <p class="name-bold broker-name">${this.firstName} ${this.lastName} återkommer snarast till dig via telefon eller email.</p>
                 </div>
                 <div class="mt-4 modal-footer">
                   <a href="/" type="button" class="btn btn-primary float-left"  data-dismiss="modal">Till startsidan!</a>
