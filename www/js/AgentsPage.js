@@ -27,8 +27,8 @@ class AgentsPage extends Base {
     this.selectedRegion = parseInt(e.target.value);
     //console.log('event target ' + e.target.value);
 
-    if (this.selectedRegion === 0) {
-      this.foundAgents = await sql(/*sql*/`
+    //if (this.selectedRegion === 0) {
+    this.foundAgents = await sql(/*sql*/`
       SELECT user.firstName,  user.lastName, user.id,
       user.phone, user.email, user.description, user.imageUrl,
       GROUP_CONCAT(region.regionName,', ') region_names
@@ -36,26 +36,10 @@ class AgentsPage extends Base {
       INNER JOIN user ON user.id = userXregion.userId, 
       region ON region.id = userXregion.regionId
       WHERE user.isAgent = 'true'
+      ${this.selectedRegion > 0 ? ('AND userXregion.regionId = ' + this.selectedRegion) : ''}
       GROUP BY user.id
     `);
-      this.render();
-    }
-    else {
-      // SQL query returns brokers that have an object to sell and is active in a region
-      this.foundAgents = await sql(AgentPage, /*sql*/`
-      SELECT user.id, user.firstName,  user.lastName, 
-      user.phone, user.email, user.description, user.imageUrl,
-      GROUP_CONCAT(region.regionName,', ') region_names
-      FROM userXregion 
-      INNER JOIN user ON user.id = userXregion.userId, 
-      region ON region.id = userXregion.regionId
-      WHERE user.isAgent = 'true'
-      AND userXregion.regionId = ${this.selectedRegion}
-      GROUP BY user.id
-       `);
-      this.render();
-    }
-
+    this.render();
 
 
     //$(window).on('popstate', function (event) {
