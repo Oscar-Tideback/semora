@@ -45,7 +45,7 @@ class BuyerPage extends Base {
 
   render() {
     //console.log('buyerPage searchResult: ', this.searchResult)
-    console.log('from stored:' + app.buyerPageSearch.formStoredValues.textinput);
+    //console.log('from stored:' + app.buyerPageSearch.formStoredValues.textinput);
     return /*html*/`
       <div class="row m-0" route="/buy-property" page-title="Dhyr & Rumson - Våra Bostad">  
         <div class="container mb-4"> 
