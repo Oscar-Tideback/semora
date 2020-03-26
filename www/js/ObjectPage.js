@@ -53,7 +53,7 @@ class ObjectPage extends Base {
                                             <div class="row p-3">
                                             <h3><strong>Kontakta mäklaren</strong></h3>
                                             </div>
-                                            <div class= "row  p-3 border bg-warning no-gutters" >
+                                            <div class= "row  p-3 border bg-warnings no-gutters" >
                                         
                                             <div class= "col-auto">
                                       
@@ -110,10 +110,10 @@ class ObjectPage extends Base {
                                     <img class="d-block w-100" src="/images/${this.Id}/img14.jpg"><br>
                                 </div>    
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        
+                    
+                
+            
             
             
             `;
