@@ -53,7 +53,7 @@ class ObjectPage extends Base {
                                             <div class="row p-3">
                                             <h3><strong>Kontakta mäklaren</strong></h3>
                                             </div>
-                                            <div class= "row  p-3 border bg-light no-gutters" >
+                                            <div class= "row  p-3 border bg-warning no-gutters" >
                                         
                                             <div class= "col-auto">
                                       
