@@ -65,7 +65,7 @@ class AgentsPage extends Base {
                     <a href="/real-estate-agent/${user.id}">
                     <img src="images/${user.imageUrl}" targetbrokerid="${user.id}" class="img-thumbnail img-fluid rounded" alt="Agent face ${user.lastName}"></a>
                   </div>
-                  <div class="card-body col-sm-12 col-md-8 col-lg-4 p-3 bg-bg-danger ">
+                  <div class="card-body col-sm-12 col-md-8 col-lg-4 p-3 bg-danger ">
                     <div class="card-title name-nopad">
                       <a href="/real-estate-agent/${user.id}">
                       <p class="name-nopad name-bold">${user.firstName} ${user.lastName}</p></a>   
