@@ -187,25 +187,29 @@ h1, h2, h3, h4, h5 {
 
 }
 
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .broker-name {
     font-size: $base-font * 1;
+    
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .broker-info {
+    margin-left: 14px;
     font-size: $base-font * 1;
+    
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .name-nopad {
-    margin-top: -40px;
+    margin-top: -30px;
+    margin-left: 14px;
     font-size: $base-font * 1.1;
     font-weight: 600;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   .nopad-mobil {
    
     padding-left: -0.50rem;
@@ -223,6 +227,7 @@ h1, h2, h3, h4, h5 {
 .modal-body { 
   height: 60%; 
 }
+
 
 
 

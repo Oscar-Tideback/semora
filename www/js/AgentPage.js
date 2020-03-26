@@ -25,8 +25,8 @@ class AgentPage extends Base {
   render() {
     //console.log(this);
     return /*html*/`
-    <div class="row m-0 p-4" route="/real-estate-agent/${this.id}" page-title="Dhyr & Rumson - Våra mäklare">  
-    <div class="container"> 
+    <div class="row m-0" route="/real-estate-agent/${this.id}" page-title="Dhyr & Rumson - Våra mäklare">  
+    <div class="col-12 m-1 p-2">
       <div class="row">
         <div class="col-12">
         <p class="name-bold broker-name">Lär känna, ${this.firstName} ${this.lastName}.</p>  
@@ -37,7 +37,8 @@ class AgentPage extends Base {
           <div class="col-lg-4 col-md-4 col-sm-12 mt-5">
           <div class=" ml-2">
               <img src="../images/${this.imageUrl}" class="img-fluid rounded border float-bottom" alt="Agent face">
-              <p class="mt-3 broker-name name-email-phone"><span class="name-bold">E-Mail:</span> ${this.email}</p>
+              <p class="mt-1 broker-name"><span class="name-bold">${this.firstName} ${this.lastName}</p>
+              <p class="broker-name name-email-phone"><span class="name-bold">E-Mail:</span> ${this.email}</p>
               <p class="broker-name name-email-phone"><span class="name-bold">Tel:</span>  ${this.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
               <p class="broker-name name-region"><span class="name-bold">Region:</span> ${this.region_names}.</p>
           </div>
@@ -47,25 +48,25 @@ class AgentPage extends Base {
             <!--Form-->
             <div class="col-12 mt-2">
             <form submit="collectFormData">
-            <div class="name-bold text-center">Kontakta mig.</div>
+            <div class="name-bold text-secondary mt-5">Kontakta mig.</div>
             <div class="md-form">
   
-              <label>Namn:</label>
+              <label class="name-email-phone">Namn:</label>
               <input name="name" type="name" pattern="[a-öA-Ö]{2,200}" class="form-control">         
             </div>
             <div class="md-form">
 
-              <label>E-Mail:</label>
+              <label class="name-email-phone">E-Mail:</label>
               <input name="email" type="email" class="form-control">
             </div>
             <div class="md-form">
 
-              <label>Telefon:</label>
+              <label class="name-email-phone">Telefon:</label>
               <input type="tel" id="phone" name="phone" pattern="[0-9]{7,10}" class="form-control">
             </div>
             <div class="md-form">
 
-              <label>Ditt ärende:</label>
+              <label class="name-email-phone">Ditt ärende:</label>
               <textarea name="subject" type="subject" class="form-control md-textarea" rows="3"></textarea>
             </div>
             <div class="text-center mt-4" >

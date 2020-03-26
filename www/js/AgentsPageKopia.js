@@ -61,11 +61,11 @@ class AgentsPageKopia extends Base {
               
                   <div class="row p-3 border bg-light no-gutters">
                 ${this.foundAgents.map(user => /*html*/`
-                  <div class=" col-auto mb-3 pl-3 col-sm-6 col-lg-2" >
+                  <div class=" col-auto mb-3 pl-3 col-sm-6 col-lg-2 bg-warning">
                     <a href="/real-estate-agent/${user.id}">
-                    <img src="images/${user.imageUrl}" targetbrokerid="${user.id}" class="img-thumbnail rounded" alt="Agent face ${user.lastName}"></a>
+                    <img src="images/${user.imageUrl}" targetbrokerid="${user.id}" alt="Agent face ${user.lastName}"></a>
                   </div>
-                  <div class="card-body col-sm-6 col-md-6 col-lg-4 p-3 ">
+                  <div class="card-body col-sm-6 col-md-6 col-lg-4 p-3 bg-info">
                   <div class="card-title name-nopad">
                     <a href="/real-estate-agent/${user.id}">
                     <p class="name-nopad">${user.firstName}
