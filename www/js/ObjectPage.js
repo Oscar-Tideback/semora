@@ -35,7 +35,7 @@ class ObjectPage extends Base {
                     <div class="card-body">
                     <div class="card-text">
 
-                    <h2>${this.streetName} ${this.streetNumber} ${this.floor} tr</h2>
+                    <h2>${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2>
                                             <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
@@ -46,14 +46,14 @@ class ObjectPage extends Base {
                                             <strong>Visningstider:</strong> ${this.viewingsSelection.map(viewings => viewings.startDatetime + ' - ' + viewings.endDatetime)} <br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
-                        
+                                        
                                             </div>
                                             </div>
-                                            <br>
+                                            
                                             <div class="row p-4">
                                             <h3><strong>Kontakta mäklaren</strong></h3>
                                             </div>
-                                            <div class= "row  p-3 border bg-light no-gutters" >
+                                            <div class= "row  p-3 border no-gutters" >
                                         
                                             <div class= "col-auto">
                                       
@@ -67,24 +67,21 @@ class ObjectPage extends Base {
                                             <div class="col-md-2 col-sm-6">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6><hr class="mb-5"></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
+                                            <hr class="mb-5">
                                             </div>
                                             </div>
-
-                                            
                                             </div>
-                                          
-
                                             </div>
                                             
                                             <br>
                                          
                                             </div> 
-                                            <div class="row p-4">
+                                            <div class="row p-4 text-break">
                                             ${this.realDescription}
                                             <div>
                                             <br>
-                                            ${this.description}
+                                            <p class="text-break">${this.description}</p>
                                             <br>
                                             <br>
                                             <h5>Välkommen!</h5>
@@ -107,12 +104,13 @@ class ObjectPage extends Base {
                                     <img class="d-block w-100" src="/images/${this.Id}/img12.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img13.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img14.jpg"><br>
+         
                                 </div>    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            
+                        
+                    
+                
+            
             
             
             `;
