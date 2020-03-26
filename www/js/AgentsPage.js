@@ -27,8 +27,6 @@ class AgentsPage extends Base {
     this.selectedRegion = parseInt(e.target.value);
     //console.log('event target ' + e.target.value);
 
-    //let regioID = e.target.value;
-    //console.log(this.selectedRegion);
     if (this.selectedRegion === 0) {
       this.foundAgents = await sql(/*sql*/`
       SELECT user.firstName,  user.lastName, user.id,
