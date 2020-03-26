@@ -71,11 +71,7 @@ class ObjectPage extends Base {
                                            
                                             </div>
                                             </div>
-
-                                            
                                             </div>
-                                          
-
                                             </div>
                                             
                                             <br>
@@ -109,7 +105,7 @@ class ObjectPage extends Base {
                                     <img class="d-block w-100" src="/images/${this.Id}/img13.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img14.jpg"><br>
                                 </div>    
-                            </div>
+                            
                         
                     
                 
