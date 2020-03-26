@@ -46,36 +46,32 @@ class ObjectPage extends Base {
                                             <strong>Visningstider:</strong> ${this.viewingsSelection.map(viewings => viewings.startDatetime + ' - ' + viewings.endDatetime)} <br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
-                                            <hr class="mb-5">
+                                            
                                             </div>
                                             </div>
-
-                                            <div class="row p-3">
+                                            
+                                            <div class="row p-4">
                                             <h3><strong>Kontakta mäklaren</strong></h3>
                                             </div>
-                                            <div class= "row  p-3 border bg-warning no-gutters" >
+                                            <div class= "row  p-3 border no-gutters" >
                                         
                                             <div class= "col-auto">
                                       
                                     
                                             <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
                                              </div>
-                                            <div class="card-body col-lg-4 p-3 bg-info" style="white-space: nowrap">
+                                            <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                             <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                             <div class="card-title name-nopad">
 
-                                            <div class="col-md-2 col-sm-6 bg-bg-danger">
+                                            <div class="col-md-2 col-sm-6">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6><hr class="mb-5"></p>
-                                           
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
+                                            <hr class="mb-5">
                                             </div>
                                             </div>
-
-                                            
                                             </div>
-                                          
-
                                             </div>
                                             
                                             <br>
@@ -99,11 +95,11 @@ class ObjectPage extends Base {
                                     <img class="img-fluid" src="/images/${this.Id}/img03.jpg"><br>
          
                                 </div>    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                            
+                        
+                    
+                
+            
             
             
             `;
