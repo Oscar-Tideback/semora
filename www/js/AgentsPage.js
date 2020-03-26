@@ -18,6 +18,7 @@ class AgentsPage extends Base {
     WHERE user.isAgent = 'true'
     GROUP BY user.id
     `);
+    this.render();
   }
 
 
@@ -59,21 +60,26 @@ class AgentsPage extends Base {
 
 
 
+    //$(window).on('popstate', function (event) {
+    //  location.reload();
+    //});
   }
+
 
 
 
   render() {
     console.log(this.foundAgents);
     console.log('on render' + this.selectedRegion);
+    //    console.log(this.foundAgents);
     return /*html*/`
-      <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">  
+      <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
         <div class="container my-4">
-        
-              <div class="row p-4">
-                <div class="col-12"><h5></h5>
-                  <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
-                  <p>Till Dhyr & Rumson har vi därför handplockat endast dom som heter son i efternamn och de skickligaste och mest erfarna mäklarna i Stockholm.
+
+          <div class="row p-4">
+            <div class="col-12"><h5></h5>
+              <p>Kunskap och erfarenhet är tillgångar i alla yrken.</p>
+              <p>Till Dhyr & Rumson har vi därför handplockat endast dom som heter son i efternamn och de skickligaste och mest erfarna mäklarna i Stockholm.
                   Vi har gjort det av en enda anledning för att dom HETER SON i efternamn alltid – så att rätt person kan företräda dig i din kanske största affär.</p>
               
                   <select class="form-control form-control-lg" change="searchAgentRegions" id="region_select" name="regionselect">
@@ -100,12 +106,12 @@ class AgentsPage extends Base {
                     <hr class="mb-5">
                 </div >
                 `)}
-                </div>              
+                </div>
+              </div>
             </div>
-           </div>  
+          </div>
         </div>
-      </div>
-  `;
+        `;
   }
 
 }
