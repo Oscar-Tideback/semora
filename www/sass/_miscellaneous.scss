@@ -14,7 +14,9 @@ body {
   background-image: url(/images/BG_pattern1.jpg);
    // See _variable-overrides.scss for $font-size_scale
   font-size: 100% * $font-main-multiplier; 
+  
 }
+
 
 // See _variable-overrides.scss for $base-font
 html {
@@ -182,21 +184,22 @@ h1, h2, h3, h4, h5 {
 
 }
 
-@media (max-width: 992px) {
+@media (max-width: 575px) {
   .broker-name {
-    font-size: $base-font * 1.2;
+    font-size: $base-font * 1;
   }
 }
-@media (max-width: 992px) {
+@media (max-width: 575px) {
   .broker-info {
-    font-size: $base-font * 1.2;
+    font-size: $base-font * 1;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 575px) {
   .name-nopad {
     margin-top: -40px;
-    font-size: $base-font * 1.4;
+    font-size: $base-font * 1.1;
+    font-weight: 600;
   }
 }
 

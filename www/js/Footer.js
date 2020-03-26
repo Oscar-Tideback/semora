@@ -14,7 +14,7 @@ class Footer extends Base {
           </div>
 
           <div class="col text-center text-light">
-            <img src="/images/Footer_badge3.png" alt="...">
+            <img class="img-fluid" src="/images/Footer_badge3.png" alt="...">
           </div>
 
           <div class="col-md-12 col-lg mt-sm-2 mt-lg-0 py-4 text-center text-dark">
