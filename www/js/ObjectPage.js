@@ -91,8 +91,19 @@ class ObjectPage extends Base {
                                     </div>
                                     </div>
                           
-                                    <img class="img-fluid" src="/images/${this.Id}/img02.jpg"><br>
-                                    <img class="img-fluid" src="/images/${this.Id}/img03.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img02.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img03.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img04.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img05.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img06.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img07.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img08.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img09.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img10.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img11.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img12.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img13.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img14.jpg"><br>
          
                                 </div>    
                             
