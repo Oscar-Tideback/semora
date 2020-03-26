@@ -22,7 +22,7 @@ class ObjectPage extends Base {
 
  
                     <div class= "row p-5">
-                    <h1>Försäljningsobjekt</h1>
+                    <h1><strong>Försäljningsobjekt</strong></h1>
                     <div class="col-sm-13">
                         
                     <div class="col d-flex justify-content-left">
@@ -50,7 +50,7 @@ class ObjectPage extends Base {
                                             </div>
                                             </div>
                                             <br>
-                                            <div class="row p-3">
+                                            <div class="row p-4">
                                             <h3><strong>Kontakta mäklaren</strong></h3>
                                             </div>
                                             <div class= "row  p-3 border bg-light no-gutters" >
