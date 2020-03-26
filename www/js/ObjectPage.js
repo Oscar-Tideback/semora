@@ -46,11 +46,11 @@ class ObjectPage extends Base {
                                             <strong>Visningstider:</strong> ${this.viewingsSelection.map(viewings => viewings.startDatetime + ' - ' + viewings.endDatetime)} <br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
-                                             <hr class="mb-5">
+                                            <hr class="mb-5">
                                             </div>
                                             </div>
-                                            
-                                            <div class="row p-4">
+
+                                            <div class="row p-3">
                                             <h3><strong>Kontakta mäklaren</strong></h3>
                                             </div>
                                             <div class= "row  p-3 border bg-light no-gutters" >
@@ -60,14 +60,15 @@ class ObjectPage extends Base {
                                     
                                             <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
                                              </div>
-                                            <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
+                                            <div class="card-body col-lg-4 p-3 bg-info" style="white-space: nowrap">
                                             <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
                                             <div class="card-title name-nopad">
 
-                                            <div class="col-md-2 col-sm-6">
+                                            <div class="col-md-2 col-sm-6 bg-bg-danger">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6><hr class="mb-5"></p>
+                                           
                                             </div>
                                             </div>
 
