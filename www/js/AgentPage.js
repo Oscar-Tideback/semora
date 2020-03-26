@@ -33,46 +33,43 @@ class AgentPage extends Base {
         <p>${this.description}</p>
         </div>
       </div>
-        <div class="row bg-warning ">
-        
-
-
-          <div class="col-lg-6 bg-info ">
-              <img src="../images/${this.imageUrl}" class="img-thumbnail rounded float-bottom" alt="Agent face">
-              <p class="broker-name name-email-phone"><span class="name-bold">E-Mail:</span> ${this.email}</p>
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-5">
+          <div class=" ml-2">
+              <img src="../images/${this.imageUrl}" class="img-fluid rounded border float-bottom" alt="Agent face">
+              <p class="mt-3 broker-name name-email-phone"><span class="name-bold">E-Mail:</span> ${this.email}</p>
               <p class="broker-name name-email-phone"><span class="name-bold">Tel:</span>  ${this.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
               <p class="broker-name name-region"><span class="name-bold">Region:</span> ${this.region_names}.</p>
           </div>
-            <div class="col-lg-6 col-md-12 col-sm-12">
-            
-              
-                         
+          </div>
+            <div class="col-lg-8 col-md-8 col-sm-12">
+                
             <!--Form-->
-            <div class="col-12 bg-danger ">
-            <form submit="collectFormData" class="col-lg-12 col-md-12 col-sm-12">
+            <div class="col-12 mt-2">
+            <form submit="collectFormData">
             <div class="name-bold text-center">Kontakta mig.</div>
             <div class="md-form">
-              <i class="fas fa-user prefix grey-text"></i>
+  
               <label>Namn:</label>
-              <input name="name" type="name" class="form-control">         
+              <input name="name" type="name" pattern="[a-öA-Ö]{2,200}" class="form-control">         
             </div>
             <div class="md-form">
-              <i class="fas fa-envelope prefix grey-text"></i>
+
               <label>E-Mail:</label>
               <input name="email" type="email" class="form-control">
             </div>
             <div class="md-form">
-              <i class="fas fa-envelope prefix grey-text"></i>
+
               <label>Telefon:</label>
               <input type="tel" id="phone" name="phone" pattern="[0-9]{7,10}" class="form-control">
             </div>
             <div class="md-form">
-              <i class="fas fa-tag prefix grey-text"></i>
+
               <label>Ditt ärende:</label>
               <textarea name="subject" type="subject" class="form-control md-textarea" rows="3"></textarea>
             </div>
             <div class="text-center mt-4" >
-              <button type="submit"  class="btn col-12 border btn-light-blue" value="Send">Skicka</button>
+              <button type="submit"  class="btn col-12 border button-color" value="Send">Skicka</button>
             </div>           
           </div>
         </div>    

@@ -53,7 +53,7 @@ class MapsPage extends Base {
                       <div class="md-form">
                         <i class="fas fa-user prefix grey-text"></i>
                         <label>Namn:</label>
-                        <input name="name" type="text" pattern="[a-ö]{2,100}" title="Skriv ditt för och efternamn" class="form-control">         
+                        <input name="name" type="text" pattern="[a-öA-Ö]{2,100}" title="Skriv ditt för och efternamn" class="form-control">         
                       </div>
                       <div class="md-form">
                         <i class="fas fa-envelope prefix grey-text"></i>
@@ -71,7 +71,7 @@ class MapsPage extends Base {
                         <textarea name="subject" type="text" class="form-control md-textarea" rows="3"></textarea>
                       </div>
                       <div class="text-center mt-4">
-                        <button type="submit"  class="btn border btn-primary" value="Send">Skicka</button>
+                        <button type="submit"  class="btn border button-color col-12" value="Send">Skicka</button>
                       </div>
 
                     </div>
@@ -87,7 +87,7 @@ class MapsPage extends Base {
 
                   <!--Google map-->
                   <div id="map-container-google-11" class="z-depth-1-half map-container-6" style="height: 400px">
-                    <iframe src="https://maps.google.com/maps?q=Stig Lindbergs Gata 17, Gustavsberg, Sverige&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    <iframe src="https://maps.google.com/maps?q=Åsögatan 9, Stockholm, Sverige&t=&z=13&ie=UTF8&iwloc=&output=embed"
                       frameborder="0" style="border:0" allowfullscreen></iframe>
                   </div>
 
@@ -95,20 +95,16 @@ class MapsPage extends Base {
                   <!--Buttons-->
                   <div class="row text-center">
                     <div class="col-md-4">
-                      <a class="btn-floating blue accent-1"><i class="fas fa-map-marker-alt"></i></a>
-                      <a>Stig Lindbergsg 17</a>
-                      <p>Gustavsberg</p>
-                      <p>Värmdö</p>
+                      <p>Åsögatan 9</p>
+                      <p>Stockholm</p>
                     </div>
 
-                    <div class="col-md-4">
-                      <a class="btn-floating blue accent-1"><i class="fas fa-phone"></i></a>
+                    <div class="col-md-4">  
                       <p>08-234 567 89</p>
-                      <p>Mon-Fri 8:00-22:00</p>
+                      <p>Mån-Fri 8-18</p>
                     </div>
 
-                    <div class="col-md-4">
-                      <a class="btn-floating blue accent-1"><i class="fas fa-envelope"></i></a>
+                    <div class="col-md-4">                  
                       <p>dhyr@gmail.com</p>
                       <p>rumson@gmail.com</p>
                     </div>
