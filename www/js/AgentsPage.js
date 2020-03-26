@@ -25,9 +25,7 @@ class AgentsPage extends Base {
   async searchAgentRegions(e) {
 
     this.selectedRegion = parseInt(e.target.value);
-    //console.log('event target ' + e.target.value);
 
-    //if (this.selectedRegion === 0) {
     this.foundAgents = await sql(/*sql*/`
       SELECT user.firstName,  user.lastName, user.id,
       user.phone, user.email, user.description, user.imageUrl,
@@ -41,18 +39,12 @@ class AgentsPage extends Base {
     `);
     this.render();
 
-
-    //$(window).on('popstate', function (event) {
-    //  location.reload();
-    //});
   }
 
 
 
 
   render() {
-    //console.log(this.foundAgents);
-    //console.log('on render' + this.selectedRegion);
     return /*html*/`
       <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
         <div class="container my-4">
