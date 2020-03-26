@@ -2,6 +2,8 @@ class AgentsPage extends Base {
 
   async mount() {
 
+    this.selectedRegion = 0;
+
     //pop agents
     this.regionSelection = await sql(/*sql*/`
     SELECT * FROM region`);
@@ -20,9 +22,13 @@ class AgentsPage extends Base {
 
 
   async searchAgentRegions(e) {
-    let regioID = e.target.value;
-    console.log(regioID);
-    if (regioID === '0') {
+
+    this.selectedRegion = parseInt(e.target.value);
+    console.log('event target ' + e.target.value);
+
+    //let regioID = e.target.value;
+    //console.log(this.selectedRegion);
+    if (this.selectedRegion === 0) {
       this.foundAgents = await sql(/*sql*/`
       SELECT user.firstName,  user.lastName, user.id,
       user.phone, user.email, user.description, user.imageUrl,
@@ -45,11 +51,13 @@ class AgentsPage extends Base {
       INNER JOIN user ON user.id = userXregion.userId, 
       region ON region.id = userXregion.regionId
       WHERE user.isAgent = 'true'
-      AND userXregion.regionId = ${regioID}
+      AND userXregion.regionId = ${this.selectedRegion}
       GROUP BY user.id
        `);
       this.render();
     }
+
+
 
   }
 
@@ -57,6 +65,7 @@ class AgentsPage extends Base {
 
   render() {
     console.log(this.foundAgents);
+    console.log('on render' + this.selectedRegion);
     return /*html*/`
       <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">  
         <div class="container my-4">
@@ -69,7 +78,7 @@ class AgentsPage extends Base {
               
                   <select class="form-control form-control-lg" change="searchAgentRegions" id="region_select" name="regionselect">
                   <option value="0">Alla regioner</option>
-                  ${this.regionSelection.map(region => '<option value="' + region.id + '">' + region.regionName + '</option>')}
+                  ${this.regionSelection.map(region => '<option value="' + region.id + '" ' + (this.selectedRegion > 0 && region.id === this.selectedRegion ? 'selected' : '') + '>' + region.regionName + '</option>')}
                   </select>
               
                   <div class="row p-3 border bg-light no-gutters">
