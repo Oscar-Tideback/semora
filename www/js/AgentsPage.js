@@ -25,7 +25,7 @@ class AgentsPage extends Base {
   async searchAgentRegions(e) {
 
     this.selectedRegion = parseInt(e.target.value);
-    console.log('event target ' + e.target.value);
+    //console.log('event target ' + e.target.value);
 
     //let regioID = e.target.value;
     //console.log(this.selectedRegion);
@@ -69,9 +69,8 @@ class AgentsPage extends Base {
 
 
   render() {
-    console.log(this.foundAgents);
-    console.log('on render' + this.selectedRegion);
-    //    console.log(this.foundAgents);
+    //console.log(this.foundAgents);
+    //console.log('on render' + this.selectedRegion);
     return /*html*/`
       <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
         <div class="container my-4">
