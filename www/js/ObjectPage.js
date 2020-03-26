@@ -46,10 +46,10 @@ class ObjectPage extends Base {
                                             <strong>Visningstider:</strong> ${this.viewingsSelection.map(viewings => viewings.startDatetime + ' - ' + viewings.endDatetime)} <br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
-                        
+                                             <hr class="mb-5">
                                             </div>
                                             </div>
-                                            <br>
+                                            
                                             <div class="row p-4">
                                             <h3><strong>Kontakta mäklaren</strong></h3>
                                             </div>
