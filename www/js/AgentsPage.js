@@ -21,7 +21,6 @@ class AgentsPage extends Base {
     this.render();
   }
 
-
   async searchAgentRegions(e) {
 
     this.selectedRegion = parseInt(e.target.value);
