@@ -1,4 +1,4 @@
-class MapsPage extends Base {
+class SellerPage extends Base {
 
 
   async mount() {
@@ -23,7 +23,7 @@ class MapsPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row p-4 m-0" route="/our-regions" page-title="Regioner och Områden">
+      <div class="row p-4 m-0" route="/sell-property" page-title="Sälja bostad">
         <div class="container my-4"> 
             <!--Section: Contact v.1-->
               <section class="section pb-5">

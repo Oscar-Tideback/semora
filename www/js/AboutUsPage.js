@@ -4,7 +4,7 @@ class AboutUsPage extends Base {
     return /*html*/`
       <div class="row m-0 p-4" route="/about-us" page-title="Om oss">
         <div class="col-12">
-          <h1>Vilka är vi</h1>
+          <h1 class="pb-4">Vilka är vi</h1>
           <p>VÅRA MÄKLARE
           Lär känna våra mäklare
           Kunskap och erfarenhet är tillgångar i alla yrken.

@@ -5,6 +5,7 @@ class BuyerPageSearch extends Base {
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region ORDER BY region.regionName`);
 
     this.formInput = new FormData();
+
     //this.formStoredValues = {};
     this.setInitialFormValues();
   }
@@ -31,8 +32,6 @@ class BuyerPageSearch extends Base {
 
     // If null the form doesn't exist prior to doSearch() then perform a default search for all real estates
     if (document.querySelector('[id="buyerSearchForm"]') === null) {
-
-      console.log("form is null and region form stored value is:" + this.formStoredValues.region);
 
       // A default search on "page landing" or when search was performed via NavBarSearch.js
       app.buyerPage.searchResult = await sql(/*sql*/`
@@ -81,12 +80,8 @@ class BuyerPageSearch extends Base {
       //Fetch and store form values
       this.formInput = document.querySelector('[id="buyerSearchForm"]');
 
-      !this.formStoredValues.isdefault ? this.formStoredValues.textinput = this.formInput.textinput.value : '';
-
-      // !!! Fix this: clicking on tenure after page landning from navbarsearch resets/defaults selected region 
+      this.formStoredValues.textinput = this.formInput.textinput.value;
       this.formStoredValues.region = this.formInput.regionselect.value;
-
-      console.log("form exists and region form stored value is:" + this.formStoredValues.region);
 
       this.formStoredValues.options[0] = this.formInput.tenureOption1.checked;
       this.formStoredValues.options[1] = this.formInput.tenureOption2.checked;
@@ -172,6 +167,7 @@ class BuyerPageSearch extends Base {
 
   }
 
+
   // Real estate tenure checkboxes behaviour. Sets true/false and active. Ugly! fix later...
   checkBoxes(e) {
     // Set checkboxes on <label> click
@@ -209,7 +205,7 @@ class BuyerPageSearch extends Base {
     app.buyerPage.searchResult.length < 1 ? this.doSearch() : '';
 
     return /*html*/`
-      <div class="row m-0" route="/buy-property" page-title="Testsida">
+      <div class="row m-0" route="/buy-property" page-title="Köpa bostad">
         <div class="col p-4">
 
           <div class="row p-2">
@@ -229,7 +225,7 @@ class BuyerPageSearch extends Base {
 
               <div class="row pb-2">
                 <div class="col-md mt-4 input-group">
-                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keydown="doSearch" autocomplete="on" autocorrect="off" ${this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
+                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keyup="doSearch" autocomplete="os" autocorrect="off" ${!this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
                   <button class="btn btn-default input-group-btn" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
                 </div>
 

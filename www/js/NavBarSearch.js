@@ -43,26 +43,29 @@ class NavBarSearch extends Base {
     }
     this.selected = 0;
     this.searchHits = e.target.value.length < 1 ? [] : await sql(/*sql*/`
-      SELECT regionId, regionName, COUNT(regionName) AS totalHits FROM
-          (
-          SELECT * FROM 
-              realEstateInfo, 
-              userXregion ON realEstateInfo.userId = userXregion.userId, 
-              region ON region.id = userXregion.regionId,
-              realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
-              areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
-          WHERE realEstateInfo.description LIKE $text
-          OR realEstateInfo.tenure LIKE $text
-          OR realEstateAddress.streetName LIKE $text
-          OR region.regionName LIKE $text
-          OR areaInfo.description LIKE $text
-          GROUP BY realEstateInfo.Id
-          )
-      GROUP BY regionName
-      ORDER BY totalHits DESC, regionName ASC`
+        SELECT regionId, regionName, COUNT(regionName) AS totalHits FROM
+            (
+            SELECT * FROM 
+                realEstateInfo, 
+                userXregion ON realEstateInfo.userId = userXregion.userId, 
+                region ON region.id = userXregion.regionId,
+                realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+                areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+            WHERE realEstateInfo.description LIKE $text
+            OR realEstateInfo.tenure LIKE $text
+            OR realEstateAddress.streetName LIKE $text
+            OR region.regionName LIKE $text
+            OR areaInfo.description LIKE $text
+            GROUP BY realEstateInfo.Id
+            )
+        GROUP BY regionName
+        ORDER BY totalHits DESC, regionName ASC`
       , { text: '%' + e.target.value + '%' });
 
     this.currentKeyword = e.target.value;
+
+    //console.log(this.searchHits);
+    //console.log('sökord: ' + e.target.value);
 
     this.render();
   }
@@ -85,6 +88,7 @@ class NavBarSearch extends Base {
     // Either the page function (page object) doesn't really exist yet or node.js + SQLite is lagging on my shitty laptop  
     app.buyerPageSearch.render();
     await app.buyerPageSearch.doSearch();
+    app.buyerPage.render();
     app.goto('/buy-property');
 
   }
@@ -117,8 +121,8 @@ class NavBarSearch extends Base {
                   `)}
                 </div>
               `} 
-              <div class="input-group-btn">
-                <button class="btn btn-default" type="submit"><i class="icofont-search icofont-lg"></i></button>
+              <div class="input-group-btn invisible">
+                <button class="btn btn-default" type="submit"><!-- <i class="icofont-search icofont-lg"> --></i></button>
               </div>
             </div>
           </form>

@@ -97,10 +97,10 @@ h1, h2, h3, h4, h5 {
   // Move searchform below navbar when toggled hamburger menu
   @media (max-width: 992px) {
     position: relative;
-    width: 75%;
+    width: 85%;
     top: 10px;
     left: 15px;
-    margin: 60px auto 0px auto;
+    margin: 60px auto 30px auto;
   }
   // Inherit/nested. Toggled no-hamburger menu 
   @media (min-width: 992px) {
