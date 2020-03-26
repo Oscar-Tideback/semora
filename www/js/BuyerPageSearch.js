@@ -5,47 +5,32 @@ class BuyerPageSearch extends Base {
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region ORDER BY region.regionName`);
 
     this.formInput = new FormData();
-
-
+    //this.formStoredValues = {};
+    this.setInitialFormValues();
   }
 
   // Unfinished.... work in progress
   setInitialFormValues() {
-    this.formValues = {
-      'Text input': '',
-      'Region': 0,
-      'opt1': true,
-      'opt2': false,
-      'opt3': false,
-      'opt4': false,
-      'opt5': false,
-      'opt6': false,
-      'opt7': false,
-      'opt8': false,
-      'minrooms': 0,
-      'minarea': 0,
-      'maxprice': 0,
-      'sortby': 0,
-      'order': 0
+    this.formStoredValues = {
+      isdefault: true,
+      textinput: '',
+      region: 0,
+      options: [true, false, false, false, false, false, false, false],
+      minrooms: 0,
+      minarea: 0,
+      maxprice: 0,
+      sortby: 0,
+      order: 0
     }
-  }
 
-  async search() {
-    await this.doSearch();
-
-    // Will be replaced by reading/setting formValues... work in progress
-    this.setBoxStyles();
   }
 
 
-  async doSearch() {
-
+  async doSearch(e) {
     // If null the form doesn't exist prior to doSearch() then perform a default search for all real estates
-    if (document.querySelector('[id="buyerSearchForm"]') === null) {
+    if (document.querySelector('[id="buyerSearchForm"]') === null || this.formStoredValues.isdefault) {
 
-      // Check if properties has been set from NavBarSearch.js otherwise default values for query will be used
-      this.textInput = this.textInput.length > 0 ? this.textInput : '';
-      this.regionId = this.regionId > 0 ? this.regionId : '0';
+      this.formStoredValues.isdefault = false;
 
       // A default search on "page landing" or when search was performed via NavBarSearch.js
       app.buyerPage.searchResult = await sql(/*sql*/`
@@ -75,37 +60,53 @@ class BuyerPageSearch extends Base {
           END
           GROUP BY realEstateInfo.Id`,
         {
-          textinput: ('%' + this.textInput + '%'),
-          regionid: this.regionId
+          textinput: ('%' + this.formStoredValues.textinput + '%'),
+          regionid: this.formStoredValues.region
         });
 
       // Set headline etc for resultpage BuyerPage.js
-      app.buyerPage.textInput = this.textInput.length > 0 ? this.textInput : '';
+      app.buyerPage.textInput = this.formStoredValues.textinput;
 
-      // Fixa !!!!!!!!!!!!
+      // Set headline etc for resultpage BuyerPage.js Fixa denna !!!!!!!!
       for (let region in this.regionSelection) {
-        //app.buyerPage.regionName = this.regionSelection.map(region => region.id === this.regionId ? region.regionName : '') : 'samtliga regioner';
-        region.id === this.regionId ? app.buyerPage.regionName = region.id : '';
+        region.id === this.formStoredValues.region ? app.buyerPage.regionName = region.id : '';
         app.buyerPage.regionName.length < 0 ? 'samtliga regioner' : '';
       }
 
     }
     else {
+      //Fetch and store form values
       this.formInput = document.querySelector('[id="buyerSearchForm"]');
 
+      this.formStoredValues.isdefault = false;
+
+      this.formStoredValues.textinput = this.formInput.textinput.value;
+      this.formStoredValues.region = this.formInput.regionselect.value;
+      this.formStoredValues.options[0] = this.formInput.tenureOption1.checked;
+      this.formStoredValues.options[1] = this.formInput.tenureOption2.checked;
+      this.formStoredValues.options[2] = this.formInput.tenureOption3.checked;
+      this.formStoredValues.options[3] = this.formInput.tenureOption4.checked;
+      this.formStoredValues.options[4] = this.formInput.tenureOption5.checked;
+      this.formStoredValues.options[5] = this.formInput.tenureOption6.checked;
+      this.formStoredValues.options[6] = this.formInput.tenureOption7.checked;
+      this.formStoredValues.options[7] = this.formInput.tenureOption8.checked;
+      this.formStoredValues.maxprice = this.formInput.maxprice.value;
+      this.formStoredValues.minrooms = this.formInput.minrooms.value;
+      this.formStoredValues.minarea = this.formInput.minarea.value;
+
       // Defaults
-      // Both SQL-query variables and page checkbox should have been populated by occurance via DB
+      // Both SQL-query tenure variables and page tenure checkboxes should have been populated by occurance via DB instead
       // But don't have time. Hardcoding everything regarding checkboxes for now...
       let opt2 = 'Villa', opt3 = 'Radhus', opt4 = 'Lägenhet', opt5 = 'Fritidshus', opt6 = 'Gård', opt7 = 'Tomt', opt8 = 'Bostadsrätt'
       // If not "Alla typer" selected then override corresponding variables from checkboxes if true
-      if (!this.formInput.tenureOption1.checked) {
-        this.formInput.tenureOption2.checked ? opt2 = 'Villa' : opt2 = 'foo'
-        this.formInput.tenureOption3.checked ? opt3 = 'Radhus' : opt3 = 'foo'
-        this.formInput.tenureOption4.checked ? opt4 = 'Lägenhet' : opt4 = 'foo'
-        this.formInput.tenureOption5.checked ? opt5 = 'Fritidshus' : opt5 = 'foo'
-        this.formInput.tenureOption6.checked ? opt6 = 'Gård' : opt6 = 'foo'
-        this.formInput.tenureOption7.checked ? opt7 = 'Tomt' : opt7 = 'foo'
-        this.formInput.tenureOption8.checked ? opt8 = 'Bostadsrätt' : opt8 = 'foo'
+      if (!this.formStoredValues.options[0]) {
+        this.formStoredValues.options[1] ? opt2 = 'Villa' : opt2 = 'foo'
+        this.formStoredValues.options[2] ? opt3 = 'Radhus' : opt3 = 'foo'
+        this.formStoredValues.options[3] ? opt4 = 'Lägenhet' : opt4 = 'foo'
+        this.formStoredValues.options[4] ? opt5 = 'Fritidshus' : opt5 = 'foo'
+        this.formStoredValues.options[5] ? opt6 = 'Gård' : opt6 = 'foo'
+        this.formStoredValues.options[6] ? opt7 = 'Tomt' : opt7 = 'foo'
+        this.formStoredValues.options[7] ? opt8 = 'Bostadsrätt' : opt8 = 'foo'
       }
 
       // Main search query from searchform
@@ -138,20 +139,16 @@ class BuyerPageSearch extends Base {
         GROUP BY realEstateInfo.Id
         `,
         {
-          textinput: ('%' + this.formInput.textinput.value + '%'),
-          regionid: this.formInput.regionselect.value,
-          maxprice: this.formInput.maxprice.value,
-          minarea: this.formInput.minarea.value,
-          minrooms: this.formInput.minrooms.value,
+          textinput: ('%' + this.formStoredValues.textinput + '%'),
+          regionid: this.formStoredValues.region,
+          maxprice: this.formStoredValues.maxprice,
+          minarea: this.formStoredValues.minarea,
+          minrooms: this.formStoredValues.minrooms,
           opt2: opt2, opt3: opt3, opt4: opt4, opt5: opt5, opt6: opt6, opt7: opt7, opt8: opt8
         });
 
-      // Setting BuyerPageSearch.properties to current text and region input values from form
-      this.regionId = this.formInput.regionselect.value;
-      this.textInput = this.formInput.textinput.value;
-
       // Set headline etc for resultpage BuyerPage.js
-      app.buyerPage.textInput = this.formInput.textinput.value.length > 0 ? this.formInput.textinput.value : '';
+      app.buyerPage.textInput = this.formStoredValues.textinput;
       for (let option of this.formInput.regionselect) {
         if (option.selected) {
           app.buyerPage.regionName = option.value > 0 ? option.innerHTML : 'samtliga regioner'; break;
@@ -160,35 +157,36 @@ class BuyerPageSearch extends Base {
 
     }
 
+    // Note: Regarding rerendering... Using keydown event on textinput field will be problematic since it redraws from formStoredValues
+    this.render();
+
     // Refresh results page (BuyerPage)
     app.buyerPage.doSort();
     app.buyerPage.render();
 
   }
 
-  // Real estate tenure checkboxes behaviour. Sets true/false and active. Ugly code fix later /Rikard
+  // Real estate tenure checkboxes behaviour. Sets true/false and active. Ugly! fix later...
   checkBoxes(e) {
-    this.formInput = document.querySelector('[id="buyerSearchForm"]');
     // Set checkboxes on <label> click
-    if (e.target.name === 'tenureOption1') {
+    if (e.target.name === 'tenureOption1' && !this.formStoredValues.options[0]) {
+      this.formStoredValues.options[0] = true;
+      for (let i = 1; i < 7; i++) this.formStoredValues.options[i] = false;
       for (let formElement of this.formInput) {
         if (formElement.type === 'checkbox' && formElement.name !== 'tenureOption1') formElement.checked = false;
       }
     }
-    else {
-      this.formInput.tenureOption1.checked = false;
+
+    if (e.target.name !== 'tenureOption1' && this.formStoredValues.options[0]) {
+      this.formStoredValues.options[0] = false;
+      for (let formElement of this.formInput) {
+        if (formElement.name === 'tenureOption1') {
+          formElement.checked = false;
+        }
+      }
     }
 
-    this.search();
-  }
-
-  setBoxStyles() {
-    let formBoxes = document.getElementsByClassName('tenure-checkbox');
-    // Adjust CSS accordingly
-    for (let box of formBoxes) {
-      box.checked ? box.parentElement.classList.add('active') : box.parentElement.classList.remove('active');
-    }
-
+    this.doSearch();
   }
 
   // Addition by Thomas
@@ -224,14 +222,14 @@ class BuyerPageSearch extends Base {
 
               <div class="row pb-2">
                 <div class="col-md mt-4 input-group">
-                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keydown="search" autocomplete="on" autocorrect="off" ${this.textInput.length > 0 ? ('value="' + this.textInput + '"') : ''}>
-                  <button class="btn btn-default input-group-btn" type="submit" click="search" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
+                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keydown="doSearch" autocomplete="on" autocorrect="off" ${this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
+                  <button class="btn btn-default input-group-btn" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
                 </div>
 
                 <div class="col-md-auto mt-4 col-sm-12">
-                  <select class="form-control form-control-lg" id="region_select" name="regionselect" change="search">
+                  <select class="form-control form-control-lg" id="region_select" name="regionselect" change="doSearch">
                     <option id="opt0" value="0">Alla regioner</option>
-                    ${this.regionSelection.map(region => '<option id="opt' + region.id + '" value="' + region.id + '" ' + (region.id === parseInt(this.regionId) ? 'selected="selected"' : '') + '>' + region.regionName + '</option>')}
+                    ${this.regionSelection.map(region => '<option id="opt' + region.id + '" value="' + region.id + '" ' + (region.id === this.formStoredValues.region ? 'selected="selected"' : '') + '>' + region.regionName + '</option>')}
                   </select>
                 </div>
 
@@ -244,31 +242,31 @@ class BuyerPageSearch extends Base {
 
                   <div class="row">
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="uncheck"><input class="tenure-checkbox" type="checkbox" name="tenureOption1" id="allatyper" checked>Alla typer</label>
+                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[0] ? 'active' : ''}" click="checkBoxes" name="uncheck"><input class="tenure-checkbox" type="checkbox" name="tenureOption1" id="allatyper" ${this.formStoredValues.options[0] ? 'checked' : ''}>Alla typer</label>
                     </div>
                     <div class="col px-1 mx-0">
-                        <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption2" id="villor">Villor</label>
+                        <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[1] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption2" id="villor" ${this.formStoredValues.options[1] ? 'checked' : ''}>Villor</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption3" id="radhus">Radhus</label>
+                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[2] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption3" id="radhus" ${this.formStoredValues.options[2] ? 'checked' : ''}>Radhus</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption4" id="lagenheter">Lägenheter</label>
+                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[3] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption4" id="lagenheter" ${this.formStoredValues.options[3] ? 'checked' : ''}>Lägenheter</label>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption5" id="fritidshus">Fritidshus</label>
+                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[4] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption5" id="fritidshus" ${this.formStoredValues.options[4] ? 'checked' : ''}>Fritidshus</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption6" id="gardar">Gårdar</label>
+                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[5] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption6" id="gardar" ${this.formStoredValues.options[5] ? 'checked' : ''}>Gårdar</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption7" id="tomter">Tomter</label>
+                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[6] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption7" id="tomter" ${this.formStoredValues.options[6] ? 'checked' : ''}>Tomter</label>
                     </div>
                     <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption8" id="ovriga">Bostadsrätter</label>
+                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[7] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption8" id="ovriga" ${this.formStoredValues.options[7] ? 'checked' : ''}>Bostadsrätter</label>
                     </div>
                   </div>
 
@@ -292,7 +290,7 @@ class BuyerPageSearch extends Base {
                 <div class="row">
 
                   <div class="col">
-                    <select class="form-control" id="min_rooms" name="minrooms" change="search">
+                    <select class="form-control" id="min_rooms" name="minrooms" change="doSearch">
                       <option value="0">Alla</option>
                       <option value="1">Minst 1 rum</option>
                       <option value="2">Minst 2 rum</option>
@@ -304,7 +302,7 @@ class BuyerPageSearch extends Base {
                   </div>
 
                   <div class="col">
-                    <select class="form-control" id="min_area" name="minarea" change="search">
+                    <select class="form-control" id="min_area" name="minarea" change="doSearch">
                       <option value="0">Alla</option>
                       <option value="20">Minst 20 m²</option>
                       <option value="30">Minst 30 m²</option>
@@ -325,7 +323,7 @@ class BuyerPageSearch extends Base {
                   </div>
 
                   <div class="col">
-                    <select class="form-control" id="max_price" name="maxprice" change="search">
+                    <select class="form-control" id="max_price" name="maxprice" change="doSearch">
                       <option value="999999999">Inget</option>
                       <option value="100000">100 000 kr</option>
                       <option value="200000">200 000 kr</option>
