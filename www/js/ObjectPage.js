@@ -35,7 +35,7 @@ class ObjectPage extends Base {
                     <div class="card-body">
                     <div class="card-text">
 
-                    <h2>${this.streetName} ${this.streetNumber} ${this.floor} tr</h2>
+                    <h2>${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2>
                                             <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
@@ -46,7 +46,7 @@ class ObjectPage extends Base {
                                             <strong>Visningstider:</strong> ${this.viewingsSelection.map(viewings => viewings.startDatetime + ' - ' + viewings.endDatetime)} <br>
                                             <strong>Mäklare:</strong> ${this.firstName} ${this.lastName}<br>
                                              ${this.user}
-                                            
+                                        
                                             </div>
                                             </div>
                                             
