@@ -64,7 +64,7 @@ class ObjectPage extends Base {
                                             <div class="card-body col-lg-4 p-4" style="white-space: nowrap">
                                             <div class="card-title name-nopad">
 
-                                            <div class="col-lg-4  col-md-4 col-sm-12 mt-5">
+                                            <div class="col-lg-4  col-md-4 col-sm-12 mt-4">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
@@ -90,7 +90,7 @@ class ObjectPage extends Base {
                                          
                                     </div>
                                     </div>
-                          
+                    
                                     <img class="d-block w-100" src="/images/${this.Id}/img02.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img03.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img04.jpg"><br>
@@ -105,8 +105,7 @@ class ObjectPage extends Base {
                                     <img class="d-block w-100" src="/images/${this.Id}/img13.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img14.jpg"><br>
          
-                                </div>    
-                            
+                                    </div>
                         
                     
                 
