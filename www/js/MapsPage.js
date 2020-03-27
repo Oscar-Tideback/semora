@@ -95,18 +95,18 @@ class SellerPage extends Base {
                   <!--Buttons-->
                   <div class="row text-left name-email-phone">
                     <div class="col-md-4">
-                      <p>Åsögatan 9</p>
-                      <p>Stockholm</p>
+                      <p>Åsögatan 9<br>
+                      Stockholm</p>
                     </div>
 
                     <div class="col-md-4">  
-                      <p>08-234 567 89</p>
-                      <p>Mån-Fre 8-18</p>
+                      <p>08-234 567 89<br>
+                      Mån-Fre 8-18</p>
                     </div>
 
                     <div class="col-md-4">                  
-                      <p>dhyr@gmail.com</p>
-                      <p>rumson@gmail.com</p>
+                      <p>dhyr@gmail.com<br>
+                      rumson@gmail.com</p>
                     </div>
                   </div>
 

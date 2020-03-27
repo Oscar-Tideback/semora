@@ -18,7 +18,7 @@ class Footer extends Base {
           </div>
 
           <div class="col-md-12 col-lg mt-sm-2 mt-lg-0 py-4 text-center text-dark">
-            <p><a href="/our-regions">Kontakta oss</a></p>
+            <p><a href="/sell-property">Kontakta oss</a></p>
             <p><a href="/integrity">Integritetspolicy</a></p>
           </div>
 
