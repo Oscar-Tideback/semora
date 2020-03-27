@@ -43,8 +43,7 @@ class App extends Base {
       { label: 'Köpa bostad', route: '/buy-property' },
       { label: 'Sälja bostad', route: '/sell-property' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
-      { label: 'Bostad info', route: '/real-estate-info/8' },
-      { label: 'Om oss', route: '/about-us' },
+      { label: 'Om oss', route: '/about-us' }
     ];
 
     this.navBar = new NavBar({ links: this.navBarLinks });
