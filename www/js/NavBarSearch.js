@@ -20,7 +20,6 @@ class NavBarSearch extends Base {
     this.selected = -1;
     // Maybe try a query on event target instead later and try avoid undefined or giving elements duplicate id's. This feels to hardcoded
     this.doSearch(e.target.id);
-    return;
   }
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
@@ -69,7 +68,6 @@ class NavBarSearch extends Base {
     //console.log('sökord: ' + e.target.value);
 
     this.render();
-    return;
   }
   // -------------------------- End of slightly modified Thomas example-autocomplete --------------------------
 
@@ -94,7 +92,6 @@ class NavBarSearch extends Base {
     app.goto('/buy-property');
     //app.buyerPageSearch.render();
     //app.buyerPage.render();
-    return;
   }
 
 
