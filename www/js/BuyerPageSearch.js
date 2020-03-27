@@ -65,15 +65,19 @@ class BuyerPageSearch extends Base {
           regionid: this.formStoredValues.region
         });
 
+
+      /* Fix! Doesn't work since either might not be defined at this point. Create a workaround...
+      if (this.formInput && this.formStoredValues.textinput) {
+        this.formInput.textinput.value = this.formStoredValues.textinput;
+        console.log("the error");
+      }
+      */
+
       // Set headline etc for resultpage BuyerPage.js
       app.buyerPage.textInput = this.formStoredValues.textinput;
-
-      // Set headline etc for resultpage BuyerPage.js Fixa denna !!!!!!!!
-      for (let region in this.regionSelection) {
-        region.id === this.formStoredValues.region ? app.buyerPage.regionName = region.regioName : '123';
-        //app.buyerPage.regionName.length < 0 ? 'samtliga regioner' : '';
+      for (let region of this.regionSelection) {
+        region.id === this.formStoredValues.region ? app.buyerPage.regionName = region.regionName : '';
       }
-      console.log(this.formStoredValues.region);
 
     }
     else {
