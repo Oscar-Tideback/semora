@@ -168,6 +168,7 @@ class BuyerPageSearch extends Base {
     app.buyerPage.doSort();
     app.buyerPage.render();
 
+    return;
   }
 
 
