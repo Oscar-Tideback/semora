@@ -16,11 +16,10 @@ class BuyerPageSearch extends Base {
       isdefault: true,
       textinput: '',
       region: 0,
-      regionSet: false,
       options: [true, false, false, false, false, false, false, false],
       minrooms: 0,
       minarea: 0,
-      maxprice: 0,
+      maxprice: 999999999,
       sortby: 0,
       order: 0
     }
@@ -86,7 +85,7 @@ class BuyerPageSearch extends Base {
       this.formInput = document.querySelector('[id="buyerSearchForm"]');
 
       this.formStoredValues.textinput = this.formInput.textinput.value;
-      this.formStoredValues.region = this.formInput.regionselect.value;
+      this.formStoredValues.region = parseInt(this.formInput.regionselect.value);
 
       this.formStoredValues.options[0] = this.formInput.tenureOption1.checked;
       this.formStoredValues.options[1] = this.formInput.tenureOption2.checked;
@@ -96,13 +95,13 @@ class BuyerPageSearch extends Base {
       this.formStoredValues.options[5] = this.formInput.tenureOption6.checked;
       this.formStoredValues.options[6] = this.formInput.tenureOption7.checked;
       this.formStoredValues.options[7] = this.formInput.tenureOption8.checked;
-      this.formStoredValues.maxprice = this.formInput.maxprice.value;
-      this.formStoredValues.minrooms = this.formInput.minrooms.value;
-      this.formStoredValues.minarea = this.formInput.minarea.value;
+      this.formStoredValues.maxprice = parseInt(this.formInput.maxprice.value);
+      this.formStoredValues.minrooms = parseInt(this.formInput.minrooms.value);
+      this.formStoredValues.minarea = parseInt(this.formInput.minarea.value);
 
       // Defaults
       // Both SQL-query tenure variables and page tenure checkboxes should have been populated by occurance via DB instead
-      // But don't have time. Hardcoding everything regarding checkboxes for now...
+      // But don't have time. Hardcoding alot regarding checkboxes for now...
       let opt2 = 'Villa', opt3 = 'Radhus', opt4 = 'Lägenhet', opt5 = 'Fritidshus', opt6 = 'Gård', opt7 = 'Tomt', opt8 = 'Bostadsrätt'
       // If not "Alla typer" selected then override corresponding variables from checkboxes if true
       if (!this.formStoredValues.options[0]) {
@@ -161,9 +160,8 @@ class BuyerPageSearch extends Base {
         }
       }
 
-      // formStoredValues has been used once and cannot be considered default any more
+      // formStoredValues has been used once and cannot be considered default anymore
       this.formStoredValues.isdefault = false;
-
     }
 
     // Refresh results page (BuyerPage)
@@ -239,142 +237,143 @@ class BuyerPageSearch extends Base {
                 <div class="col-md-auto mt-4 pl-2 pl-md-0 col-sm-12">
                   <select class="form-control form-control-lg" id="region_select" name="regionselect" change="doSearch">
                     <option id="opt0" value="0">Alla regioner</option>
-                    ${this.regionSelection.map(region => '<option id="opt' + region.id + '" value="' + region.id + '" ' + (region.id === this.formStoredValues.region ? 'selected="selected"' : '') + '>' + region.regionName + '</option>')}
+                    ${this.regionSelection.map(region => '<option id="opt' + region.id + '" value="' + region.id + '" ' + (region.id === this.formStoredValues.region ? 'selected="selected"' : '') + '>' + region.regionName + '</option>')
+      }
                   </select>
+                </div >
+
+              </div >
+
+  <hr>
+
+    <div class="row-auto pt-2">
+      <div class="btn-group-toggle">
+
+        <div class="row">
+          <div class="col px-1 mx-0">
+            <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[0] ? 'active' : ''}" click="checkBoxes" name="uncheck"><input class="tenure-checkbox" type="checkbox" name="tenureOption1" id="allatyper" ${this.formStoredValues.options[0] ? 'checked' : ''}>Alla typer</label>
+                    </div>
+            <div class="col px-1 mx-0">
+              <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[1] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption2" id="villor" ${this.formStoredValues.options[1] ? 'checked' : ''}>Villor</label>
+                    </div>
+              <div class="col px-1 mx-0">
+                <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[2] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption3" id="radhus" ${this.formStoredValues.options[2] ? 'checked' : ''}>Radhus</label>
+                    </div>
+                <div class="col px-1 mx-0">
+                  <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[3] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption4" id="lagenheter" ${this.formStoredValues.options[3] ? 'checked' : ''}>Lägenheter</label>
+                    </div>
                 </div>
 
-              </div>
-
-                <hr>
-
-              <div class="row-auto pt-2">
-                <div class="btn-group-toggle">
-
-                  <div class="row">
-                    <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[0] ? 'active' : ''}" click="checkBoxes" name="uncheck"><input class="tenure-checkbox" type="checkbox" name="tenureOption1" id="allatyper" ${this.formStoredValues.options[0] ? 'checked' : ''}>Alla typer</label>
-                    </div>
-                    <div class="col px-1 mx-0">
-                        <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[1] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption2" id="villor" ${this.formStoredValues.options[1] ? 'checked' : ''}>Villor</label>
-                    </div>
-                    <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[2] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption3" id="radhus" ${this.formStoredValues.options[2] ? 'checked' : ''}>Radhus</label>
-                    </div>
-                    <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[3] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption4" id="lagenheter" ${this.formStoredValues.options[3] ? 'checked' : ''}>Lägenheter</label>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[4] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption5" id="fritidshus" ${this.formStoredValues.options[4] ? 'checked' : ''}>Fritidshus</label>
+                <div class="row">
+                  <div class="col px-1 mx-0">
+                    <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[4] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption5" id="fritidshus" ${this.formStoredValues.options[4] ? 'checked' : ''}>Fritidshus</label>
                     </div>
                     <div class="col px-1 mx-0">
                       <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[5] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption6" id="gardar" ${this.formStoredValues.options[5] ? 'checked' : ''}>Gårdar</label>
                     </div>
-                    <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[6] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption7" id="tomter" ${this.formStoredValues.options[6] ? 'checked' : ''}>Tomter</label>
+                      <div class="col px-1 mx-0">
+                        <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[6] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption7" id="tomter" ${this.formStoredValues.options[6] ? 'checked' : ''}>Tomter</label>
                     </div>
-                    <div class="col px-1 mx-0">
-                      <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[7] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption8" id="ovriga" ${this.formStoredValues.options[7] ? 'checked' : ''}>Bostadsrätter</label>
+                        <div class="col px-1 mx-0">
+                          <label class="btn btn-light btn-block text-nowrap ${this.formStoredValues.options[7] ? 'active' : ''}" click="checkBoxes" name="check"><input class="tenure-checkbox" type="checkbox" name="tenureOption8" id="ovriga" ${this.formStoredValues.options[7] ? 'checked' : ''}>Bostadsrätter</label>
                     </div>
-                  </div>
+                        </div>
 
-                </div>
-              </div>
+                      </div>
+                    </div>
 
-                <hr>
+                    <hr>
 
-                <div class="row">
-                  <div class="col">
-                    <label for="min_rooms">Minst antal rum</label>
-                  </div>
-                  <div class="col">
-                    <label for="min_area">Minst boarea</label>
-                  </div>
-                  <div class="col">
-                    <label for="max_price">Högst pris</label>
-                  </div>
-                </div>
+                      <div class="row">
+                        <div class="col">
+                          <label for="min_rooms">Minst antal rum</label>
+                        </div>
+                        <div class="col">
+                          <label for="min_area">Minst boarea</label>
+                        </div>
+                        <div class="col">
+                          <label for="max_price">Högst pris</label>
+                        </div>
+                      </div>
 
-                <div class="row">
+                      <div class="row">
 
-                  <div class="col">
-                    <select class="form-control" id="min_rooms" name="minrooms" change="doSearch">
-                      <option value="0">Alla</option>
-                      <option value="1">Minst 1 rum</option>
-                      <option value="2">Minst 2 rum</option>
-                      <option value="3">Minst 3 rum</option>
-                      <option value="4">Minst 4 rum</option>
-                      <option value="5">Minst 5 rum</option>
-                      <option value="10">Minst 10 rum</option>
-                    </select>
-                  </div>
+                        <div class="col">
+                          <select class="form-control" id="min_rooms" name="minrooms" change="doSearch">
+                            <option value="0">Alla</option>
+                            <option value="1">Minst 1 rum</option>
+                            <option value="2">Minst 2 rum</option>
+                            <option value="3">Minst 3 rum</option>
+                            <option value="4">Minst 4 rum</option>
+                            <option value="5">Minst 5 rum</option>
+                            <option value="10">Minst 10 rum</option>
+                          </select>
+                        </div>
 
-                  <div class="col">
-                    <select class="form-control" id="min_area" name="minarea" change="doSearch">
-                      <option value="0">Alla</option>
-                      <option value="20">Minst 20 m²</option>
-                      <option value="30">Minst 30 m²</option>
-                      <option value="40">Minst 40 m²</option>
-                      <option value="50">Minst 50 m²</option>
-                      <option value="75">Minst 75 m²</option>
-                      <option value="100">Minst 100 m²</option>
-                      <option value="125">Minst 125 m²</option>
-                      <option value="150">Minst 150 m²</option>
-                      <option value="175">Minst 175 m²</option>
-                      <option value="200">Minst 200 m²</option>
-                      <option value="250">Minst 250 m²</option>
-                      <option value="300">Minst 300 m²</option>
-                      <option value="350">Minst 350 m²</option>
-                      <option value="450">Minst 450 m²</option>
-                      <option value="500">Minst 500 m²</option>
-                    </select>
-                  </div>
+                        <div class="col">
+                          <select class="form-control" id="min_area" name="minarea" change="doSearch">
+                            <option value="0">Alla</option>
+                            <option value="20">Minst 20 m²</option>
+                            <option value="30">Minst 30 m²</option>
+                            <option value="40">Minst 40 m²</option>
+                            <option value="50">Minst 50 m²</option>
+                            <option value="75">Minst 75 m²</option>
+                            <option value="100">Minst 100 m²</option>
+                            <option value="125">Minst 125 m²</option>
+                            <option value="150">Minst 150 m²</option>
+                            <option value="175">Minst 175 m²</option>
+                            <option value="200">Minst 200 m²</option>
+                            <option value="250">Minst 250 m²</option>
+                            <option value="300">Minst 300 m²</option>
+                            <option value="350">Minst 350 m²</option>
+                            <option value="450">Minst 450 m²</option>
+                            <option value="500">Minst 500 m²</option>
+                          </select>
+                        </div>
 
-                  <div class="col">
-                    <select class="form-control" id="max_price" name="maxprice" change="doSearch">
-                      <option value="999999999">Inget</option>
-                      <option value="100000">100 000 kr</option>
-                      <option value="200000">200 000 kr</option>
-                      <option value="300000">300 000 kr</option>
-                      <option value="400000">400 000 kr</option>
-                      <option value="500000">500 000 kr</option>
-                      <option value="700000">750 000 kr</option>
-                      <option value="1000000">1 000 000 kr</option>
-                      <option value="1250000">1 250 000 kr</option>
-                      <option value="1500000">1 500 000 kr</option>
-                      <option value="1750000">1 750 000 kr</option>
-                      <option value="2000000">2 000 000 kr</option>
-                      <option value="2500000">2 500 000 kr</option>
-                      <option value="3000000">3 000 000 kr</option>
-                      <option value="3500000">3 500 000 kr</option>
-                      <option value="4000000">4 000 000 kr</option>
-                      <option value="4500000">4 500 000 kr</option>
-                      <option value="5000000">5 000 000 kr</option>
-                      <option value="5500000">5 500 000 kr</option>
-                      <option value="6000000">6 000 000 kr</option>
-                      <option value="7000000">7 000 000 kr</option>
-                      <option value="8000000">8 000 000 kr</option>
-                      <option value="9000000">9 000 000 kr</option>
-                      <option value="10000000">10 000 000 kr</option>
-                      <option value="11000000">11 000 000 kr</option>
-                      <option value="12000000">12 000 000 kr</option>
-                      <option value="13000000">13 000 000 kr</option>
-                      <option value="14000000">14 000 000 kr</option>
-                      <option value="15000000">15 000 000 kr</option>
-                      <option value="20000000">20 000 000 kr</option>
-                      <option value="25000000">25 000 000 kr</option>
-                    </select>
-                  </div>
+                        <div class="col">
+                          <select class="form-control" id="max_price" name="maxprice" change="doSearch">
+                            <option value="999999999">Inget</option>
+                            <option value="100000">100 000 kr</option>
+                            <option value="200000">200 000 kr</option>
+                            <option value="300000">300 000 kr</option>
+                            <option value="400000">400 000 kr</option>
+                            <option value="500000">500 000 kr</option>
+                            <option value="700000">750 000 kr</option>
+                            <option value="1000000">1 000 000 kr</option>
+                            <option value="1250000">1 250 000 kr</option>
+                            <option value="1500000">1 500 000 kr</option>
+                            <option value="1750000">1 750 000 kr</option>
+                            <option value="2000000">2 000 000 kr</option>
+                            <option value="2500000">2 500 000 kr</option>
+                            <option value="3000000">3 000 000 kr</option>
+                            <option value="3500000">3 500 000 kr</option>
+                            <option value="4000000">4 000 000 kr</option>
+                            <option value="4500000">4 500 000 kr</option>
+                            <option value="5000000">5 000 000 kr</option>
+                            <option value="5500000">5 500 000 kr</option>
+                            <option value="6000000">6 000 000 kr</option>
+                            <option value="7000000">7 000 000 kr</option>
+                            <option value="8000000">8 000 000 kr</option>
+                            <option value="9000000">9 000 000 kr</option>
+                            <option value="10000000">10 000 000 kr</option>
+                            <option value="11000000">11 000 000 kr</option>
+                            <option value="12000000">12 000 000 kr</option>
+                            <option value="13000000">13 000 000 kr</option>
+                            <option value="14000000">14 000 000 kr</option>
+                            <option value="15000000">15 000 000 kr</option>
+                            <option value="20000000">20 000 000 kr</option>
+                            <option value="25000000">25 000 000 kr</option>
+                          </select>
+                        </div>
 
-                </div>
+                      </div>
 
             </div>
             </form>
 
-        </div>
-      </div>
+                </div>
+              </div>
     `;
   }
 

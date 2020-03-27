@@ -53,7 +53,7 @@ class App extends Base {
     this.footer = new Footer();
     this.startPage = new StartPage();
     this.buyerPage = new BuyerPage({ searchResult: [], textInput: '', regionName: '' });
-    this.buyerPageSearch = new BuyerPageSearch({ formStoredValues: {}, regionSelection: [] });
+    this.buyerPageSearch = new BuyerPageSearch({ formStoredValues: [], regionSelection: [], });
     this.contactPage = new ContactPage();
     this.sellerPage = new SellerPage();
     this.aboutUsPage = new AboutUsPage();
