@@ -15,10 +15,11 @@ class NavBarSearch extends Base {
 
 
   // -------------------------- Start of slightly modified Thomas example-autocomplete --------------------------
-  async clickKeyword(e) {
+  clickKeyword(e) {
     this.searchHits = [];
     this.selected = -1;
     // Maybe try a query on event target instead later and try avoid undefined or giving elements duplicate id's. This feels to hardcoded
+    this.render();
     this.doSearch(e.target.id);
   }
   selectWithUpDownArrows(e) {
@@ -34,11 +35,13 @@ class NavBarSearch extends Base {
   }
   async searchKeyword(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
+    this.preventPageReload(e);
     if (e.key === 'Enter' && this.selected >= 0) {
       // Ugly adjust for +1 extra <button> under <select>
       this.doSearch((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
       this.searchHits = [];
       this.selected = -1;
+      this.render();
       return;
     }
     this.selected = 0;
@@ -55,7 +58,6 @@ class NavBarSearch extends Base {
             OR realEstateInfo.tenure LIKE $text
             OR realEstateAddress.streetName LIKE $text
             OR region.regionName LIKE $text
-            OR areaInfo.description LIKE $text
             GROUP BY realEstateInfo.Id
             )
         GROUP BY regionName
@@ -84,7 +86,7 @@ class NavBarSearch extends Base {
     app.buyerPageSearch.formStoredValues.textinput = document.querySelector('[id="navBarTextInput"]').value.length > 0 ? document.querySelector('[id="navBarTextInput"]').value : '';
     app.buyerPageSearch.formStoredValues.region = parseInt(region);
 
-    app.buyerPageSearch.doSearch();
+    await app.buyerPageSearch.doSearch();
 
     // Problem: Switching back and forth "fast" from navbar search to buyerpage will result in buyerpage form not being set properly upon page landing
     // Either the page function (page object) doesn't really exist yet or node.js + SQLite is lagging on my shitty laptop  
