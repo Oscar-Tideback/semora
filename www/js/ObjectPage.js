@@ -16,12 +16,12 @@ class ObjectPage extends Base {
 
     render() {
         return /*html*/`
-            <div class= "row m-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
+            <div class= "row m-0 pt-4" route="/real-estate-info/${this.Id}" page-title="Bostad info">
           
         
 
  
-                    <div class= "row p-3">
+                    <div class= "col-12 pl-0 pr-0 pb-0 mt-4">
                     <h2><strong>Försäljningsobjekt</strong></h2>
                     <div class="col-sm-13">
                         
@@ -53,22 +53,22 @@ class ObjectPage extends Base {
                                             <div class="row p-4">
                                             <h3><strong>Kontakta mäklaren</strong></h3>
                                             </div>
-                                            <div class= "row  p-3 border no-gutters" >
+                                            <div class= "row  p-4 border no-gutters" >
                                         
                                             <div class= "col-auto">
                                       
                                     
                                             <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
                                              </div>
-                                            <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
-                                            <div class="card-body col-lg-4 p-3" style="white-space: nowrap">
+                                            <div class="card-body col-lg-4 p-4" style="white-space: nowrap">
+                                            <div class="card-body col-lg-4 p-4" style="white-space: nowrap">
                                             <div class="card-title name-nopad">
 
-                                            <div class="col-md-2 col-sm-6">
+                                            <div class="col-lg-4  col-md-4 col-sm-12 mt-5">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
-                                            <hr class="mb-5">
+                                            <hr class="mb-4">
                                             </div>
                                             </div>
                                             </div>

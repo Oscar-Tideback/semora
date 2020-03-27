@@ -53,7 +53,7 @@ class SellerPage extends Base {
                       <div class="md-form">
                        
                         <label class="name-email-phone">Namn:</label>
-                        <input name="name" type="text" pattern="[a-öA-Ö]{2,100}" title="Skriv ditt för och efternamn" class="form-control">         
+                        <input name="name" type="text"  title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control">         
                       </div>
                       <div class="md-form">
 
@@ -101,7 +101,7 @@ class SellerPage extends Base {
 
                     <div class="col-md-4">  
                       <p>08-234 567 89</p>
-                      <p>Mån-Fri 8-18</p>
+                      <p>Mån-Fre 8-18</p>
                     </div>
 
                     <div class="col-md-4">                  
