@@ -16,7 +16,7 @@ class ObjectPage extends Base {
 
     render() {
         return /*html*/`
-            <div class= "row m-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
+            <div class= "row m-0 pt-4" route="/real-estate-info/${this.Id}" page-title="Bostad info">
           
         
 
