@@ -206,7 +206,7 @@ class BuyerPageSearch extends Base {
 
     return /*html*/`
       <div class="row m-0" route="/buy-property" page-title="Köpa bostad">
-        <div class="col p-4">
+        <div class="col py-4 p-lg-4">
 
           <div class="row p-2">
             <div class="col text-center">
@@ -215,7 +215,7 @@ class BuyerPageSearch extends Base {
           </div>
 
             <form id="buyerSearchForm" submit="preventPageReload">
-            <div class="form-group p-4 mb-0">
+            <div class="form-group p-0 p-md-4 mb-0">
 
               <div class="row">
                 <div class="col">
@@ -225,8 +225,8 @@ class BuyerPageSearch extends Base {
 
               <div class="row pb-2">
                 <div class="col-md mt-4 input-group">
-                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keyup="doSearch" autocomplete="os" autocorrect="off" ${!this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
-                  <button class="btn btn-default input-group-btn" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
+                  <input type="text" class="form-control rounded mr-2 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keyup="doSearch" autocomplete="os" autocorrect="off" ${!this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
+                  <button class="btn btn-default input-group-btn p-0" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
                 </div>
 
                 <div class="col-md-auto mt-4 col-sm-12">
