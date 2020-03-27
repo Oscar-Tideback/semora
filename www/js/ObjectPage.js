@@ -61,15 +61,15 @@ class ObjectPage extends Base {
                                             <div class= "col-auto">
                                       
                                     
-                                            <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
+                                            <a href="/real-estate-agent/${this.brokerId}"><img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face"></a>
                                              </div>
                                             <div class="card-body col-lg- p-2" style="white-space: nowrap">
                                             <div class="card-title">
 
-                                            <div class="col-lg-12  col-md-12 col-sm-12 mt-4">
+                                            <div class="col-lg-12  col-md-12 col-sm-12 mt-4"><a href="/real-estate-agent/${this.brokerId}">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
-                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
+                                            <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p></a>
                                             
                                             </div>
                                             </div>
