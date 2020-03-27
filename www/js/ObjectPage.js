@@ -22,12 +22,16 @@ class ObjectPage extends Base {
 
  
                     <div class= "col-12 pl-0 pr-0 pb-0 mt-4">
-                    <h2><strong>Försäljningsobjekt</strong></h2>
                     <div class="col-sm-13">
                         
                     <div class="col d-flex justify-content-left">
-                    <div class="card my-8">
-                                
+
+                    <div class="card my-8" style="border: 0px">
+
+                    <div class="carousel-relative-wrapper">
+                        <div class="carousel-title-container"></div>
+                    </div>
+                    
                     <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}" >
             
                     <div class= "right"></div>
