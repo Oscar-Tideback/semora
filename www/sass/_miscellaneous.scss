@@ -17,6 +17,12 @@ body {
   
 }
 
+.custom-button:focus {
+  outline: none !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
 
 // See _variable-overrides.scss for $base-font
 html {
@@ -192,13 +198,13 @@ h1, h2, h3, h4, h5 {
 
 }
 
-@media (max-width: 575px) {
+@media (max-width: 576px) {
   .broker-name {
     font-size: $base-font * 1;
     
   }
 }
-@media (max-width: 575px) {
+@media (max-width: 576px) {
   .broker-info {
     margin-left: 14px;
     font-size: $base-font * 1;
@@ -206,7 +212,7 @@ h1, h2, h3, h4, h5 {
   }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 576px) {
   .name-nopad {
     margin-top: -30px;
     margin-left: 14px;
@@ -214,7 +220,7 @@ h1, h2, h3, h4, h5 {
     font-weight: 600;
   }
 }
-@media (max-width: 575px) {
+@media (max-width: 576px) {
   .nopad-mobil {
    
     padding-left: -0.50rem;

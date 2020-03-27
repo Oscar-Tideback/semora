@@ -70,9 +70,10 @@ class BuyerPageSearch extends Base {
 
       // Set headline etc for resultpage BuyerPage.js Fixa denna !!!!!!!!
       for (let region in this.regionSelection) {
-        region.id === this.formStoredValues.region ? app.buyerPage.regionName = region.id : '';
-        app.buyerPage.regionName.length < 0 ? 'samtliga regioner' : '';
+        region.id === this.formStoredValues.region ? app.buyerPage.regionName = region.regioName : '123';
+        //app.buyerPage.regionName.length < 0 ? 'samtliga regioner' : '';
       }
+      console.log(this.formStoredValues.region);
 
     }
     else {
