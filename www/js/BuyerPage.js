@@ -23,6 +23,7 @@ class BuyerPage extends Base {
       }
     }
     this.render();
+    return;
   }
 
   byPrice(a, b) { return a.price - b.price; }

@@ -20,6 +20,7 @@ class NavBarSearch extends Base {
     this.selected = -1;
     // Maybe try a query on event target instead later and try avoid undefined or giving elements duplicate id's. This feels to hardcoded
     this.doSearch(e.target.id);
+    return;
   }
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
@@ -68,6 +69,7 @@ class NavBarSearch extends Base {
     //console.log('sökord: ' + e.target.value);
 
     this.render();
+    return;
   }
   // -------------------------- End of slightly modified Thomas example-autocomplete --------------------------
 
@@ -92,6 +94,7 @@ class NavBarSearch extends Base {
     app.goto('/buy-property');
     //app.buyerPageSearch.render();
     //app.buyerPage.render();
+    return;
   }
 
 
@@ -112,7 +115,7 @@ class NavBarSearch extends Base {
                 <div class="dropdown-menu show position-absolute" id="dropdown-menu">
                   ${this.searchHits.map((hits, index) => /*html*/`
                     <!-- Insert top button only once -->
-                    ${(index < 1 ? '<button click="clickKeyword" class="dropdown-item ' + (this.selected !== index ? '' : 'bg-secondary text-light') + '" type="button" id="0"><b>Antal träffar på "' + this.currentKeyword + '" per region</b></button>' : '')}
+                    ${(index < 1 ? '<button click="clickKeyword" class="dropdown-item ' + (this.selected !== index ? '' : 'bg-secondary text-light') + '" type="button" id="0"><b id="0">Antal träffar på "' + this.currentKeyword + '" per region</b></button>' : '')}
                     <button click="clickKeyword" class="dropdown-item ${this.selected !== (index + 1) ? '' : 'bg-secondary text-light'}" type="button" id="${hits.regionId}">
                       <div class="row" id="${hits.regionId}">
                         <div class="col" id="${hits.regionId}">${hits.regionName}</div>
