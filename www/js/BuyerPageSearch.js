@@ -224,12 +224,12 @@ class BuyerPageSearch extends Base {
               </div>
 
               <div class="row pb-2">
-                <div class="col-md mt-4 input-group">
+                <div class="col-md mt-4 px-2 input-group">
                   <input type="text" class="form-control rounded mr-2 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keyup="doSearch" autocomplete="os" autocorrect="off" ${!this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
-                  <button class="btn btn-default input-group-btn p-0" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
+                  <button class="btn btn-default input-group-btn p-1" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
                 </div>
 
-                <div class="col-md-auto mt-4 col-sm-12">
+                <div class="col-md-auto mt-4 pl-2 pl-md-0 col-sm-12">
                   <select class="form-control form-control-lg" id="region_select" name="regionselect" change="doSearch">
                     <option id="opt0" value="0">Alla regioner</option>
                     ${this.regionSelection.map(region => '<option id="opt' + region.id + '" value="' + region.id + '" ' + (region.id === this.formStoredValues.region ? 'selected="selected"' : '') + '>' + region.regionName + '</option>')}
