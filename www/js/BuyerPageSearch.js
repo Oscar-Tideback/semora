@@ -5,6 +5,7 @@ class BuyerPageSearch extends Base {
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region ORDER BY region.regionName`);
 
     this.formInput = new FormData();
+
     //this.formStoredValues = {};
     this.setInitialFormValues();
   }
@@ -31,8 +32,6 @@ class BuyerPageSearch extends Base {
 
     // If null the form doesn't exist prior to doSearch() then perform a default search for all real estates
     if (document.querySelector('[id="buyerSearchForm"]') === null) {
-
-      console.log("form is null and region form stored value is:" + this.formStoredValues.region);
 
       // A default search on "page landing" or when search was performed via NavBarSearch.js
       app.buyerPage.searchResult = await sql(/*sql*/`
@@ -81,12 +80,8 @@ class BuyerPageSearch extends Base {
       //Fetch and store form values
       this.formInput = document.querySelector('[id="buyerSearchForm"]');
 
-      !this.formStoredValues.isdefault ? this.formStoredValues.textinput = this.formInput.textinput.value : '';
-
-      // !!! Fix this: clicking on tenure after page landning from navbarsearch resets/defaults selected region 
+      this.formStoredValues.textinput = this.formInput.textinput.value;
       this.formStoredValues.region = this.formInput.regionselect.value;
-
-      console.log("form exists and region form stored value is:" + this.formStoredValues.region);
 
       this.formStoredValues.options[0] = this.formInput.tenureOption1.checked;
       this.formStoredValues.options[1] = this.formInput.tenureOption2.checked;
@@ -172,6 +167,7 @@ class BuyerPageSearch extends Base {
 
   }
 
+
   // Real estate tenure checkboxes behaviour. Sets true/false and active. Ugly! fix later...
   checkBoxes(e) {
     // Set checkboxes on <label> click
@@ -209,8 +205,8 @@ class BuyerPageSearch extends Base {
     app.buyerPage.searchResult.length < 1 ? this.doSearch() : '';
 
     return /*html*/`
-      <div class="row m-0" route="/buy-property" page-title="Testsida">
-        <div class="col p-4">
+      <div class="row m-0" route="/buy-property" page-title="Köpa bostad">
+        <div class="col py-4 p-lg-4">
 
           <div class="row p-2">
             <div class="col text-center">
@@ -219,7 +215,7 @@ class BuyerPageSearch extends Base {
           </div>
 
             <form id="buyerSearchForm" submit="preventPageReload">
-            <div class="form-group p-4 mb-0">
+            <div class="form-group p-0 p-md-4 mb-0">
 
               <div class="row">
                 <div class="col">
@@ -228,12 +224,12 @@ class BuyerPageSearch extends Base {
               </div>
 
               <div class="row pb-2">
-                <div class="col-md mt-4 input-group">
-                  <input type="text" class="form-control rounded mr-4 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keydown="doSearch" autocomplete="on" autocorrect="off" ${this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
-                  <button class="btn btn-default input-group-btn" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
+                <div class="col-md mt-4 px-2 input-group">
+                  <input type="text" class="form-control rounded mr-2 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keyup="doSearch" autocomplete="os" autocorrect="off" ${!this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
+                  <button class="btn btn-default input-group-btn p-1" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
                 </div>
 
-                <div class="col-md-auto mt-4 col-sm-12">
+                <div class="col-md-auto mt-4 pl-2 pl-md-0 col-sm-12">
                   <select class="form-control form-control-lg" id="region_select" name="regionselect" change="doSearch">
                     <option id="opt0" value="0">Alla regioner</option>
                     ${this.regionSelection.map(region => '<option id="opt' + region.id + '" value="' + region.id + '" ' + (region.id === this.formStoredValues.region ? 'selected="selected"' : '') + '>' + region.regionName + '</option>')}

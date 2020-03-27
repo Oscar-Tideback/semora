@@ -41,7 +41,7 @@ class App extends Base {
 
     this.navBarLinks = [
       { label: 'Köpa bostad', route: '/buy-property' },
-      { label: 'Sälja bostad', route: '/our-regions' },
+      { label: 'Sälja bostad', route: '/sell-property' },
       { label: 'Våra mäklare', route: '/real-estate-agents' },
       { label: 'Bostad info', route: '/real-estate-info/8' },
       { label: 'Om oss', route: '/about-us' },
@@ -55,7 +55,7 @@ class App extends Base {
     this.buyerPage = new BuyerPage({ searchResult: [], textInput: '', regionName: '' });
     this.buyerPageSearch = new BuyerPageSearch({ formStoredValues: {}, regionSelection: [] });
     this.contactPage = new ContactPage();
-    this.mapsPage = new MapsPage();
+    this.sellerPage = new SellerPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();
     this.integrityPage = new IntegrityPage();
@@ -81,7 +81,7 @@ class App extends Base {
           ${this.agentsPage}
           ${this.allAgentsPage}
           ${this.allObjectPages}
-          ${this.mapsPage}
+          ${this.sellerPage}
           ${this.aboutUsPage}
           ${this.missingPage}
           ${this.integrityPage}

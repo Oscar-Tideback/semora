@@ -1,4 +1,4 @@
-class MapsPage extends Base {
+class SellerPage extends Base {
 
 
   async mount() {
@@ -23,15 +23,15 @@ class MapsPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row p-4 m-0" route="/our-regions" page-title="Regioner och Områden">
+      <div class="row p-4 m-0" route="/sell-property" page-title="Sälja bostad">
         <div class="container my-4"> 
             <!--Section: Contact v.1-->
-              <section class="section pb-5">
+              <section class="section pb-5 p-0">
 
               <!--Section heading-->
-              <h2 class="section-heading h1 pt-4 col-12 text-center">Kontakta eller besök oss.</h2>
+              <p class="section-heading h2 pt-4 col-12 text-center">Kontakta eller besök oss.</p>
               <!--Section description-->
-              <p class="section-description pb-4"></p>
+              <p class="section-description pb-4 text-center">Vi har just flyttat till nya fina lokaler centralt belägna på södermalm i Stockholm, välkommen.</p>
 
               <div class="row">
 
@@ -51,23 +51,23 @@ class MapsPage extends Base {
                       <!--Body-->
                       <form submit="collectFormData">
                       <div class="md-form">
-                        <i class="fas fa-user prefix grey-text"></i>
-                        <label>Namn:</label>
-                        <input name="name" type="text" pattern="[a-öA-Ö]{2,100}" title="Skriv ditt för och efternamn" class="form-control">         
+                       
+                        <label class="name-email-phone">Namn:</label>
+                        <input name="name" type="text"  title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control">         
                       </div>
                       <div class="md-form">
-                        <i class="fas fa-envelope prefix grey-text"></i>
-                        <label>E-Mail:</label>
+
+                        <label class="name-email-phone">E-Mail:</label>
                         <input name="email" type="email" class="form-control">
                       </div>
                       <div class="md-form">
-                      <i class="fas fa-envelope prefix grey-text"></i>
-                      <label>Telefon:</label>
+
+                      <label class="name-email-phone">Telefon:</label>
                       <input type="text" id="phone" name="phone" pattern="[0-9]{7,10}" title="Skriv ditt telefonnummer 7-10 siffror" class="form-control">
                     </div>
                       <div class="md-form">
-                        <i class="fas fa-tag prefix grey-text"></i>
-                        <label>Ditt ärende:</label>
+  
+                        <label class="name-email-phone">Ditt ärende:</label>
                         <textarea name="subject" type="text" class="form-control md-textarea" rows="3"></textarea>
                       </div>
                       <div class="text-center mt-4">
@@ -83,7 +83,7 @@ class MapsPage extends Base {
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-lg-7">
+                <div class="col-lg-7 p-2">
 
                   <!--Google map-->
                   <div id="map-container-google-11" class="z-depth-1-half map-container-6" style="height: 400px">
@@ -93,7 +93,7 @@ class MapsPage extends Base {
 
                   <br>
                   <!--Buttons-->
-                  <div class="row text-center">
+                  <div class="row text-left name-email-phone">
                     <div class="col-md-4">
                       <p>Åsögatan 9</p>
                       <p>Stockholm</p>
@@ -101,7 +101,7 @@ class MapsPage extends Base {
 
                     <div class="col-md-4">  
                       <p>08-234 567 89</p>
-                      <p>Mån-Fri 8-18</p>
+                      <p>Mån-Fre 8-18</p>
                     </div>
 
                     <div class="col-md-4">                  
