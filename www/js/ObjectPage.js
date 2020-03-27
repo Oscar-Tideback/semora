@@ -21,16 +21,16 @@ class ObjectPage extends Base {
         
 
  
-                    <div class= "col-12 pl-0 pr-0 pb-0 mt-4">
-                    <div class="col-sm-13">
+                    <div class= "col-12 pl-0 pr-0 pb-0 mt-0">
+                    <div class="col-sm-12 p-0 mt-0">
+                    <h2 class="m-3">Till salu: ${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2>
+                    <h4 class="m-3"><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
+                    <p class="m-3">${this.description}</p>
                         
                     <div class="col d-flex justify-content-left">
-
+                
                     <div class="card my-8" style="border: 0px">
 
-                    <div class="carousel-relative-wrapper">
-                        <div class="carousel-title-container"></div>
-                    </div>
                     
                     <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}" >
             
@@ -39,8 +39,7 @@ class ObjectPage extends Base {
                     <div class="card-body">
                     <div class="card-text">
 
-                    <h2>${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2>
-                                            <h4><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
+                    
                                             <strong>Antal rum:</strong> ${this.rooms}<br>
                                             <strong>Boarea:</strong> ${this.area} m²<br>
                                             <strong>Pris:</strong> ${this.price} kr<br>
@@ -64,16 +63,14 @@ class ObjectPage extends Base {
                                     
                                             <img src="../images/${this.imageUrl}"class="img-thumbnail rounded float-strong-left" alt="Agent face">
                                              </div>
-                                            <div class="card-body col-lg-4 p-4" style="white-space: nowrap">
-                                            <div class="card-body col-lg-4 p-4" style="white-space: nowrap">
-                                            <div class="card-title name-nopad">
+                                            <div class="card-body col-lg- p-2" style="white-space: nowrap">
+                                            <div class="card-title">
 
-                                            <div class="col-lg-4  col-md-4 col-sm-12 mt-4">
+                                            <div class="col-lg-12  col-md-12 col-sm-12 mt-4">
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h5>${this.firstName} ${this.lastName}<h5></p></strong>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Email:</strong> ${this.email}<h6></p>
                                             <p class="card-text name-email-phone"><span class="name-bold" ></span>  <strong><h6>Tel:</strong> ${this.phone}<h6></p>
-                                            <hr class="mb-4">
-                                            </div>
+                                            
                                             </div>
                                             </div>
                                             </div>
@@ -85,7 +82,6 @@ class ObjectPage extends Base {
                                             ${this.realDescription}
                                             <div>
                                             <br>
-                                            <p class="text-break">${this.description}</p>
                                             <br>
                                             <br>
                                             <h5>Välkommen!</h5>
