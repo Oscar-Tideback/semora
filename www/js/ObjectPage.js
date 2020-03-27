@@ -18,19 +18,17 @@ class ObjectPage extends Base {
         return /*html*/`
             <div class= "row m-0 pt-4" route="/real-estate-info/${this.Id}" page-title="Bostad info">
           
-        
-
- 
+              
                     <div class= "col-12 pl-0 pr-0 pb-0 mt-0">
                     <div class="col-sm-12 p-0 mt-0">
                     <h2 class="m-3">Till salu: ${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2>
                     <h4 class="m-3"><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                     <p class="m-3">${this.description}</p>
-                        
+                      
                     <div class="col d-flex justify-content-left">
                 
                     <div class="card my-8" style="border: 0px">
-
+                
                     
                     <img src="/images/${this.Id}/img01.jpg"class="card-img-top" alt="${this.Id}" realEstateId="${this.Id}" >
             
@@ -83,14 +81,13 @@ class ObjectPage extends Base {
                                             <div>
                                             <br>
                                             <br>
-                                            <br>
                                             <h5>Välkommen!</h5>
                                             </div>
                                             </div>
                                          
                                     
                           
-                                     <img class="d-block w-100" src="/images/${this.Id}/img02.jpg"><br>
+                                    <img class="d-block w-100" src="/images/${this.Id}/img02.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img03.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img04.jpg"><br>
                                     <img class="d-block w-100" src="/images/${this.Id}/img05.jpg"><br>
