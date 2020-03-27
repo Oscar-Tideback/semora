@@ -18,8 +18,8 @@ class NavBarSearch extends Base {
   async clickKeyword(e) {
     this.searchHits = [];
     this.selected = -1;
-    // Maybe try a query on event target instead later and try avoid NaN. This feels to hardcoded
-    this.doSearch(e.target.parentElement.parentElement.value ? e.target.parentElement.parentElement.value : 0);
+    // Maybe try a query on event target instead later and try avoid undefined or giving elements duplicate id's. This feels to hardcoded
+    this.doSearch(e.target.id);
   }
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
@@ -84,13 +84,14 @@ class NavBarSearch extends Base {
     app.buyerPageSearch.formStoredValues.textinput = document.querySelector('[id="navBarTextInput"]').value.length > 0 ? document.querySelector('[id="navBarTextInput"]').value : '';
     app.buyerPageSearch.formStoredValues.region = parseInt(region);
 
+    await app.buyerPageSearch.doSearch();
+
     // Problem: Switching back and forth "fast" from navbar search to buyerpage will result in buyerpage form not being set properly upon page landing
     // Either the page function (page object) doesn't really exist yet or node.js + SQLite is lagging on my shitty laptop  
-    app.buyerPageSearch.render();
-    await app.buyerPageSearch.doSearch();
-    app.buyerPage.render();
-    app.goto('/buy-property');
 
+    app.goto('/buy-property');
+    //app.buyerPageSearch.render();
+    //app.buyerPage.render();
   }
 
 
@@ -111,11 +112,11 @@ class NavBarSearch extends Base {
                 <div class="dropdown-menu show position-absolute" id="dropdown-menu">
                   ${this.searchHits.map((hits, index) => /*html*/`
                     <!-- Insert top button only once -->
-                    ${(index < 1 ? '<button click="clickKeyword" class="dropdown-item ' + (this.selected !== index ? '' : 'bg-secondary text-light') + '" type="button" value="0"><b>Antal träffar på "' + this.currentKeyword + '" per region</b></button>' : '')}
-                    <button click="clickKeyword" class="dropdown-item ${this.selected !== (index + 1) ? '' : 'bg-secondary text-light'}" type="button" value="${hits.regionId}">
-                      <div class="row">
-                        <div class="col">${hits.regionName}</div>
-                        <div class="col-auto"><b>${hits.totalHits} träff${hits.totalHits > 1 ? 'ar' : ''}</b></div>
+                    ${(index < 1 ? '<button click="clickKeyword" class="dropdown-item ' + (this.selected !== index ? '' : 'bg-secondary text-light') + '" type="button" id="0"><b>Antal träffar på "' + this.currentKeyword + '" per region</b></button>' : '')}
+                    <button click="clickKeyword" class="dropdown-item ${this.selected !== (index + 1) ? '' : 'bg-secondary text-light'}" type="button" id="${hits.regionId}">
+                      <div class="row" id="${hits.regionId}">
+                        <div class="col" id="${hits.regionId}">${hits.regionName}</div>
+                        <div class="col-auto" id="${hits.regionId}"><b id="${hits.regionId}">${hits.totalHits} träff${hits.totalHits > 1 ? 'ar' : ''}</b></div>
                       </div>
                     </button>
                   `)}

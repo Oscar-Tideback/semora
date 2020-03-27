@@ -38,7 +38,7 @@ class StartPage extends Base {
             <div class="carousel-inner">
 
               <div class="carousel-relative-wrapper">
-                <div class="carousel-title-container"><h2 class="carousel-title-text">Urval av bostäder till salu</h2></div>
+                <div class="carousel-title-container"><h2 class="carousel-title-text">Urval av bostäder</h2></div>
               </div>
 
               ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`

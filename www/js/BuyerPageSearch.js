@@ -165,6 +165,7 @@ class BuyerPageSearch extends Base {
     app.buyerPage.doSort();
     app.buyerPage.render();
 
+    return;
   }
 
 
@@ -173,6 +174,7 @@ class BuyerPageSearch extends Base {
     // Set checkboxes on <label> click
     if (e.target.name === 'tenureOption1' && !this.formStoredValues.options[0]) {
       this.formStoredValues.options[0] = true;
+      // Start at index 1 since option1 is 0
       for (let i = 1; i < 7; i++) this.formStoredValues.options[i] = false;
       for (let formElement of this.formInput) {
         if (formElement.type === 'checkbox' && formElement.name !== 'tenureOption1') formElement.checked = false;
