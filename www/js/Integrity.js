@@ -44,33 +44,33 @@ class IntegrityPage extends Base {
       3.2.5 Cookies m.m.
       Dhyr & Rumson använder cookies och liknande tekniker på vår webbplats www.localhost.se. Genom att använda cookies och liknande tekniker kan vi förbättra webbplatsen, marknadsföra vår tjänst samt ge dig som användare en bättre och mer personlig service när du använder vår webbplats. Om du vill veta mer om hur vi använder cookies och liknande tekniker, läs gärna vår cookie-policy: www.localhost.se/cookies.
       <br><br>
-      3.3 Om du skapar ett konto på BostadsAgent
+      3.3 Om du skapar ett konto på Dhyr & Rumson
       <br><br>
       3.3.1 Vilka typer av Personuppgifter behandlar vi?
-      Dhyr & Rumson samlar in och behandlar följande Personuppgifter när du skapar ett konto på BostadsAgent:
+      Dhyr & Rumson samlar in och behandlar följande Personuppgifter när du skapar ett konto på Dhyr & Rumson:
       (i) namn och efternamn;
       (ii) e-postadress;
       (iii) telefonnummer;
       (iv) lösenord; och
       (v) om du själv väljer det, uppgifter om din nuvarande bostad.
       <br><br>
-      Om du använder dig av BostadsAgent och väljer att lägga in bevakningar för vissa områden, spara sökningar för bevakning eller spara bostäder som favoriter så kommer Dhyr & Rumson även behandla uppgifter om sådana sparade bevakningar, sökningar och favoriter.
+      Om du använder dig av Dhyr & Rumson och väljer att lägga in bevakningar för vissa områden, spara sökningar för bevakning eller spara bostäder som favoriter så kommer Dhyr & Rumson även behandla uppgifter om sådana sparade bevakningar, sökningar och favoriter.
       <br><br>
       3.3.2 Varför behandlar vi dina Personuppgifter?
       Dhyr & Rumson behandlar dina Personuppgifter för följande ändamål:
-      (i) för att kunna tillhandahålla tjänsten BostadsAgent till dig i enlighet med våra användarvillkor för BostadsAgent;
-      (ii) för att kunna visa sökningar i BostadsAgent som är relevanta för dig;
-      (iii) för att möjliggöra för dig att använda funktionerna i BostadsAgent fullt ut genom att lägga in bevakningar för vissa områden, spara sökningar och spara bostäder; och
+      (i) för att kunna tillhandahålla tjänsten Dhyr & Rumson till dig i enlighet med våra användarvillkor för Dhyr & Rumson;
+      (ii) för att kunna visa sökningar i Dhyr & Rumson som är relevanta för dig;
+      (iii) för att möjliggöra för dig att använda funktionerna i Dhyr & Rumson fullt ut genom att lägga in bevakningar för vissa områden, spara sökningar och spara bostäder; och
       (iv) för att skicka ut tips till dig via e-post om nya bostäder som matchar dina bevakningar och sökningar eller om events som vi tror kan vara intressanta för dig.
       <br><br>
       3.3.3 Rättsliga grunder för vår behandling av dina Personuppgifter
-      För att Dhyr & Rumson ska kunna tillhandahålla tjänsten BostadsAgent är det nödvändigt för oss att behandla dina Personuppgifter.
-      När du skapar ett konto på BostadsAgent och använder det för att söka efter bostäder/fastigheter och skapa bevakningar i förhållande till vissa områden kommer Dhyr & Rumson behandla dina Personuppgifter för att skicka e-post till dig med tips om nya bostäder som matchar dina bevakningar och sökningar. Dhyr & Rumson kan också komma att skicka e-post till dig med tips om events, om Dhyr & Rumson tjänster och annan information om Dhyr & Rumson som vi tror kan vara intressanta för dig. Sådan behandling sker för att den är nödvändig för Dhyr & Rumson berättigade intresse av att marknadsföra våra tjänster och de bostäder som vi förmedlar.
+      För att Dhyr & Rumson ska kunna tillhandahålla tjänsten Dhyr & Rumson är det nödvändigt för oss att behandla dina Personuppgifter.
+      När du skapar ett konto på Dhyr & Rumson och använder det för att söka efter bostäder/fastigheter och skapa bevakningar i förhållande till vissa områden kommer Dhyr & Rumson behandla dina Personuppgifter för att skicka e-post till dig med tips om nya bostäder som matchar dina bevakningar och sökningar. Dhyr & Rumson kan också komma att skicka e-post till dig med tips om events, om Dhyr & Rumson tjänster och annan information om Dhyr & Rumson som vi tror kan vara intressanta för dig. Sådan behandling sker för att den är nödvändig för Dhyr & Rumson berättigade intresse av att marknadsföra våra tjänster och de bostäder som vi förmedlar.
       <br><br>
       3.3.4 Hur länge sparar vi dina Personuppgifter?
-      Sådana Personuppgifter du lämnar för att skapa ett användarkonto och använda BostadsAgent sparas så länge du väljer att vara registrerad i BostadsAgent. Väljer du att avsluta ditt konto kommer Dhyr & Rumson att radera din bevakning och sedan hanteras ditt konto genom våra gallringsrutiner, dvs dina personuppgifter raderas alt. sparas enligt övriga paragrafer i denna policy.
+      Sådana Personuppgifter du lämnar för att skapa ett användarkonto och använda Dhyr & Rumson sparas så länge du väljer att vara registrerad i Dhyr & Rumson. Väljer du att avsluta ditt konto kommer Dhyr & Rumson att radera din bevakning och sedan hanteras ditt konto genom våra gallringsrutiner, dvs dina personuppgifter raderas alt. sparas enligt övriga paragrafer i denna policy.
       <br><br>
-      Du kan när som helst kontakta Dhyr & Rumson om du inte längre vill vara registrerad i BostadsAgent eller om du inte vill få e-post från oss (se kontaktuppgifter under punkten 7 nedan). Du kan också när som helst avregistrera dig från e-postutskick genom att klicka på den ”avprenumerera”-länk som finns längst ner i våra i e-postutskick.
+      Du kan när som helst kontakta Dhyr & Rumson om du inte längre vill vara registrerad i Dhyr & Rumson eller om du inte vill få e-post från oss (se kontaktuppgifter under punkten 7 nedan). Du kan också när som helst avregistrera dig från e-postutskick genom att klicka på den ”avprenumerera”-länk som finns längst ner i våra i e-postutskick.
       <br><br>
       3.4 Om du går på någon av Dhyr & Rumson visningar eller på annat sätt tar initiativ till en kundrelation med något av Dhyr & Rumson kontor
       <br><br>
