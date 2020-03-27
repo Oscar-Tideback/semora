@@ -21,7 +21,7 @@ class ObjectPage extends Base {
         
 
  
-                    <div class= "row p-3">
+                    <div class= "col-12 pl-0 pr-0 pb-0 mt-4">
                     <h2><strong>Försäljningsobjekt</strong></h2>
                     <div class="col-sm-13">
                         
