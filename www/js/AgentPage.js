@@ -1,6 +1,10 @@
 class AgentPage extends Base {
 
+  async mount() {
+    this.viewingsSelection = await sql(/*sql*/`SELECT viewings.startDatetime, viewings.endDatetime FROM viewings
+    WHERE viewings.realEstateId = 1`);
 
+  }
   async collectFormData(e) {
     // Loop through the form and collect the input
     let data = {};
@@ -16,14 +20,9 @@ class AgentPage extends Base {
     `, data);
 
     $('#thanksModal').modal('toggle');
+
   }
-
-
-
-
-
   render() {
-    //console.log(this);
     return /*html*/`
     <div class="row m-0" route="/real-estate-agent/${this.id}" page-title="Dhyr & Rumson - Våra mäklare">  
     <div class="col-12 m-1 p-2">
@@ -52,7 +51,7 @@ class AgentPage extends Base {
             <div class="md-form">
   
               <label class="name-email-phone">Namn:</label>
-              <input name="name" type="name" pattern="[a-öA-Ö]{2,200}" class="form-control">         
+              <input name="name" type="name" pattern=".{2,}" class="form-control">         
             </div>
             <div class="md-form">
 

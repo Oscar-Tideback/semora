@@ -40,9 +40,6 @@ class AgentsPage extends Base {
 
   }
 
-
-
-
   render() {
     return /*html*/`
       <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
