@@ -52,8 +52,7 @@ class NavBarSearch extends Base {
                 realEstateInfo, 
                 userXregion ON realEstateInfo.userId = userXregion.userId, 
                 region ON region.id = userXregion.regionId,
-                realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
-                areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+                realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id
             WHERE realEstateInfo.description LIKE $text
             OR realEstateInfo.tenure LIKE $text
             OR realEstateAddress.streetName LIKE $text
