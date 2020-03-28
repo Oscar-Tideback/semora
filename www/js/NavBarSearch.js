@@ -18,10 +18,10 @@ class NavBarSearch extends Base {
   clickKeyword(e) {
     this.searchHits = [];
     this.selected = -1;
-    // Maybe try a query on event target instead later and try avoid undefined or giving elements duplicate id's. This feels to hardcoded
-    this.render();
+    // Maybe try a query on event target instead later and try avoid undefined or giving multiple elements duplicate id's
     this.doSearch(e.target.id);
   }
+
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
       e.preventDefault();
@@ -29,21 +29,22 @@ class NavBarSearch extends Base {
       // Have inserted an extra non-search generated <button> under <select> so length has to be +1
       if (this.selected < 0) { this.selected = (this.searchHits.length + 1) - 1; }
       if (this.selected >= (this.searchHits.length + 1)) { this.selected = 0; }
+
       this.render();
-      return;
     }
   }
+
   async searchKeyword(e) {
-    if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
-    this.preventPageReload(e);
+    if (['ArrowUp', 'ArrowDown'].includes(e.key)) return;
     if (e.key === 'Enter' && this.selected >= 0) {
-      // Ugly adjust for +1 extra <button> under <select>
+      // Minus 1. Ugly adjust for +1 extra <button> under <select>
+      //console.log((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
       this.doSearch((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
       this.searchHits = [];
       this.selected = -1;
-      this.render();
       return;
     }
+
     this.selected = 0;
     this.searchHits = e.target.value.length < 1 ? [] : await sql(/*sql*/`
         SELECT regionId, regionName, COUNT(regionName) AS totalHits FROM
@@ -65,9 +66,6 @@ class NavBarSearch extends Base {
 
     this.currentKeyword = e.target.value;
 
-    //console.log(this.searchHits);
-    //console.log('sökord: ' + e.target.value);
-
     this.render();
   }
   // -------------------------- End of slightly modified Thomas example-autocomplete --------------------------
@@ -80,19 +78,13 @@ class NavBarSearch extends Base {
   }
 
 
-  // Set properties for use in BuyerPageSearch, then BuyerPageSearch.doSearch()
   async doSearch(region) {
-    app.buyerPageSearch.formStoredValues.textinput = document.querySelector('[id="navBarTextInput"]').value.length > 0 ? document.querySelector('[id="navBarTextInput"]').value : '';
+    // Set properties for buyerPageSearch then call buyerPageSearch.doSearch()
+    app.buyerPageSearch.formStoredValues.textinput = await document.querySelector('[id="navBarTextInput"]').value.length > 0 ? document.querySelector('[id="navBarTextInput"]').value : '';
     app.buyerPageSearch.formStoredValues.region = parseInt(region);
-
-    await app.buyerPageSearch.doSearch();
-
-    // Problem: Switching back and forth "fast" from navbar search to buyerpage will result in buyerpage form not being set properly upon page landing
-    // Either the page function (page object) doesn't really exist yet or node.js + SQLite is lagging on my shitty laptop  
-
+    // Populate search results otherwise default search will be made
+    app.buyerPageSearch.doSearch();
     app.goto('/buy-property');
-    //app.buyerPageSearch.render();
-    //app.buyerPage.render();
   }
 
 

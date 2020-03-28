@@ -1,13 +1,7 @@
 class BuyerPageSearch extends Base {
 
-  async mount() {
-    // Populate region-dropdown
+  async popRegionSelect() {
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region ORDER BY region.regionName`);
-
-    this.formInput = new FormData();
-
-    //this.formStoredValues = {};
-    this.setInitialFormValues();
   }
 
   // Unfinished.... work in progress
@@ -23,70 +17,27 @@ class BuyerPageSearch extends Base {
       sortby: 0,
       order: 0
     }
-
   }
 
 
   async doSearch() {
 
-    // If null the form doesn't exist prior to doSearch() then perform a default search for all real estates
+    // Check if needed resources are defined yet
+    if (!this.formStoredValues.length && !this.regionSelection.length) return;
     if (document.querySelector('[id="buyerSearchForm"]') === null) {
-
-      // A default search on "page landing" or when search was performed via NavBarSearch.js
-      app.buyerPage.searchResult = await sql(/*sql*/`
-        SELECT * FROM 
-          realEstateInfo,
-          userXregion ON realEstateInfo.userId = userXregion.userId,
-          region ON region.id = userXregion.regionId,
-          realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
-          areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
-          realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
-          WHERE imgUrl LIKE '%img01%'
-          AND CAST(realEstateInfo.price AS int) < '999999999'    
-          AND CAST(realEstateInfo.rooms AS int) >= '0'
-          AND CAST(realEstateInfo.area AS int) >= '0'
-          AND CASE
-            WHEN CAST($regionid AS Int) < 1 THEN (region.id > 0)
-            ELSE region.id = CAST($regionid AS Int)
-          END
-          AND CASE
-            WHEN $textinput != '' THEN (
-              realEstateInfo.description LIKE $textinput
-              OR realEstateInfo.tenure LIKE $textinput
-              OR realEstateAddress.streetName LIKE $textinput
-              OR region.regionName LIKE $textinput
-              OR areaInfo.description LIKE $textinput
-              )
-          END
-          GROUP BY realEstateInfo.Id`,
-        {
-          textinput: ('%' + this.formStoredValues.textinput + '%'),
-          regionid: this.formStoredValues.region
-        });
-
-
-      /* Fix! Doesn't work since either might not be defined at this point. Create a workaround...
-      if (this.formInput && this.formStoredValues.textinput) {
-        this.formInput.textinput.value = this.formStoredValues.textinput;
-        console.log("the error");
-      }
-      */
-
       // Set headline etc for resultpage BuyerPage.js
       app.buyerPage.textInput = this.formStoredValues.textinput;
+      // Fetch this.region.regionName using id supplied from navBarSearch 
       for (let region of this.regionSelection) {
-        region.id === this.formStoredValues.region ? app.buyerPage.regionName = region.regionName : '';
+        region.id === this.formStoredValues.region ? app.buyerPage.regionName = region.regionName : 'samtliga regioner';
       }
-
+      console.log("form was null!");
     }
     else {
-
-      //Fetch and store form values
+      //Fetch form and set formStoredValues
       this.formInput = document.querySelector('[id="buyerSearchForm"]');
-
       this.formStoredValues.textinput = this.formInput.textinput.value;
       this.formStoredValues.region = parseInt(this.formInput.regionselect.value);
-
       this.formStoredValues.options[0] = this.formInput.tenureOption1.checked;
       this.formStoredValues.options[1] = this.formInput.tenureOption2.checked;
       this.formStoredValues.options[2] = this.formInput.tenureOption3.checked;
@@ -98,24 +49,33 @@ class BuyerPageSearch extends Base {
       this.formStoredValues.maxprice = parseInt(this.formInput.maxprice.value);
       this.formStoredValues.minrooms = parseInt(this.formInput.minrooms.value);
       this.formStoredValues.minarea = parseInt(this.formInput.minarea.value);
-
-      // Defaults
-      // Both SQL-query tenure variables and page tenure checkboxes should have been populated by occurance via DB instead
-      // But don't have time. Hardcoding alot regarding checkboxes for now...
-      let opt2 = 'Villa', opt3 = 'Radhus', opt4 = 'Lägenhet', opt5 = 'Fritidshus', opt6 = 'Gård', opt7 = 'Tomt', opt8 = 'Bostadsrätt'
-      // If not "Alla typer" selected then override corresponding variables from checkboxes if true
-      if (!this.formStoredValues.options[0]) {
-        this.formStoredValues.options[1] ? opt2 = 'Villa' : opt2 = 'foo'
-        this.formStoredValues.options[2] ? opt3 = 'Radhus' : opt3 = 'foo'
-        this.formStoredValues.options[3] ? opt4 = 'Lägenhet' : opt4 = 'foo'
-        this.formStoredValues.options[4] ? opt5 = 'Fritidshus' : opt5 = 'foo'
-        this.formStoredValues.options[5] ? opt6 = 'Gård' : opt6 = 'foo'
-        this.formStoredValues.options[6] ? opt7 = 'Tomt' : opt7 = 'foo'
-        this.formStoredValues.options[7] ? opt8 = 'Bostadsrätt' : opt8 = 'foo'
+      for (let option of this.formInput.regionselect) {
+        if (option.selected) {
+          app.buyerPage.regionName = option.value > 0 ? option.innerHTML : 'samtliga regioner'; break;
+        }
       }
+    }
 
-      // Main search query from searchform
-      app.buyerPage.searchResult = await sql(/*sql*/`
+    // Set headline etc for resultpage BuyerPage.js
+    app.buyerPage.textInput = this.formStoredValues.textinput;
+
+    // Defaults
+    // Both SQL-query tenure variables and page tenure checkboxes should have been populated by occurance via DB instead
+    // But don't have time. Hardcoding alot regarding checkboxes for now...
+    let opt2 = 'Villa', opt3 = 'Radhus', opt4 = 'Lägenhet', opt5 = 'Fritidshus', opt6 = 'Gård', opt7 = 'Tomt', opt8 = 'Bostadsrätt'
+    // If not "Alla typer" selected then override corresponding variables from checkboxes if true
+    if (!this.formStoredValues.options[0]) {
+      this.formStoredValues.options[1] ? opt2 = 'Villa' : opt2 = 'foo'
+      this.formStoredValues.options[2] ? opt3 = 'Radhus' : opt3 = 'foo'
+      this.formStoredValues.options[3] ? opt4 = 'Lägenhet' : opt4 = 'foo'
+      this.formStoredValues.options[4] ? opt5 = 'Fritidshus' : opt5 = 'foo'
+      this.formStoredValues.options[5] ? opt6 = 'Gård' : opt6 = 'foo'
+      this.formStoredValues.options[6] ? opt7 = 'Tomt' : opt7 = 'foo'
+      this.formStoredValues.options[7] ? opt8 = 'Bostadsrätt' : opt8 = 'foo'
+    }
+
+    // Main search query from searchform
+    app.buyerPage.searchResult = await sql(/*sql*/`
         SELECT * FROM 
           realEstateInfo,
           userXregion ON realEstateInfo.userId = userXregion.userId,
@@ -143,32 +103,21 @@ class BuyerPageSearch extends Base {
         END
         GROUP BY realEstateInfo.Id
         `,
-        {
-          textinput: ('%' + this.formStoredValues.textinput + '%'),
-          regionid: this.formStoredValues.region,
-          maxprice: this.formStoredValues.maxprice,
-          minarea: this.formStoredValues.minarea,
-          minrooms: this.formStoredValues.minrooms,
-          opt2: opt2, opt3: opt3, opt4: opt4, opt5: opt5, opt6: opt6, opt7: opt7, opt8: opt8
-        });
+      {
+        textinput: ('%' + this.formStoredValues.textinput + '%'),
+        regionid: this.formStoredValues.region,
+        maxprice: this.formStoredValues.maxprice,
+        minarea: this.formStoredValues.minarea,
+        minrooms: this.formStoredValues.minrooms,
+        opt2: opt2, opt3: opt3, opt4: opt4, opt5: opt5, opt6: opt6, opt7: opt7, opt8: opt8
+      });
 
-      // Set headline etc for resultpage BuyerPage.js
-      app.buyerPage.textInput = this.formStoredValues.textinput;
-      for (let option of this.formInput.regionselect) {
-        if (option.selected) {
-          app.buyerPage.regionName = option.value > 0 ? option.innerHTML : 'samtliga regioner'; break;
-        }
-      }
-
-      // formStoredValues has been used once and cannot be considered default anymore
-      this.formStoredValues.isdefault = false;
-    }
-
-    // Refresh results page (BuyerPage)
+    // Refresh buyerPage (display search results)
     app.buyerPage.doSort();
     app.buyerPage.render();
 
-    return;
+    // Refresh this page (display current form settings)
+    this.render();
   }
 
 
@@ -194,7 +143,6 @@ class BuyerPageSearch extends Base {
     }
 
     this.doSearch();
-    this.render();
   }
 
   // Addition by Thomas
@@ -230,15 +178,14 @@ class BuyerPageSearch extends Base {
 
               <div class="row pb-2">
                 <div class="col-md mt-4 px-2 input-group">
-                  <input type="text" class="form-control rounded mr-2 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keyup="doSearch" autocomplete="os" autocorrect="off" ${!this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
+                  <input type="text" class="form-control rounded mr-2 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keyup="doSearch" autocomplete="os" autocorrect="off" ${this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
                   <button class="btn btn-default input-group-btn p-1" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
                 </div>
 
                 <div class="col-md-auto mt-4 pl-2 pl-md-0 col-sm-12">
                   <select class="form-control form-control-lg" id="region_select" name="regionselect" change="doSearch">
                     <option id="opt0" value="0">Alla regioner</option>
-                    ${this.regionSelection.map(region => '<option id="opt' + region.id + '" value="' + region.id + '" ' + (region.id === this.formStoredValues.region ? 'selected="selected"' : '') + '>' + region.regionName + '</option>')
-      }
+                    ${this.regionSelection.map(region => '<option id="opt' + region.id + '" value="' + region.id + '" ' + (region.id === this.formStoredValues.region ? 'selected="selected"' : '') + '>' + region.regionName + '</option>')}
                   </select>
                 </div >
 
