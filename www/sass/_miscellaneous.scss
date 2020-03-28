@@ -84,14 +84,21 @@ p, .pg-startpage {
 .hero-title {
   position: absolute;
   font-family: Great Vibes; 
-  font-weight: 500;
-  font-size: 60px;   // Setting static size
+  font-size: 90px;   // Setting static size
   top: 20px;
-  margin-left: 20px;
+  margin-left: 30px;
 
-    @media (max-width: 5762px) {
-        font-size: 55px;   // Setting static size
-    }
+  @media (max-width: 576px) {
+      font-size: 45px;   // Setting static size
+      top: 10px;
+      margin-left: 20px;
+  }
+
+      @media (min-width: 576px) and (max-width: 768px) {
+      font-size: 70px;   // Setting static size
+      top: 10px;
+      margin-left: 20px;
+  }
     
 }
 

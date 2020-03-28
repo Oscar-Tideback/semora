@@ -11,8 +11,6 @@ class App extends Base {
 
   async mount() {
 
-
-
     await sql(/*sql*/`USE DhyrRumson.db`);
 
     // SQL query must result in 20 objects with unique id for unique routes. No duplicates!
@@ -51,8 +49,6 @@ class App extends Base {
     this.heroSection = new HeroSection();
     this.footer = new Footer();
     this.startPage = new StartPage();
-    this.buyerPage = new BuyerPage({ searchResult: [], textInput: '', regionName: '' });
-    this.buyerPageSearch = new BuyerPageSearch({ formStoredValues: [], regionSelection: [], });
     this.contactPage = new ContactPage();
     this.sellerPage = new SellerPage();
     this.aboutUsPage = new AboutUsPage();
@@ -60,6 +56,12 @@ class App extends Base {
     this.integrityPage = new IntegrityPage();
     this.agentsPage = new AgentsPage();
 
+    // Setting buyerPage... stuff here!
+    this.buyerPage = new BuyerPage({ searchResult: [], textInput: '', regionName: '' });
+    this.buyerPageSearch = new BuyerPageSearch({ formInput: [], formStoredValues: [], regionSelection: [], });
+    this.buyerPageSearch.formInput = new FormData();
+    this.buyerPageSearch.popRegionSelect();
+    this.buyerPageSearch.setInitialFormValues();
   }
 
 
@@ -69,7 +71,7 @@ class App extends Base {
         <header>
           ${this.heroSection}
           ${this.navBar}
-          <!-- Keep navBarSearch after navBar -->
+          <!-- Keep navBarSearch after navBar! -->
           ${this.navBarSearch}
         </header>
         <main>
