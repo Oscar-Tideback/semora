@@ -80,7 +80,7 @@ class StartPage extends Base {
                   För att göra allt lite enklare för dig som ska byta bostad, har vi en rad tjänster och verktyg som hjälper dig både att hitta
                   drömbostaden och slå till när det väl blir dags. Till exempel kan vi hjälpa dig att hålla koll på nya bostäder som kommer ut på
                   marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
-                  med i budgivningen.
+                  med i budgivningen. 123
                 </p>
                 <h5><a href="/real-estate-agents">Kontakta någon av våra mäklare så får du veta mer</a></h5>
               </div>
