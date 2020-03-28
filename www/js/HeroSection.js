@@ -4,7 +4,7 @@ class HeroSection extends Base {
     return /*html*/`
       <div>
         <a href="/" alt="Gå till startsidan">
-          <img src="/images/Hero.jpg" class="img-fluid border-bottom border-secondary" alt="...">
+          <img src="/images/Hero.jpg" class="img-fluid" alt="...">
           <div class="hero-title text-nowrap ">Dhyr & Rumson</div>
         </a>  
       </div>

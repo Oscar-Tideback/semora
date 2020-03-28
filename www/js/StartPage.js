@@ -26,10 +26,23 @@ class StartPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row m-0 pt-4" route="/" page-title="Startsida">
-        <div class="col-12 pl-0 pr-0 pb-0 mt-4">
+      <div class="row m-0 p-0 pt-4" route="/" page-title="Startsida">
+        <div class="col-12 p-0">
 
-          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <div class="container d-flex justify-content-center">
+
+            <div class="row pg-startpage">
+              <div class="col">
+                <p>
+                <h2 class="pb-4">Välkommen till Dhyr & Rumson</h2>
+                Köpa eller sälja bostad? Dhyr & Rumsons mäklare ger dig den hjälp och kunskap du behöver för att göra en riktigt bra bostadsaffär.
+                Välkommen ett steg upp till det lite finare.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div id="carouselExampleCaptions" class="carousel slide py-4 my-4" data-ride="carousel">
             <ol class="carousel-indicators">
               ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
                   <li data-target="#carouselExampleCaptions" data-slide-to="${index}" class="${index > 0 ? '' : 'active'}"></li>
@@ -38,7 +51,9 @@ class StartPage extends Base {
             <div class="carousel-inner">
 
               <div class="carousel-relative-wrapper">
-                <div class="carousel-title-container"><h2 class="carousel-title-text">Urval av bostäder</h2></div>
+                <div class="carousel-title-container">
+                  <h2 class="carousel-title-text">Urval av bostäder</h2>
+                </div>
               </div>
 
               ${this.realEstateData.map((obj, index) => (index < this.carouselEnd ? /*html*/`
@@ -68,33 +83,41 @@ class StartPage extends Base {
             </a>
           </div>
 
-          <div class="container my-4">
+          <div class="container d-flex justify-content-center">
 
-            <div class="row py-4">
-              <div class="col mx-0 px-4">
-                <h2 class="pb-4">Våra tjänster hjälper dig att köpa tryggt</h2>
+            <div class="row py-4 pg-startpage">
+              <div class="col">
                 <p>
-                  <a href="/real-estate-info/10">testlänk</a>
+                  <h2 class="pb-4">Våra tjänster hjälper dig att köpa tryggt</h2>
                   Att köpa bostad är förknippat med en hel del känslor. Förväntan och entusiasm, men också tvivel och nervositet. 
                   Ibland känns det som att man skulle behöva vara både ekonom, jurist och byggnadsingenjör för att kunna fatta de viktiga besluten.
+                </p>
+                <p>
                   För att göra allt lite enklare för dig som ska byta bostad, har vi en rad tjänster och verktyg som hjälper dig både att hitta
                   drömbostaden och slå till när det väl blir dags. Till exempel kan vi hjälpa dig att hålla koll på nya bostäder som kommer ut på
-                  marknaden och på prisläget där du vill bo. Och när du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa
-                  med i budgivningen.
+                  marknaden och på prisläget där du vill bo. 
+                </p>
+                <p>
+                  När du väl hittat ditt drömboende har vi gjort det enkelt att delta och följa med i budgivningen.
                 </p>
                 <h5><a href="/real-estate-agents">Kontakta någon av våra mäklare så får du veta mer</a></h5>
               </div>
             </div>
+
+          </div>
+
+          <div class="container">
+
             <div class="row py-4">
               <div class="col-12 text-center">
                 <h1>Andra bostäder till salu</h1>
               </div>
             </div>
-            <div class="row">
 
+            <div class="row">
               ${this.realEstateData.map((obj, index) => (index >= this.listingStart ? /*html*/`
                 <div class="col d-flex justify-content-center">
-                    <div class="card my-4 estate-card">
+                    <div class="card my-4 estate-card shadow">
                       <!-- Current SQL query join gives realEstateInfo.id instead of realEstateInfo.Id -->
                       <a href="/real-estate-info/${obj.id}">
                         <img src="images/${obj.imgUrl}" class="card-img-top" alt="...">
@@ -110,9 +133,10 @@ class StartPage extends Base {
                     </div>
                 </div>
               ` : ''))}
-
             </div>
+
           </div>
+
         </div>
       </div>
     `;

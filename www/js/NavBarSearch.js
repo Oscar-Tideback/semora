@@ -105,7 +105,7 @@ class NavBarSearch extends Base {
       <div not-route="/our-regions">
       <!-- Wrappers above. Ugly fix for multiple not-route's -->
 
-        <div class="search-in-hero-relative-wrapper pr-4">
+        <div class="search-in-hero-relative-wrapper">
           <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch" submit="preventPageReload">
             <div class="input-group">
               <input type="text" class="form-control nav-bar-search-input rounded form-control-lg" id="navBarTextInput" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
@@ -123,9 +123,7 @@ class NavBarSearch extends Base {
                   `)}
                 </div>
               `} 
-              <div class="input-group-btn invisible">
-                <button class="btn btn-default" type="submit"><!-- <i class="icofont-search icofont-lg"> --></i></button>
-              </div>
+              <button class="invisible p-0 m-0" type="submit"></button>
             </div>
           </form>
         </div> 

@@ -40,6 +40,11 @@ h1, h2, h3, h4, h5 {
   font-weight: 600;
 }
 
+// Max width of paragraphs on startpage
+p, .pg-startpage {
+  max-width: 992px;
+}
+
 .name-title{
   font-weight: 600;
   font-size: $base-font * 0.9;
@@ -99,7 +104,7 @@ h1, h2, h3, h4, h5 {
 .search-in-hero {
   width: 40%;
   top: 8px;
-  right: 0px;
+  right: 10px;
   color: rgb(255, 255, 255);
   position: absolute;
   // Adjust this accordingly depending on hero images pixel height
@@ -109,8 +114,8 @@ h1, h2, h3, h4, h5 {
   @media (max-width: 992px) {
     position: relative;
     width: 90%;
-    top: 10px;
-    left: 15px;
+    top: -10px;
+    right: 0px;
     margin: 60px auto 30px auto;
   }
   // Inherit/nested. Toggled no-hamburger menu 
