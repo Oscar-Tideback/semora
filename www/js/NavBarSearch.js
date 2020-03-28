@@ -1,7 +1,6 @@
 class NavBarSearch extends Base {
 
   mount() {
-    this.searchHits = [];
     this.selected = -1;
     this.keyword = '';
 
@@ -35,7 +34,7 @@ class NavBarSearch extends Base {
   }
 
   async searchKeyword(e) {
-    if (['ArrowUp', 'ArrowDown'].includes(e.key)) return;
+    if (['ArrowUp', 'ArrowDown'].includes(e.key) || document.querySelector('[id="navBarTextInput"]').value.length < 2) return;
     if (e.key === 'Enter' && this.selected >= 0) {
       // Minus 1. Ugly adjust for +1 extra <button> under <select>
       //console.log((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
@@ -53,11 +52,17 @@ class NavBarSearch extends Base {
                 realEstateInfo, 
                 userXregion ON realEstateInfo.userId = userXregion.userId, 
                 region ON region.id = userXregion.regionId,
-                realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id
-            WHERE realEstateInfo.description LIKE $text
-            OR realEstateInfo.tenure LIKE $text
+                realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+                areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+            WHERE realEstateInfo.tenure LIKE $text
             OR realEstateAddress.streetName LIKE $text
             OR region.regionName LIKE $text
+            OR CASE 
+              WHEN LENGTH($text) > 4 THEN (
+                areaInfo.description LIKE $text
+                OR realEstateInfo.description LIKE $text
+                )
+            END
             GROUP BY realEstateInfo.Id
             )
         GROUP BY regionName

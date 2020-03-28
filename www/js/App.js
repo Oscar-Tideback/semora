@@ -45,7 +45,7 @@ class App extends Base {
     ];
 
     this.navBar = new NavBar({ links: this.navBarLinks });
-    this.navBarSearch = new NavBarSearch();
+    this.navBarSearch = new NavBarSearch({ searchHits: [] });
     this.heroSection = new HeroSection();
     this.footer = new Footer();
     this.startPage = new StartPage();
