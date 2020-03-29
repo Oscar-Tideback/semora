@@ -61,7 +61,7 @@ class NavBarSearch extends Base {
             OR realEstateAddress.streetName LIKE $text
             OR region.regionName LIKE $text
             OR CASE 
-              WHEN LENGTH($text) > 4 THEN (
+              WHEN LENGTH($text) > 3 THEN (
                 areaInfo.description LIKE $text
                 OR realEstateInfo.description LIKE $text
                 )
