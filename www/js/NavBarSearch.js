@@ -4,6 +4,7 @@ class NavBarSearch extends Base {
     this.selected = -1;
     this.keyword = '';
     this.isSearching = false;
+    this.isQuerying = false;
 
     // Click anywhere hides dropdown. Try add preexisting click event on <body> instead? Test later...
     document.addEventListener("click", function (e) {
@@ -15,6 +16,7 @@ class NavBarSearch extends Base {
 
 
   // -------------------------- Start of slightly modified Thomas example-autocomplete --------------------------
+
   clickKeyword(e) {
     this.searchHits = [];
     this.selected = -1;
@@ -35,7 +37,12 @@ class NavBarSearch extends Base {
   }
 
   async searchKeyword(e) {
+    //if (this.isSearching) console.log("Search was already running!");
     if (['ArrowUp', 'ArrowDown'].includes(e.key) || document.querySelector('[id="navBarTextInput"]').value.length < 2 || this.isSearching) return;
+
+    // Seems multiple threads might be cauing a problem. Just making sure
+    this.isSearching = true;
+
     if (e.key === 'Enter' && this.selected >= 0) {
       // Minus 1. Ugly adjust for +1 extra <button> under <select>
       //console.log((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
@@ -44,8 +51,6 @@ class NavBarSearch extends Base {
       this.selected = -1;
       return;
     }
-
-    this.isSearching = true;
 
     this.selected = 0;
     this.searchHits = e.target.value.length < 1 ? [] : await sql(/*sql*/`
@@ -78,6 +83,7 @@ class NavBarSearch extends Base {
 
     this.isSearching = false;
   }
+
   // -------------------------- End of slightly modified Thomas example-autocomplete --------------------------
 
 

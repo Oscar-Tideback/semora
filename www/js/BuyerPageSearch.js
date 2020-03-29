@@ -1,15 +1,6 @@
 class BuyerPageSearch extends Base {
 
-  mount() {
-    this.isSearching = false;
-  }
-
   async doSearch() {
-
-    // Check if needed resources are defined yet
-    if (!this.formStoredValues.length && !this.regionSelection.length || this.isSearching) return;
-
-    this.isSearching = true;
 
     if (document.querySelector('[id="buyerSearchForm"]') === null) {
       // Set headline etc for resultpage BuyerPage.js
@@ -18,14 +9,15 @@ class BuyerPageSearch extends Base {
       for (let region of this.regionSelection) {
         region.id === this.formStoredValues.region ? app.buyerPage.regionName = region.regionName : 'samtliga regioner';
       }
-      //console.log("buyerPageSearch form was null");
     }
     else {
-      //Fetch form and set formStoredValues
+      //Fetch form values
       this.formInput = document.querySelector('[id="buyerSearchForm"]');
-
       this.formStoredValues.textinput = this.formInput.textinput.value;
       this.formStoredValues.region = parseInt(this.formInput.regionselect.value);
+      this.formStoredValues.maxprice = parseInt(this.formInput.maxprice.value);
+      this.formStoredValues.minrooms = parseInt(this.formInput.minrooms.value);
+      this.formStoredValues.minarea = parseInt(this.formInput.minarea.value);
       this.formStoredValues.options[0] = this.formInput.tenureOption1.checked;
       this.formStoredValues.options[1] = this.formInput.tenureOption2.checked;
       this.formStoredValues.options[2] = this.formInput.tenureOption3.checked;
@@ -34,9 +26,6 @@ class BuyerPageSearch extends Base {
       this.formStoredValues.options[5] = this.formInput.tenureOption6.checked;
       this.formStoredValues.options[6] = this.formInput.tenureOption7.checked;
       this.formStoredValues.options[7] = this.formInput.tenureOption8.checked;
-      this.formStoredValues.maxprice = parseInt(this.formInput.maxprice.value);
-      this.formStoredValues.minrooms = parseInt(this.formInput.minrooms.value);
-      this.formStoredValues.minarea = parseInt(this.formInput.minarea.value);
       for (let option of this.formInput.regionselect) {
         if (option.selected) {
           app.buyerPage.regionName = option.value > 0 ? option.innerHTML : 'samtliga regioner'; break;
@@ -47,9 +36,7 @@ class BuyerPageSearch extends Base {
     // Set headline etc for resultpage BuyerPage.js
     app.buyerPage.textInput = this.formStoredValues.textinput;
 
-    // Defaults
-    // Both SQL-query tenure variables and page tenure checkboxes should have been populated by occurance via DB instead
-    // But don't have time. Hardcoding alot regarding checkboxes for now...
+    // Hardcoding alot regarding checkboxes for now. Rewrite code so it populates tenures by occurances in DB Later on...
     let opt2 = 'Villa', opt3 = 'Radhus', opt4 = 'Lägenhet', opt5 = 'Fritidshus', opt6 = 'Gård', opt7 = 'Tomt', opt8 = 'Bostadsrätt'
     // If not "Alla typer" selected then override corresponding variables from checkboxes if true
     if (!this.formStoredValues.options[0]) {
@@ -106,27 +93,25 @@ class BuyerPageSearch extends Base {
 
     // Refresh this page (display current form settings)
     this.render();
-
-    this.isSearching = false;
   }
 
 
-  // Real estate tenure checkboxes behaviour. Sets true/false and active. Ugly! fix later...
+  // Real estate tenure checkboxes behaviour. Sets true/false and active. Ugly as f*... fix later!
   checkBoxes(e) {
     // Set checkboxes on <label> click
-    if (e.target.name === 'tenureOption1' && !this.formStoredValues.options[0]) {
+    if (e.target.id === 'tenureOption1' && !this.formStoredValues.options[0]) {
       this.formStoredValues.options[0] = true;
       // Start at index 1 since option1 is 0
       for (let i = 1; i < 7; i++) this.formStoredValues.options[i] = false;
       for (let formElement of this.formInput) {
-        if (formElement.type === 'checkbox' && formElement.name !== 'tenureOption1') formElement.checked = false;
+        if (formElement.type === 'checkbox' && formElement.id !== 'tenureOption1') formElement.checked = false;
       }
     }
 
-    if (e.target.name !== 'tenureOption1' && this.formStoredValues.options[0]) {
+    if (e.target.id !== 'tenureOption1' && this.formStoredValues.options[0]) {
       this.formStoredValues.options[0] = false;
       for (let formElement of this.formInput) {
-        if (formElement.name === 'tenureOption1') {
+        if (formElement.id === 'tenureOption1') {
           formElement.checked = false;
         }
       }
@@ -135,15 +120,8 @@ class BuyerPageSearch extends Base {
     this.doSearch();
   }
 
-  // Addition by Thomas
-  preventPageReload(e) {
-    // Do not perform a hard reload of the page when someone submits the form
-    e && e.preventDefault();
-  }
-
 
   render() {
-
     // Always do a default search
     app.buyerPage.searchResult.length < 1 ? this.doSearch() : '';
 
@@ -188,26 +166,26 @@ class BuyerPageSearch extends Base {
 
                 <div class="row">
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[0] ? 'active' : ''}" click="checkBoxes" name="uncheck">
-                      <input class="tenure-checkbox" type="checkbox" name="tenureOption1" id="allatyper" ${this.formStoredValues.options[0] ? 'checked' : ''}>
+                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[0] ? 'active' : ''}" click="checkBoxes">
+                      <input class="tenure-checkbox" type="checkbox" id="tenureOption1" ${this.formStoredValues.options[0] ? 'checked' : ''}>
                       Alla typer
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[1] ? 'active' : ''}" click="checkBoxes" name="check">
-                      <input class="tenure-checkbox" type="checkbox" name="tenureOption2" id="villor" ${this.formStoredValues.options[1] ? 'checked' : ''}>
+                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[1] ? 'active' : ''}" click="checkBoxes">
+                      <input class="tenure-checkbox" type="checkbox" id="tenureOption2" ${this.formStoredValues.options[1] ? 'checked' : ''}>
                       Villor
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[2] ? 'active' : ''}" click="checkBoxes" name="check">
-                      <input class="tenure-checkbox" type="checkbox" name="tenureOption3" id="radhus" ${this.formStoredValues.options[2] ? 'checked' : ''}>
+                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[2] ? 'active' : ''}" click="checkBoxes">
+                      <input class="tenure-checkbox" type="checkbox" id="tenureOption3" ${this.formStoredValues.options[2] ? 'checked' : ''}>
                       Radhus
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[3] ? 'active' : ''}" click="checkBoxes" name="check">
-                      <input class="tenure-checkbox" type="checkbox" name="tenureOption4" id="lagenheter" ${this.formStoredValues.options[3] ? 'checked' : ''}>
+                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[3] ? 'active' : ''}" click="checkBoxes">
+                      <input class="tenure-checkbox" type="checkbox" id="tenureOption4" ${this.formStoredValues.options[3] ? 'checked' : ''}>
                       Lägenheter
                     </label>
                   </div>
@@ -215,26 +193,26 @@ class BuyerPageSearch extends Base {
 
                 <div class="row">
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[4] ? 'active' : ''}" click="checkBoxes" name="check">
-                      <input class="tenure-checkbox" type="checkbox" name="tenureOption5" id="fritidshus" ${this.formStoredValues.options[4] ? 'checked' : ''}>
+                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[4] ? 'active' : ''}" click="checkBoxes">
+                      <input class="tenure-checkbox" type="checkbox" id="tenureOption5" ${this.formStoredValues.options[4] ? 'checked' : ''}>
                       Fritidshus
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[5] ? 'active' : ''}" click="checkBoxes" name="check">
-                      <input class="tenure-checkbox" type="checkbox" name="tenureOption6" id="gardar" ${this.formStoredValues.options[5] ? 'checked' : ''}>
+                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[5] ? 'active' : ''}" click="checkBoxes">
+                      <input class="tenure-checkbox" type="checkbox" id="tenureOption6" ${this.formStoredValues.options[5] ? 'checked' : ''}>
                       Gårdar
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[6] ? 'active' : ''}" click="checkBoxes" name="check">
-                      <input class="tenure-checkbox" type="checkbox" name="tenureOption7" id="tomter" ${this.formStoredValues.options[6] ? 'checked' : ''}>
+                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[6] ? 'active' : ''}" click="checkBoxes">
+                      <input class="tenure-checkbox" type="checkbox" id="tenureOption7" ${this.formStoredValues.options[6] ? 'checked' : ''}>
                       Tomter
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[7] ? 'active' : ''}" click="checkBoxes" name="check">
-                      <input class="tenure-checkbox" type="checkbox" name="tenureOption8" id="ovriga" ${this.formStoredValues.options[7] ? 'checked' : ''}>
+                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[7] ? 'active' : ''}" click="checkBoxes">
+                      <input class="tenure-checkbox" type="checkbox" id="tenureOption8" ${this.formStoredValues.options[7] ? 'checked' : ''}>
                       Bostadsrätter
                     </label>
                   </div>
