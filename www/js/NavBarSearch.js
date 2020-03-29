@@ -3,6 +3,7 @@ class NavBarSearch extends Base {
   mount() {
     this.selected = -1;
     this.keyword = '';
+    this.isSearching = false;
 
     // Click anywhere hides dropdown. Try add preexisting click event on <body> instead? Test later...
     document.addEventListener("click", function (e) {
@@ -34,7 +35,7 @@ class NavBarSearch extends Base {
   }
 
   async searchKeyword(e) {
-    if (['ArrowUp', 'ArrowDown'].includes(e.key) || document.querySelector('[id="navBarTextInput"]').value.length < 2) return;
+    if (['ArrowUp', 'ArrowDown'].includes(e.key) || document.querySelector('[id="navBarTextInput"]').value.length < 2 || this.isSearching) return;
     if (e.key === 'Enter' && this.selected >= 0) {
       // Minus 1. Ugly adjust for +1 extra <button> under <select>
       //console.log((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
@@ -43,6 +44,8 @@ class NavBarSearch extends Base {
       this.selected = -1;
       return;
     }
+
+    this.isSearching = true;
 
     this.selected = 0;
     this.searchHits = e.target.value.length < 1 ? [] : await sql(/*sql*/`
@@ -58,7 +61,7 @@ class NavBarSearch extends Base {
             OR realEstateAddress.streetName LIKE $text
             OR region.regionName LIKE $text
             OR CASE 
-              WHEN LENGTH($text) > 3 THEN (
+              WHEN LENGTH($text) > 4 THEN (
                 areaInfo.description LIKE $text
                 OR realEstateInfo.description LIKE $text
                 )
@@ -72,6 +75,8 @@ class NavBarSearch extends Base {
     this.currentKeyword = e.target.value;
 
     this.render();
+
+    this.isSearching = false;
   }
   // -------------------------- End of slightly modified Thomas example-autocomplete --------------------------
 
@@ -105,7 +110,7 @@ class NavBarSearch extends Base {
         <div class="search-in-hero-relative-wrapper">
           <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch" submit="preventPageReload">
             <div class="input-group">
-              <input type="text" class="form-control nav-bar-search-input rounded form-control-lg" id="navBarTextInput" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
+              <input type="text" class="form-control nav-bar-search-input rounded form-control-lg" id="navBarTextInput" placeholder="Snabbsök bland bostäder här..." keyup="searchKeyword" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
               ${this.searchHits.length < 1 ? '' : /*html*/`
                 <div class="dropdown-menu show position-absolute" id="dropdown-menu">
                   ${this.searchHits.map((hits, index) => /*html*/`

@@ -11,7 +11,10 @@ class BuyerPage extends Base {
     }
     else {
       this.formInput = document.querySelector('[id="buyerPageSortBy"]');
-      switch (this.formInput.sortby.value + this.formInput.ordering.value) {
+      app.buyerPageSearch.formStoredValues.sortby = parseInt(this.formInput.sortby.value);
+      app.buyerPageSearch.formStoredValues.order = parseInt(this.formInput.order.value);
+
+      switch (this.formInput.sortby.value + this.formInput.order.value) {
         case '00': this.searchResult.sort(this.byPrice); break;
         case '01': this.searchResult.reverse(this.byPrice); break;
         case '10': this.searchResult.sort(this.byArea); break;
@@ -23,7 +26,6 @@ class BuyerPage extends Base {
       }
     }
     this.render();
-    return;
   }
 
   byPrice(a, b) { return a.price - b.price; }
@@ -65,14 +67,14 @@ class BuyerPage extends Base {
 
                     <div class="text-nowrap mr-2">Sortera på</div>
                     <select class="form-control btn-block mr-2" id="sortby_select" name="sortby" change="doSort">
-                      <option id="opt0" value="0">pris</option>
-                      <option id="opt1" value="1">boyta</option>
-                      <option id="opt2" value="2">antal rum</option>
-                      <option id="opt3" value="3">region</option>
+                      ${app.buyerPageSearch.formOptions.sortBy.map(option => /*html*/`
+                        <option value="${option.value}" ${app.buyerPageSearch.formStoredValues.sortby !== option.value ? '' : 'selected="selected"'}>${option.name}</option>
+                        `)}
                     </select>
-                    <select class="form-control btn-block mt-0" id="order_select" name="ordering" change="doSort">
-                      <option id="opt4" value="0">stigande</option>
-                      <option id="opt5" value="1">fallande</option>
+                    <select class="form-control btn-block mt-0" id="order_select" name="order" change="doSort">
+                      ${app.buyerPageSearch.formOptions.order.map(option => /*html*/`
+                        <option value="${option.value}" ${app.buyerPageSearch.formStoredValues.order !== option.value ? '' : 'selected="selected"'}>${option.name}</option>
+                        `)}
                     </select>
                   </form>
                 </div>
@@ -82,7 +84,7 @@ class BuyerPage extends Base {
             <div class="row">
                 ${this.searchResult.map(obj => /*html*/`
                   <div class="col d-flex justify-content-center">
-                    <div class="card my-4 estate-card">
+                    <div class="card my-4 estate-card shadow">
                       <a href="/real-estate-info/${obj.id}" objectid="${obj.id}">
                       <img src="images/${obj.imgUrl}" targetbostadid="${obj.id}" class="card-img-top" alt="Bostad picture"></a>
                       <div class="card-body">
