@@ -101,19 +101,19 @@ class BuyerPage extends Base {
                       <img src="images/${obj.imgUrl}" class="card-img rounded-0 shadow" style="max-width: 285px;" alt="...">
                     </div>
                     <div class="col-12 col-sm-12 col-md order-3 order-sm-3 order-md-2 order-lg-2">
-                      <div class="card-body pl-3 pt-3">
-                        <h5 >${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}</h5>
-                        <p class="card-text mb-1">${obj.areaName}, ${obj.regionName}, ${obj.rooms} rum, ${obj.area} m²</p>
+                      <div class="card-body p-md-2 p-lg-3">
+                        <h5 class="mb-0">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}</h5>
+                        <p class="card-text">${obj.areaName}, ${obj.regionName}, ${obj.rooms} rum, ${obj.area} m²</p>
                       </div>
                     </div>
                     <div class="col-sm col-6 order-2 order-sm-2 order-md-3 order-lg-3">
-                      <div class="row card-body pt-3 no-gutters">
+                      <div class="row card-body p-md-2 p-lg-3 no-gutters">
                         <div class="col text-right">
                           <p>${obj.tenure}</p>
                         </div>                        
                       </div>
 
-                      <div class="row card-body py-0 no-gutters">
+                      <div class="row card-body  pr-md-2 pr-lg-3 py-0 no-gutters">
                         <div class="col text-right">
                           <p class="card-text"><b>${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr</b></p>
                         </div>
