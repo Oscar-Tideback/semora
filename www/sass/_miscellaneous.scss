@@ -194,10 +194,25 @@ p, .paragraph-maxwidth {
   background-repeat: no-repeat;
   z-index: 1;
   text-align: center; 
+
+  @media (max-width: 768px) {
+    width: 644px; 
+    right: -322px; 
+    height: 150px;
+    resize: both;
+    background-size: contain;
+  }
+
 }
 
 .carousel-title-text {
   margin-top: 5px;
+
+  @media (max-width: 768px) {
+      margin-top: 0px;
+      font-size: $h3-font-size;
+  }
+
 }
 
 .carousel-ornament-bottom {
