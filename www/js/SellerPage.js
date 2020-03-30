@@ -34,9 +34,10 @@ class SellerPage extends Base {
               <section class="section p-0">
 
               <!--Section heading-->
-              <p class="section-heading py-0 h1 text-center">Kontakta eller besök oss</p>
+              <p>
+              <h2 class="section-heading py-0">Kontakta eller besök oss</h2></p>
               <!--Section description-->
-              <p class="section-description pb-4 text-center">Vi har just flyttat till nya fina lokaler centralt belägna på södermalm i Stockholm, välkommen.</p>
+              <p class="section-description pb-4">Har du bestämt dig för att sälja din bostad?<br> Vi förmedlar samt värderar vissa exlusiva bostäder, villor, bostadsrätter, fritidshus, lägenheter, tomter och fastigheter från norr till söder.<br> Våra mäklare träffar dig gärna för en kostnadsfri värdering av din nuvarande bostad, helt förutsättningslöst.</p>
               </div>
               </div>
               <div class="col-12">
@@ -46,7 +47,7 @@ class SellerPage extends Base {
                 <div class="col-lg-5">
 
                   <!--Form with header-->
-                  <div class="card">
+                  <div class="card border-0 mb-3 shadow">
 
                     <div class="card-body">
                       <!--Header-->
@@ -93,7 +94,7 @@ class SellerPage extends Base {
                 <div class="col-lg-7 p-2">
 
                   <!--Google map-->
-                  <div id="map-container-google-11" class="z-depth-1-half map-container-6" style="height: 400px">
+                  <div id="map-container-google-11" class="mb-4 shadow z-depth-1-half map-container-6" style="height: 400px">
                     <iframe src="https://maps.google.com/maps?q=Åsögatan 9, Stockholm, Sverige&t=&z=13&ie=UTF8&iwloc=&output=embed"
                       frameborder="0" style="border:0" allowfullscreen></iframe>
                   </div>

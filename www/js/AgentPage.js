@@ -38,7 +38,7 @@ class AgentPage extends Base {
         </div>
       </div>
         <div class="row">
-          <div class="col-lg-4 col-md-4 col-sm-12 mt-5">
+          <div class="col-lg-4 col-md-4 col-sm-12 mt-5 ">
           <div class=" ml-2">
               <img src="../images/${this.imageUrl}" class="img-fluid rounded border float-bottom" alt="Agent face">
               <p class="mt-1 broker-name"><span class="name-bold">${this.firstName} ${this.lastName}</p>
