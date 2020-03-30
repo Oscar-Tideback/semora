@@ -27,18 +27,18 @@ class AgentPage extends Base {
   render() {
     return /*html*/`
 
-    <div class="row m-0 p-0 pt-4" route="/real-estate-agent/${this.id}" page-title="Dhyr & Rumson - Våra mäklare">
-    <div class="col-12 m-1 p-2">
+    <div class="row m-0 p-0" route="/real-estate-agent/${this.id}" page-title="Dhyr & Rumson - Våra mäklare">
+    <div class="col-12 m-0">
 
       <div class="container d-flex justify-content-center">
 
         <div class="row paragraph-maxwidth">
           <div class="col">
-            <p> 
+          <p class="h2 py-4">Lär känna, ${this.firstName} ${this.lastName}.</p>  
+          <p>${this.description}</p>
          <div class="row">
         <div class="col-12">
-        <h2 class="name-bold broker-name">Lär känna, ${this.firstName} ${this.lastName}.</h2>  
-        <p>${this.description}</p>
+       
         </div>
       </div>
         <div class="row">

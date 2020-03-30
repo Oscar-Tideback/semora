@@ -34,7 +34,7 @@ class SellerPage extends Base {
               <section class="section p-0">
 
               <!--Section heading-->
-              <p class="section-heading h1 text-center">Kontakta eller besök oss</p>
+              <p class="section-heading py-0 h1 text-center">Kontakta eller besök oss</p>
               <!--Section description-->
               <p class="section-description pb-4 text-center">Vi har just flyttat till nya fina lokaler centralt belägna på södermalm i Stockholm, välkommen.</p>
               </div>

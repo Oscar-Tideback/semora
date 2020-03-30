@@ -1,13 +1,13 @@
 class IntegrityPage extends Base {
   render() {
     return /*html*/`
-    <div class="row m-0 p-0 pt-4" route="/integrity" page-title="Integrity">  
+    <div class="row m-0 p-0" route="/integrity" page-title="Integrity">  
         <div class="col-12 p-0">
 
           <div class="container d-flex justify-content-center">
            <div class="row paragraph-maxwidth">
             <div class="col"><p>
-              <p class="section-heading h2 text-left">Integritetspolicy</p>
+              <p class="h2 py-4">Integritetspolicy</p>
               <p><br>
               Här hittar du information om hur Dhyr & Rumson hanterar personuppgifter:
               <br><br>
