@@ -30,7 +30,7 @@ class SellerPage extends Base {
       <div class="container d-flex justify-content-center">
        <div class="row paragraph-maxwidth">
 
-            <!--Section: Contact v.1-->
+            <!--Section: Contact-->
               <section class="section p-0">
 
               <!--Section heading-->
