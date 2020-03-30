@@ -10,7 +10,7 @@ class IntegrityPage extends Base {
             <p>
             <h2 class="py-4">Integritetspolicy</h2></p>
               <p>
-              Här hittar du information om hur Dhyr & Rumson hanterar personuppgifter:
+              Här hittar du information om vårat påhittade företag Dhyr & Rumsons hemsida/site/webpage skulle kunna hanterar personuppgifter:
               <br><br>
               1. ALLMÄNT
               <br><br>
