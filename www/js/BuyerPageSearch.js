@@ -1,6 +1,7 @@
 class BuyerPageSearch extends Base {
 
-  async doSearch() {
+  async doSearch(e) {
+    this.preventPageReload(e);
 
     if (document.querySelector('[id="buyerSearchForm"]') === null) {
       // Set headline etc for resultpage BuyerPage.js
@@ -120,18 +121,23 @@ class BuyerPageSearch extends Base {
     this.doSearch();
   }
 
+  // Addition by Thomas
+  preventPageReload(e) {
+    // Do not perform a hard reload of the page when someone submits the form
+    e && e.preventDefault();
+  }
 
   render() {
     // Always do a default search
     app.buyerPage.searchResult.length < 1 ? this.doSearch() : '';
 
     return /*html*/`
-      <div class="row m-0" route="/buy-property" page-title="Köpa bostad">
-        <div class="col py-4 p-lg-4">
+      <div class="row m-0 p-0" route="/buy-property" page-title="Köpa bostad">
+        <div class="col-12">
 
-          <div class="row p-2">
-            <div class="col text-center">
-              <h1>Sök drömbostaden...</h1>
+          <div class="row p-4">
+            <div class="col pt-4 text-center">
+              <h2>Sök drömbostaden...</h2>
             </div>
           </div>
 
@@ -145,11 +151,13 @@ class BuyerPageSearch extends Base {
               </div>
               <div class="row pb-2">
                 <div class="col-md mt-4 px-2 input-group">
-                  <input type="text" class="form-control rounded mr-2 form-control-lg" placeholder="Skriv område, adress eller nyckelord..." name="textinput" keyup="doSearch" autocomplete="os" autocorrect="off" ${this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
-                  <button class="btn btn-default input-group-btn p-1" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg navbar-search-icon"></i></button>
+                  <input type="text" class="form-control rounded form-control-lg" placeholder="Ange adress eller annat..." name="textinput" keyup="doSearch" autocomplete="os" autocorrect="off" ${this.formStoredValues.textinput ? ('value="' + this.formStoredValues.textinput + '"') : ''}>
+                  <div class="relative-wrapper"> 
+                    <button class="btn btn-default magnifier-search-button" type="submit" click="doSearch" name="submitButton"><i class="icofont-search icofont-lg"></i></button>
+                  </div>
                 </div>
 
-                <div class="col-md-auto mt-4 pl-2 pl-md-0 col-sm-12">
+                <div class="col-md-auto mt-4 px-2 ml-0 ml-md-2 pl-md-0 col-sm-12">
                   <select class="form-control form-control-lg" id="region_select" name="regionselect" change="doSearch">
                     <option id="opt0" value="0">Alla regioner</option>
                     ${this.regionSelection.map(region => /*html*/`
@@ -166,25 +174,25 @@ class BuyerPageSearch extends Base {
 
                 <div class="row">
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[0] ? 'active' : ''}" click="checkBoxes">
+                    <label class="btn btn-light btn-block text-nowrap shadow ${this.formStoredValues.options[0] ? 'active' : ''}" click="checkBoxes">
                       <input class="tenure-checkbox" type="checkbox" id="tenureOption1" ${this.formStoredValues.options[0] ? 'checked' : ''}>
                       Alla typer
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[1] ? 'active' : ''}" click="checkBoxes">
+                    <label class="btn btn-light btn-block text-nowrap shadow ${this.formStoredValues.options[1] ? 'active' : ''}" click="checkBoxes">
                       <input class="tenure-checkbox" type="checkbox" id="tenureOption2" ${this.formStoredValues.options[1] ? 'checked' : ''}>
                       Villor
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[2] ? 'active' : ''}" click="checkBoxes">
+                    <label class="btn btn-light btn-block text-nowrap shadow ${this.formStoredValues.options[2] ? 'active' : ''}" click="checkBoxes">
                       <input class="tenure-checkbox" type="checkbox" id="tenureOption3" ${this.formStoredValues.options[2] ? 'checked' : ''}>
                       Radhus
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[3] ? 'active' : ''}" click="checkBoxes">
+                    <label class="btn btn-light btn-block text-nowrap shadow ${this.formStoredValues.options[3] ? 'active' : ''}" click="checkBoxes">
                       <input class="tenure-checkbox" type="checkbox" id="tenureOption4" ${this.formStoredValues.options[3] ? 'checked' : ''}>
                       Lägenheter
                     </label>
@@ -193,25 +201,25 @@ class BuyerPageSearch extends Base {
 
                 <div class="row">
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[4] ? 'active' : ''}" click="checkBoxes">
+                    <label class="btn btn-light btn-block text-nowrap shadow ${this.formStoredValues.options[4] ? 'active' : ''}" click="checkBoxes">
                       <input class="tenure-checkbox" type="checkbox" id="tenureOption5" ${this.formStoredValues.options[4] ? 'checked' : ''}>
                       Fritidshus
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[5] ? 'active' : ''}" click="checkBoxes">
+                    <label class="btn btn-light btn-block text-nowrap shadow ${this.formStoredValues.options[5] ? 'active' : ''}" click="checkBoxes">
                       <input class="tenure-checkbox" type="checkbox" id="tenureOption6" ${this.formStoredValues.options[5] ? 'checked' : ''}>
                       Gårdar
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[6] ? 'active' : ''}" click="checkBoxes">
+                    <label class="btn btn-light btn-block text-nowrap shadow  ${this.formStoredValues.options[6] ? 'active' : ''}" click="checkBoxes">
                       <input class="tenure-checkbox" type="checkbox" id="tenureOption7" ${this.formStoredValues.options[6] ? 'checked' : ''}>
                       Tomter
                     </label>
                   </div>
                   <div class="col px-1 mx-0">
-                    <label class="btn btn-light btn-block text-nowrap shadow-sm ${this.formStoredValues.options[7] ? 'active' : ''}" click="checkBoxes">
+                    <label class="btn btn-light btn-block text-nowrap shadow ${this.formStoredValues.options[7] ? 'active' : ''}" click="checkBoxes">
                       <input class="tenure-checkbox" type="checkbox" id="tenureOption8" ${this.formStoredValues.options[7] ? 'checked' : ''}>
                       Bostadsrätter
                     </label>
@@ -342,10 +350,8 @@ class BuyerPageSearch extends Base {
 
   }
 
-  // Unfinished.... work in progress
   setInitialFormValues() {
     this.formStoredValues = {
-      isdefault: true,
       textinput: '',
       region: 0,
       options: [true, false, false, false, false, false, false, false],
@@ -353,7 +359,8 @@ class BuyerPageSearch extends Base {
       minarea: 0,
       maxprice: 999999999,
       sortby: 0,
-      order: 0
+      order: 0,
+      layout: 0
     }
   }
 
