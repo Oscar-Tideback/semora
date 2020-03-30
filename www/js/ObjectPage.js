@@ -74,7 +74,9 @@ class ObjectPage extends Base {
             <div class="row p-4 text-break">
                   ${this.realDescription}
                   <div>
+                  <p>
                     <h5>Välkommen!</h5>
+                    </p>
                   </div>
                 </div>    
             <div class="row p-4 border-0">    
