@@ -71,8 +71,14 @@ class ObjectPage extends Base {
                 <div class="col-8 p-2">
                 <a href="#map"><img class="img-thumbnail" style="height:250px;width:%;" src="/images/${this.Id}/img14.jpg"></a>
             </div>
+            <div class="row p-4 text-break">
+                  ${this.realDescription}
+                  <div>
+                    <h5>Välkommen!</h5>
+                  </div>
+                </div>    
             <div class="row p-4 border-0">    
-                  <div class="col-12 border shadow mt-3">
+                  <div class="col-12 border shadow mb-4 mt-3">
                   <div class="row">
                   <div class="col-md-4 col-sm-12 col-lg-3 mt-3">
                     <a href="/real-estate-agent/${this.brokerId}"><img src="../images/${this.imageUrl}"
@@ -130,12 +136,7 @@ class ObjectPage extends Base {
                     
                   </div>    
                 </div>
-                <div class="row p-4 text-break">
-                  ${this.realDescription}
-                  <div>
-                    <h5>Välkommen!</h5>
-                  </div>
-                </div>    
+                
       
                 <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img02.jpg"><br>
                 <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img03.jpg"><br>
