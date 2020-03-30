@@ -44,6 +44,10 @@ class ObjectPage extends Base {
                 <h2 class="h2">Till salu: ${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2></p>
                     
                     <p class="">${this.description}</p>
+                    <h5>
+                    ${ this.viewingsSelection.length === 1 ? '<p>Visning:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''
+                || this.viewingsSelection.length === 2 ? '<p>Visningar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}                
+                </h5>
                 </div>
               </div>
             </div>
@@ -53,29 +57,21 @@ class ObjectPage extends Base {
 
             </div>
     
-                <div class="card" style="border: 0px">
-                <div class="card-body">
-                  <div class="card-text">
-      
-                    <p class="h3">${this.areaName}, ${this.regionName}</p>
-                    <strong>Antal rum:</strong> ${this.rooms}<br>
-                    <strong>Boarea:</strong> ${this.area} m²<br>
-                    <strong>Pris:</strong> ${app.regExPrice(this.price)} kr<br>
-                    <strong>Byggår:</strong> ${this.buildYear}<br>
-                    <strong>Driftkostnad:</strong> ${app.regExPrice(this.maintenanceCost)} /år<br>
-                    <strong>Bostadstyp:</strong> ${this.tenure}<br>                
-                    ${ this.viewingsSelection.length === 1 ? '<div><strong>Visning: </strong></div>' + this.viewingsSelection.map(viewings => '<p class="my-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''
-                || this.viewingsSelection.length === 2 ? '<div><strong>Visningar: </strong></div>' + this.viewingsSelection.map(viewings => '<p class="my-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}
-
-
-                  
-                </div >
+            <div class="card" style="border: 0px">
+            <div class="row p-4 m-0">
+                <div class="col-4">     
+                <p class="h3">${this.areaName}, ${this.regionName}</p>
+                <strong>Antal rum:</strong> ${this.rooms}<br>
+                <strong>Boarea:</strong> ${this.area} m²<br>
+                <strong>Pris:</strong> ${app.regExPrice(this.price)} kr<br>
+                <strong>Byggår:</strong> ${this.buildYear}<br>
+                <strong>Driftkostnad:</strong> ${app.regExPrice(this.maintenanceCost)} /år<br>
+                <strong>Bostadstyp:</strong> ${this.tenure}<br>                
                 </div>
-      
-
-                <div class="row p-4 border-0">
-                
-      
+                <div class="col-8 p-2">
+                <a href="#map"><img class="img-thumbnail" style="height:250px;width:%;" src="/images/${this.Id}/img14.jpg"></a>
+            </div>
+            <div class="row p-4 border-0">    
                   <div class="col-12 border shadow mt-3">
                   <div class="row">
                   <div class="col-md-4 col-sm-12 col-lg-3 mt-3">
@@ -154,6 +150,7 @@ class ObjectPage extends Base {
                 <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img12.jpg"><br>
                 <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img13.jpg"><br>
                 <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img14.jpg"><br>
+                <a id="map"></a>
               </div>
             </div>
           </div>
