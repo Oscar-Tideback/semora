@@ -45,9 +45,9 @@ class ObjectPage extends Base {
                     
                     <p class="">${this.description}</p>
                     <h5>
-                    ${ this.viewingsSelection.length === 1 ? '<p>Visning:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''
-                || this.viewingsSelection.length === 2 ? '<p>Visningar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}                
-                </h5>
+                    <!--${ this.viewingsSelection.length === 1 ? '<p>Visning:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : 'p'
+                || this.viewingsSelection.length === 2 ? '<p>Visningar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : 'b'}                
+                --></h5>
                 </div>
               </div>
             </div>
@@ -76,7 +76,6 @@ class ObjectPage extends Base {
                   <div>
                   <p>
                     <h5>Välkommen!</h5>
-                    </p>
                   </div>
                 </div>    
             <div class="row p-4 border-0">    
