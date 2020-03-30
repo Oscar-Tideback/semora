@@ -11,8 +11,6 @@ class App extends Base {
 
   async mount() {
 
-
-
     await sql(/*sql*/`USE DhyrRumson.db`);
 
     // SQL query must result in 20 objects with unique id for unique routes. No duplicates!
@@ -47,12 +45,10 @@ class App extends Base {
     ];
 
     this.navBar = new NavBar({ links: this.navBarLinks });
-    this.navBarSearch = new NavBarSearch();
+    this.navBarSearch = new NavBarSearch({ searchHits: [] });
     this.heroSection = new HeroSection();
     this.footer = new Footer();
     this.startPage = new StartPage();
-    this.buyerPage = new BuyerPage({ searchResult: [], textInput: '', regionName: '' });
-    this.buyerPageSearch = new BuyerPageSearch({ formStoredValues: [], regionSelection: [], });
     this.contactPage = new ContactPage();
     this.sellerPage = new SellerPage();
     this.aboutUsPage = new AboutUsPage();
@@ -60,16 +56,22 @@ class App extends Base {
     this.integrityPage = new IntegrityPage();
     this.agentsPage = new AgentsPage();
 
+    // Setting buyerPage... stuff here!
+    this.buyerPage = new BuyerPage({ searchResult: [], textInput: '', regionName: '' });
+    this.buyerPageSearch = new BuyerPageSearch({ formOptions: [], formInput: [], formStoredValues: [], regionSelection: [], });
+    this.buyerPageSearch.formInput = new FormData();
+    this.buyerPageSearch.popFormOptions();
+    this.buyerPageSearch.setInitialFormValues();
   }
 
 
   render() {
     return /*html*/`
-      <div class="container main-wrapper pl-0 pr-0" base-title="Dhyr & Rumson: ">
+      <div class="container main-wrapper pl-0 pr-0 shadow-lg" base-title="Dhyr & Rumson: ">
         <header>
           ${this.heroSection}
           ${this.navBar}
-          <!-- Keep navBarSearch after navBar -->
+          <!-- Keep navBarSearch after navBar! -->
           ${this.navBarSearch}
         </header>
         <main>

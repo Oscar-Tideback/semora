@@ -1,9 +1,9 @@
 class NavBarSearch extends Base {
 
   mount() {
-    this.searchHits = [];
     this.selected = -1;
     this.keyword = '';
+    this.isSearching = false;
 
     // Click anywhere hides dropdown. Try add preexisting click event on <body> instead? Test later...
     document.addEventListener("click", function (e) {
@@ -18,10 +18,10 @@ class NavBarSearch extends Base {
   clickKeyword(e) {
     this.searchHits = [];
     this.selected = -1;
-    // Maybe try a query on event target instead later and try avoid undefined or giving elements duplicate id's. This feels to hardcoded
-    this.render();
+    // Maybe try a query on event target instead later and try avoid undefined or giving multiple elements duplicate id's
     this.doSearch(e.target.id);
   }
+
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
       e.preventDefault();
@@ -29,21 +29,24 @@ class NavBarSearch extends Base {
       // Have inserted an extra non-search generated <button> under <select> so length has to be +1
       if (this.selected < 0) { this.selected = (this.searchHits.length + 1) - 1; }
       if (this.selected >= (this.searchHits.length + 1)) { this.selected = 0; }
+
       this.render();
-      return;
     }
   }
+
   async searchKeyword(e) {
-    if (['ArrowUp', 'ArrowDown'].includes(e.key)) { return; }
-    this.preventPageReload(e);
+    if (['ArrowUp', 'ArrowDown'].includes(e.key) || document.querySelector('[id="navBarTextInput"]').value.length < 2 || this.isSearching) return;
     if (e.key === 'Enter' && this.selected >= 0) {
-      // Ugly adjust for +1 extra <button> under <select>
+      // Minus 1. Ugly adjust for +1 extra <button> under <select>
+      //console.log((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
       this.doSearch((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
       this.searchHits = [];
       this.selected = -1;
-      this.render();
       return;
     }
+
+    this.isSearching = true;
+
     this.selected = 0;
     this.searchHits = e.target.value.length < 1 ? [] : await sql(/*sql*/`
         SELECT regionId, regionName, COUNT(regionName) AS totalHits FROM
@@ -52,11 +55,17 @@ class NavBarSearch extends Base {
                 realEstateInfo, 
                 userXregion ON realEstateInfo.userId = userXregion.userId, 
                 region ON region.id = userXregion.regionId,
-                realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id
-            WHERE realEstateInfo.description LIKE $text
-            OR realEstateInfo.tenure LIKE $text
+                realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
+                areaInfo ON areaInfo.id = realEstateInfo.areaInfoId
+            WHERE realEstateInfo.tenure LIKE $text
             OR realEstateAddress.streetName LIKE $text
             OR region.regionName LIKE $text
+            OR CASE 
+              WHEN LENGTH($text) > 3 THEN (
+                areaInfo.description LIKE $text
+                OR realEstateInfo.description LIKE $text
+                )
+            END
             GROUP BY realEstateInfo.Id
             )
         GROUP BY regionName
@@ -65,10 +74,9 @@ class NavBarSearch extends Base {
 
     this.currentKeyword = e.target.value;
 
-    //console.log(this.searchHits);
-    //console.log('sökord: ' + e.target.value);
-
     this.render();
+
+    this.isSearching = false;
   }
   // -------------------------- End of slightly modified Thomas example-autocomplete --------------------------
 
@@ -80,19 +88,13 @@ class NavBarSearch extends Base {
   }
 
 
-  // Set properties for use in BuyerPageSearch, then BuyerPageSearch.doSearch()
   async doSearch(region) {
-    app.buyerPageSearch.formStoredValues.textinput = document.querySelector('[id="navBarTextInput"]').value.length > 0 ? document.querySelector('[id="navBarTextInput"]').value : '';
+    // Set properties for buyerPageSearch then call buyerPageSearch.doSearch()
+    app.buyerPageSearch.formStoredValues.textinput = await document.querySelector('[id="navBarTextInput"]').value.length > 0 ? document.querySelector('[id="navBarTextInput"]').value : '';
     app.buyerPageSearch.formStoredValues.region = parseInt(region);
-
-    await app.buyerPageSearch.doSearch();
-
-    // Problem: Switching back and forth "fast" from navbar search to buyerpage will result in buyerpage form not being set properly upon page landing
-    // Either the page function (page object) doesn't really exist yet or node.js + SQLite is lagging on my shitty laptop  
-
+    // Populate search results otherwise default search will be made
+    app.buyerPageSearch.doSearch();
     app.goto('/buy-property');
-    //app.buyerPageSearch.render();
-    //app.buyerPage.render();
   }
 
 
@@ -105,10 +107,10 @@ class NavBarSearch extends Base {
       <div not-route="/our-regions">
       <!-- Wrappers above. Ugly fix for multiple not-route's -->
 
-        <div class="search-in-hero-relative-wrapper pr-4">
+        <div class="search-in-hero-relative-wrapper">
           <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch" submit="preventPageReload">
             <div class="input-group">
-              <input type="text" class="form-control nav-bar-search-input rounded form-control-lg" id="navBarTextInput" placeholder="Snabbsök bostad här..." keyup="searchKeyword" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
+              <input type="text" class="form-control nav-bar-search-input rounded form-control-lg" id="navBarTextInput" placeholder="Snabbsök bland bostäder här..." keyup="searchKeyword" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
               ${this.searchHits.length < 1 ? '' : /*html*/`
                 <div class="dropdown-menu show position-absolute" id="dropdown-menu">
                   ${this.searchHits.map((hits, index) => /*html*/`
@@ -123,9 +125,7 @@ class NavBarSearch extends Base {
                   `)}
                 </div>
               `} 
-              <div class="input-group-btn invisible">
-                <button class="btn btn-default" type="submit"><!-- <i class="icofont-search icofont-lg"> --></i></button>
-              </div>
+              <button class="invisible p-0 m-0" type="submit"></button>
             </div>
           </form>
         </div> 
