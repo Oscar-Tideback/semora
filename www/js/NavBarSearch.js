@@ -26,7 +26,6 @@ class NavBarSearch extends Base {
 
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
-      e.preventDefault();
       this.selected += (e.key === 'ArrowDown') - (e.key === 'ArrowUp');
       // Have inserted an extra non-search generated <button> under <select> so length has to be +1
       if (this.selected < 0) { this.selected = (this.searchHits.length + 1) - 1; }

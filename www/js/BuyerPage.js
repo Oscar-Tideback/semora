@@ -6,7 +6,6 @@ class BuyerPage extends Base {
 
   doListLayout() { app.buyerPageSearch.formStoredValues.layout = 0; this.render(); }
   doGridLayout() { app.buyerPageSearch.formStoredValues.layout = 1; this.render(); }
-
   doSort() {
     // If null the form doesn't exist prior to doSort()
     if (document.querySelector('[id="buyerPageSortBy"]') === null) {
@@ -30,7 +29,6 @@ class BuyerPage extends Base {
     }
     this.render();
   }
-
   byPrice(a, b) { return a.price - b.price; }
   byArea(a, b) { return a.area - b.area; }
   byRooms(a, b) { return a.rooms - b.rooms; }
