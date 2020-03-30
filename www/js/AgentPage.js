@@ -28,7 +28,7 @@ class AgentPage extends Base {
     return /*html*/`
 
     <div class="row m-0 p-0" route="/real-estate-agent/${this.id}" page-title="Dhyr & Rumson - Våra mäklare">
-    <div class="col-12 m-0">
+    <div class="col-12 m-1 p-2">
 
       <div class="container d-flex justify-content-center">
 
@@ -54,7 +54,7 @@ class AgentPage extends Base {
             <div class="col-lg-8 col-md-8 col-sm-12">
                 
             <!--Form-->
-            <div class="col-12 mt-2">
+            <div class="col-12 mt-2 pb-4">
             <form submit="collectFormData">
             <div class="name-bold text-secondary mt-5">Kontakta mig.</div>
             <div class="md-form">

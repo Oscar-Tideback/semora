@@ -57,7 +57,7 @@ class SellerPage extends Base {
 
                       <!--Body-->
                       <form submit="collectFormData">
-                      <div class="md-form">
+                      <div class="md-form ">
                        
                         <label class="name-email-phone">Namn:</label>
                         <input name="name" type="text"  title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control">         
