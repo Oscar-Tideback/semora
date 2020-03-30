@@ -1,13 +1,14 @@
 class AgentsPage extends Base {
 
   async mount() {
-
+    //Set default "Alla regioner" as selected region
     this.selectedRegion = 0;
 
-    //pop agents
+    //Populate dropdown selections from database
     this.regionSelection = await sql(/*sql*/`
     SELECT * FROM region`);
 
+    //Populate agents to display
     this.foundAgents = await sql(/*sql*/`
     SELECT user.firstName,  user.lastName, user.id,
     user.phone, user.email, user.description, user.imageUrl,
@@ -22,9 +23,10 @@ class AgentsPage extends Base {
   }
 
   async searchAgentRegions(e) {
-
+    //Selected region from dropdown
     this.selectedRegion = parseInt(e.target.value);
 
+    //Populate selected agents from selection by region
     this.foundAgents = await sql(/*sql*/`
       SELECT user.firstName,  user.lastName, user.id,
       user.phone, user.email, user.description, user.imageUrl,
@@ -42,16 +44,22 @@ class AgentsPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row m-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
-        <div class="col-12 m-1 p-2">
+      <div class="row m-0 p-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
+        
+        <div class="col-12 p-0">
 
-          <div class="row m-0">
-            <div class="col-12 m-0 p-2"><h4>
-              Lär känna våra mäklare</h4>
+        <div class="container d-flex justify-content-center">
+
+          <div class="row paragraph-maxwidth">
+            <div class="col">
+             <p class="h2 py-4"> Lär känna våra mäklare</p>
               <p>Kunskap och erfarenhet är tillgångar i alla yrken.<br>
               Till Dhyr & Rumson har vi därför handplockat endast de skickligaste och mest erfarna mäklarna i Stockholm.<br>
               Vi har gjort det av en enda anledning – så att rätt person kan företräda dig i din kanske största affär.</p>
-                <div class="row">
+              </div>
+              </div>
+              </div>
+                <div class="row m-4">
                 <div class="col-12">
                     <p  class="text-black-50 mb-0 pl-1">Visa mäklare per region: </p>
                   <form>
@@ -62,7 +70,7 @@ class AgentsPage extends Base {
                   </form>
                   </div>
                 </div>
-              <div class="row p-3 no-gutter">            
+              <div class="row p-1 m-3 p-4 no-gutter">            
                 ${this.foundAgents.map(user => /*html*/`
                   <div class="mb-3 pl-3 col-lg-2 col-md-2 col-sm-3 p-md-0 p-sm-0 m-sm-0" >
                     <a href="/real-estate-agent/${user.id}">
@@ -77,7 +85,7 @@ class AgentsPage extends Base {
                     </div>
                     <div class="card-text pt-1  ml-2">            
                       <p class="card-text broker-info  name-email-phone"><span class="name-bold">E-Mail:</span>  ${user.email}</p>
-                      <p class="card-text broker-info  name-email-phone"><span class="name-bold">Tel:</span>  ${user.phone.toString().replace(/\B(?=(\d{3})+(\d{4})+(?!\d))/g, " ")}</p>
+                      <p class="card-text broker-info  name-email-phone"><span class="name-bold">Tel:</span>  ${app.regExPhoneNumber(user.phone)}</p>
                       <p class="card-text broker-info  name-region pb-5"><span class="name-bold">Region:</span> ${user.region_names}.</p>
                       
                     </div>

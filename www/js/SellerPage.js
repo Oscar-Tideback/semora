@@ -23,20 +23,27 @@ class SellerPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row p-4 m-0" route="/sell-property" page-title="Sälja bostad">
-        <div class="container my-4"> 
+
+    <div class="row m-0 p-0 pt-4" route="/sell-property" page-title="Sell property">  
+    <div class="col-12 p-0">
+
+      <div class="container d-flex justify-content-center">
+       <div class="row paragraph-maxwidth">
+
             <!--Section: Contact v.1-->
-              <section class="section pb-5 p-0">
+              <section class="section p-0">
 
               <!--Section heading-->
-              <p class="section-heading h2 pt-4 col-12 text-center">Kontakta eller besök oss.</p>
+              <p class="section-heading py-0 h1 text-center">Kontakta eller besök oss</p>
               <!--Section description-->
               <p class="section-description pb-4 text-center">Vi har just flyttat till nya fina lokaler centralt belägna på södermalm i Stockholm, välkommen.</p>
-
-              <div class="row">
+              </div>
+              </div>
+              <div class="col-12">
+               <div class="row p-4">
 
                 <!--Grid column-->
-                <div class="col-lg-5 mb-4">
+                <div class="col-lg-5">
 
                   <!--Form with header-->
                   <div class="card">
@@ -50,7 +57,7 @@ class SellerPage extends Base {
 
                       <!--Body-->
                       <form submit="collectFormData">
-                      <div class="md-form">
+                      <div class="md-form ">
                        
                         <label class="name-email-phone">Namn:</label>
                         <input name="name" type="text"  title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control">         
@@ -116,6 +123,7 @@ class SellerPage extends Base {
               </div>
 
               </section>
+              </div>
           <!--Section: Contact v.1-->
           <!--Thank you modal-->
           </div>
