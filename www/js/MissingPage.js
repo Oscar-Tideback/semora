@@ -8,7 +8,7 @@ class MissingPage extends Base {
           <div class="container d-flex justify-content-center">
            <div class="row paragraph-maxwidth">
             <div class="col">
-              <h2>Could not find that page! 😢</h2>
+              <p class="section-heading h1 text-center">Could not find that page! 😢</p>
               <p>We are sorry, but we could not find that page.</p>
               <p><a href="/">Click here to goto the start page</a>.</p>
              </div>

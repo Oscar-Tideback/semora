@@ -6,9 +6,9 @@ class IntegrityPage extends Base {
 
           <div class="container d-flex justify-content-center">
            <div class="row paragraph-maxwidth">
-            <div class="col">
-              <h2>INTEGRITETSPOLICY</h2>
-              <br><br>
+            <div class="col"><p>
+              <p class="section-heading h2 text-left">Integritetspolicy</p>
+              <p><br>
               Här hittar du information om hur Dhyr & Rumson hanterar personuppgifter:
               <br><br>
               1. ALLMÄNT
