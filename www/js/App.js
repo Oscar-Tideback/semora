@@ -49,7 +49,6 @@ class App extends Base {
     this.heroSection = new HeroSection();
     this.footer = new Footer();
     this.startPage = new StartPage();
-    this.contactPage = new ContactPage();
     this.sellerPage = new SellerPage();
     this.aboutUsPage = new AboutUsPage();
     this.missingPage = new MissingPage();

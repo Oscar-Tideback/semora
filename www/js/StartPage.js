@@ -31,7 +31,7 @@ class StartPage extends Base {
 
           <div class="container d-flex justify-content-center">
 
-            <div class="row pg-startpage">
+            <div class="row paragraph-maxwidth">
               <div class="col">
                 <p>
                 <h2 class="pb-4">Välkommen till Dhyr & Rumson</h2>
@@ -67,7 +67,7 @@ class StartPage extends Base {
                   <div class="carousel-caption d-none d-sm-block">
                     <h3 class="carousel-title-caption">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ', <span class="carouselAdj">' + obj.floor + ' tr'}</span></h3>
                     ${obj.areaName}, ${obj.regionName}<br>
-                    ${obj.rooms} rum, ${obj.area} m², ${obj.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")} kr 
+                    ${obj.rooms} rum, ${obj.area} m², ${app.regExPrice(obj.price)} kr 
                   </div>
                 </div>
               ` : ''))}
@@ -85,7 +85,7 @@ class StartPage extends Base {
 
           <div class="container d-flex justify-content-center">
 
-            <div class="row py-4 pg-startpage">
+            <div class="row py-4 paragraph-maxwidth">
               <div class="col">
                 <p>
                   <h2 class="pb-4">Våra tjänster hjälper dig att köpa tryggt</h2>

@@ -21,7 +21,7 @@ class ObjectPage extends Base {
               
                     <div class= "col-12 pl-0 pr-0 pb-0 mt-0">
                     <div class="col-sm-12 p-0 mt-0">
-                    <h2 class="m-3">Till salu: ${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2>
+                    <h1 class="m-3">Till salu: ${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h1>
                     <h4 class="m-3"><strong>${this.areaName}, ${this.regionName}<br></strong></h4>
                     <p class="m-3">${this.description}</p>
                       
