@@ -5,8 +5,8 @@ class NavBar extends Base {
     <div class="container-md shadow mb-4">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div><!-- <a class="navbar-brand" href="/">Dhyr & Rumson</a> Replaced by clickable HERO. But do not remove this div --></div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-menutext mr-3">MENY</span> <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler btn-block btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icofont-navigation-menu icofont-lg"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
