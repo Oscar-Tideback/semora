@@ -10,7 +10,8 @@ class AboutUsPage extends Base {
 
         <div class="row paragraph-maxwidth">
           <div class="col">
-            <p class="py-4 h2">Vilka är vi</p>
+          <p>
+          <h2 class="py-4">Vilka är vi</h2></p>
             
             Det är som det ofta är med företag av alla de slag. Vissa satsar på volym – andra på kvalitet. <br>
             På Dhyr & Rumson försöker vi inte bli störst utan i stället satsar vi på att vara bäst. 
