@@ -2,9 +2,6 @@ class StartPage extends Base {
 
   async mount() {
 
-    this.today = new Date();
-    console.log(this.today.getDate());
-
     // Listing (below carousel) starts where the carousel ends in searchResult (SQL result)
     this.carouselEnd = this.listingStart = 5;
     this.showThisMany = 14;
@@ -39,16 +36,23 @@ class StartPage extends Base {
                   Välkommen ett steg upp till det lite finare.
                 </p>
               </div>
+            </div>  
+          </div>
+          <div class="container d-flex justify-content-center">
+            <div class="row">
+              <div class="col py-2 text-center">
+                <img src="images/HR_top.png" width="210px">
+              </div>
             </div>
           </div>
           <!-- Carousel container starts here -->
-          <div id="carouselExampleCaptions" class="carousel slide py-4 my-4" data-ride="carousel">
+          <div id="carouselExampleCaptions" class="carousel slide pb-4 mb-4" data-ride="carousel">
             <ol class="carousel-indicators">
               ${this.searchResult.map((obj, index) => (index < this.carouselEnd ? /*html*/`
                   <li data-target="#carouselExampleCaptions" data-slide-to="${index}" class="${index > 0 ? '' : 'active'}"></li>
                   ` : ''))}
             </ol>
-            <div class="carousel-inner">
+            <div class="carousel-inner">                
               <div class="carousel-relative-wrapper">
                 <div class="carousel-title-container">
                   <h2 class="carousel-title-text">Urval av bostäder</h2>
@@ -79,7 +83,6 @@ class StartPage extends Base {
           </div>
 
           <div class="container d-flex justify-content-center">
-
             <div class="row py-4 paragraph-maxwidth">
               <div class="col">
                 <p>
@@ -99,12 +102,22 @@ class StartPage extends Base {
           </div>
 
           <div class="container">
-            <div class="row py-4">
+            <div class="row pt-4">
               <div class="col-12 text-center">
-                <h1>Andra bostäder till salu</h1>
+                <img src="images/HR_top.png" class="img-fluid" width="300px">
               </div>
             </div>
-            <!-- new row -->
+            <div class="row">
+              <div class="col-12 my-2 text-center">
+                <div class="startpage-listing-title">Andra bostäder till salu</div>
+              </div>
+            </div>
+            <div class="row pb-2">
+              <div class="col-12 text-center">
+                <img src="images/HR_bottom.png" class="img-fluid" width="350px">
+              </div>
+            </div>
+            <!-- new rows -->
             ${app.buyerPage.gridLayout(this.searchResult, this.listingStart)}
           </div >
 

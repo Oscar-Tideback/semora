@@ -89,21 +89,37 @@ p, .paragraph-maxwidth {
   position: absolute;
   font-family: Great Vibes; 
   font-size: 90px;   // Setting static size
-  top: 20px;
-  margin-left: 30px;
+  top: 35px;
+  margin-left: 20px;
+  line-height: .75;
 
-  @media (max-width: 576px) {
-    font-size: 45px;   // Setting static size
-    top: 10px;
-    margin-left: 20px;
+  .hero-title-slogan {
+    font-weight: 600; 
+    width: 100%; 
+    font-size: 32px;
   }
 
   @media (min-width: 576px) and (max-width: 768px) {
     font-size: 70px;   // Setting static size
-    top: 10px;
-    margin-left: 20px;
+    top: 20px;
+    margin-left: 10px;
+
+    .hero-title-slogan {
+      font-size: 26px;
+      //padding-right: 20px;
+    }
   }
     
+  @media (max-width: 576px) {
+    font-size: 45px;   // Setting static size
+    top: 20px;
+    margin-left: 10px;
+
+    .hero-title-slogan {
+      visibility: hidden;
+    }
+  }
+
 }
 
 .hero-wrapper { 
@@ -210,11 +226,26 @@ p, .paragraph-maxwidth {
 color: rgb(0, 0, 0)
 }
 
+.startpage-listing-title {
+  font-size: $h1-font-size;
+  font-weight: $headings-font-weight;
+  @media (max-width: 576px) {
+    font-size: $h2-font-size;
+  }
+}
+
+
 // Floating elements wrapper/holder
 .carousel-relative-wrapper {
   position: relative; 
   width: 50%;
   height:100%
+}
+
+@media (max-width: 768px) {
+  .carousel-indicators {
+    bottom: -25px !important;
+  }
 }
 
 // Wrapper. Ugly fix for centering. Bootstrap might have premade solution. Check all wrappers later on...

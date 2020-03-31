@@ -51,7 +51,7 @@ class BuyerPage extends Base {
     //console.log('buyerPage searchResult: ', this.searchResult)
     //console.log('from stored:' + app.buyerPageSearch.formStoredValues.textinput);
     return /*html*/`
-          <div class="row m-0 pb-0" route="/buy-property" page-title="Dhyr & Rumson - Våra Bostad">            
+          <div class="row m-0 pb-0" route="/buy-property" page-title="Dhyr & Rumson - Våra Bostad">
             <div class="col-12">            
 
               <div class="row pt-4 mt-4">
@@ -84,7 +84,7 @@ class BuyerPage extends Base {
               </div>
 
               <!-- new row -->
-              ${app.buyerPageSearch.formStoredValues.layout < 1 ? this.listLayout(this.searchResult) : this.gridLayout(this.searchResult)}            
+              ${app.buyerPageSearch.formStoredValues.layout < 1 ? this.listLayout(this.searchResult) : this.gridLayout(this.searchResult)}
             </div>       
           </div>
           `;
@@ -100,7 +100,8 @@ class BuyerPage extends Base {
                     <div class="row no-gutters">
 
                       <div class="col-6 col-sm-auto order-1">
-                        <img src="images/${obj.imgUrl}" class="card-img rounded-0 shadow" style="max-width: 285px;" alt="...">                      
+                        ${this.checkViewing(obj.startDatetime)}
+                        <img src="images/${obj.imgUrl}" class="card-img rounded-0 shadow" style="max-width: 285px;" alt="...">
                       </div>
                       <div class="col-12 col-sm-12 col-md order-3 order-sm-3 order-md-2 order-lg-2">
                         <div class="card-body p-md-2 p-lg-3">
@@ -137,6 +138,7 @@ class BuyerPage extends Base {
                   <div class="col d-flex justify-content-center">
                       <div class="card my-4 estate-card shadow">
                         <a href="/real-estate-info/${obj.id}" objectid="${obj.id}" class="text-decoration-none">
+                          ${this.checkViewing(obj.startDatetime)}
                           <img src="images/${obj.imgUrl}" targetbostadid="${obj.id}" class="card-img-top" alt="Bostad picture">
                           <div class="card-body pr-4">
                             <p class="card-text">
@@ -149,7 +151,7 @@ class BuyerPage extends Base {
                             <div class="row">
                               <div class="col">
                                 <div class="card-text">
-                                  <b>${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr</b>                            
+                                  <b>${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr</b>
                                 </div>
                               </div>
                               <div class="col-auto">
@@ -158,11 +160,28 @@ class BuyerPage extends Base {
                             </div>
                           </div>
                         </a>
-                      </div>                    
+                      </div>
                   </div>
                 ` : ''))}
               </div>  
     `;
   }
+
+
+  checkViewing(str) {
+    // Maybe compare number of days left (2 weeks ahead?) before viewing date? Fix later!
+    // Note: RealEstate objects can have multiple viewings in DB
+    // Maybe avoid more SQL queries by solving using CONCAT sql and creating array with viewing dates
+
+    //let viewing = new Date(str.slice(0, 10) + 'T' + str.slice(11, 16) + ':00Z');
+    //return (Date.now() < viewing ? 'visning snart' : '');
+
+    return str === null ? '' : (/*html*/`
+    <div class="relative-wrapper">
+      <div class="bg-warning py-1 px-2" style="position: absolute">Visning snart</div>
+    </div>    
+    `);
+  }
+
 
 }

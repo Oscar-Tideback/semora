@@ -63,6 +63,7 @@ class BuyerPageSearch extends Base {
           realEstateAddress ON realEstateAddress.realEstateId = realEstateInfo.Id,
           areaInfo ON areaInfo.id = realEstateInfo.areaInfoId,
           realEstateImages ON realEstateImages.realEstateInfoId = realEstateInfo.Id
+          LEFT JOIN viewings ON viewings.realEstateId = realEstateInfo.Id
         WHERE realEstateInfo.tenure IN ($opt2,$opt3,$opt4,$opt5,$opt6,$opt7,$opt8)
         AND imgUrl LIKE '%img01%'
         AND CAST(realEstateInfo.price AS int) < $maxprice   
