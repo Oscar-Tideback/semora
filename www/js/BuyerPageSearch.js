@@ -132,7 +132,7 @@ class BuyerPageSearch extends Base {
   }
 
   render() {
-    // Always do a default search
+    // Always do a search by default
     app.buyerPage.searchResult.length < 1 ? this.doSearch() : '';
 
     return /*html*/`
