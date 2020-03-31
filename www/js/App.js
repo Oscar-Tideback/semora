@@ -57,7 +57,7 @@ class App extends Base {
 
     // Setting buyerPage... stuff here!
     this.buyerPage = new BuyerPage({ searchResult: [], textInput: '', regionName: '' });
-    this.buyerPageSearch = new BuyerPageSearch({ formOptions: [], formInput: [], formStoredValues: [], regionSelection: [], });
+    this.buyerPageSearch = new BuyerPageSearch({ formOptions: [], formInput: [], formStoredValues: [], regionSelection: [] });
     this.buyerPageSearch.formInput = new FormData();
     this.buyerPageSearch.popFormOptions();
     this.buyerPageSearch.setInitialFormValues();
