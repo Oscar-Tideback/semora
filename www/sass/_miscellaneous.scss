@@ -36,6 +36,10 @@ html {
   background-color: rgb(160, 160, 160);
 }
 
+.icofont-gray {
+color: rgb(160, 160, 160)
+}
+
 h1, h2, h3, h4, h5 {
   font-weight: 600;
 }
@@ -102,35 +106,46 @@ p, .paragraph-maxwidth {
     
 }
 
-// Floating elements holder/wrapper
-.search-in-hero-relative-wrapper {
+.magnifier-search-button {
+  position: absolute; 
+  left: -60px; 
+  top: 5px; 
+  z-index: 3
+}
+
+@media (max-width: 576px) {
+.hidden-hr {
+  visibility: visible;
+  }
+}
+
+@media (min-width: 576px) {
+.hidden-hr {
+  visibility: hidden;
+  }
+}
+
+// Generic floating elements holder/wrapper
+.relative-wrapper {
   position: relative;
 }
 
 // Styling and media toggle for the navbar searchfield and button in navbar
 .search-in-hero {
   width: 40%;
-  top: 8px;
-  right: 10px;
+  right: 15px;
   color: rgb(255, 255, 255);
   position: absolute;
   // Adjust this accordingly depending on hero images pixel height
-  top: -150px;
+  top: -176px;
 
   // Move searchform below navbar when toggled hamburger menu
   @media (max-width: 992px) {
     position: relative;
-    width: 90%;
-    top: -10px;
+    width: 85%;
+    top:  0px;
     right: 0px;
-    margin: 60px auto 30px auto;
-  }
-  // Inherit/nested. Toggled no-hamburger menu 
-  @media (min-width: 992px) {
-    .icofont-search.navbar-search-icon {
-      // Adjust to other color (unused at this moment)
-      color:#000;
-    }
+    margin: 70px auto 40px auto;
   }
 
   // Inherit/nested
@@ -179,10 +194,25 @@ p, .paragraph-maxwidth {
   background-repeat: no-repeat;
   z-index: 1;
   text-align: center; 
+
+  @media (max-width: 768px) {
+    width: 644px; 
+    right: -322px; 
+    height: 150px;
+    resize: both;
+    background-size: contain;
+  }
+
 }
 
 .carousel-title-text {
   margin-top: 5px;
+
+  @media (max-width: 768px) {
+      margin-top: 0px;
+      font-size: $h3-font-size;
+  }
+
 }
 
 .carousel-ornament-bottom {

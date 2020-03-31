@@ -4,6 +4,7 @@ class NavBarSearch extends Base {
     this.selected = -1;
     this.keyword = '';
     this.isSearching = false;
+    this.isQuerying = false;
 
     // Click anywhere hides dropdown. Try add preexisting click event on <body> instead? Test later...
     document.addEventListener("click", function (e) {
@@ -15,6 +16,7 @@ class NavBarSearch extends Base {
 
 
   // -------------------------- Start of slightly modified Thomas example-autocomplete --------------------------
+
   clickKeyword(e) {
     this.searchHits = [];
     this.selected = -1;
@@ -24,7 +26,6 @@ class NavBarSearch extends Base {
 
   selectWithUpDownArrows(e) {
     if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
-      e.preventDefault();
       this.selected += (e.key === 'ArrowDown') - (e.key === 'ArrowUp');
       // Have inserted an extra non-search generated <button> under <select> so length has to be +1
       if (this.selected < 0) { this.selected = (this.searchHits.length + 1) - 1; }
@@ -35,7 +36,12 @@ class NavBarSearch extends Base {
   }
 
   async searchKeyword(e) {
+    //if (this.isSearching) console.log("Search was already running!");
     if (['ArrowUp', 'ArrowDown'].includes(e.key) || document.querySelector('[id="navBarTextInput"]').value.length < 2 || this.isSearching) return;
+
+    // Seems multiple threads might be cauing a problem. Just making sure
+    this.isSearching = true;
+
     if (e.key === 'Enter' && this.selected >= 0) {
       // Minus 1. Ugly adjust for +1 extra <button> under <select>
       //console.log((this.selected - 1) < 0 ? 0 : this.searchHits[this.selected - 1].regionId);
@@ -44,8 +50,6 @@ class NavBarSearch extends Base {
       this.selected = -1;
       return;
     }
-
-    this.isSearching = true;
 
     this.selected = 0;
     this.searchHits = e.target.value.length < 1 ? [] : await sql(/*sql*/`
@@ -78,6 +82,7 @@ class NavBarSearch extends Base {
 
     this.isSearching = false;
   }
+
   // -------------------------- End of slightly modified Thomas example-autocomplete --------------------------
 
 
@@ -107,10 +112,10 @@ class NavBarSearch extends Base {
       <div not-route="/our-regions">
       <!-- Wrappers above. Ugly fix for multiple not-route's -->
 
-        <div class="search-in-hero-relative-wrapper">
+        <div class="relative-wrapper">
           <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch" submit="preventPageReload">
             <div class="input-group">
-              <input type="text" class="form-control nav-bar-search-input rounded form-control-lg" id="navBarTextInput" placeholder="Snabbsök bland bostäder här..." keyup="searchKeyword" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
+              <input type="text" class="form-control nav-bar-search-input rounded form-control-lg shadow" id="navBarTextInput" placeholder="Snabbsök bland bostäder här..." keyup="searchKeyword" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
               ${this.searchHits.length < 1 ? '' : /*html*/`
                 <div class="dropdown-menu show position-absolute" id="dropdown-menu">
                   ${this.searchHits.map((hits, index) => /*html*/`
@@ -125,7 +130,9 @@ class NavBarSearch extends Base {
                   `)}
                 </div>
               `} 
-              <button class="invisible p-0 m-0" type="submit"></button>
+              <div class="relative-wrapper">
+                  <div class="btn btn-default magnifier-search-button"><i class="icofont-search-1 icofont-lg"></i></div>
+              </div>
             </div>
           </form>
         </div> 
