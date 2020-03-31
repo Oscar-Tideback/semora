@@ -2,7 +2,7 @@ class NavBar extends Base {
 
   render() {
     return /*html*/`
-    <div class="container-md shadow mb-4">
+    <div class="container-md mb-4">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div><!-- <a class="navbar-brand" href="/">Dhyr & Rumson</a> Replaced by clickable HERO. But do not remove this div --></div>
         <button class="navbar-toggler btn-block btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

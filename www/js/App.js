@@ -68,10 +68,12 @@ class App extends Base {
     return /*html*/`
       <div class="container main-wrapper pl-0 pr-0 shadow-lg" base-title="Dhyr & Rumson: ">
         <header>
-          ${this.heroSection}
-          ${this.navBar}
-          <!-- Keep navBarSearch after navBar! -->
-          ${this.navBarSearch}
+          <div class="shadow">
+            ${this.heroSection}
+            ${this.navBar}
+            <!-- Keep navBarSearch after navBar! -->
+            ${this.navBarSearch}
+          </div>
         </header>
         <main>
           ${this.startPage}

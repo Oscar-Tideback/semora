@@ -166,17 +166,17 @@ p, .paragraph-maxwidth {
 // Styling and media toggle for the navbar searchfield and button in navbar
 .search-in-hero {
   width: 40%;
-  right: 15px;
+  right: 10px;
   color: rgb(255, 255, 255);
   position: absolute;
   // Adjust this accordingly depending on hero images pixel height
-  top: -176px;
+  top: -97px;
 
   // Move searchform below navbar when toggled hamburger menu
   @media (max-width: 992px) {
     position: relative;
     width: 85%;
-    top:  0px;
+    top:  -50px;
     right: 0px;
     margin: 70px auto 40px auto;
   }
