@@ -140,9 +140,19 @@ class BuyerPageSearch extends Base {
       <div class="row m-0 p-0" route="/buy-property" page-title="Köpa bostad">
         <div class="col-12">
 
-          <div class="row p-4">
-            <div class="col pt-4 text-center">
-              <h2>Sök drömbostaden...</h2>
+          <div class="row pt-4">
+            <div class="col-12 text-center">
+              <img src="images/HR_top.png" class="img-fluid" width="300px">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 my-2 text-center">
+              <div class="startpage-listing-title">Sök drömbostaden...</div>
+            </div>
+          </div>
+          <div class="row pb-1">
+            <div class="col-12 text-center">
+              <img src="images/HR_bottom.png" class="img-fluid" width="350px">
             </div>
           </div>
 
