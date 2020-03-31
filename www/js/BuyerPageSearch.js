@@ -1,5 +1,9 @@
 class BuyerPageSearch extends Base {
 
+  mount() {
+    this.regionSelection = await sql(/*sql*/`SELECT * FROM region ORDER BY region.regionName`);
+  }
+
   async doSearch(e) {
     this.preventPageReload(e);
 
@@ -271,8 +275,6 @@ class BuyerPageSearch extends Base {
   }
 
   async popFormOptions() {
-    this.regionSelection = await sql(/*sql*/`SELECT * FROM region ORDER BY region.regionName`);
-
     this.formOptions.minRooms = [
       { name: 'Alla', value: 0 },
       { name: 'Minst 1 rum', value: 1 },
