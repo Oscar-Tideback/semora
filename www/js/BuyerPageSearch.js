@@ -1,6 +1,6 @@
 class BuyerPageSearch extends Base {
 
-  mount() {
+  async mount() {
     this.regionSelection = await sql(/*sql*/`SELECT * FROM region ORDER BY region.regionName`);
   }
 
