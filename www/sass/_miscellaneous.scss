@@ -106,6 +106,17 @@ p, .paragraph-maxwidth {
     
 }
 
+.hero-wrapper { 
+  height: 290px;
+  overflow-x: visible; 
+  overflow: visible; 
+
+  @media (max-width: 1199px) { height: 245px; }
+  @media (max-width: 992px) { height: 255px; }
+  @media (max-width: 768px) { height: 195px; }
+  @media (max-width: 576px) { height: 145px; }
+}
+
 .magnifier-search-button {
   position: absolute; 
   left: -60px; 
@@ -125,9 +136,31 @@ p, .paragraph-maxwidth {
   }
 }
 
-// Generic floating elements holder/wrapper
+// Generic floating elements holders/wrappers
 .relative-wrapper {
   position: relative;
+}
+.footer-badge {
+   position: absolute; 
+   left: 0px; 
+   top: -150px;
+   width: 100%;
+
+  // Non "standard bootstrap" breakpoints
+  @media (max-width: 530px) {
+    top: -140px;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+    @media (max-width: 400px) {
+    top: -100px;
+  }
+}
+
+.footer-margin-top {
+  margin-top: $spacer * 7;
 }
 
 // Styling and media toggle for the navbar searchfield and button in navbar
@@ -173,8 +206,8 @@ p, .paragraph-maxwidth {
   font-weight: 600;
 }
 
-.navbar-menutext {
-  font-family: Great Vibes; 
+.icofont-navigation-menu {
+color: rgb(0, 0, 0)
 }
 
 // Floating elements wrapper/holder

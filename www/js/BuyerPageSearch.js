@@ -274,7 +274,7 @@ class BuyerPageSearch extends Base {
   `;
   }
 
-  async popFormOptions() {
+  popFormOptions() {
     this.formOptions.minRooms = [
       { name: 'Alla', value: 0 },
       { name: 'Minst 1 rum', value: 1 },
