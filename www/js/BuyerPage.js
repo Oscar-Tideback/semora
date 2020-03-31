@@ -6,29 +6,29 @@ class BuyerPage extends Base {
 
   doListLayout() { app.buyerPageSearch.formStoredValues.layout = 0; this.render(); }
   doGridLayout() { app.buyerPageSearch.formStoredValues.layout = 1; this.render(); }
+
   doSort() {
     // If null the form doesn't exist prior to doSort()
-    if (document.querySelector('[id="buyerPageSortBy"]') === null) {
-      return;
-    }
-    else {
-      this.formInput = document.querySelector('[id="buyerPageSortBy"]');
-      app.buyerPageSearch.formStoredValues.sortby = parseInt(this.formInput.sortby.value);
-      app.buyerPageSearch.formStoredValues.order = parseInt(this.formInput.order.value);
+    if (document.querySelector('[id="buyerPageSortBy"]') === null) return;
 
-      switch (this.formInput.sortby.value + this.formInput.order.value) {
-        case '00': this.searchResult.sort(this.byPrice); break;
-        case '01': this.searchResult.reverse(this.byPrice); break;
-        case '10': this.searchResult.sort(this.byArea); break;
-        case '11': this.searchResult.reverse(this.byArea); break;
-        case '20': this.searchResult.sort(this.byRooms); break;
-        case '21': this.searchResult.reverse(this.byRooms); break;
-        case '30': this.searchResult.sort(this.byRegion); break;
-        case '31': this.searchResult.reverse(this.byRegion); break;
-      }
+    this.formInput = document.querySelector('[id="buyerPageSortBy"]');
+    app.buyerPageSearch.formStoredValues.sortby = parseInt(this.formInput.sortby.value);
+    app.buyerPageSearch.formStoredValues.order = parseInt(this.formInput.order.value);
+
+    switch (this.formInput.sortby.value + this.formInput.order.value) {
+      case '00': this.searchResult.sort(this.byPrice); break;
+      case '01': this.searchResult.reverse(this.byPrice); break;
+      case '10': this.searchResult.sort(this.byArea); break;
+      case '11': this.searchResult.reverse(this.byArea); break;
+      case '20': this.searchResult.sort(this.byRooms); break;
+      case '21': this.searchResult.reverse(this.byRooms); break;
+      case '30': this.searchResult.sort(this.byRegion); break;
+      case '31': this.searchResult.reverse(this.byRegion); break;
     }
+
     this.render();
   }
+
   byPrice(a, b) { return a.price - b.price; }
   byArea(a, b) { return a.area - b.area; }
   byRooms(a, b) { return a.rooms - b.rooms; }
@@ -96,31 +96,34 @@ class BuyerPage extends Base {
             <div class="row">
               ${objsData.map(obj => /*html*/`
                 <div class="card mb-3 rounded-0 shadow w-100">
-                  <div class="row no-gutters">
-                    <div class="col-6 col-sm-auto order-1">
-                      <img src="images/${obj.imgUrl}" class="card-img rounded-0 shadow" style="max-width: 285px;" alt="...">
-                    </div>
-                    <div class="col-12 col-sm-12 col-md order-3 order-sm-3 order-md-2 order-lg-2">
-                      <div class="card-body p-md-2 p-lg-3">
-                        <h5 class="mb-0">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}</h5>
-                        <p class="card-text">${obj.areaName}, ${obj.regionName}, ${obj.rooms} rum, ${obj.area} m²</p>
-                      </div>
-                    </div>
-                    <div class="col-sm col-6 order-2 order-sm-2 order-md-3 order-lg-3">
-                      <div class="row card-body p-md-2 p-lg-3 no-gutters">
-                        <div class="col text-right">
-                          <p>${obj.tenure}</p>
-                        </div>                        
-                      </div>
+                  <a href="/real-estate-info/${obj.id}" objectid="${obj.id}" class="text-decoration-none">
+                    <div class="row no-gutters">
 
-                      <div class="row card-body  pr-md-2 pr-lg-3 py-0 no-gutters">
-                        <div class="col text-right">
-                          <p class="card-text"><b>${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr</b></p>
+                      <div class="col-6 col-sm-auto order-1">
+                        <img src="images/${obj.imgUrl}" class="card-img rounded-0 shadow" style="max-width: 285px;" alt="...">                      
+                      </div>
+                      <div class="col-12 col-sm-12 col-md order-3 order-sm-3 order-md-2 order-lg-2">
+                        <div class="card-body p-md-2 p-lg-3">
+                          <h5 class="mb-0">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}</h5>
+                          <p class="card-text">${obj.areaName}, ${obj.regionName}, ${obj.rooms} rum, ${obj.area} m²</p>
                         </div>
                       </div>
-                    </div>
+                      <div class="col-sm col-md col-6 order-2 order-sm-2 order-md-3 order-lg-3">
+                        <div class="row card-body p-md-2 p-lg-3 no-gutters">
+                          <div class="col text-right">
+                            <p>${obj.tenure}</p>
+                          </div>                        
+                        </div>
 
-                  </div>
+                        <div class="row card-body pr-md-2 pr-lg-3 py-0 no-gutters">
+                          <div class="col text-right">
+                            <p class="card-text"><b>${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr</b></p>
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </a>
                 </div>
               `)}
             </div>
@@ -132,29 +135,30 @@ class BuyerPage extends Base {
               <div class="row">
                 ${objsData.map((obj, index) => (index >= startAtIndex ? /*html*/`
                   <div class="col d-flex justify-content-center">
-                    <div class="card my-4 estate-card shadow">
-                      <a href="/real-estate-info/${obj.id}" objectid="${obj.id}">
-                      <img src="images/${obj.imgUrl}" targetbostadid="${obj.id}" class="card-img-top" alt="Bostad picture"></a>
-                      <div class="card-body pr-4">
-                        <p class="card-text">
-                          <div>                              
-                            <h5>${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}</h5>
-                            ${obj.areaName}, ${obj.regionName}<br>
-                            ${obj.rooms} rum, ${obj.area} m²
-                          </div>
-                        </p>
-                        <div class="row">
-                          <div class="col">
-                            <div class="card-text">
-                              <b>${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr</b>                            
+                    <a href="/real-estate-info/${obj.id}" objectid="${obj.id}" class="text-decoration-none">
+                      <div class="card my-4 estate-card shadow">
+                        <img src="images/${obj.imgUrl}" targetbostadid="${obj.id}" class="card-img-top" alt="Bostad picture">
+                        <div class="card-body pr-4">
+                          <p class="card-text">
+                            <div>                              
+                              <h5>${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}</h5>
+                              ${obj.areaName}, ${obj.regionName}<br>
+                              ${obj.rooms} rum, ${obj.area} m²
                             </div>
-                          </div>
-                          <div class="col-auto">
-                            <div class="card-text text-right">${obj.tenure}</div>
+                          </p>
+                          <div class="row">
+                            <div class="col">
+                              <div class="card-text">
+                                <b>${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr</b>                            
+                              </div>
+                            </div>
+                            <div class="col-auto">
+                              <div class="card-text text-right">${obj.tenure}</div>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
                 ` : ''))}
               </div>  

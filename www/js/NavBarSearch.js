@@ -4,7 +4,6 @@ class NavBarSearch extends Base {
     this.selected = -1;
     this.keyword = '';
     this.isSearching = false;
-    this.isQuerying = false;
 
     // Click anywhere hides dropdown. Try add preexisting click event on <body> instead? Test later...
     document.addEventListener("click", function (e) {
@@ -105,7 +104,6 @@ class NavBarSearch extends Base {
 
   render() {
     return /*html*/`
-      <div not-route="/testpage">
       <div not-route="/real-estate-agents">
       <div not-route="/real-estate-agent">
       <div not-route="/buy-property">
@@ -138,7 +136,6 @@ class NavBarSearch extends Base {
         </div> 
   
       <!-- Wrappers below. Ugly fix multiple not-route's -->
-      </div>
       </div>
       </div>
       </div>

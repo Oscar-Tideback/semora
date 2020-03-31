@@ -93,15 +93,15 @@ p, .paragraph-maxwidth {
   margin-left: 30px;
 
   @media (max-width: 576px) {
-      font-size: 45px;   // Setting static size
-      top: 10px;
-      margin-left: 20px;
+    font-size: 45px;   // Setting static size
+    top: 10px;
+    margin-left: 20px;
   }
 
-      @media (min-width: 576px) and (max-width: 768px) {
-      font-size: 70px;   // Setting static size
-      top: 10px;
-      margin-left: 20px;
+  @media (min-width: 576px) and (max-width: 768px) {
+    font-size: 70px;   // Setting static size
+    top: 10px;
+    margin-left: 20px;
   }
     
 }
@@ -187,19 +187,18 @@ p, .paragraph-maxwidth {
 // Wrapper. Ugly fix for centering. Bootstrap might have premade solution. Check all wrappers later on...
 .carousel-title-container {
   position: absolute; 
-  width: 858px; 
-  right: -429px; 
-  height: 200px;
+  width: 878px; 
+  right: -439px; 
+  height: 220px;
   background-image: url(/images/Semora_Orn_Top.png);
   background-repeat: no-repeat;
   z-index: 1;
   text-align: center; 
 
   @media (max-width: 768px) {
-    width: 644px; 
-    right: -322px; 
-    height: 150px;
-    resize: both;
+    width: 658px; 
+    right: -328px; 
+    height: 165px;
     background-size: contain;
   }
 
@@ -209,23 +208,26 @@ p, .paragraph-maxwidth {
   margin-top: 5px;
 
   @media (max-width: 768px) {
-      margin-top: 0px;
-      font-size: $h3-font-size;
+    margin-top: 0px;
+    font-size: $h3-font-size;
   }
 
 }
 
 .carousel-ornament-bottom {
   position: absolute; 
-  width: 1055px; 
-  height: 228px;
-  right: -527px; 
+  width: 1077px; 
+  height: 241px;
+  right: -539px; 
   bottom: 0px; 
   background-image: url(/images/Semora_Orn_Bottom.png);
   background-repeat: no-repeat;
 
   @media (max-width: 768px) {
-    visibility: hidden;
+  width: 636px; 
+  height: 49px;
+  right: -318px; 
+  background-image: url(/images/Semora_Orn_Bottom_sm.png);
   }
 }
 
@@ -243,14 +245,12 @@ p, .paragraph-maxwidth {
 @media (max-width: 576px) {
   .broker-name {
     font-size: $base-font * 1;
-    
   }
 }
 @media (max-width: 576px) {
   .broker-info {
     margin-left: 14px;
     font-size: $base-font * 1;
-    
   }
 }
 
@@ -316,16 +316,16 @@ background-color: #000;
 }
 
 // Google map
-.map-container-6{
+.map-container-6 {
   overflow:hidden;
   padding-bottom:56.25%;
   position:relative;
   height:0;
-  }
-  .map-container-6 iframe{
+}
+.map-container-6 iframe {
   left:0;
   top:0;
   height:100%;
   width:100%;
   position:absolute;
-  }
+}
