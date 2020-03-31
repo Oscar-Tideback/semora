@@ -24,22 +24,21 @@ class SellerPage extends Base {
   render() {
     return /*html*/`
 
-    <div class="row m-0 p-0 pt-4" route="/sell-property" page-title="Sell property">  
+    <div class="row m-0 p-0" route="/sell-property" page-title="Sell property">  
     <div class="col-12 p-0">
 
       <div class="container d-flex justify-content-center">
-       <div class="row paragraph-maxwidth">
-
+       <div class="row  pt-4 p-4 paragraph-maxwidth">
 
 
 
        
 
             <!--Section: Contact-->
-              <section class="section p-0">
+              <section class="section pt-4">
     
               <!--Section heading-->
-              <h2 class="section-heading py-0">Kontakta eller besök oss</h2>
+              <h2 class="section-heading">Kontakta eller besök oss</h2>
               <!--Section description-->
               <p class="section-description pb-4">Har du bestämt dig för att sälja din bostad?<br> Vi förmedlar samt värderar vissa exlusiva bostäder, villor, bostadsrätter, fritidshus, lägenheter, tomter och fastigheter från norr till söder.<br> Våra mäklare träffar dig gärna för en kostnadsfri värdering av din nuvarande bostad, helt förutsättningslöst.</p>
               </div>

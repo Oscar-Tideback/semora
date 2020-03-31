@@ -37,7 +37,7 @@ class ObjectPage extends Base {
     
           <div class="container d-flex justify-content-center">
 
-            <div class="row paragraph-maxwidth">
+            <div class="row p-4 paragraph-maxwidth">
                 <div class="row py-4 my-4">
                 <p>
                 <h2 class="h2">${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2></p>
@@ -63,9 +63,9 @@ class ObjectPage extends Base {
                   </div>
                 </div>    
     
-            <div class="card" style="border: 0px">
+            <div class="col" style="border: 0px">
             <div class="row p-4 m-0">
-                    <div class="col-4">     
+                    <div class="col-lg-4 col-md-12 col-sm-12">     
                         <p class="h3">${this.areaName}, ${this.regionName}</p>
                         <strong>Antal rum:</strong> ${this.rooms}<br>
                         <strong>Boarea:</strong> ${this.area} m²<br>
@@ -74,9 +74,14 @@ class ObjectPage extends Base {
                         <strong>Driftkostnad:</strong> ${app.regExPrice(this.maintenanceCost)} /år<br>
                         <strong>Bostadstyp:</strong> ${this.tenure}<br>                
                     </div>
-                    <div class="col-8 p-2">
-                        <a href="#map"><img class="img-thumbnail" style="height:250px;width:%;" src="/images/${this.Id}/img14.jpg"></a>
+                    <div class="col-lg-4  col-md-6 col-sm-12 p-2">
+                        <a href="#map"><img class="img-thumbnail  d-flex"  src="/images/${this.Id}/img14.jpg"></a>
                     </div>
+
+                    <div class="col-lg-4 col-md-6 col-sm-12">
+                        <a href="#agent"><img src="../images/${this.imageUrl}" class="img-thumbnail d-flex"   alt="Agent face"></a>
+                    </div>
+
                         <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img02.jpg"><br>
                         <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img03.jpg"><br>
                         <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img04.jpg"><br>
@@ -90,11 +95,13 @@ class ObjectPage extends Base {
                         <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img12.jpg"><br>
                         <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img13.jpg"><br>
                         <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img14.jpg"><br>
-                        <a id="map"></a>                 
+                        <a id="map"></a>   
+              
             <div class="row p-4 border-0">    
-                <div class="col-12 border shadow mb-4 mt-3 bg-info">
+                <div class="col-12 border shadow mb-4 mt-3">
                 
-                <div class="row">
+            <div class="row">
+            <a id="agent"></a> 
 
                 <div class="col-md-4 col-sm-12 col-lg-3 mt-3">
                 <a href="/real-estate-agent/${this.brokerId}"><img src="../images/${this.imageUrl}"
