@@ -113,7 +113,7 @@ class NavBarSearch extends Base {
         <div class="relative-wrapper">
           <form class="navbar-form search-in-hero" action="/buy-property" id="navBarSearch" submit="preventPageReload">
             <div class="input-group">
-              <input type="text" class="form-control nav-bar-search-input rounded form-control-lg shadow" id="navBarTextInput" placeholder="Snabbsök bland bostäder här..." keyup="searchKeyword" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
+              <input type="text" class="form-control nav-bar-search-input rounded form-control-lg shadow" id="navBarTextInput" placeholder="Snabbsök bostäder här..." keyup="searchKeyword" keyup="searchKeyword" keydown="selectWithUpDownArrows" autocomplete="off" autocorrect="off">
               ${this.searchHits.length < 1 ? '' : /*html*/`
                 <div class="dropdown-menu show position-absolute" id="dropdown-menu">
                   ${this.searchHits.map((hits, index) => /*html*/`
