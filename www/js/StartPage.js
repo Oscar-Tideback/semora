@@ -2,6 +2,11 @@ class StartPage extends Base {
 
   async mount() {
 
+
+    store.use('store_latestViewedOjects');
+    // Define it if not exist
+    if (!store.viewedObjects) store.viewedObjects = [];
+
     // Listing (below carousel) starts where the carousel ends in searchResult (SQL result)
     this.carouselEnd = this.listingStart = 5;
     this.showThisMany = 14;
@@ -119,12 +124,43 @@ class StartPage extends Base {
               </div>
             </div>
             <!-- new rows -->
-            ${app.buyerPage.gridLayout(this.searchResult, this.listingStart)}
+            ${app.buyerPage.gridLayout(this.searchResult, false, this.listingStart)}
           </div >
 
         </div >
       </div >
   `;
+  }
+
+  storeViewed(e) {
+
+    let currentElement = e.target;
+    let parent = 0;
+
+    // Find event trigger element in dom-tree recursively max 10 down
+    while (parent < 10) {
+
+      if (currentElement.querySelector('[name="objLink"]')) {
+
+        // Result might be re-sorted so links are ID:ed using [index] of objects in this.searchResult array
+        let objIndex = parseInt(currentElement.querySelector('[id]').id);
+
+        if (store.viewedObjects.find(({ id }) => id === this.searchResult[objIndex].id)) {
+          console.log('found it!');
+          return;
+        }
+        else {
+          store.viewedObjects.unshift(this.searchResult[objIndex]);
+          // Limit amount to 6 object in last viewed output
+          store.viewedObjects.length > 5 ? store.viewedObjects.pop() : '';
+          store.save();
+          return;
+        }
+
+      }
+      currentElement = currentElement.parentElement;
+      parent++;
+    };
   }
 
 }
