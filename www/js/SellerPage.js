@@ -30,33 +30,25 @@ class SellerPage extends Base {
       <div class="container d-flex justify-content-center">
        <div class="row p-4 paragraph-maxwidth">     
 
-            <!--Section contact-->
-              <section class="col section pt-4">
+              <section class="col pt-4">
     
-              <!--Section heading-->
               <a>
-              <h2 class="section-heading">Kontakta eller besök oss</h2></a>
-              <!--Section description-->
-              <p class="section-description pb-4">Har du bestämt dig för att sälja din bostad?<br> Vi förmedlar samt värderar vissa exlusiva bostäder, villor, bostadsrätter, fritidshus, lägenheter, tomter och fastigheter från norr till söder.<br> Våra mäklare träffar dig gärna för en kostnadsfri värdering av din nuvarande bostad, helt förutsättningslöst.</p>
+              <h2 class="pb-4">Kontakta eller besök oss</h2></a>
+
+              <p class="pb-4">Har du bestämt dig för att sälja din bostad?<br> Vi förmedlar samt värderar vissa exlusiva bostäder, villor, bostadsrätter, fritidshus, lägenheter, tomter och fastigheter från norr till söder.<br> Våra mäklare träffar dig gärna för en kostnadsfri värdering av din nuvarande bostad, helt förutsättningslöst.</p>
               </div>
               </div>
               <div class="col-12">
                <div class="row p-4">
 
-                <!--Grid column-->
                 <div class="col-lg-5">
 
-                  <!--Form with header-->
                   <div class="card border-0 mb-3 shadow">
 
                     <div class="card-body">
-                      <!--Header-->
-                      <div class="form-header blue accent-1">
-                        <h3><i class="fas fa-envelope "></i> Kontakta oss:</h3>
-                      </div>
+                     
+                        <h3 class="pb-2"> Kontakta oss:</h3>
 
-
-                      <!--Body-->
                       <form submit="collectFormData">
                       <div class="md-form">
                        
@@ -85,10 +77,7 @@ class SellerPage extends Base {
                     </div>
 
                   </div>
-                  <!--Form with header-->
-
                 </div>
-                <!--Grid column-->
 
                 <div class="col-lg-7 p-2">
 
@@ -99,7 +88,7 @@ class SellerPage extends Base {
                   </div>
 
                   <br>
-                  <!--Address-->
+
                   <div class="row text-left name-email-phone">
                     <div class="col-md-4">
                       <p>Åsögatan 9<br>
@@ -116,15 +105,10 @@ class SellerPage extends Base {
                       rumson@gmail.com</p>
                     </div>
                   </div>
-
                 </div>
-                <!--Grid column-->
 
               </div>
-
-              </section>
               </div>
-          <!--Section contact-->
           <!--Thank you modal-->
           </div>
           <div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
