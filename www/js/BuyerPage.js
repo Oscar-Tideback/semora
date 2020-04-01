@@ -94,8 +94,8 @@ class BuyerPage extends Base {
               ${store.viewedObjects.length > 0 ? /*html*/`
                 <div class="row pt-4 mt-4">
                   <div class="col">
-                    <h3>(${store.viewedObjects.length}) Senast visade av dig...</h3>
-                    <hr class="my-3">
+                    <hr class="pb-1">
+                    <h3 class="pb-3">(${store.viewedObjects.length}) Senast visade av dig...</h3>
                   </div>
                 </div>
                 ${app.buyerPageSearch.formStoredValues.layout < 1 ? this.listLayout(store.viewedObjects, true) : this.gridLayout(store.viewedObjects, true)}
@@ -123,10 +123,10 @@ class BuyerPage extends Base {
                       <div class="col-12 col-sm-12 col-md order-3 order-sm-3 order-md-2 order-lg-2">
                         <div class="card-body p-md-2 p-lg-3">
                           <h5 class="mb-0">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}</h5>
-                          <p class="card-text">${obj.areaName}, ${obj.regionName}, ${obj.rooms} rum, ${obj.area} m²</p>
+                          <p class="card-text">${obj.areaName}, ${obj.regionName}<br>${obj.rooms} rum, ${obj.area} m²</p>
                         </div>
                       </div>
-                      <div class="col-sm col-md col-6 order-2 order-sm-2 order-md-3 order-lg-3">
+                      <div class="col-sm col-md-auto col-6 order-2 order-sm-2 order-md-3 order-lg-3">
                         <div class="row card-body p-md-2 p-lg-3 no-gutters">
                           <div class="col text-right">
                             <p>${obj.tenure}</p>
@@ -188,7 +188,7 @@ class BuyerPage extends Base {
 
   checkViewing(str) {
     // Maybe compare number of days left (2 weeks ahead?) before viewing date? Fix later!
-    // Note: RealEstate objects can have multiple viewings in DB
+    // Note:  RealEstate objects can have multiple viewings in DB
     // Maybe avoid more SQL queries by solving using CONCAT sql and creating array with viewing dates
 
     // Date type test
