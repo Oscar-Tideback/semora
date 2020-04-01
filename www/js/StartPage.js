@@ -119,7 +119,7 @@ class StartPage extends Base {
               </div>
             </div>
             <!-- new rows -->
-            ${app.buyerPage.gridLayout(this.searchResult, this.listingStart)}
+            ${app.buyerPage.gridLayout(this.searchResult, false, this.listingStart)}
           </div >
 
         </div >
