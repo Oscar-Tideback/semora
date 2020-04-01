@@ -46,17 +46,17 @@ class ObjectPage extends Base {
                     ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2></p>                
                     <p>
                     ${this.description}</p>
-                    <h5>
-                    ${this.viewingsSelection.length <= 0 ? '' : '' ||
-                this.viewingsSelection.length === 1 ? '<p>Endast en visning kvar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : '' ||
-                    this.viewingsSelection.length >= 2 ? '<p>Kommande visningar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}                
-                    </h5>
+                                 
+                    
                 </div>
             </div>
         </div>
 
-            <div class="row m-0 p-0 col-12 d-flex">
+            <div class="row m-0 p-0 d-flex">
+            ${this.checkViewing(this.viewingsSelection.startDatetime)}
                <img src="/images/${this.Id}/img01.jpg" class="p-0 col-12" alt="${this.Id}" realEstateId="${this.Id}">
+
+    </div>    
 
             </div>
             <div class="row p-4 m-0 border shadow mb-5">
@@ -64,6 +64,7 @@ class ObjectPage extends Base {
                   <div>
                   <p>
                     <h5>Välkommen!</h5>
+                </p>
                   </div>
             </div>    
     
@@ -183,5 +184,15 @@ class ObjectPage extends Base {
       </div>
      `;
     }
+    checkViewing() {
 
+        return (/*html*/`
+            <div class="bg-warning px-2 m-0 shadow mb-5 mt-2 pt-1 rotate text-center" style="right: -15px; z-index:1; position: absolute">
+
+          ${this.viewingsSelection.length === 1 ? '<p class="font-weight-bold mb-0">Endast en visning kvar: </p>' + ' ' + this.viewingsSelection.map(viewings => '<p class="mb-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : '' ||
+                this.viewingsSelection.length > 1 ? '<p class="font-weight-bold mb-0">Kommande visningar: </p>' + ' ' + this.viewingsSelection.map(viewings => '<p class="mb-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}   
+            </div>
+        `);
+    }
 }
+
