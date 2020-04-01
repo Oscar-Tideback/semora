@@ -11,7 +11,7 @@ class SellerPage extends Base {
       if (!element.name) { continue; }
       data[element.name] = element.value;
     }
-    //send data sql;
+    //send data about potential customer
     e.preventDefault();
     await sql(/*sql*/`
       INSERT INTO potentialCustomer (name, email, phone, subject) 
@@ -30,11 +30,12 @@ class SellerPage extends Base {
       <div class="container d-flex justify-content-center">
        <div class="row p-4 paragraph-maxwidth">     
 
-            <!--Section: Contact-->
+            <!--Section contact-->
               <section class="col section pt-4">
     
               <!--Section heading-->
-              <h2 class="section-heading">Kontakta eller besök oss</h2>
+              <a>
+              <h2 class="section-heading">Kontakta eller besök oss</h2></a>
               <!--Section description-->
               <p class="section-description pb-4">Har du bestämt dig för att sälja din bostad?<br> Vi förmedlar samt värderar vissa exlusiva bostäder, villor, bostadsrätter, fritidshus, lägenheter, tomter och fastigheter från norr till söder.<br> Våra mäklare träffar dig gärna för en kostnadsfri värdering av din nuvarande bostad, helt förutsättningslöst.</p>
               </div>
@@ -57,10 +58,10 @@ class SellerPage extends Base {
 
                       <!--Body-->
                       <form submit="collectFormData">
-                      <div class="md-form ">
+                      <div class="md-form">
                        
                         <label class="name-email-phone">Namn:</label>
-                        <input name="name" type="text"  title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control">         
+                        <input name="name" type="text" title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control">         
                       </div>
                       <div class="md-form">
 
@@ -78,7 +79,7 @@ class SellerPage extends Base {
                         <textarea name="subject" type="text" class="form-control md-textarea" rows="3"></textarea>
                       </div>
                       <div class="text-center mt-4">
-                        <button type="submit"  class="btn border button-color col-12" value="Send">Skicka</button>
+                        <button type="submit" class="btn border button-color col-12" value="Send">Skicka</button>
                       </div>
 
                     </div>
@@ -123,7 +124,7 @@ class SellerPage extends Base {
 
               </section>
               </div>
-          <!--Section: Contact-->
+          <!--Section contact-->
           <!--Thank you modal-->
           </div>
           <div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
