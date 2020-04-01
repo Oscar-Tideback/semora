@@ -1,7 +1,6 @@
 class ObjectPage extends Base {
 
     async mount() {
-
         //Populate object viewings from Id
         this.viewingsSelection = await sql(/*sql*/`
         SELECT viewings.startDateTime, viewings.endDateTime from viewings
