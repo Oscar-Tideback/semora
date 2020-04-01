@@ -54,6 +54,7 @@ class AgentPage extends Base {
               <div class="name-bold text-secondary mt-5">Kontakta mig.</div>
               <div class="md-form">
                 <label class="name-email-phone">Namn:</label>
+
                 <input name="name" type="name" title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control"></div>           
               <div class="md-form">
                 <label class="name-email-phone">E-Mail:</label>
@@ -61,6 +62,7 @@ class AgentPage extends Base {
               <div class="md-form">
                 <label class="name-email-phone">Telefon:</label>
                 <input type="tel" id="phone" name="phone" pattern="[0-9]{7,10}" title="Skriv ditt telefonnummer 7-10 siffror" class="form-control"></div>
+
               <div class="md-form">
                 <label class="name-email-phone">Ditt ärende:</label>
                 <textarea name="subject" type="subject" class="form-control md-textarea" rows="3"></textarea></div>

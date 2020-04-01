@@ -2,6 +2,10 @@ class BuyerPage extends Base {
 
   mount() {
     this.formInput = new FormData();
+
+    store.use('store_latestViewedOjects');
+    // Define it if not exist
+    if (!store.viewedObjects) store.viewedObjects = [];
   }
 
   doListLayout() { app.buyerPageSearch.formStoredValues.layout = 0; this.render(); }
@@ -84,19 +88,32 @@ class BuyerPage extends Base {
               </div>
 
               <!-- new row -->
-              ${app.buyerPageSearch.formStoredValues.layout < 1 ? this.listLayout(this.searchResult) : this.gridLayout(this.searchResult)}
+              ${app.buyerPageSearch.formStoredValues.layout < 1 ? this.listLayout(this.searchResult, false) : this.gridLayout(this.searchResult, false)}
+
+              <!-- new row -->
+              ${store.viewedObjects.length > 0 ? /*html*/`
+                <div class="row pt-4 mt-4">
+                  <div class="col">
+                    <h3>(${store.viewedObjects.length}) Senast visade av dig...</h3>
+                    <hr class="my-3">
+                  </div>
+                </div>
+                ${app.buyerPageSearch.formStoredValues.layout < 1 ? this.listLayout(store.viewedObjects, true) : this.gridLayout(store.viewedObjects, true)}
+              ` : ''}
+
             </div>       
           </div>
           `;
   }
 
 
-  listLayout(objsData) {
+  listLayout(objsData = [], isStored = false) {
+    if (!this.searchResult.length) return;
     return /*html*/`
             <div class="row">
-              ${objsData.map(obj => /*html*/`
+              ${objsData.map((obj, index) => /*html*/`
                 <div class="card mb-3 rounded-0 shadow w-100">
-                  <a href="/real-estate-info/${obj.id}" objectid="${obj.id}" class="text-decoration-none">
+                  <a href="/real-estate-info/${obj.id}" name="objLink" id="${index}" class="text-decoration-none"${isStored ? '' : 'click="storeViewed"'}>
                     <div class="row no-gutters">
 
                       <div class="col-6 col-sm-auto order-1">
@@ -118,7 +135,7 @@ class BuyerPage extends Base {
 
                         <div class="row card-body pr-md-2 pr-lg-3 py-0 no-gutters">
                           <div class="col text-right">
-                            <p class="card-text"><b>${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr</b></p>
+                            <p class="card-text"><b>${app.regExPrice(obj.price)} kr</b></p>
                           </div>
                         </div>
                       </div>
@@ -131,15 +148,16 @@ class BuyerPage extends Base {
   `;
   }
 
-  gridLayout(objsData, startAtIndex = 0) {
+  gridLayout(objsData = [], isStored = false, startAtIndex = 0) {
+    if (!this.searchResult.length) return;
     return /*html*/`
               <div class="row">
                 ${objsData.map((obj, index) => (index >= startAtIndex ? /*html*/`
                   <div class="col d-flex justify-content-center">
                       <div class="card my-4 estate-card shadow">
-                        <a href="/real-estate-info/${obj.id}" objectid="${obj.id}" class="text-decoration-none">
+                        <a href="/real-estate-info/${obj.id}" name="objLink" id="${index}" class="text-decoration-none"${isStored ? '' : 'click="storeViewed"'}>
                           ${this.checkViewing(obj.startDatetime)}
-                          <img src="images/${obj.imgUrl}" targetbostadid="${obj.id}" class="card-img-top" alt="Bostad picture">
+                          <img src="images/${obj.imgUrl}" class="card-img-top" alt="...">
                           <div class="card-body pr-4">
                             <p class="card-text">
                               <div>                              
@@ -151,7 +169,7 @@ class BuyerPage extends Base {
                             <div class="row">
                               <div class="col">
                                 <div class="card-text">
-                                  <b>${obj.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')} kr</b>
+                                  <b>${app.regExPrice(obj.price)} kr</b>
                                 </div>
                               </div>
                               <div class="col-auto">
@@ -173,6 +191,7 @@ class BuyerPage extends Base {
     // Note: RealEstate objects can have multiple viewings in DB
     // Maybe avoid more SQL queries by solving using CONCAT sql and creating array with viewing dates
 
+    // Date type test
     //let viewing = new Date(str.slice(0, 10) + 'T' + str.slice(11, 16) + ':00Z');
     //return (Date.now() < viewing ? 'visning snart' : '');
 
@@ -181,6 +200,38 @@ class BuyerPage extends Base {
       <div class="bg-warning py-1 px-2" style="position: absolute">Visning snart</div>
     </div>    
     `);
+  }
+
+  storeViewed(e) {
+
+    let currentElement = e.target;
+    let parent = 0;
+
+    // Find event trigger element in dom-tree recursively max 10 down
+    while (parent < 10) {
+
+      if (currentElement.querySelector('[name="objLink"]')) {
+
+        // Result might be re-sorted so links are ID:ed using [index] of objects in this.searchResult array
+        let objIndex = parseInt(currentElement.querySelector('[id]').id);
+
+        if (store.viewedObjects.find(({ id }) => id === this.searchResult[objIndex].id)) {
+          console.log('found it!');
+          return;
+        }
+        else {
+          store.viewedObjects.unshift(this.searchResult[objIndex]);
+          // Limit amount to 6 object in last viewed output
+          store.viewedObjects.length > 5 ? store.viewedObjects.pop() : '';
+          store.save();
+          return;
+        }
+
+      }
+      currentElement = currentElement.parentElement;
+      parent++;
+    };
+
   }
 
 
