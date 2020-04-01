@@ -33,12 +33,11 @@ class ObjectPage extends Base {
     render() {
         return /*html*/`
         <div class="row m-0 p-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
-            <div class="col-12 p-0">
+        <div class="col-12 p-0">
 
                 <div class="container d-flex justify-content-center">
-                 <div class="row p-4 paragraph-maxwidth">
-                    <div class="col pt-4">
-                    
+                <div class="row p-4 paragraph-maxwidth">
+                    <div class="col pt-4">           
                     
                     <h2 class="pb-4">
                     ${this.streetName} 
@@ -46,24 +45,21 @@ class ObjectPage extends Base {
                     ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2>              
                     <p>
                     ${this.description}</p>              
+                    </div>
                 </div>
-            </div>
-        </div>
+                </div>
 
             <div class="row m-0 p-0 d-flex" style="overflow: hidden">           
                <img src="/images/${this.Id}/img01.jpg" class="p-0 col-12" alt="${this.Id}" realEstateId="${this.Id}">
                ${this.checkViewing(this.viewingsSelection.startDatetime)}
             </div>    
-
-            </div>
-            <div class="row p-4 m-0 border shadow mb-5">
-                  ${this.realDescription}
-                  <div>
-                  <p>
-                    <h5>Välkommen!</h5>
-                </p>
-                  </div>
-            </div>    
+        </div>
+           
+        <div class="row p-4 m-0 border shadow mb-5">
+            ${this.realDescription}
+            <p>
+            <h5>Välkommen!</h5></p>       
+        </div>    
     
             <div class="col" style="border: 0px">
             <div class="row p-4 m-0">
@@ -78,13 +74,16 @@ class ObjectPage extends Base {
                 </div>
                 
                 <div class="col-lg-4  col-md-6 col-sm-12 p-2">
-                    <a href="#map"><img class="img-thumbnail  d-flex"  src="/images/${this.Id}/img14.jpg"></a>
+                    <a href="#map"><img class="img-thumbnail d-flex"  src="/images/${this.Id}/img14.jpg" alt="Floor plan ${this.Id}"></a>
                 </div>
 
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="#agent"><img src="../images/${this.imageUrl}" class="img-thumbnail d-flex"   alt="Agent face"></a>
+                    <a href="#agent"><img src="../images/${this.imageUrl}" class="img-thumbnail d-flex"  alt="Agent ${this.Id} face"></a>
                 </div>
-
+                </div>
+                </div>
+                <div class="col-12 p-0">
+                <div class="row m-0">
                     <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img02.jpg"><br>
                     <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img03.jpg"><br>
                     <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img04.jpg"><br>
@@ -97,8 +96,10 @@ class ObjectPage extends Base {
                     <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img11.jpg"><br>
                     <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img12.jpg"><br>
                     <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img13.jpg"><br>
-                    <a id="map"></a>
                     <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img14.jpg"><br>
+                    <a id="map"></a>
+                </div>
+                </div>       
                      
             
             <div class="row p-4 border-0">    
@@ -185,9 +186,9 @@ class ObjectPage extends Base {
 
         return (/*html*/`
         <div class="relative-wrapper">
-        <div class="bg-warning px-2 m-0 shadow mb-5 mt-2 pt-1 rotate text-center" style="width: 300px; right: -15px; z-index:1; position: absolute">
-            ${this.viewingsSelection.length === 1 ? '<p class="font-weight-bold mb-0">Endast en visning kvar: </p>' + ' ' + this.viewingsSelection.map(viewings => '<p class="mb-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : '' ||
-                this.viewingsSelection.length > 1 ? '<p class="font-weight-bold mb-0">Kommande visningar: </p>' + ' ' + this.viewingsSelection.map(viewings => '<p class="mb-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}   
+        <div class="bg-warning px-2 m-0 shadow mb-5 mt-2 pt-0 rotate text-center" style="width: 300px; right: -15px; z-index:1; position: absolute">
+            ${this.viewingsSelection.length === 1 ? '<p class="font-weight-bold mt-1 mb-0">Endast en visning kvar: </p>' + ' ' + this.viewingsSelection.map(viewings => '<p class="mb-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : '' ||
+                this.viewingsSelection.length > 1 ? '<p class="font-weight-bold mt-1 mb-0">Kommande visningar: </p>' + ' ' + this.viewingsSelection.map(viewings => '<p class="mb-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}   
         </div>
         </div>
         `);
