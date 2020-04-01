@@ -113,7 +113,7 @@ class BuyerPage extends Base {
             <div class="row">
               ${objsData.map((obj, index) => /*html*/`
                 <div class="card mb-3 rounded-0 shadow w-100">
-                  <a href="/real-estate-info/${obj.id}" name="objLink" id="${index}" class="text-decoration-none"${isStored ? '' : ' click="storeViewed"'}>
+                  <a href="/real-estate-info/${obj.id}" name="objLink" id="${index}" class="text-decoration-none"${isStored ? '' : 'click="storeViewed"'}>
                     <div class="row no-gutters">
 
                       <div class="col-6 col-sm-auto order-1">
@@ -155,7 +155,7 @@ class BuyerPage extends Base {
                 ${objsData.map((obj, index) => (index >= startAtIndex ? /*html*/`
                   <div class="col d-flex justify-content-center">
                       <div class="card my-4 estate-card shadow">
-                        <a href="/real-estate-info/${obj.id}" name="objLink" id="${index}" class="text-decoration-none"${isStored ? '' : ' click="storeViewed"'}>
+                        <a href="/real-estate-info/${obj.id}" name="objLink" id="${index}" class="text-decoration-none"${isStored ? '' : 'click="storeViewed"'}>
                           ${this.checkViewing(obj.startDatetime)}
                           <img src="images/${obj.imgUrl}" class="card-img-top" alt="...">
                           <div class="card-body pr-4">
@@ -203,19 +203,35 @@ class BuyerPage extends Base {
   }
 
   storeViewed(e) {
+
     let currentElement = e.target;
     let parent = 0;
-    // Find event trigger element in dom-tree recursive
+
+    // Find event trigger element in dom-tree recursively max 10 down
     while (parent < 10) {
+
       if (currentElement.querySelector('[name="objLink"]')) {
-        store.viewedObjects.push(this.searchResult[parseInt(currentElement.querySelector('[id]').id)]);
-        store.save();
-        return;
+
+        // Result might be re-sorted so links are ID:ed using [index] of objects in this.searchResult array
+        let objIndex = parseInt(currentElement.querySelector('[id]').id);
+
+        if (store.viewedObjects.find(({ id }) => id === this.searchResult[objIndex].id)) {
+          console.log('found it!');
+          return;
+        }
+        else {
+          store.viewedObjects.unshift(this.searchResult[objIndex]);
+          // Limit amount to 6 object in last viewed output
+          store.viewedObjects.length > 5 ? store.viewedObjects.pop() : '';
+          store.save();
+          return;
+        }
+
       }
       currentElement = currentElement.parentElement;
       parent++;
     };
-    //parent > 6 ? console.log('storeViewed(): Trigger element id was not found') : '';
+
   }
 
 
