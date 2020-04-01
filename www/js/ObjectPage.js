@@ -8,8 +8,8 @@ class ObjectPage extends Base {
             WHERE viewings.realEstateId = ${this.Id}   
     
     `);
-        //console.log('Antal visningar: ' + this.viewingsSelection.length);
     }
+
     async collectFormData(e) {
         // Loop through the form and collect the input
         let data = {};
@@ -42,11 +42,12 @@ class ObjectPage extends Base {
                 <p>
                 <h2 class="h2">${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2></p>
                     
-                    <p class="">${this.description}</p>
-                    <h5>
-                    <!--${ this.viewingsSelection.length === 1 ? '<p>Visning:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : 'p'
-                || this.viewingsSelection.length === 2 ? '<p>Visningar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : 'b'}                
-                --></h5>
+                <p class="">${this.description}</p>
+                <h5>
+                ${this.viewingsSelection.length === 0 ? '' : '' ||
+                this.viewingsSelection.length === 1 ? '<p>Visning:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : '' ||
+                    this.viewingsSelection.length >= 2 ? '<p>Visningar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}                
+                </h5>
                 </div>
               </div>
             </div>
