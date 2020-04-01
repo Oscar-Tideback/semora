@@ -56,7 +56,8 @@ class ObjectPage extends Base {
         </div>
            
         <div class="row p-4 m-0 border shadow mb-5">
-            ${this.realDescription}
+            <p>
+            ${this.realDescription}</p>
             <p>
             <h5>Välkommen!</h5></p>       
         </div>    
@@ -74,97 +75,93 @@ class ObjectPage extends Base {
                 </div>
                 
                 <div class="col-lg-4  col-md-6 col-sm-12 p-2">
-                    <a href="#map"><img class="img-thumbnail d-flex"  src="/images/${this.Id}/img14.jpg" alt="Floor plan ${this.Id}"></a>
+                    <a href="#map"><img src="/images/${this.Id}/img14.jpg" class="img-thumbnail d-flex" alt="Floor plan ${this.Id}"></a><p class="mb-0"><a href="#map">Ritning</p></a>
                 </div>
 
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <a href="#agent"><img src="../images/${this.imageUrl}" class="img-thumbnail d-flex"  alt="Agent ${this.Id} face"></a>
+                <div class="col-lg-4 col-md-6 col-sm-12 p-2">
+                    <a href="#agent"><img src="../images/${this.imageUrl}" class="img-thumbnail d-flex"  alt="Agent ${this.Id} face"></a><p class="mb-0">Ansvarig mäklare: </p><a href="#agent">${this.firstName} ${this.lastName}</a>
                 </div>
-                </div>
-                </div>
-                <div class="col-12 p-0">
-                <div class="row m-0">
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img02.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img03.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img04.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img05.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img06.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img07.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img08.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img09.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img10.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img11.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img12.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img13.jpg"><br>
-                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img14.jpg"><br>
-                    <a id="map"></a>
-                </div>
-                </div>       
-                     
+            </div>
+            </div>
+
+                    <div class="col-12 p-0">
+                    <div class="row m-0">
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img02.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img03.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img04.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img05.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img06.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img07.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img08.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img09.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img10.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img11.jpg"><br>
+                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img12.jpg"><br>
+                        <img class="d-block w-100 shadow mb-5" src="/images/${this.Id}/img13.jpg"><br>
+                        <img class="d-block w-100 shadow mb-5" src="/images/${this.Id}/img14.jpg"><br>
+                        <a id="map"></a>
+                    </div>
+                    </div>                   
             
-            <div class="row p-4 border-0">    
-                <div class="col-12 border shadow mb-4 mt-3">
-                
-            <div class="row">
+   
+       
+
             <a id="agent"></a> 
 
-                <div class="col-md-4 col-sm-12 col-lg-3 mt-3">
-                <a href="/real-estate-agent/${this.brokerId}"><img src="../images/${this.imageUrl}"
-                    class="img-thumbnail rounded mb-2 float-strong-left" alt="Agent face"></a>
-                    <a href="/real-estate-agent/${this.brokerId}">
-                    <p class="card-text name-email-phone"><span class="name-bold"></span> <strong>
-                        <h5>${this.firstName} ${this.lastName}<h5>
-                    </p></strong></a>
-                    <p class="card-text name-email-phone"><span class="name-bold"></span> <strong>
-                        <h6>Email:
-                    </strong> ${this.email}<h6>
-                    </p>
-                    <p class="card-text name-email-phone"><span class="name-bold"></span> <strong>
-                        <h6>Tel:
-                    </strong> ${app.regExPhoneNumber(this.phone)}<h6>
-                    </p>
-                    </div>
-                    
-                    <div class="card-body mt-2 pt-0" >
-                        <div class="card-title">
-                            <div class="col-12">
-                            <!--Form-->
-                                <div class="col-lg-12 col-md-12 col-sm-12">         
-                                    <div>
-                                        <form submit="collectFormData">
-                                        <div class="name-bold text-secondary">Kontakta mäklaren som förmedlar detta objekt.</div>
-                                        <div class="md-form">
-                            
-                                        <label class="name-email-phone">Namn:</label>
-                                        <input name="name" type="name" pattern=".{2,}" class="form-control">         
-                                        </div>
-                                        <div class="md-form">
 
-                                        <label class="name-email-phone">E-Mail:</label>
-                                        <input name="email" type="email" class="form-control">
-                                        </div>
-                                        <div class="md-form">
+            
 
-                                        <label class="name-email-phone">Telefon:</label>
-                                        <input type="tel" id="phone" name="phone" pattern="[0-9]{7,10}" class="form-control">
-                                        </div>
-                                        <div class="md-form">
+           
+                
+    
+            <div class="col-12 mt-4">
+            <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-12">
+                <img src="../images/${this.imageUrl}" class="img-fluid rounded border float-bottom" alt="Agent face">
+                <p class="mt-1 broker-name"><span class="name-bold">${this.firstName} ${this.lastName}</p>
+                <p class="broker-name name-email-phone"><span class="name-bold">E-Mail:</span> ${this.email}</p>
+                <p class="broker-name name-email-phone"><span class="name-bold">Tel:</span>  ${app.regExPhoneNumber(this.phone)}</p>
+                <p class="broker-name name-region"><span class="name-bold">Region:</span> ${this.regionName}.</p>
+            </div>
+                
+  
+              <!--Form-->
+              <div class="col-lg-7 col-md-8 col-sm-12">         
+              <div class="col pb-4">
+              <form submit="collectFormData">
+              <div class="name-bold text-secondary">Kontakta mig som ansvarig mäklare</div>
+              <div class="md-form">
+    
+                <label class="name-email-phone">Namn:</label>
+                <input name="name" type="name" pattern=".{2,}" class="form-control">         
+              </div>
+              <div class="md-form">
+  
+                <label class="name-email-phone">E-Mail:</label>
+                <input name="email" type="email" class="form-control">
+              </div>
+              <div class="md-form">
+  
+                <label class="name-email-phone">Telefon:</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{7,10}" class="form-control">
+              </div>
+              <div class="md-form">
+  
+                <label class="name-email-phone">Ditt ärende:</label>
+                <textarea name="subject" type="subject" class="form-control md-textarea" rows="3"></textarea>
+              </div>
+              <div class="text-center mt-4" >
+                <button type="submit"  class="btn col-12 border button-color" value="Send">Skicka</button>
+              </div>           
+            </div>
+            </div>
+ 
 
-                                        <label class="name-email-phone">Ditt ärende:</label>
-                                        <textarea name="subject" type="subject" class="form-control md-textarea" rows="3"></textarea>
-                                        </div>
-                                        <div class="text-center mt-4" >
-                                        <button type="submit"  class="btn col-12 border button-color" value="Send">Skicka</button>
-                                        </div>           
-                                    </div>
-                                </div>    
-                            </div>
-                        </div>                       
-                    </div>
-                </div>    
-            </div>            
+
+
+
         <div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header  alert alert-success"  role="alert">
                 <h4 class="modal-title" id="exampleModalLabel">Tack för visat intresse!</h4>
@@ -177,7 +174,7 @@ class ObjectPage extends Base {
                 <div class="mt-4 modal-footer">
                 <a href="/" type="button" class="btn btn-primary float-left"  data-dismiss="modal">Till startsidan!</a>
             </div>
-            </div>
+        </div>
         </div>       
       </div>
      `;
