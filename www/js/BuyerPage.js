@@ -123,7 +123,7 @@ class BuyerPage extends Base {
                       <div class="col-12 col-sm-12 col-md order-3 order-sm-3 order-md-2 order-lg-2">
                         <div class="card-body p-md-2 p-lg-3">
                           <h5 class="mb-0">${obj.streetName} ${obj.streetNumber.toUpperCase()}${obj.floor === null ? '' : ' (' + obj.floor + ' tr)'}</h5>
-                          <p class="card-text">${obj.areaName}, ${obj.regionName}, ${obj.rooms} rum, ${obj.area}m²</p>
+                          <p class="card-text">${obj.areaName}, ${obj.regionName}<br>${obj.rooms} rum, ${obj.area} m²</p>
                         </div>
                       </div>
                       <div class="col-sm col-md-auto col-6 order-2 order-sm-2 order-md-3 order-lg-3">
