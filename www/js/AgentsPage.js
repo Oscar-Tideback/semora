@@ -6,7 +6,7 @@ class AgentsPage extends Base {
 
     //Populate dropdown selections from database
     this.regionSelection = await sql(/*sql*/`
-    SELECT * FROM region`);
+    SELECT region.regionName, region.id FROM region`);
 
     //Populate agents to display
     this.foundAgents = await sql(/*sql*/`

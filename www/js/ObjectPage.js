@@ -35,69 +35,74 @@ class ObjectPage extends Base {
         <div class="row m-0 p-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
         <div class="col-12 p-0">
     
-          <div class="container d-flex justify-content-center">
+        <div class="container d-flex justify-content-center">
 
             <div class="row p-4 paragraph-maxwidth">
                 <div class="row py-4 my-4">
-                <p>
-                <h2 class="h2">${this.streetName} ${this.streetNumber} ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2></p>
-                    
-                <p class="">${this.description}</p>
-                <h5>
-                ${this.viewingsSelection.length === 0 ? '' : '' ||
-                this.viewingsSelection.length === 1 ? '<p>Visning:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : '' ||
-                    this.viewingsSelection.length >= 2 ? '<p>Visningar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}                
-                </h5>
+                    <p>
+                    <h2>
+                    ${this.streetName} 
+                    ${this.streetNumber} 
+                    ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2></p>                
+                    <p>
+                    ${this.description}</p>
+                    <h5>
+                    ${this.viewingsSelection.length <= 0 ? '' : '' ||
+                this.viewingsSelection.length === 1 ? '<p>Endast en visning kvar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : '' ||
+                    this.viewingsSelection.length >= 2 ? '<p>Kommande visningar:</p>' + this.viewingsSelection.map(viewings => '<p class="my-1">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}                
+                    </h5>
                 </div>
-              </div>
             </div>
+        </div>
 
             <div class="row m-0 p-0 col-12 d-flex">
                <img src="/images/${this.Id}/img01.jpg" class="p-0 col-12" alt="${this.Id}" realEstateId="${this.Id}">
 
             </div>
-            <div class="row p-4 m-0 text-break border shadow mb-5">
+            <div class="row p-4 m-0 border shadow mb-5">
                   ${this.realDescription}
                   <div>
                   <p>
                     <h5>Välkommen!</h5>
                   </div>
-                </div>    
+            </div>    
     
             <div class="col" style="border: 0px">
             <div class="row p-4 m-0">
-                    <div class="col-lg-4 col-md-12 col-sm-12">     
-                        <p class="h3">${this.areaName}, ${this.regionName}</p>
-                        <strong>Antal rum:</strong> ${this.rooms}<br>
-                        <strong>Boarea:</strong> ${this.area} m²<br>
-                        <strong>Pris:</strong> ${app.regExPrice(this.price)} kr<br>
-                        <strong>Byggår:</strong> ${this.buildYear}<br>
-                        <strong>Driftkostnad:</strong> ${app.regExPrice(this.maintenanceCost)} /år<br>
-                        <strong>Bostadstyp:</strong> ${this.tenure}<br>                
-                    </div>
-                    <div class="col-lg-4  col-md-6 col-sm-12 p-2">
-                        <a href="#map"><img class="img-thumbnail  d-flex"  src="/images/${this.Id}/img14.jpg"></a>
-                    </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">     
+                    <p class="h3">${this.areaName}, ${this.regionName}</p>
+                    <strong>Antal rum:</strong> ${this.rooms}<br>
+                    <strong>Boarea:</strong> ${this.area} m²<br>
+                    <strong>Pris:</strong> ${app.regExPrice(this.price)} kr<br>
+                    <strong>Byggår:</strong> ${this.buildYear}<br>
+                    <strong>Driftkostnad:</strong> ${app.regExPrice(this.maintenanceCost)} /år<br>
+                    <strong>Bostadstyp:</strong> ${this.tenure}<br>                
+                </div>
+                
+                <div class="col-lg-4  col-md-6 col-sm-12 p-2">
+                    <a href="#map"><img class="img-thumbnail  d-flex"  src="/images/${this.Id}/img14.jpg"></a>
+                </div>
 
-                    <div class="col-lg-4 col-md-6 col-sm-12">
-                        <a href="#agent"><img src="../images/${this.imageUrl}" class="img-thumbnail d-flex"   alt="Agent face"></a>
-                    </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <a href="#agent"><img src="../images/${this.imageUrl}" class="img-thumbnail d-flex"   alt="Agent face"></a>
+                </div>
 
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img02.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img03.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img04.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img05.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img06.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img07.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img08.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img09.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img10.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img11.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img12.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img13.jpg"><br>
-                        <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img14.jpg"><br>
-                        <a id="map"></a>   
-              
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img02.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img03.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img04.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img05.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img06.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img07.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img08.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img09.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img10.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img11.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img12.jpg"><br>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img13.jpg"><br>
+                    <a id="map"></a>
+                    <img class="d-block w-100 shadow mb-3" src="/images/${this.Id}/img14.jpg"><br>
+                     
+            
             <div class="row p-4 border-0">    
                 <div class="col-12 border shadow mb-4 mt-3">
                 
