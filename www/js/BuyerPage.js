@@ -188,7 +188,7 @@ class BuyerPage extends Base {
 
   checkViewing(str) {
     // Maybe compare number of days left (2 weeks ahead?) before viewing date? Fix later!
-    // Note: RealEstate objects can have multiple viewings in DB
+    // Note:  RealEstate objects can have multiple viewings in DB
     // Maybe avoid more SQL queries by solving using CONCAT sql and creating array with viewing dates
 
     // Date type test
