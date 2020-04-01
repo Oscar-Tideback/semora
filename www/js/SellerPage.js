@@ -28,14 +28,10 @@ class SellerPage extends Base {
     <div class="col-12 p-0">
 
       <div class="container d-flex justify-content-center">
-       <div class="row  pt-4 p-4 paragraph-maxwidth">
-
-
-
-       
+       <div class="row p-4 paragraph-maxwidth">     
 
             <!--Section: Contact-->
-              <section class="section pt-4">
+              <section class="col section pt-4">
     
               <!--Section heading-->
               <h2 class="section-heading">Kontakta eller besök oss</h2>
@@ -93,7 +89,6 @@ class SellerPage extends Base {
                 </div>
                 <!--Grid column-->
 
-                <!--Grid column-->
                 <div class="col-lg-7 p-2">
 
                   <!--Google map-->
@@ -103,7 +98,7 @@ class SellerPage extends Base {
                   </div>
 
                   <br>
-                  <!--Buttons-->
+                  <!--Address-->
                   <div class="row text-left name-email-phone">
                     <div class="col-md-4">
                       <p>Åsögatan 9<br>
@@ -128,7 +123,7 @@ class SellerPage extends Base {
 
               </section>
               </div>
-          <!--Section: Contact v.1-->
+          <!--Section: Contact-->
           <!--Thank you modal-->
           </div>
           <div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

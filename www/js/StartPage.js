@@ -30,6 +30,7 @@ class StartPage extends Base {
           <div class="container d-flex justify-content-center">
             <div class="row p-4 paragraph-maxwidth">
               <div class="col pt-4">
+              
                 <h2 class="pb-4">Välkommen till Dhyr & Rumson</h2>
                 <p>
                   Köpa eller sälja bostad? Dhyr & Rumsons mäklare ger dig den hjälp och kunskap du behöver för att göra en riktigt bra bostadsaffär.

@@ -44,23 +44,22 @@ class AgentsPage extends Base {
 
   render() {
     return /*html*/`
-      <div class="row m-0 p-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">
-        
+      <div class="row m-0 p-0" route="/real-estate-agents" page-title="Dhyr & Rumson - Våra mäklare">     
         <div class="col-12 p-0">
 
         <div class="container d-flex justify-content-center">
-
-          <div class="row paragraph-maxwidth">
-            <div class="col">
-            <p>
-            <h2 class="py-4"> Lär känna våra mäklare</h2></p>
-              <p>Kunskap och erfarenhet är tillgångar i alla yrken.<br>
+          <div class="row p-4 paragraph-maxwidth">
+            <div class="col pt-4">
+            
+            <h2 class="pb-4"> Lär känna våra mäklare</h2>
+              <p>
+              Kunskap och erfarenhet är tillgångar i alla yrken.<br>
               Till Dhyr & Rumson har vi därför handplockat endast de skickligaste och mest erfarna mäklarna i Stockholm.<br>
               Vi har gjort det av en enda anledning – så att rätt person kan företräda dig i din kanske största affär.</p>
               </div>
               </div>
               </div>
-                <div class="row m-4">
+                <div class="row m-1">
                 <div class="col-12">
                     <p  class="text-black-50 mb-0 pl-1">Visa mäklare per region: </p>
                   <form>

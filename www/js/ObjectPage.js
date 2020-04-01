@@ -33,30 +33,27 @@ class ObjectPage extends Base {
     render() {
         return /*html*/`
         <div class="row m-0 p-0" route="/real-estate-info/${this.Id}" page-title="Bostad info">
-        <div class="col-12 p-0">
-    
-        <div class="container d-flex justify-content-center">
+            <div class="col-12 p-0">
 
-            <div class="row p-4 paragraph-maxwidth">
-                <div class="row py-4 my-4">
-                    <p>
-                    <h2>
+                <div class="container d-flex justify-content-center">
+                 <div class="row p-4 paragraph-maxwidth">
+                    <div class="col pt-4">
+                    
+                    
+                    <h2 class="pb-4">
                     ${this.streetName} 
                     ${this.streetNumber} 
-                    ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2></p>                
+                    ${this.floor === null ? '' : ' (' + this.floor + ' tr)'}</h2>              
                     <p>
-                    ${this.description}</p>
-                                 
-                    
+                    ${this.description}</p>              
                 </div>
             </div>
         </div>
 
-            <div class="row m-0 p-0 d-flex">
-            ${this.checkViewing(this.viewingsSelection.startDatetime)}
+            <div class="row m-0 p-0 d-flex" style="overflow: hidden">           
                <img src="/images/${this.Id}/img01.jpg" class="p-0 col-12" alt="${this.Id}" realEstateId="${this.Id}">
-
-    </div>    
+               ${this.checkViewing(this.viewingsSelection.startDatetime)}
+            </div>    
 
             </div>
             <div class="row p-4 m-0 border shadow mb-5">
@@ -187,11 +184,12 @@ class ObjectPage extends Base {
     checkViewing() {
 
         return (/*html*/`
-            <div class="bg-warning px-2 m-0 shadow mb-5 mt-2 pt-1 rotate text-center" style="right: -15px; z-index:1; position: absolute">
-
-          ${this.viewingsSelection.length === 1 ? '<p class="font-weight-bold mb-0">Endast en visning kvar: </p>' + ' ' + this.viewingsSelection.map(viewings => '<p class="mb-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : '' ||
+        <div class="relative-wrapper">
+        <div class="bg-warning px-2 m-0 shadow mb-5 mt-2 pt-1 rotate text-center" style="width: 300px; right: -15px; z-index:1; position: absolute">
+            ${this.viewingsSelection.length === 1 ? '<p class="font-weight-bold mb-0">Endast en visning kvar: </p>' + ' ' + this.viewingsSelection.map(viewings => '<p class="mb-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : '' ||
                 this.viewingsSelection.length > 1 ? '<p class="font-weight-bold mb-0">Kommande visningar: </p>' + ' ' + this.viewingsSelection.map(viewings => '<p class="mb-0">' + viewings.startDatetime + ' - ' + viewings.endDatetime + '</p>') : ''}   
-            </div>
+        </div>
+        </div>
         `);
     }
 }
