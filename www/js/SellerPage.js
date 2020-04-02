@@ -47,35 +47,31 @@ class SellerPage extends Base {
 
                     <div class="card-body">
                      
-                        <h3 class="pb-2"> Kontakta oss:</h3>
+                      <h3 class="pb-2"> Kontakta oss:</h3>
 
                       <form submit="collectFormData">
-                      <div class="md-form">
-                       
+
+                      <div class="md-form">                      
                         <label class="name-email-phone">Namn:</label>
-                        <input name="name" type="text" title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control">         
-                      </div>
-                      <div class="md-form">
+                        <input name="name" type="text" title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control"></div>
 
+                      <div class="md-form">
                         <label class="name-email-phone">E-Mail:</label>
-                        <input name="email" type="email" class="form-control">
-                      </div>
-                      <div class="md-form">
+                        <input name="email" type="email" class="form-control"></div>
 
-                      <label class="name-email-phone">Telefon:</label>
-                      <input type="text" id="phone" name="phone" pattern="[0-9]{7,10}" title="Skriv ditt telefonnummer 7-10 siffror" class="form-control">
-                    </div>
                       <div class="md-form">
-  
+                        <label class="name-email-phone">Telefon:</label>
+                        <input type="text" id="phone" name="phone" pattern="[0-9]{7,10}" title="Skriv ditt telefonnummer 7-10 siffror" class="form-control"></div>
+
+                      <div class="md-form">
                         <label class="name-email-phone">Ditt ärende:</label>
-                        <textarea name="subject" type="text" class="form-control md-textarea" rows="3"></textarea>
-                      </div>
+                        <textarea name="subject" type="text" class="form-control md-textarea" rows="3"></textarea></div>
+
                       <div class="text-center mt-4">
-                        <button type="submit" class="btn border button-color col-12" value="Send">Skicka</button>
-                      </div>
+                        <button type="submit" class="btn border button-color col-12" value="Send">Skicka</button></div>
 
+                      </form>
                     </div>
-
                   </div>
                 </div>
 

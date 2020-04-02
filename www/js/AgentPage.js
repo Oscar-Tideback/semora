@@ -21,7 +21,6 @@ class AgentPage extends Base {
   }
   render() {
     return /*html*/`
-
     <div class="row m-0 p-0" route="/real-estate-agent/${this.id}" page-title="Dhyr & Rumson - Våra mäklare">
       <div class="col-12 p-0">
 
@@ -51,14 +50,17 @@ class AgentPage extends Base {
           <div class="col-lg-8 col-md-8 col-sm-12">         
             <div class="col-12 mt-2 pb-4">
               <form submit="collectFormData">
+
               <div class="name-bold text-secondary mt-5">Kontakta mig.</div>
+
               <div class="md-form">
                 <label class="name-email-phone">Namn:</label>
-
-                <input name="name" type="name" title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control"></div>           
+                <input name="name" type="name" title="Skriv ditt för och efternamn" pattern=".{2,}" class="form-control"></div>    
+       
               <div class="md-form">
                 <label class="name-email-phone">E-Mail:</label>
                 <input name="email" type="email" class="form-control"></div>   
+
               <div class="md-form">
                 <label class="name-email-phone">Telefon:</label>
                 <input type="tel" id="phone" name="phone" pattern="[0-9]{7,10}" title="Skriv ditt telefonnummer 7-10 siffror" class="form-control"></div>
@@ -66,10 +68,14 @@ class AgentPage extends Base {
               <div class="md-form">
                 <label class="name-email-phone">Ditt ärende:</label>
                 <textarea name="subject" type="subject" class="form-control md-textarea" rows="3"></textarea></div>
+
               <div class="text-center mt-4" >
                 <button type="submit"  class="btn col-12 border button-color" value="Send">Skicka</button></div>           
-            </div>
-          </div>    
+            
+            </form>
+          </div>
+        </div>    
+
         <div class="modal fade" id="thanksModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
