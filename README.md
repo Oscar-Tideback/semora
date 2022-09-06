@@ -1,7 +1,9 @@
 
 Study group SEMORA.
+
 A simple real estate site.
 Made with Javascript SQLite and CSS.
+
 ![Screenshot_at_Mar_14_19-54-56](https://user-images.githubusercontent.com/1027677/188611379-8bbb60ef-da76-4102-9074-f5a765674976.png)
 
 
